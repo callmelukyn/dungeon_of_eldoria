@@ -12,20 +12,28 @@
 class Menu {
 private:
     int selected;
+
 public:
     Menu();
 
+    //Functionality
     void clearScreen() const;
 
     void displayMainMenu() const;
 
-    void displayDifficultyMenu() const;
+    //Individual screens
+    void displayRoleMenu();
 
     void displayCreditsMenu() const;
 
+    //Movement
     void navigateMenu();
 
+    void moveUpMenu(char key, int &selected);
 
+    void moveDownMenu(char key, int &selected);
+
+    void confirmSelectionMenu(char key, int &selected);
 };
 
 #endif //MENU_H
