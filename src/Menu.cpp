@@ -72,7 +72,7 @@ void Menu::displayRoleMenu() {
         key = getch();
         moveUpMenu(key, 3);
         moveDownMenu(key, 3);
-        confirmSelectionMenu(key, selected);
+        confirmSelectionRoleMenu(key, selected);
     }
 }
 
@@ -94,7 +94,7 @@ void Menu::moveDownMenu(char key, int maxMenuItems) {
     }
 }
 
-void Menu::confirmSelectionMenu(char key, int &selected) {
+void Menu::confirmSelectionMainMenu(char key, int &selected) {
     if (key == 13) {
         switch (selected) {
             case 0:
@@ -105,6 +105,22 @@ void Menu::confirmSelectionMenu(char key, int &selected) {
                 break;
             case 2:
                 //TODO EXIT
+                break;
+        }
+    }
+}
+
+void Menu::confirmSelectionRoleMenu(char key, int &selected) {
+    if (key == 13) {
+        switch (selected) {
+            case 0:
+                //TODO X
+                break;
+            case 1:
+                //TODO X
+                break;
+            case 2:
+                //TODO X
                 break;
         }
     }
@@ -121,6 +137,6 @@ void Menu::navigateMenu() {
 
         moveDownMenu(key, 3);
 
-        confirmSelectionMenu(key, selected);
+        confirmSelectionMainMenu(key, selected);
     }
 }

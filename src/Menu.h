@@ -33,7 +33,9 @@ public:
 
     void moveDownMenu(char key, int maxMenuItems);
 
-    void confirmSelectionMenu(char key, int &selected);
+    void confirmSelectionMainMenu(char key, int &selected);
+
+    void confirmSelectionRoleMenu(char key, int &selected);
 };
 
 #endif //MENU_H
