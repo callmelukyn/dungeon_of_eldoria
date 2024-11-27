@@ -3,7 +3,6 @@
 //
 
 #include "Menu.h"
-#include <windows.h>
 
 Menu::Menu() {
     selected = 0;
