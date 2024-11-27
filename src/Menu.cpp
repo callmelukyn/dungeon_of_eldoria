@@ -70,40 +70,26 @@ void Menu::displayRoleMenu() {
                 break;
         }
         key = getch();
-        moveUpMenu(key, selected);
-        moveDownMenu(key, selected);
+        moveUpMenu(key, 3);
+        moveDownMenu(key, 3);
         confirmSelectionMenu(key, selected);
     }
 }
 
-void Menu::moveUpMenu(char key, int &selected) {
+void Menu::moveUpMenu(char key, int maxMenuItems) {
     if (key == 'w' || key == 'W') {
-        switch (selected) {
-            case 0:
-                selected = 0;
-                break;
-            case 1:
-                selected = 0;
-                break;
-            case 2:
-                selected = 1;
-                break;
+        selected--;
+        if (selected < 0) {
+            selected = maxMenuItems - 1;
         }
     }
 }
 
-void Menu::moveDownMenu(char key, int &selected) {
+void Menu::moveDownMenu(char key, int maxMenuItems) {
     if (key == 's' || key == 'S') {
-        switch (selected) {
-            case 0:
-                selected = 1;
-                break;
-            case 1:
-                selected = 2;
-                break;
-            case 2:
-                selected = 2;
-                break;
+        selected++;
+        if (selected >= maxMenuItems) {
+            selected = 0;
         }
     }
 }
@@ -131,9 +117,9 @@ void Menu::navigateMenu() {
         //TODO START GAME TOGGLE
         displayMainMenu();
         key = getch();
-        moveUpMenu(key, selected);
+        moveUpMenu(key, 3);
 
-        moveDownMenu(key, selected);
+        moveDownMenu(key, 3);
 
         confirmSelectionMenu(key, selected);
     }

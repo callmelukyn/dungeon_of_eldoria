@@ -29,9 +29,9 @@ public:
     //Movement
     void navigateMenu();
 
-    void moveUpMenu(char key, int &selected);
+    void moveUpMenu(char key, int maxMenuItems);
 
-    void moveDownMenu(char key, int &selected);
+    void moveDownMenu(char key, int maxMenuItems);
 
     void confirmSelectionMenu(char key, int &selected);
 };
