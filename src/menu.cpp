@@ -32,8 +32,13 @@ void Menu::handleInput(const char key) {
             confirmSelectionRoleMenu(key, selected);
             break;
         case Screen::creditsMenu:
-            navigateMenu(key, 0);
-            if (key == 13) {
+            if (key == 27) {
+                changeScreen(Screen::mainMenu);
+            }
+            break;
+        case Screen::map:
+            //TODO Movement po mapě
+            if (key == 27) {
                 changeScreen(Screen::mainMenu);
             }
             break;
@@ -50,6 +55,9 @@ void Menu::render() const {
             break;
         case Screen::creditsMenu:
             displayCreditsMenu();
+            break;
+        case Screen::map:
+            displayMap();
             break;
     }
 }
@@ -86,7 +94,9 @@ void Menu::displayCreditsMenu() const {
     std::cout << "  Lukas Kulhanek\n";
     std::cout << "  Ivo Dubsik\n";
     std::cout << "  Vit Benda\n";
-    std::cout << "Press ENTER to go back.\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "ESC to go back.\n";
 }
 
 void Menu::displayRoleMenu() const {
@@ -112,16 +122,11 @@ void Menu::displayRoleMenu() const {
 }
 
 void Menu::displayMap() const {
-    char key;
-    while (key != 27) {
-        clearScreen();
-        //TODO Predpokladam, ze se da udelat refactor do sraček LVL 100. Ale mapu to ted vypíše na Warriorovi
-        Map map = Map(10, 20);
-        Position someonsesPosition = Position(1, 1);
-        map(someonsesPosition) = 'A';
-        map.printMap();
-        key = _getch();
-    }
+    clearScreen();
+    Map map = Map(10, 20);
+    Position someonsesPosition = Position(1, 1);
+    map(someonsesPosition) = 'A';
+    map.printMap();
 }
 
 
@@ -163,7 +168,7 @@ void Menu::confirmSelectionRoleMenu(char key, int &selected) {
     if (key == 13) {
         switch (selected) {
             case 0:
-                displayMap();
+                changeScreen(Screen::map);
                 break;
             case 1:
                 //TODO X
