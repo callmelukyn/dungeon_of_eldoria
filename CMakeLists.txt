@@ -11,8 +11,8 @@ add_executable(zoo_project src/main.cpp
         src/map/tile.cpp
         src/map/tile.h
         src/domain/value_objects/potion.h
-        src/Menu.cpp
-        src/Menu.h
+        src/menu.cpp
+        src/menu.h
         src/application.cpp
         src/application.h
         src/domain/value_objects/role.h

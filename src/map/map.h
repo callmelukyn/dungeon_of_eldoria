@@ -6,23 +6,28 @@
 #define MAP_H
 #include <vector>
 
-#include "tile.h"
+#include <fstream>
+#include <iostream>
+
+#include "../domain/entities/position.h"
 
 
 class Map {
-    std::vector<std::vector<Tile *> > m_map;
+    unsigned m_worldHeight;
+    unsigned m_worldWidth;
+
+    // Declare a variable that will hold all the characters for the map
+    std::vector<char> m_worldMap;
 
 public:
-    Map(unsigned int width, unsigned int height);
+    explicit Map(Position position);
 
-    ~Map();
+    // Define operators to give both const and non-const access to the
+    // positions in the map.
+    char operator()(const unsigned y, const unsigned x) const { return m_worldMap[y * m_worldWidth + x]; }
+    char &operator()(const unsigned y, const unsigned x) { return m_worldMap[y * m_worldWidth + x]; }
 
-    void draw();
-
-    void setTile(unsigned int row, unsigned int column, Tile *tile);
-
-    unsigned int getGoldPerTurnFromTile(unsigned int row, unsigned int column);
+    void print();
 };
-
 
 #endif //MAP_H

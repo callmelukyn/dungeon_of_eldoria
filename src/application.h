@@ -1,5 +1,6 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
+#include <conio.h>
 
 
 class Application {
@@ -10,10 +11,10 @@ public:
 
     void run();
 
+    void shutdown();
+
 private:
     bool running = true;
-
-    void shutdown();
 };
 
 

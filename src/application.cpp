@@ -1,6 +1,10 @@
 #include "application.h"
 
+#include <conio.h>
 #include <iostream>
+
+#include "menu.h"
+
 
 Application::Application() {
 }
@@ -9,21 +13,18 @@ Application::~Application() {
 }
 
 void Application::run() {
+    Menu menu;
     while (running) {
-        int cislo;
-        std::cin >> cislo;
-        if (cislo == 1) {
-            shutdown();
+        menu.render();
+        const char key = static_cast<char>(_getch()); // Get user input
+        if (key == 27 && menu.getCurrentScreen() == Screen::mainMenu) {
+            running = false;
         }
-        if (cislo == 3) {
-            std::cout << "ej";
-        }
-        if (cislo == 2) {
-            std::cout << "press any key to exit..." << std::endl;
-        }
+        menu.handleInput(key);
     }
 }
 
 void Application::shutdown() {
     running = false;
 }
+

@@ -4,65 +4,25 @@
 
 #include "map.h"
 
-#include <iostream>
+Map::Map(const Position position) : m_worldMap(position.x * position.y, '.') {
+    m_worldHeight = position.x;
+    m_worldWidth = position.y;
 
-Map::Map(unsigned int width, unsigned int height) {
-    std::vector<Tile *> row(width, nullptr);
-    for (int i = 0; i < height; ++i) {
-        m_map.push_back(row);
-    }
-}
-
-void Map::draw() {
-    for (std::vector<Tile *> row: m_map) {
-        for (Tile *tile: row) {
-            if (tile != nullptr) {
-                tile->draw();
-            } else {
-                std::cout << ".";
+    for (unsigned y = 0; y < m_worldHeight; ++y) {
+        for (unsigned x = 0; x < m_worldWidth; ++x) {
+            if (y == 0 || y == m_worldHeight - 1 || x == 0 || x == m_worldWidth - 1) {
+                m_worldMap[y * m_worldWidth + x] = '#'; // Border character
             }
         }
-        std::cout << "\n";
     }
 }
 
-void Map::setTile(unsigned int row, unsigned int column, Tile *tile) {
-    int height = m_map.size();
-    int width = m_map.at(0).size();
-
-    if ((row >= height) or (column >= width)) {
-        std::cout << "row or column out of range",
-                "Map::setTile";
-
-        return;
-    }
-
-    if (m_map.at(row).at(column) != nullptr) {
-        std::cout << "Place [" + std::to_string(row) + ","
-                + std::to_string(column) + "] already occupied",
-                "Map::setTile";
-        return;
-    }
-
-    m_map.at(row).at(column) = tile;
-
-    /*
-    if ((row < height) and (column < width)){
-        if (m_map.at(row).at(column) == nullptr){
-            m_map.at(row).at(column) = tile;
+void Map::print() {
+    for (unsigned y = 0; y < m_worldHeight; ++y) {
+        for (unsigned x = 0; x < m_worldWidth; ++x) {
+            std::cout << (*this)(y, x);
         }
-    }
-     */
-}
-
-
-Map::~Map() {
-    for (std::vector<Tile *> row: m_map) {
-        for (Tile *tile: row) {
-            if (tile != nullptr) {
-                delete tile;
-            }
-        }
+        std::cout << '\n';
     }
 }
 
