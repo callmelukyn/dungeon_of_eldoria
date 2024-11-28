@@ -66,57 +66,107 @@ void Menu::clearScreen() const {
     system("cls");
 }
 
+void Menu::setColor(int color) const {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, color);
+}
+
+BOOL Menu::setFontSize(COORD dwfontSize) const {
+    HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_FONT_INFOEX info{sizeof(CONSOLE_FONT_INFOEX)};
+    if (!GetCurrentConsoleFontEx(output, false, &info))
+        return false;
+    info.dwFontSize = dwfontSize;
+    return SetCurrentConsoleFontEx(output, false, &info);
+}
+
+void Menu::headerMenu() const {
+    setColor(777);
+    std::cout << "===- Dungeon of Eldoria -===\n";
+    setColor(07);
+    std::cout << "\n";
+    std::cout << "\n";
+}
+
+
 void Menu::displayMainMenu() const {
     clearScreen();
-    std::cout << "=== MENU ===\n";
+    COORD fontSize = {25, 25};
+    setFontSize(fontSize);
+    headerMenu();
     switch (selected) {
         case 0:
+            setColor(112);
             std::cout << "- PLAY\n";
+            setColor(07);
             std::cout << "  CREDITS\n";
             std::cout << "  EXIT\n";
             break;
         case 1:
             std::cout << "  PLAY\n";
+            setColor(112);
             std::cout << "- CREDITS\n";
+            setColor(07);
             std::cout << "  EXIT\n";
             break;
         case 2:
             std::cout << "  PLAY\n";
             std::cout << "  CREDITS\n";
+            setColor(112);
             std::cout << "- EXIT\n";
+            setColor(07);
             break;
     }
 }
 
 void Menu::displayCreditsMenu() const {
     clearScreen();
+    headerMenu();
     std::cout << "  ---Authors---\n";
     std::cout << "  Lukas Kulhanek\n";
     std::cout << "  Ivo Dubsik\n";
     std::cout << "  Vit Benda\n";
     std::cout << "\n";
     std::cout << "\n";
-    std::cout << "ESC to go back.\n";
+    setColor(112);
+    std::cout << "[ESC] Back\n";
+    setColor(07);
 }
 
 void Menu::displayRoleMenu() const {
     clearScreen();
+    headerMenu();
     std::cout << "=== CHOOSE YOUR ROLE ===\n";
     switch (selected) {
         case 0:
+            setColor(112);
             std::cout << "- WARRIOR\n";
+            setColor(07);
             std::cout << "  ARCHER\n";
             std::cout << "  MAGE\n";
+            std::cout << "\n";
+            std::cout << "\n";
+            std::cout << "[ESC] Back\n";
             break;
         case 1:
             std::cout << "  WARRIOR\n";
+            setColor(112);
             std::cout << "- ARCHER\n";
+            setColor(07);
             std::cout << "  MAGE\n";
+            std::cout << "\n";
+            std::cout << "\n";
+            std::cout << "[ESC] Back\n";
             break;
         case 2:
             std::cout << "  WARRIOR\n";
             std::cout << "  ARCHER\n";
+            setColor(112);
             std::cout << "- MAGE\n";
+            setColor(07);
+            std::cout << "\n";
+            std::cout << "\n";
+            std::cout << "[ESC] Back\n";
             break;
     }
 }
@@ -124,7 +174,7 @@ void Menu::displayRoleMenu() const {
 void Menu::displayMap() const {
     clearScreen();
     Map map = Map(10, 20);
-    Position someonsesPosition = Position(1, 1);
+    Position someonsesPosition = Position(10, 5);
     map(someonsesPosition) = 'A';
     map.printMap();
 }
@@ -167,7 +217,7 @@ void Menu::confirmSelectionMainMenu(const char key) {
 void Menu::confirmSelectionRoleMenu(char key, int &selected) {
     if (key == 13) {
         switch (selected) {
-            case 0:
+            case 0: //TODO Predat informaci o vyberu konkretni classy Player konstruktoru
                 changeScreen(Screen::map);
                 break;
             case 1:

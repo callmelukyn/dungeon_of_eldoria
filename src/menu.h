@@ -32,6 +32,14 @@ public:
 
     void clearScreen() const;
 
+    void headerMenu() const;
+
+    void setColor(int color) const; //TODO Globalni metoda
+
+    BOOL setFontSize(COORD dwfontSize) const; //TODO Globalni metoda
+
+    COORD fontSize(); //TODO Globalni parametr
+
     //Individual screens
     void displayMainMenu() const;
 
