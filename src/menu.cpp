@@ -111,6 +111,20 @@ void Menu::displayRoleMenu() const {
     }
 }
 
+void Menu::displayMap() const {
+    char key;
+    while (key != 27) {
+        clearScreen();
+        //TODO Predpokladam, ze se da udelat refactor do sraček LVL 100. Ale mapu to ted vypíše na Warriorovi
+        Map map = Map(10, 20);
+        Position someonsesPosition = Position(1, 1);
+        map(someonsesPosition) = 'A';
+        map.printMap();
+        key = _getch();
+    }
+}
+
+
 void Menu::moveUpMenu(const char key, const int selectableItemsOnScreen) {
     if (key == 'w' || key == 'W') {
         selected--;
@@ -149,7 +163,7 @@ void Menu::confirmSelectionRoleMenu(char key, int &selected) {
     if (key == 13) {
         switch (selected) {
             case 0:
-                //TODO X
+                displayMap();
                 break;
             case 1:
                 //TODO X

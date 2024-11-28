@@ -10,7 +10,7 @@
 #include <windows.h>
 
 
-enum class Screen { mainMenu, roleMenu, creditsMenu };
+enum class Screen { mainMenu, roleMenu, creditsMenu, map };
 
 class Menu {
 private:
@@ -25,19 +25,21 @@ public:
 
     Screen getCurrentScreen() const;
 
+    //Functionality
     void handleInput(char key);
 
     void render() const;
 
-    //Functionality
     void clearScreen() const;
 
+    //Individual screens
     void displayMainMenu() const;
 
-    //Individual screens
     void displayRoleMenu() const;
 
     void displayCreditsMenu() const;
+
+    void displayMap() const;
 
     //Movement
     void navigateMenu(char key, int selectableItemsOnScreen);
