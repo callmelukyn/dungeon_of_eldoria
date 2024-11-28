@@ -40,6 +40,8 @@ public:
 
     COORD fontSize(); //TODO Globalni parametr
 
+    void hideCursor() const; //TODO Globalni metoda
+
     //Individual screens
     void displayMainMenu() const;
 

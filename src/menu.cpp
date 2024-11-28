@@ -80,6 +80,16 @@ BOOL Menu::setFontSize(COORD dwfontSize) const {
     return SetCurrentConsoleFontEx(output, false, &info);
 }
 
+void Menu::hideCursor() const {
+    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    CONSOLE_CURSOR_INFO cursorInfo;
+    GetConsoleCursorInfo(consoleHandle, &cursorInfo);
+
+    cursorInfo.bVisible = FALSE;
+    SetConsoleCursorInfo(consoleHandle, &cursorInfo);
+}
+
 void Menu::headerMenu() const {
     setColor(777);
     std::cout << "===- Dungeon of Eldoria -===\n";
@@ -88,11 +98,12 @@ void Menu::headerMenu() const {
     std::cout << "\n";
 }
 
-
 void Menu::displayMainMenu() const {
     clearScreen();
+    //TODO Tady ty nastavovače fontu,cursoru a picovin pak dat taky někam do globalniho nastaveni hry
     COORD fontSize = {25, 25};
     setFontSize(fontSize);
+    hideCursor();
     headerMenu();
     switch (selected) {
         case 0:
