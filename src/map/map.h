@@ -13,21 +13,26 @@
 
 
 class Map {
-    unsigned m_worldHeight;
-    unsigned m_worldWidth;
+    unsigned m_mapHeight;
+    unsigned m_mapWidth;
 
-    // Declare a variable that will hold all the characters for the map
-    std::vector<char> m_worldMap;
+    // Vector that holds all the characters for the map
+    std::vector<char> m_fullMap;
 
 public:
-    explicit Map(Position position);
+    Map(unsigned int mapHeight, unsigned int mapWidth);
 
     // Define operators to give both const and non-const access to the
     // positions in the map.
-    char operator()(const unsigned y, const unsigned x) const { return m_worldMap[y * m_worldWidth + x]; }
-    char &operator()(const unsigned y, const unsigned x) { return m_worldMap[y * m_worldWidth + x]; }
+    char operator()(const Position position) const {
+        return m_fullMap[position.y * m_mapWidth + position.x];
+    }
 
-    void print();
+    char &operator()(const Position position) {
+        return m_fullMap[position.y * m_mapWidth + position.x];
+    }
+
+    void printMap();
 };
 
 #endif //MAP_H
