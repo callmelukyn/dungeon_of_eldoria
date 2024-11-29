@@ -26,6 +26,8 @@ public:
     void addPotion();
 
     void usePotion();
+
+    int getHp();
 };
 
 

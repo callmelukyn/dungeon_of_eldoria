@@ -47,4 +47,9 @@ void Player::usePotion() {
     }
 }
 
+int Player::getHp() {
+    return m_hp;
+}
+
+
 

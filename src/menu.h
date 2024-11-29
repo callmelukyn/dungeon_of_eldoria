@@ -8,9 +8,16 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include "application.h"
+#include "map/map.h"
+#include "domain/entities/player.h"
 
 
-enum class Screen { mainMenu, roleMenu, creditsMenu, map };
+enum class Screen { mainMenu, roleMenu, creditsMenu, howToPlayMenu, game };
+
+enum class Levels { level1, level2, level3, level4, level5 };
+
+//TODO Pak nekde prednastavit urcity levely a pridat je do switche v renderu
 
 class Menu {
 private:
@@ -49,7 +56,17 @@ public:
 
     void displayCreditsMenu() const;
 
+    void displayHowToPlay() const;
+
+    //GUI sections
+
+    void displayGUI() const;
+
+    void displayPlayerProperties() const;
+
     void displayMap() const;
+
+    void displayHelp() const;
 
     //Movement
     void navigateMenu(char key, int selectableItemsOnScreen);
