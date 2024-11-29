@@ -1,6 +1,6 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
-#include <conio.h>
+#include "menu.h"
 
 
 class Application {
@@ -14,7 +14,9 @@ public:
     void shutdown();
 
 private:
-    bool running = true;
+    bool m_running = true;
+
+    Menu m_menu;
 };
 
 

@@ -8,7 +8,6 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <windows.h>
-#include "application.h"
 #include "map/map.h"
 #include "domain/entities/player.h"
 
