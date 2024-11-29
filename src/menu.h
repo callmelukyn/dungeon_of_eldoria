@@ -68,11 +68,11 @@ public:
     void displayHelp() const;
 
     //Movement
-    void navigateMenu(char key, int selectableItemsOnScreen);
+    void navigateMenu(char key, int selectableItemsOnScreenCount);
 
-    void moveUpMenu(char key, int selectableItemsOnScreen);
+    void moveUpMenu(char key, int selectableItemsOnScreenCount);
 
-    void moveDownMenu(char key, int selectableItemsOnScreen);
+    void moveDownMenu(char key, int selectableItemsOnScreenCount);
 
     void confirmSelectionMainMenu(char key);
 

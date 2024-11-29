@@ -14,6 +14,7 @@ void Application::run() {
         const char key = static_cast<char>(_getch()); // Get user input
         if (key == 27 && m_menu.getCurrentScreen() == Screen::mainMenu) {
             m_running = false;
+            break;
         }
         m_menu.handleInput(key);
     }

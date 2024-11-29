@@ -273,19 +273,19 @@ void Menu::displayMap() const {
 }
 
 
-void Menu::moveUpMenu(const char key, const int selectableItemsOnScreen) {
+void Menu::moveUpMenu(const char key, const int selectableItemsOnScreenCount) {
     if (key == 'w' || key == 'W') {
         selected--;
         if (selected < 0) {
-            selected = selectableItemsOnScreen - 1;
+            selected = selectableItemsOnScreenCount - 1;
         }
     }
 }
 
-void Menu::moveDownMenu(const char key, const int selectableItemsOnScreen) {
+void Menu::moveDownMenu(const char key, const int selectableItemsOnScreenCount) {
     if (key == 's' || key == 'S') {
         selected++;
-        if (selected >= selectableItemsOnScreen) {
+        if (selected >= selectableItemsOnScreenCount) {
             selected = 0;
         }
     }
@@ -326,9 +326,9 @@ void Menu::confirmSelectionRoleMenu(char key, int &selected) {
     }
 }
 
-void Menu::navigateMenu(const char key, const int selectableItemsOnScreen) {
-    moveUpMenu(key, selectableItemsOnScreen);
-    moveDownMenu(key, selectableItemsOnScreen);
+void Menu::navigateMenu(const char key, const int selectableItemsOnScreenCount) {
+    moveUpMenu(key, selectableItemsOnScreenCount);
+    moveDownMenu(key, selectableItemsOnScreenCount);
     if (m_currentScreen != Screen::mainMenu && key == 27) {
         changeScreen(Screen::mainMenu);
     }
