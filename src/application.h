@@ -1,9 +1,12 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
-#include "menu.h"
-
+#include "game.h"
 
 class Application {
+    bool m_running = true;
+
+    Game m_game;
+
 public:
     Application();
 
@@ -12,11 +15,6 @@ public:
     void run();
 
     void shutdown();
-
-private:
-    bool m_running = true;
-
-    Menu m_menu;
 };
 
 

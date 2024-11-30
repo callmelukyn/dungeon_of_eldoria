@@ -17,4 +17,10 @@ add_executable(zoo_project src/main.cpp
         src/application.h
         src/domain/value_objects/role.h
         src/domain/entities/position.h
+        src/game.cpp
+        src/game.h
+        src/domain/value_objects/Screen.h
+        src/domain/value_objects/levelScreen.h
+        src/color.h
+        src/color.cpp
 )

@@ -2,7 +2,7 @@
 
 
 Application::Application() {
-    m_menu = Menu();
+    m_game = Game();
 }
 
 Application::~Application() {
@@ -10,13 +10,13 @@ Application::~Application() {
 
 void Application::run() {
     while (m_running) {
-        m_menu.render();
+        m_game.render();
         const char key = static_cast<char>(_getch()); // Get user input
-        if (key == 27 && m_menu.getCurrentScreen() == Screen::mainMenu) {
+        if (key == 27 && m_game.getCurrentScreen() == Screen::mainMenu) {
             m_running = false;
             break;
         }
-        m_menu.handleInput(key);
+        m_game.handleGameInput(key);
     }
 }
 

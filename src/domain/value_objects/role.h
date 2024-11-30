@@ -4,7 +4,7 @@
 
 #ifndef ROLE_H
 #define ROLE_H
-enum class Role {
-  Warrior, Archer, Mage
-};
+
+enum class Role { warrior, archer, mage };
+
 #endif //ROLE_H

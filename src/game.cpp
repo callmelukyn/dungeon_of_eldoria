@@ -1,0 +1,98 @@
+#include "game.h"
+#include "color.h"
+#include "domain/entities/player.h"
+
+Game::Game(): m_player(Player(Role::warrior)), m_position(7, 1) {
+    m_menu = Menu();
+    m_menu.m_currentScreen = Screen::mainMenu;
+}
+
+void Game::render() {
+    switch (m_menu.m_currentScreen) {
+        case Screen::mainMenu:
+            m_menu.displayMainMenu();
+            break;
+        case Screen::roleMenu:
+            m_menu.displayRoleMenu();
+            break;
+        case Screen::creditsMenu:
+            m_menu.displayCreditsMenu();
+            break;
+        case Screen::howToPlayMenu:
+            m_menu.displayHowToPlay();
+            break;
+        case Screen::game:
+            displayGUI();
+            break;
+    }
+}
+
+void Game::handleGameInput(const char key) {
+    m_menu.handleMenuInput(key);
+    if (Screen::game == m_menu.m_currentScreen) {
+        switch (key) {
+            case 'w':
+                m_position.y -= 1;
+                break;
+            case 's':
+                m_position.y += 1;
+                break;
+            case 'a':
+                m_position.x -= 1;
+                break;
+            case 'd':
+                m_position.x += 1;
+                break;
+            default: break;
+        }
+    }
+    m_player.movePlayer(key, m_menu.m_currentScreen);
+}
+
+void Game::displayMap() {
+    displayFirstLevel();
+}
+
+void Game::displayFirstLevel() {
+    Map map = Map(15, 25);
+    // Position position = Position({5, 8});
+    m_player.setPlayerPosition(Position{1, 10});
+    map(m_position) = 'A';
+    map.printMap();
+}
+
+void Game::displayGUI() {
+    m_menu.clearScreen();
+    displayPlayerProperties();
+    displayMap();
+    displayHelp();
+}
+
+void Game::displayHelp() const {
+    std::cout << "[WASD] Move around" << "\n";
+    std::cout << "[F] Fight" << "\n";
+    std::cout << "[E] Interact" << "\n";
+    std::cout << "[H] Heal potion" << "\n";
+}
+
+void Game::displayPlayerProperties() const {
+    //TODO Pridat gettery z Playera do coutu
+    std::cout << "HP: ";
+    setColor(04);
+    std::cout << "100";
+    setColor(07);
+    std::cout << "        COINS: ";
+    setColor(06);
+    std::cout << "500" << "\n";
+    setColor(07);
+    std::cout << "XP: 0/100";
+    std::cout << "     HEAL POTIONS: ";
+    std::cout << "2" << "\n";
+}
+
+Screen Game::getCurrentScreen() const {
+    return m_menu.m_currentScreen;
+}
+
+
+

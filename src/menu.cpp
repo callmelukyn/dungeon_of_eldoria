@@ -4,7 +4,6 @@
 
 #include "menu.h"
 
-
 Menu::Menu() {
     selected = 0;
     m_currentScreen = Screen::mainMenu;
@@ -18,7 +17,7 @@ Screen Menu::getCurrentScreen() const {
     return m_currentScreen;
 }
 
-void Menu::handleInput(const char key) {
+void Menu::handleMenuInput(const char key) {
     switch (m_currentScreen) {
         case Screen::mainMenu:
             navigateMenu(key, 4);
@@ -26,7 +25,7 @@ void Menu::handleInput(const char key) {
             break;
         case Screen::roleMenu:
             navigateMenu(key, 3);
-            confirmSelectionRoleMenu(key, selected);
+            confirmSelectionRoleMenu(key);
             break;
         case Screen::creditsMenu:
             if (key == 27) {
@@ -38,34 +37,10 @@ void Menu::handleInput(const char key) {
                 changeScreen(Screen::mainMenu);
             }
             break;
-        case Screen::game:
-            //TODO Movement po mapě
-            if (key == 27) {
-                changeScreen(Screen::mainMenu);
-            }
-            break;
+        default: navigateMenu(key, 4);
     }
 }
 
-void Menu::render() const {
-    switch (m_currentScreen) {
-        case Screen::mainMenu:
-            displayMainMenu();
-            break;
-        case Screen::roleMenu:
-            displayRoleMenu();
-            break;
-        case Screen::creditsMenu:
-            displayCreditsMenu();
-            break;
-        case Screen::howToPlayMenu:
-            displayHowToPlay();
-            break;
-        case Screen::game:
-            displayGUI();
-            break;
-    }
-}
 
 void Menu::clearScreen() const {
     system("cls");
@@ -104,14 +79,6 @@ void Menu::headerMenu() const {
     std::cout << "\n";
     std::cout << "\n";
 }
-
-void Menu::displayGUI() const {
-    clearScreen();
-    displayPlayerProperties();
-    displayMap();
-    displayHelp();
-}
-
 
 void Menu::displayMainMenu() const {
     clearScreen();
@@ -242,36 +209,6 @@ void Menu::displayRoleMenu() const {
     }
 }
 
-void Menu::displayPlayerProperties() const {
-    //TODO Pridat gettery z Playera do coutu
-    std::cout << "HP: ";
-    setColor(04);
-    std::cout << "100";
-    setColor(07);
-    std::cout << "        COINS: ";
-    setColor(06);
-    std::cout << "500" << "\n";
-    setColor(07);
-    std::cout << "XP: 0/100";
-    std::cout << "     HEAL POTIONS: ";
-    std::cout << "2" << "\n";
-}
-
-void Menu::displayHelp() const {
-    std::cout << "[WASD] Move around" << "\n";
-    std::cout << "[F] Fight" << "\n";
-    std::cout << "[E] Interact" << "\n";
-    std::cout << "[H] Heal potion" << "\n";
-}
-
-
-void Menu::displayMap() const {
-    Map map = Map(15, 25);
-    Position someonsesPosition = Position(10, 5);
-    map(someonsesPosition) = 'A';
-    map.printMap();
-}
-
 
 void Menu::moveUpMenu(const char key, const int selectableItemsOnScreenCount) {
     if (key == 'w' || key == 'W') {
@@ -310,7 +247,7 @@ void Menu::confirmSelectionMainMenu(const char key) {
     }
 }
 
-void Menu::confirmSelectionRoleMenu(char key, int &selected) {
+void Menu::confirmSelectionRoleMenu(char key) {
     if (key == 13) {
         switch (selected) {
             case 0: //TODO Predat informaci o vyberu konkretni classy Player konstruktoru

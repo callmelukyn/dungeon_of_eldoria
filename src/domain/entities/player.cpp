@@ -4,25 +4,27 @@
 
 #include "player.h"
 
-Player::Player(Role role) {
+#include "../value_objects/Screen.h"
+
+Player::Player(const Role role) {
     m_role = role;
     m_xp = 0;
     m_hp = 100;
     m_coins = 0;
     m_numberOfPotions = 0;
-    m_position = {0, 0};
+    m_playerPosition = Position(4, 7);
     switch (role) {
-        case Role::Warrior:
+        case Role::warrior:
             m_damage = 15;
             m_armor = 15;
             m_range = 1;
             break;
-        case Role::Archer:
+        case Role::archer:
             m_damage = 12;
             m_armor = 8;
             m_range = 3;
             break;
-        case Role::Mage:
+        case Role::mage:
             m_damage = 10;
             m_armor = 5;
             m_range = 5;
@@ -50,6 +52,35 @@ void Player::usePotion() {
 int Player::getHp() {
     return m_hp;
 }
+
+void Player::movePlayer(const char key, Screen currentScreen) {
+    if (Screen::game == currentScreen) {
+        switch (key) {
+            case 'w':
+                m_playerPosition.y -= 1;
+                break;
+            case 's':
+                m_playerPosition.y += 1;
+                break;
+            case 'a':
+                m_playerPosition.x -= 1;
+                break;
+            case 'd':
+                m_playerPosition.x += 1;
+                break;
+            default: break;
+        }
+    }
+}
+
+void Player::setPlayerPosition(const Position playerPosition) {
+    m_playerPosition = playerPosition;
+}
+
+Position Player::getPlayerPosition() const {
+    return m_playerPosition;
+}
+
 
 
 
