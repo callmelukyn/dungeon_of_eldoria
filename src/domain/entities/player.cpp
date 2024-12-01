@@ -4,7 +4,7 @@
 
 #include "player.h"
 
-#include "../value_objects/Screen.h"
+#include "../value_objects/screen.h"
 
 Player::Player(const Role role) {
     m_role = role;

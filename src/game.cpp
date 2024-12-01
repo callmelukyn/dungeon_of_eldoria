@@ -58,7 +58,7 @@ void Game::displayFirstLevel() {
     // Position position = Position({5, 8});
     m_player.setPlayerPosition(Position{1, 10});
     map(m_position) = 'A';
-    map.printMap();
+    map.printMap(DoorPosition::bottomDoor);
 }
 
 void Game::displayGUI() {

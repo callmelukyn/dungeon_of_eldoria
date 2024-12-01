@@ -10,7 +10,7 @@
 #include <windows.h>
 #include "map/map.h"
 #include "domain/entities/player.h"
-#include "domain/value_objects/Screen.h"
+#include "domain/value_objects/screen.h"
 
 
 //TODO Pak nekde prednastavit urcity levely a pridat je do switche v renderu

@@ -10,6 +10,7 @@
 #include <iostream>
 
 #include "../domain/entities/position.h"
+#include "../domain/value_objects/doorPosition.h"
 
 
 class Map {
@@ -18,6 +19,8 @@ class Map {
 
     // Vector that holds all the characters for the map
     std::vector<char> m_fullMap;
+
+    void putDoor(DoorPosition doorPosition, unsigned int x, unsigned int y);
 
 public:
     Map(unsigned int mapHeight, unsigned int mapWidth);
@@ -32,7 +35,9 @@ public:
         return m_fullMap[position.y * m_mapWidth + position.x];
     }
 
-    void printMap();
+    void printMap(DoorPosition doorPosition);
+
+    std::vector<char> getFullMap();
 };
 
 #endif //MAP_H

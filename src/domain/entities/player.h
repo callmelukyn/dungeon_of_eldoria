@@ -7,7 +7,7 @@
 #include "position.h"
 #include "../value_objects/potion.h"
 #include "../value_objects/role.h"
-#include "../value_objects/Screen.h"
+#include "../value_objects/screen.h"
 
 class Player {
 protected:
