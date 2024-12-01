@@ -6,16 +6,13 @@
 #define MAP_H
 #include <vector>
 
-#include <fstream>
-#include <iostream>
-
 #include "../domain/entities/position.h"
 #include "../domain/value_objects/doorPosition.h"
 
 
 class Map {
-    unsigned m_mapHeight;
-    unsigned m_mapWidth;
+    unsigned int m_mapHeight;
+    unsigned int m_mapWidth;
 
     // Vector that holds all the characters for the map
     std::vector<char> m_fullMap;

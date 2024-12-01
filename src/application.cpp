@@ -1,5 +1,6 @@
 #include "application.h"
 
+bool Application::m_running = true;
 
 Application::Application() {
     m_game = Game();
@@ -13,7 +14,7 @@ void Application::run() {
         m_game.render();
         const char key = static_cast<char>(_getch()); // Get user input
         if (key == 27 && m_game.getCurrentScreen() == Screen::mainMenu) {
-            m_running = false;
+            shutdown();
             break;
         }
         m_game.handleGameInput(key);

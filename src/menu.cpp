@@ -4,6 +4,8 @@
 
 #include "menu.h"
 
+#include "application.h"
+
 Menu::Menu() {
     selected = 0;
     m_currentScreen = Screen::mainMenu;
@@ -41,11 +43,6 @@ void Menu::handleMenuInput(const char key) {
     }
 }
 
-
-void Menu::clearScreen() const {
-    system("cls");
-}
-
 void Menu::setColor(int color) const {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, color);
@@ -81,7 +78,6 @@ void Menu::headerMenu() const {
 }
 
 void Menu::displayMainMenu() const {
-    clearScreen();
     //TODO Tady ty nastavovače fontu,cursoru a picovin pak dat taky někam do globalniho nastaveni hry
     COORD fontSize = {25, 25};
     setFontSize(fontSize);
@@ -124,7 +120,6 @@ void Menu::displayMainMenu() const {
 }
 
 void Menu::displayCreditsMenu() const {
-    clearScreen();
     headerMenu();
     std::cout << "  ---Authors---\n";
     std::cout << "  Lukas Kulhanek\n";
@@ -138,7 +133,6 @@ void Menu::displayCreditsMenu() const {
 }
 
 void Menu::displayHowToPlay() const {
-    clearScreen();
     headerMenu();
     std::cout << "  ---HOW TO PLAY---\n";
     std::cout << "XP: x\n";
@@ -156,7 +150,6 @@ void Menu::displayHowToPlay() const {
 
 
 void Menu::displayRoleMenu() const {
-    clearScreen();
     headerMenu();
     std::cout << "<=== CHOOSE YOUR ROLE ===>\n";
     switch (selected) {
@@ -241,7 +234,7 @@ void Menu::confirmSelectionMainMenu(const char key) {
                 changeScreen(Screen::howToPlayMenu);
                 break;
             case 3:
-                //   Application::shutdown();  //TODO Fixnout shutdown
+                Application::shutdown();
                 break;
         }
     }

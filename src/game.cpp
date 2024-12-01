@@ -8,6 +8,7 @@ Game::Game(): m_player(Player(Role::warrior)), m_position(7, 1) {
 }
 
 void Game::render() {
+    system("cls");
     switch (m_menu.m_currentScreen) {
         case Screen::mainMenu:
             m_menu.displayMainMenu();
@@ -62,7 +63,6 @@ void Game::displayFirstLevel() {
 }
 
 void Game::displayGUI() {
-    m_menu.clearScreen();
     displayPlayerProperties();
     displayMap();
     displayHelp();

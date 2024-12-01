@@ -4,6 +4,8 @@
 
 #include "map.h"
 
+#include <iostream>
+
 Map::Map(const unsigned int mapHeight, const unsigned int mapWidth) : m_fullMap(mapHeight * mapWidth, '.') {
     m_mapHeight = mapHeight;
     m_mapWidth = mapWidth;

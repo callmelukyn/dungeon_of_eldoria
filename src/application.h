@@ -3,7 +3,7 @@
 #include "game.h"
 
 class Application {
-    bool m_running = true;
+    static bool m_running;
 
     Game m_game;
 
@@ -14,7 +14,7 @@ public:
 
     void run();
 
-    void shutdown();
+    static void shutdown();
 };
 
 
