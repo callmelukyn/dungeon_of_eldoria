@@ -1,6 +1,7 @@
 #include "application.h"
 
 int main() {
-    Application app;
-    app.run();
+    const Application *app = new Application();
+    app->run();
+    delete app;
 }

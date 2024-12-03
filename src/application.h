@@ -5,14 +5,14 @@
 class Application {
     static bool m_running;
 
-    Game m_game;
+    Game *m_game;
 
 public:
     Application();
 
     ~Application();
 
-    void run();
+    void run() const;
 
     static void shutdown();
 };

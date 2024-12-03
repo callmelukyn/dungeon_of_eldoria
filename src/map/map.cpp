@@ -11,6 +11,10 @@ Map::Map(const unsigned int mapHeight, const unsigned int mapWidth) : m_fullMap(
     m_mapWidth = mapWidth;
 }
 
+void Map::putCharacterInPosition(const Position position, const char character) {
+    m_fullMap[position.y * m_mapWidth + position.x] = character;
+}
+
 void Map::printMap(const DoorPosition doorPosition) {
     for (unsigned int y = 0; y < m_mapHeight; ++y) {
         for (unsigned int x = 0; x < m_mapWidth; ++x) {
@@ -28,7 +32,7 @@ std::vector<char> Map::getFullMap() {
     return m_fullMap;
 }
 
-void Map::putDoor(const DoorPosition doorPosition, const unsigned int x, const unsigned int y) {
+auto Map::putDoor(const DoorPosition doorPosition, const unsigned int x, const unsigned int y) -> void {
     const unsigned int middleRow = m_mapHeight / 2; // Middle of the vertical borders
     const unsigned int middleCol = m_mapWidth / 2; // Middle of the horizontal borders
 
