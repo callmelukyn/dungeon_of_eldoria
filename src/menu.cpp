@@ -68,13 +68,22 @@ void Menu::hideCursor() const {
 }
 
 void Menu::headerMenu() const {
-    std::cout << "===- Dungeon of ";
+std::cout<<" _____                                              __   "; setColor(04);std::cout << "______ _     _            _       \n";setColor(07);
+std::cout<<"|  __ \\                                            / _| "; setColor(04);std::cout <<"|  ____| |   | |          (_)      \n";setColor(07);
+std::cout<<"| |  | |_   _ _ __   __ _  ___  ___  _ __     ___ | |_  "; setColor(04);std::cout <<"| |__  | | __| | ___  _ __ _  __ _ \n";setColor(07);
+std::cout<<"| |  | | | | | '_ \\ / _` |/ _ \\/ _ \\| '_ \\   / _ \\|  _| "; setColor(04);std::cout <<"|  __| | |/ _` |/ _ \\| '__| |/ _` |\n";setColor(07);
+std::cout<<"| |__| | |_| | | | | (_| |  __/ (_) | | | | | (_) | |   "; setColor(04); std::cout <<"| |____| | (_| | (_) | |  | | (_| |\n";setColor(07);
+std::cout<<"|_____/ \\__,_|_| |_|\\__, |\\___|\\___/|_| |_|  \\___/|_|   "; setColor(04); std::cout <<"|______|_|\\__,_|\\___/|_|  |_|\\__,_|\n";setColor(07);
+std::cout<<"                    __/ |                                                                 \n";
+std::cout<<"                   |___/                                                                  \n";
+    /*std::cout << "===- Dungeon of ";
     setColor(04);
     std::cout << "ELDORIA";
     setColor(07);
     std::cout << " -===\n";
     std::cout << "\n";
-    std::cout << "\n";
+    std::cout << "\n"; */
+    //TODO Mozna jeste pouziju jinde - nemazat koment
 }
 
 void Menu::displayMainMenu() const {
@@ -120,8 +129,14 @@ void Menu::displayMainMenu() const {
 }
 
 void Menu::displayCreditsMenu() const {
-    headerMenu();
-    std::cout << "  ---Authors---\n";
+std::cout << "               _   _                    \n";
+std::cout << "    /\\        | | | |                   \n";
+std::cout << "   /  \\  _   _| |_| |__   ___  _ __ ___ \n";
+std::cout << "  / /\\ \\| | | | __| '_ \\ / _ \\| '__/ __|\n";
+std::cout << " / ____ \\ |_| | |_| | | | (_) | |  \\__ \\\n";
+std::cout << "/_/    \\_\\__,_|\\__|_| |_|\\___/|_|  |___/\n\n";
+
+
     std::cout << "  Lukas Kulhanek\n";
     std::cout << "  Ivo Dubsik\n";
     std::cout << "  Vit Benda\n";
@@ -155,10 +170,13 @@ void Menu::displayRoleMenu() const {
     switch (selected) {
         case 0:
             setColor(112);
-            std::cout << "- WARRIOR\n";
+            std::cout << "- WARRIOR";
             setColor(07);
-            std::cout << "  ARCHER\n";
-            std::cout << "  MAGE\n";
+            std::cout << "                 /|   ________________\n";
+            std::cout << "  ARCHER";
+            std::cout << "              O|===|* >________________>\n";
+            std::cout << "  MAGE";
+            std::cout << "                    \\|\n";
             std::cout << "\n";
             std::cout << "\n";
             std::cout << "The Warrior has to face his enemies from close range.\n";
@@ -170,30 +188,35 @@ void Menu::displayRoleMenu() const {
         case 1:
             std::cout << "  WARRIOR\n";
             setColor(112);
-            std::cout << "- ARCHER\n";
+            std::cout << "- ARCHER";
             setColor(07);
-            std::cout << "  MAGE\n";
+            std::cout << "          _.-\"/______________________/////\n";
+            std::cout << "  MAGE";
+            std::cout << "            `'-.\\~~~~~~~~~~~~~~~~~~~~~~\\\\\\\\\\\n";
             std::cout << "\n";
             std::cout << "\n";
             std::cout << "The Archer can attack his enemies from medium range.\n";
-            std::cout << "You are able to fight first, but your health and armor are not the strongest\n";
+            std::cout << "You are able to fight first, but your health and armor are not the strongest.\n";
             std::cout << "\n";
             std::cout << "\n";
             std::cout << "[ESC] Back\n";
             break;
         case 2:
-            std::cout << "  WARRIOR\n";
-            std::cout << "  ARCHER\n";
+            std::cout << "  WARRIOR";
+            std::cout << "           ___________________    . , ; .\n";
+            std::cout << "  ARCHER";
+            std::cout << "           (___________________|~~~~~X.;' .\n";
             setColor(112);
-            std::cout << "- MAGE\n";
+            std::cout << "- MAGE";
             setColor(07);
+            std::cout << "                                     ' `\" ' `\n";
             std::cout << "\n";
             std::cout << "\n";
             std::cout << "The Mage is able to stay in the shadows far away from its targets.\n";
             std::cout << "Unlocks potential to fight from high range, but once the entities gets too close...";
             std::cout << " it might ";
             setColor(04);
-            std::cout << "HURT\n";
+            std::cout << "HURT.\n";
             setColor(07);
             std::cout << "\n";
             std::cout << "\n";

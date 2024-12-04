@@ -28,7 +28,13 @@ public:
 
     void usePotion();
 
-    int getHp();
+    int getHp() const;
+
+    int getXp() const;
+
+    int getNumberOfPotions() const;
+
+    int getCoins() const;
 
     void movePlayer(char key, Screen currentScreen);
 

@@ -49,8 +49,20 @@ void Player::usePotion() {
     }
 }
 
-int Player::getHp() {
+int Player::getHp() const {
     return m_hp;
+}
+
+int Player::getXp() const {
+    return m_xp;
+}
+
+int Player::getCoins() const {
+    return m_coins;
+}
+
+int Player::getNumberOfPotions() const {
+    return m_numberOfPotions;
 }
 
 void Player::movePlayer(const char key, Screen currentScreen) {
