@@ -22,6 +22,8 @@ class Map {
 public:
     Map(unsigned int mapHeight, unsigned int mapWidth);
 
+    void putCharacterInPosition(Position position, char character);
+
     // Define operators to give both const and non-const access to the
     // positions in the map.
     char operator()(const Position position) const {

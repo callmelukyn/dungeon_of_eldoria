@@ -5,11 +5,11 @@
 
 
 class Game {
-    Player m_player;
+    Player *m_player;
 
     Position m_position;
 
-    Menu m_menu;
+    Menu *m_menu;
 
     void displayMap();
 
@@ -23,6 +23,8 @@ class Game {
 
 public:
     Game();
+
+    ~Game();
 
     void render();
 

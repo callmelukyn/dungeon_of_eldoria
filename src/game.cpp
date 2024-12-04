@@ -2,25 +2,30 @@
 #include "color.h"
 #include "domain/entities/player.h"
 
-Game::Game(): m_player(Player(Role::warrior)), m_position(7, 1) {
-    m_menu = Menu();
-    m_menu.m_currentScreen = Screen::mainMenu;
+Game::Game(): m_player(new Player(Role::warrior)), m_position(7, 1) {
+    m_menu = new Menu();
+    m_menu->m_currentScreen = Screen::mainMenu;
+}
+
+Game::~Game() {
+    delete m_player;
+    delete m_menu;
 }
 
 void Game::render() {
     system("cls");
-    switch (m_menu.m_currentScreen) {
+    switch (m_menu->m_currentScreen) {
         case Screen::mainMenu:
-            m_menu.displayMainMenu();
+            m_menu->displayMainMenu();
             break;
         case Screen::roleMenu:
-            m_menu.displayRoleMenu();
+            m_menu->displayRoleMenu();
             break;
         case Screen::creditsMenu:
-            m_menu.displayCreditsMenu();
+            m_menu->displayCreditsMenu();
             break;
         case Screen::howToPlayMenu:
-            m_menu.displayHowToPlay();
+            m_menu->displayHowToPlay();
             break;
         case Screen::game:
             displayGUI();
@@ -29,8 +34,8 @@ void Game::render() {
 }
 
 void Game::handleGameInput(const char key) {
-    m_menu.handleMenuInput(key);
-    if (Screen::game == m_menu.m_currentScreen) {
+    m_menu->handleMenuInput(key);
+    if (Screen::game == m_menu->m_currentScreen) {
         switch (key) {
             case 'w':
                 m_position.y -= 1;
@@ -47,7 +52,7 @@ void Game::handleGameInput(const char key) {
             default: break;
         }
     }
-    m_player.movePlayer(key, m_menu.m_currentScreen);
+    m_player->movePlayer(key, m_menu->m_currentScreen);
 }
 
 void Game::displayMap() {
@@ -55,11 +60,12 @@ void Game::displayMap() {
 }
 
 void Game::displayFirstLevel() {
-    Map map = Map(15, 25);
+    Map *map = new Map(15, 25);
     // Position position = Position({5, 8});
-    m_player.setPlayerPosition(Position{1, 10});
-    map(m_position) = 'A';
-    map.printMap(DoorPosition::bottomDoor);
+    m_player->setPlayerPosition(Position{1, 10});
+    map->putCharacterInPosition(m_position, 'A');
+    map->printMap(DoorPosition::bottomDoor);
+    delete map;
 }
 
 void Game::displayGUI() {
@@ -91,7 +97,7 @@ void Game::displayPlayerProperties() const {
 }
 
 Screen Game::getCurrentScreen() const {
-    return m_menu.m_currentScreen;
+    return m_menu->m_currentScreen;
 }
 
 

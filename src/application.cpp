@@ -3,21 +3,22 @@
 bool Application::m_running = true;
 
 Application::Application() {
-    m_game = Game();
+    m_game = new Game();
 }
 
 Application::~Application() {
+    delete m_game;
 }
 
-void Application::run() {
+void Application::run() const {
     while (m_running) {
-        m_game.render();
+        m_game->render();
         const char key = static_cast<char>(_getch()); // Get user input
-        if (key == 27 && m_game.getCurrentScreen() == Screen::mainMenu) {
+        if (key == 27 && m_game->getCurrentScreen() == Screen::mainMenu) {
             shutdown();
             break;
         }
-        m_game.handleGameInput(key);
+        m_game->handleGameInput(key);
     }
 }
 
