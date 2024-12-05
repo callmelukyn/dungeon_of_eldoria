@@ -85,15 +85,15 @@ void Game::displayPlayerProperties() const {
     //TODO Pridat gettery z Playera do coutu
     std::cout << "HP: ";
     setColor(04);
-    std::cout << m_player.getHp();
+    std::cout << m_player->getHp();
     setColor(07);
     std::cout << "        COINS: ";
     setColor(06);
-    std::cout << m_player.getCoins() << "\n";
+    std::cout << m_player->getCoins() << "\n";
     setColor(07);
-    std::cout << "XP: " << m_player.getXp() <<"/100";
+    std::cout << "XP: " << m_player->getXp() << "/100";
     std::cout << "     HEAL POTIONS: ";
-    std::cout << m_player.getNumberOfPotions() << "\n";
+    std::cout << m_player->getNumberOfPotions() << "\n";
 }
 
 Screen Game::getCurrentScreen() const {
