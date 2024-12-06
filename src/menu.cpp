@@ -3,8 +3,8 @@
 //
 
 #include "menu.h"
-
 #include "application.h"
+
 
 Menu::Menu() {
     selected = 0;
@@ -210,20 +210,6 @@ void Menu::displayHowToPlay() const {
     setColor(07);
     std::cout <<
             "- Civilians, which you can rescue from their cages. They will give you some coins and XP for exchange.\n";
-    /*
-    std::cout << "Story:\n";
-    std::cout <<
-            "Switzerland, Arosa Valley, Kingdom of Eldoria, year 1638. Local scientists are trying to gain power\n";
-    std::cout << "and a certain battle advantage over other kingdoms with the help of black magic.\n";
-    std::cout <<
-            "However, the evil they have created has gotten out of the scientist's hands and chaos has broken out in the kingdom.\n";
-    std::cout << "Every night, while everyone is asleep, people have started disappearing and no one knows where.\n";
-    std::cout << "One night, the evil has come for the princess herself.\n";
-    std::cout << "You, Prince Kaelan, have noticed this and decided to pursue the evil with the kidnapped princess.\n";
-    std::cout << "It led you to a nearby tomb, which everyone in the area knew as the Tomb of Oblivion.\n";
-    std::cout <<
-            "No one ever returned from visiting it. Kaelan did not waste any more time and went to the tomb, with his only weapon, ALONE.\n";
-            */
     std::cout << "\n";
     setColor(112);
     std::cout << "[ESC] Back\n";
