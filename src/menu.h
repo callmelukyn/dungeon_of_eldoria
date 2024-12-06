@@ -19,8 +19,6 @@ class Menu {
 private:
     int selected;
 
-    void headerMenu() const;
-
     //Movement
     void navigateMenu(char key, int selectableItemsOnScreenCount);
 
@@ -35,8 +33,13 @@ private:
 public:
     Menu();
 
-    // Make public for now fix later
+    //TODO Made public for now, FIX LATER
     Screen m_currentScreen;
+
+    //Design methods
+    void headerMenu() const;
+
+    void smallHeaderMenu() const;
 
     //Individual screens
     void displayMainMenu() const;

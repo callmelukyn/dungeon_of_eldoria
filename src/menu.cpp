@@ -68,23 +68,43 @@ void Menu::hideCursor() const {
 }
 
 void Menu::headerMenu() const {
-std::cout<<" _____                                              __   "; setColor(04);std::cout << "______ _     _            _       \n";setColor(07);
-std::cout<<"|  __ \\                                            / _| "; setColor(04);std::cout <<"|  ____| |   | |          (_)      \n";setColor(07);
-std::cout<<"| |  | |_   _ _ __   __ _  ___  ___  _ __     ___ | |_  "; setColor(04);std::cout <<"| |__  | | __| | ___  _ __ _  __ _ \n";setColor(07);
-std::cout<<"| |  | | | | | '_ \\ / _` |/ _ \\/ _ \\| '_ \\   / _ \\|  _| "; setColor(04);std::cout <<"|  __| | |/ _` |/ _ \\| '__| |/ _` |\n";setColor(07);
-std::cout<<"| |__| | |_| | | | | (_| |  __/ (_) | | | | | (_) | |   "; setColor(04); std::cout <<"| |____| | (_| | (_) | |  | | (_| |\n";setColor(07);
-std::cout<<"|_____/ \\__,_|_| |_|\\__, |\\___|\\___/|_| |_|  \\___/|_|   "; setColor(04); std::cout <<"|______|_|\\__,_|\\___/|_|  |_|\\__,_|\n";setColor(07);
-std::cout<<"                    __/ |                                                                 \n";
-std::cout<<"                   |___/                                                                  \n";
-    /*std::cout << "===- Dungeon of ";
+    std::cout << " _____                                              __   ";
+    setColor(04);
+    std::cout << "______ _     _            _       \n";
+    setColor(07);
+    std::cout << "|  __ \\                                            / _| ";
+    setColor(04);
+    std::cout << "|  ____| |   | |          (_)      \n";
+    setColor(07);
+    std::cout << "| |  | |_   _ _ __   __ _  ___  ___  _ __     ___ | |_  ";
+    setColor(04);
+    std::cout << "| |__  | | __| | ___  _ __ _  __ _ \n";
+    setColor(07);
+    std::cout << "| |  | | | | | '_ \\ / _` |/ _ \\/ _ \\| '_ \\   / _ \\|  _| ";
+    setColor(04);
+    std::cout << "|  __| | |/ _` |/ _ \\| '__| |/ _` |\n";
+    setColor(07);
+    std::cout << "| |__| | |_| | | | | (_| |  __/ (_) | | | | | (_) | |   ";
+    setColor(04);
+    std::cout << "| |____| | (_| | (_) | |  | | (_| |\n";
+    setColor(07);
+    std::cout << "|_____/ \\__,_|_| |_|\\__, |\\___|\\___/|_| |_|  \\___/|_|   ";
+    setColor(04);
+    std::cout << "|______|_|\\__,_|\\___/|_|  |_|\\__,_|\n";
+    setColor(07);
+    std::cout << "                    __/ |                                                                 \n";
+    std::cout << "                   |___/                                                                  \n";
+}
+
+void Menu::smallHeaderMenu() const {
+    std::cout << "|=====> Dungeon of ";
     setColor(04);
     std::cout << "ELDORIA";
     setColor(07);
-    std::cout << " -===\n";
+    std::cout << " <=====|\n";
     std::cout << "\n";
-    std::cout << "\n"; */
-    //TODO Mozna jeste pouziju jinde - nemazat koment
 }
+
 
 void Menu::displayMainMenu() const {
     //TODO Tady ty nastavovače fontu,cursoru a picovin pak dat taky někam do globalniho nastaveni hry
@@ -129,19 +149,30 @@ void Menu::displayMainMenu() const {
 }
 
 void Menu::displayCreditsMenu() const {
-std::cout << "               _   _                    \n";
-std::cout << "    /\\        | | | |                   \n";
-std::cout << "   /  \\  _   _| |_| |__   ___  _ __ ___ \n";
-std::cout << "  / /\\ \\| | | | __| '_ \\ / _ \\| '__/ __|\n";
-std::cout << " / ____ \\ |_| | |_| | | | (_) | |  \\__ \\\n";
-std::cout << "/_/    \\_\\__,_|\\__|_| |_|\\___/|_|  |___/\n\n";
+    std::cout << "               _   _                    \n";
+    std::cout << "    /\\        | | | |                   \n";
+    std::cout << "   /  \\  _   _| |_| |__   ___  _ __ ___ \n";
+    std::cout << "  / /\\ \\| | | | __| '_ \\ / _ \\| '__/ __|\n";
+    std::cout << " / ____ \\ |_| | |_| | | | (_) | |  \\__ \\\n";
+    std::cout << "/_/    \\_\\__,_|\\__|_| |_|\\___/|_|  |___/\n\n\n";
 
 
-    std::cout << "  Lukas Kulhanek\n";
-    std::cout << "  Ivo Dubsik\n";
-    std::cout << "  Vit Benda\n";
-    std::cout << "\n";
-    std::cout << "\n";
+    std::cout << "          Lukas ";
+    setColor(04);
+    std::cout << "\"Lukyn\" ";
+    setColor(07);
+    std::cout << "Kulhanek\n";
+    std::cout << "          Ivo ";
+    setColor(04);
+    std::cout << "\"Gonres\" ";
+    setColor(07);
+    std::cout << "Dubsik\n";
+    std::cout << "          Vit ";
+    setColor(04);
+    std::cout << "\"SquEEzy\" ";
+    setColor(07);
+    std::cout << "Benda\n";
+    std::cout << "\n\n";
     setColor(112);
     std::cout << "[ESC] Back\n";
     setColor(07);
@@ -149,14 +180,50 @@ std::cout << "/_/    \\_\\__,_|\\__|_| |_|\\___/|_|  |___/\n\n";
 
 void Menu::displayHowToPlay() const {
     headerMenu();
-    std::cout << "  ---HOW TO PLAY---\n";
-    std::cout << "XP: x\n";
-    std::cout << "Coins: x\n";
-    std::cout << "Fights: x\n";
-    std::cout << "Merchant: x\n";
-    std::cout << "Prisoners: x\n";
-    std::cout << "Lore: x\n";
-    std::cout << "\n";
+    std::cout << "  ---->  GAME MANUAL  <----\n";
+    setColor(04);
+    std::cout << "XP:\n";
+    setColor(07);
+    std::cout << "- You gain XP by either killing enemies from the darkness or rescuing prisoners of the dungeon.\n";
+    std::cout << "- Leveling up will give you an extra amount of damage per each level depending on your class type.\n";
+    setColor(04);
+    std::cout << "Coins:\n";
+    setColor(07);
+    std::cout << "- In-game currency which you can obtain by killing enemies or rescuing prisoners.\n";
+    std::cout << "- You can spend coins at Merchant.\n";
+    setColor(04);
+    std::cout << "Merchant:\n";
+    setColor(07);
+    std::cout << "- Civilian that is available each 3 stages of your journey through the dungeon.\n";
+    std::cout << "- Use your coins at Merchant to buy certain type of items, depending on your class type.\n";
+    setColor(04);
+    std::cout << "Fights:\n";
+    setColor(07);
+    std::cout << "- You have an ability to fight with each enemy you might run into, and you will... a lot.\n";
+    std::cout <<
+            "- Your class type will be the key of each fight. Each class has a different range, that he can fight in.\n";
+    std::cout << "- Use [F] to fight, if you are in your allowed range. Depending on your class and range, you will\n";
+    std::cout << "  have an advantage of 1 or 2 attacks before the enemy will defend itself.\n";
+    std::cout << "- Use your attacks wisely, because once they get too close, there is no going back.\n";
+    setColor(04);
+    std::cout << "Prisoners:\n";
+    setColor(07);
+    std::cout <<
+            "- Civilians, which you can rescue from their cages. They will give you some coins and XP for exchange.\n";
+    /*
+    std::cout << "Story:\n";
+    std::cout <<
+            "Switzerland, Arosa Valley, Kingdom of Eldoria, year 1638. Local scientists are trying to gain power\n";
+    std::cout << "and a certain battle advantage over other kingdoms with the help of black magic.\n";
+    std::cout <<
+            "However, the evil they have created has gotten out of the scientist's hands and chaos has broken out in the kingdom.\n";
+    std::cout << "Every night, while everyone is asleep, people have started disappearing and no one knows where.\n";
+    std::cout << "One night, the evil has come for the princess herself.\n";
+    std::cout << "You, Prince Kaelan, have noticed this and decided to pursue the evil with the kidnapped princess.\n";
+    std::cout << "It led you to a nearby tomb, which everyone in the area knew as the Tomb of Oblivion.\n";
+    std::cout <<
+            "No one ever returned from visiting it. Kaelan did not waste any more time and went to the tomb, with his only weapon, ALONE.\n";
+            */
     std::cout << "\n";
     setColor(112);
     std::cout << "[ESC] Back\n";
@@ -270,10 +337,10 @@ void Menu::confirmSelectionRoleMenu(char key) {
                 changeScreen(Screen::game);
                 break;
             case 1:
-                //TODO X
+                changeScreen(Screen::game);
                 break;
             case 2:
-                //TODO X
+                changeScreen(Screen::game);
                 break;
         }
     }

@@ -60,15 +60,16 @@ void Game::displayMap() {
 }
 
 void Game::displayFirstLevel() {
-    Map *map = new Map(15, 25);
+    Map *map = new Map(15, 35);
     // Position position = Position({5, 8});
     m_player->setPlayerPosition(Position{1, 10});
-    map->putCharacterInPosition(m_position, 'A');
+    map->putCharacterInPosition(m_position, '@');
     map->printMap(DoorPosition::bottomDoor);
     delete map;
 }
 
 void Game::displayGUI() {
+    m_menu->smallHeaderMenu();
     displayPlayerProperties();
     displayMap();
     displayHelp();
@@ -78,11 +79,10 @@ void Game::displayHelp() const {
     std::cout << "[WASD] Move around" << "\n";
     std::cout << "[F] Fight" << "\n";
     std::cout << "[E] Interact" << "\n";
-    std::cout << "[H] Heal potion" << "\n";
+    std::cout << "[H] Use Heal Potion" << "\n";
 }
 
 void Game::displayPlayerProperties() const {
-    //TODO Pridat gettery z Playera do coutu
     std::cout << "HP: ";
     setColor(04);
     std::cout << m_player->getHp();
