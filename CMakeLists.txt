@@ -8,8 +8,6 @@ add_executable(zoo_project src/main.cpp
         src/domain/entities/player.h
         src/map/map.cpp
         src/map/map.h
-        src/map/tile.cpp
-        src/map/tile.h
         src/domain/value_objects/potion.h
         src/menu.cpp
         src/menu.h
@@ -20,7 +18,6 @@ add_executable(zoo_project src/main.cpp
         src/game.cpp
         src/game.h
         src/domain/value_objects/Screen.h
-        src/domain/value_objects/levelScreen.h
         src/color.h
         src/color.cpp
         src/domain/value_objects/doorPosition.h

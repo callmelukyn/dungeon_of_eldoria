@@ -4,10 +4,15 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
+#include <functional>
+#include <vector>
+
 #include "position.h"
 #include "../value_objects/potion.h"
 #include "../value_objects/role.h"
 #include "../value_objects/screen.h"
+#include "../../map/map.h"
+
 
 class Player {
 protected:
@@ -36,7 +41,8 @@ public:
 
     int getCoins() const;
 
-    void movePlayer(char key, Screen currentScreen);
+    void movePlayer(char key, Screen currentScreen, const std::vector<Map *> &maps, int currentLevel,
+                    const std::function<void()> &nextLevel);
 
     void setPlayerPosition(Position playerPosition);
 

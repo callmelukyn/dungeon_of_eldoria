@@ -6,13 +6,12 @@
 
 #include "../value_objects/screen.h"
 
-Player::Player(const Role role) {
+Player::Player(const Role role) : m_playerPosition({2, 2}) {
     m_role = role;
     m_xp = 0;
     m_hp = 100;
     m_coins = 0;
     m_numberOfPotions = 0;
-    m_playerPosition = Position(4, 7);
     switch (role) {
         case Role::warrior:
             m_damage = 15;
@@ -65,22 +64,37 @@ int Player::getNumberOfPotions() const {
     return m_numberOfPotions;
 }
 
-void Player::movePlayer(const char key, Screen currentScreen) {
+void Player::movePlayer(const char key, const Screen currentScreen, const std::vector<Map *> &maps,
+                        const int currentLevel, const std::function<void()> &nextLevel) {
     if (Screen::game == currentScreen) {
+        Position nextPosition = m_playerPosition;
+        // Calculate the next position based on the input key
         switch (key) {
             case 'w':
-                m_playerPosition.y -= 1;
+                nextPosition.y -= 1;
                 break;
             case 's':
-                m_playerPosition.y += 1;
+                nextPosition.y += 1;
                 break;
             case 'a':
-                m_playerPosition.x -= 1;
+                nextPosition.x -= 1;
                 break;
             case 'd':
-                m_playerPosition.x += 1;
+                nextPosition.x += 1;
                 break;
-            default: break;
+            default:
+                break;
+        }
+
+        const char nextTile = (*maps[currentLevel])(nextPosition); // Access the tile at the next position
+        // Movement only through '.' or doors
+        if (nextTile == '.') {
+            maps[currentLevel]->clearCharacterFromPosition(m_playerPosition);
+            m_playerPosition = nextPosition;
+        }
+        if (nextTile == '|') {
+            nextLevel();
+            maps[currentLevel]->clearCharacterFromPosition(m_playerPosition);
         }
     }
 }
@@ -92,7 +106,5 @@ void Player::setPlayerPosition(const Position playerPosition) {
 Position Player::getPlayerPosition() const {
     return m_playerPosition;
 }
-
-
 
 

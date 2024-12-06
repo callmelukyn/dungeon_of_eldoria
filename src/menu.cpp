@@ -22,6 +22,10 @@ Screen Menu::getCurrentScreen() const {
 void Menu::handleMenuInput(const char key) {
     switch (m_currentScreen) {
         case Screen::mainMenu:
+            if (key == 27) {
+                Application::shutdown();
+                break;
+            }
             navigateMenu(key, 4);
             confirmSelectionMainMenu(key);
             break;

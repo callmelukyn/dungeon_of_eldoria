@@ -14,11 +14,7 @@ void Application::run() const {
     while (m_running) {
         m_game->render();
         const char key = static_cast<char>(_getch()); // Get user input
-        if (key == 27 && m_game->getCurrentScreen() == Screen::mainMenu) {
-            shutdown();
-            break;
-        }
-        m_game->handleGameInput(key);
+        m_game->handleInputs(key);
     }
 }
 

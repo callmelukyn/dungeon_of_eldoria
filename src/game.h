@@ -1,25 +1,25 @@
 #ifndef GAME_H
 #define GAME_H
 #include "menu.h"
-#include "domain/entities/player.h"
 
 
 class Game {
     Player *m_player;
-
-    Position m_position;
-
     Menu *m_menu;
+    std::vector<Map *> m_maps;
+    int m_currentLevel;
 
-    void displayMap();
-
-    void displayFirstLevel();
+    void displayMap() const;
 
     void displayGUI();
 
     void displayHelp() const;
 
     void displayPlayerProperties() const;
+
+    void loadLevel(int level);
+
+    void nextLevel();
 
 public:
     Game();
@@ -28,9 +28,7 @@ public:
 
     void render();
 
-    void handleGameInput(char key);
-
-    Screen getCurrentScreen() const;
+    void handleInputs(char key);
 };
 
 

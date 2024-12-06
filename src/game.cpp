@@ -2,14 +2,20 @@
 #include "color.h"
 #include "domain/entities/player.h"
 
-Game::Game(): m_player(new Player(Role::warrior)), m_position(7, 1) {
+Game::Game(): m_player(new Player(Role::warrior)) {
     m_menu = new Menu();
     m_menu->m_currentScreen = Screen::mainMenu;
+    m_maps.push_back(new Map(15, 35, DoorPosition::bottomDoor));
+    m_maps.push_back(new Map(15, 20, DoorPosition::leftDoor));
+    m_currentLevel = 0;
 }
 
 Game::~Game() {
     delete m_player;
     delete m_menu;
+    for (const Map *map: m_maps) {
+        delete map;
+    }
 }
 
 void Game::render() {
@@ -33,39 +39,20 @@ void Game::render() {
     }
 }
 
-void Game::handleGameInput(const char key) {
+void Game::handleInputs(const char key) {
+    // Handle movement on the map
+    m_player->movePlayer(key, m_menu->m_currentScreen, m_maps, m_currentLevel, [this] {
+        this->nextLevel();
+    });
+    // Handle movement on menu
     m_menu->handleMenuInput(key);
-    if (Screen::game == m_menu->m_currentScreen) {
-        switch (key) {
-            case 'w':
-                m_position.y -= 1;
-                break;
-            case 's':
-                m_position.y += 1;
-                break;
-            case 'a':
-                m_position.x -= 1;
-                break;
-            case 'd':
-                m_position.x += 1;
-                break;
-            default: break;
-        }
-    }
-    m_player->movePlayer(key, m_menu->m_currentScreen);
 }
 
-void Game::displayMap() {
-    displayFirstLevel();
-}
 
-void Game::displayFirstLevel() {
-    Map *map = new Map(15, 35);
-    // Position position = Position({5, 8});
-    m_player->setPlayerPosition(Position{1, 10});
-    map->putCharacterInPosition(m_position, '@');
-    map->printMap(DoorPosition::bottomDoor);
-    delete map;
+void Game::displayMap() const {
+    Map *map = m_maps[m_currentLevel];
+    map->putCharacterInPosition(Position(m_player->getPlayerPosition()), '@');
+    map->printMap();
 }
 
 void Game::displayGUI() {
@@ -96,9 +83,24 @@ void Game::displayPlayerProperties() const {
     std::cout << m_player->getNumberOfPotions() << "\n";
 }
 
-Screen Game::getCurrentScreen() const {
-    return m_menu->m_currentScreen;
+void Game::loadLevel(const int level) {
+    if (level >= 0 && level < m_maps.size()) {
+        m_currentLevel = level;
+        m_maps[m_currentLevel]->putCharacterInPosition(m_player->getPlayerPosition(), '@');
+    }
 }
 
-
+void Game::nextLevel() {
+    if (m_currentLevel + 1 < m_maps.size()) {
+        const DoorPosition lastDoorPosition = m_maps[m_currentLevel]->getDoorPosition();
+        // Advance to the next level
+        ++m_currentLevel;
+        // Put player on the side which he walked from
+        m_player->setPlayerPosition(m_maps[m_currentLevel]->getStartingPosition(lastDoorPosition));
+        loadLevel(m_currentLevel);
+    } else {
+        std::cout << "You have completed the game!" << std::endl;
+        m_menu->m_currentScreen = Screen::mainMenu;
+    }
+}
 

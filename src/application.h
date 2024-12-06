@@ -4,7 +4,6 @@
 
 class Application {
     static bool m_running;
-
     Game *m_game;
 
 public:
