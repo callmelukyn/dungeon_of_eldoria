@@ -9,6 +9,8 @@
 
 class Scenes {
 public:
+    void continueHint() const;
+
     //Scene text
     void prologText1() const;
 

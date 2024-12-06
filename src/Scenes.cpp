@@ -4,6 +4,10 @@
 
 #include "Scenes.h"
 
+void Scenes::continueHint() const {
+    std::cout << "\n   Press any key to continue...";
+}
+
 
 void Scenes::prologText1() const {
     std::cout <<
@@ -35,6 +39,7 @@ void Scenes::prologArt1() const {
 void Scenes::sceneProlog1() const {
     prologText1();
     prologArt1();
+    continueHint();
 }
 
 
@@ -82,6 +87,7 @@ void Scenes::prologArt2() const {
 void Scenes::sceneProlog2() const {
     prologText2();
     prologArt2();
+    continueHint();
 }
 
 void Scenes::prologText3() const {
@@ -132,4 +138,5 @@ void Scenes::prologArt3() const {
 void Scenes::sceneProlog3() const {
     prologText3();
     prologArt3();
+    continueHint();
 }
