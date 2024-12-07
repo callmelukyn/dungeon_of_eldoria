@@ -2,13 +2,13 @@
 #define GAME_H
 #include "menu.h"
 #include "domain/entities/player.h"
+#include "map/levels.h"
 
 
 class Game {
     Player *m_player;
     Menu *m_menu;
-    std::vector<Map *> m_maps;
-    int m_currentLevel;
+    Levels *m_levels;
 
     void displayMap() const;
 
@@ -17,10 +17,6 @@ class Game {
     void displayHelp() const;
 
     void displayPlayerProperties() const;
-
-    void loadLevel(int level);
-
-    void nextLevel();
 
 public:
     Game();

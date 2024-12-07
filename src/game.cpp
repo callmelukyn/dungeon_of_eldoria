@@ -2,19 +2,16 @@
 #include "color.h"
 #include "domain/entities/player.h"
 
-Game::Game(): m_player(new Player(Role::warrior)) {
+Game::Game() {
+    m_player = new Player(Role::warrior);
     m_menu = new Menu();
-    m_maps.push_back(new Map(15, 35, DoorPosition::bottomDoor));
-    m_maps.push_back(new Map(15, 20, DoorPosition::leftDoor));
-    m_currentLevel = 0;
+    m_levels = new Levels();
 }
 
 Game::~Game() {
     delete m_player;
     delete m_menu;
-    for (const Map *map: m_maps) {
-        delete map;
-    }
+    delete m_levels;
 }
 
 void Game::render() {
@@ -40,8 +37,8 @@ void Game::render() {
 
 void Game::handleInputs(const char key) {
     // Handle movement on the map
-    m_player->movePlayer(key, m_menu->getCurrentScreen(), m_maps, m_currentLevel, [this] {
-        this->nextLevel();
+    m_player->movePlayer(key, m_menu->getCurrentScreen(), m_levels->getMaps(), m_levels->getCurrentLevel(), [this] {
+        m_levels->nextLevel(m_player);
     });
     // Handle movement on menu
     m_menu->handleMenuInput(key);
@@ -49,9 +46,7 @@ void Game::handleInputs(const char key) {
 
 
 void Game::displayMap() const {
-    Map *map = m_maps[m_currentLevel];
-    map->putCharacterInPosition(Position(m_player->getPlayerPosition()), '@');
-    map->printMap();
+    m_levels->loadAllLevels();
 }
 
 void Game::displayGUI() {
@@ -81,24 +76,3 @@ void Game::displayPlayerProperties() const {
     std::cout << "     HEAL POTIONS: ";
     std::cout << m_player->getNumberOfPotions() << "\n";
 }
-
-void Game::loadLevel(const int level) {
-    if (level >= 0 && level < m_maps.size()) {
-        m_currentLevel = level;
-        m_maps[m_currentLevel]->putCharacterInPosition(m_player->getPlayerPosition(), '@');
-    }
-}
-
-void Game::nextLevel() {
-    if (m_currentLevel + 1 < m_maps.size()) {
-        const DoorPosition lastDoorPosition = m_maps[m_currentLevel]->getDoorPosition();
-        // Advance to the next level
-        ++m_currentLevel;
-        // Put player on the side which he walked from
-        m_player->setPlayerPosition(m_maps[m_currentLevel]->getStartingPosition(lastDoorPosition));
-        loadLevel(m_currentLevel);
-    } else {
-        std::cout << "You have completed the game!" << std::endl;
-    }
-}
-

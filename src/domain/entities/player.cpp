@@ -67,7 +67,9 @@ int Player::getNumberOfPotions() const {
 void Player::movePlayer(const char key, const Screen currentScreen, const std::vector<Map *> &maps,
                         const int currentLevel, const std::function<void()> &nextLevel) {
     if (Screen::game == currentScreen) {
+        Map *map = maps[currentLevel];
         Position nextPosition = m_playerPosition;
+
         // Calculate the next position based on the input key
         switch (key) {
             case 'w':
@@ -86,15 +88,16 @@ void Player::movePlayer(const char key, const Screen currentScreen, const std::v
                 break;
         }
 
-        const char nextTile = (*maps[currentLevel])(nextPosition); // Access the tile at the next position
+        const char nextTile = (*map)(nextPosition); // Access the tile at the next position
         // Movement only through '.' or doors
         if (nextTile == '.') {
-            maps[currentLevel]->clearCharacterFromPosition(m_playerPosition);
+            map->clearCharacterFromPosition(m_playerPosition);
             m_playerPosition = nextPosition;
+            map->putCharacterInPosition(m_playerPosition, '@');
         }
         if (nextTile == '|') {
             nextLevel();
-            maps[currentLevel]->clearCharacterFromPosition(m_playerPosition);
+            map->clearCharacterFromPosition(m_playerPosition);
         }
     }
 }

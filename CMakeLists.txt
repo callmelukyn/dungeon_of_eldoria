@@ -8,6 +8,8 @@ add_executable(zoo_project src/main.cpp
         src/domain/entities/player.h
         src/map/map.cpp
         src/map/map.h
+        src/map/levels.cpp
+        src/map/levels.h
         src/domain/value_objects/potion.h
         src/menu.cpp
         src/menu.h
