@@ -4,7 +4,6 @@
 
 Game::Game(): m_player(new Player(Role::warrior)) {
     m_menu = new Menu();
-    m_menu->m_currentScreen = Screen::mainMenu;
     m_maps.push_back(new Map(15, 35, DoorPosition::bottomDoor));
     m_maps.push_back(new Map(15, 20, DoorPosition::leftDoor));
     m_currentLevel = 0;
@@ -20,7 +19,7 @@ Game::~Game() {
 
 void Game::render() {
     system("cls");
-    switch (m_menu->m_currentScreen) {
+    switch (m_menu->getCurrentScreen()) {
         case Screen::mainMenu:
             m_menu->displayMainMenu();
             break;
@@ -41,7 +40,7 @@ void Game::render() {
 
 void Game::handleInputs(const char key) {
     // Handle movement on the map
-    m_player->movePlayer(key, m_menu->m_currentScreen, m_maps, m_currentLevel, [this] {
+    m_player->movePlayer(key, m_menu->getCurrentScreen(), m_maps, m_currentLevel, [this] {
         this->nextLevel();
     });
     // Handle movement on menu
@@ -100,7 +99,6 @@ void Game::nextLevel() {
         loadLevel(m_currentLevel);
     } else {
         std::cout << "You have completed the game!" << std::endl;
-        m_menu->m_currentScreen = Screen::mainMenu;
     }
 }
 

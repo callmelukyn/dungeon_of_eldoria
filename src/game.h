@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 #include "menu.h"
+#include "domain/entities/player.h"
 
 
 class Game {

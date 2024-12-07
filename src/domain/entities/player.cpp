@@ -6,7 +6,7 @@
 
 #include "../value_objects/screen.h"
 
-Player::Player(const Role role) : m_playerPosition({2, 2}) {
+Player::Player(const Role role) : m_playerPosition(Position{2, 2}) {
     m_role = role;
     m_xp = 0;
     m_hp = 100;

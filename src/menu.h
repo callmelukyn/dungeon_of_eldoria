@@ -8,8 +8,6 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <windows.h>
-#include "map/map.h"
-#include "domain/entities/player.h"
 #include "domain/value_objects/screen.h"
 
 
@@ -18,6 +16,7 @@
 class Menu {
 private:
     int selected;
+    Screen m_currentScreen;
 
     //Movement
     void navigateMenu(char key, int selectableItemsOnScreenCount);
@@ -30,11 +29,10 @@ private:
 
     void confirmSelectionRoleMenu(char key);
 
+    void changeScreen(Screen newScreen, char key);
+
 public:
     Menu();
-
-    //TODO Made public for now, FIX LATER
-    Screen m_currentScreen;
 
     //Design methods
     void headerMenu() const;
@@ -49,8 +47,6 @@ public:
     void displayCreditsMenu() const;
 
     void displayHowToPlay() const;
-
-    void changeScreen(Screen newScreen);
 
     Screen getCurrentScreen() const;
 

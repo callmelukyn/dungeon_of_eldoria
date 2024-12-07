@@ -11,8 +11,12 @@ Menu::Menu() {
     m_currentScreen = Screen::mainMenu;
 }
 
-void Menu::changeScreen(const Screen newScreen) {
-    m_currentScreen = newScreen;
+void Menu::changeScreen(const Screen newScreen, const char key) {
+    if (m_currentScreen != Screen::mainMenu && key == 27) {
+        m_currentScreen = Screen::mainMenu;
+    } else if (key == 13 && m_currentScreen != Screen::game) {
+        m_currentScreen = newScreen;
+    }
 }
 
 Screen Menu::getCurrentScreen() const {
@@ -33,15 +37,11 @@ void Menu::handleMenuInput(const char key) {
             navigateMenu(key, 3);
             confirmSelectionRoleMenu(key);
             break;
-        case Screen::creditsMenu:
-            if (key == 27) {
-                changeScreen(Screen::mainMenu);
-            }
+        case Screen::creditsMenu: // NOLINT
+            navigateMenu(key, 1);
             break;
         case Screen::howToPlayMenu:
-            if (key == 27) {
-                changeScreen(Screen::mainMenu);
-            }
+            navigateMenu(key, 1);
             break;
         default: navigateMenu(key, 4);
     }
@@ -302,44 +302,42 @@ void Menu::moveDownMenu(const char key, const int selectableItemsOnScreenCount) 
 }
 
 void Menu::confirmSelectionMainMenu(const char key) {
-    if (key == 13) {
-        switch (selected) {
-            case 0:
-                changeScreen(Screen::roleMenu);
-                break;
-            case 1:
-                changeScreen(Screen::creditsMenu);
-                break;
-            case 2:
-                changeScreen(Screen::howToPlayMenu);
-                break;
-            case 3:
+    switch (selected) {
+        case 0:
+            changeScreen(Screen::roleMenu, key);
+            break;
+        case 1:
+            changeScreen(Screen::creditsMenu, key);
+            break;
+        case 2:
+            changeScreen(Screen::howToPlayMenu, key);
+            break;
+        case 3:
+            if (key == 13) {
                 Application::shutdown();
                 break;
-        }
+            }
+        default: break;
     }
 }
 
-void Menu::confirmSelectionRoleMenu(char key) {
-    if (key == 13) {
-        switch (selected) {
-            case 0: //TODO Predat informaci o vyberu konkretni classy Player konstruktoru
-                changeScreen(Screen::game);
-                break;
-            case 1:
-                changeScreen(Screen::game);
-                break;
-            case 2:
-                changeScreen(Screen::game);
-                break;
-        }
+void Menu::confirmSelectionRoleMenu(const char key) {
+    switch (selected) {
+        case 0: //TODO Predat informaci o vyberu konkretni classy Player konstruktoru
+            changeScreen(Screen::game, key);
+            break;
+        case 1:
+            changeScreen(Screen::game, key);
+            break;
+        case 2:
+            changeScreen(Screen::game, key);
+            break;
+        default: break;
     }
 }
 
 void Menu::navigateMenu(const char key, const int selectableItemsOnScreenCount) {
     moveUpMenu(key, selectableItemsOnScreenCount);
     moveDownMenu(key, selectableItemsOnScreenCount);
-    if (m_currentScreen != Screen::mainMenu && key == 27) {
-        changeScreen(Screen::mainMenu);
-    }
+    changeScreen(Screen::mainMenu, key);
 }
