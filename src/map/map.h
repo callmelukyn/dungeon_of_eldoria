@@ -24,15 +24,7 @@ public:
 
     void putCharacterInPosition(Position position, char character);
 
-    // Define operators to give both const and non-const access to the
-    // positions in the map.
-    char operator()(const Position position) const {
-        return m_fullMap[position.y * m_mapWidth + position.x];
-    }
-
-    char &operator()(const Position position) {
-        return m_fullMap[position.y * m_mapWidth + position.x];
-    }
+    char assignTilePosition(Position position) const;
 
     void printMap();
 

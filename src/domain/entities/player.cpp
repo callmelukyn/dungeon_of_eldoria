@@ -88,7 +88,7 @@ void Player::movePlayer(const char key, const Screen currentScreen, const std::v
                 break;
         }
 
-        const char nextTile = (*map)(nextPosition); // Access the tile at the next position
+        const char nextTile = map->assignTilePosition(nextPosition); // Access the tile at the next position
         // Movement only through '.' or doors
         if (nextTile == '.') {
             map->clearCharacterFromPosition(m_playerPosition);

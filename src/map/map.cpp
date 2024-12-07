@@ -17,6 +17,11 @@ void Map::putCharacterInPosition(const Position position, const char character) 
     m_fullMap[position.y * m_mapWidth + position.x] = character;
 }
 
+// Get position of a single tile
+char Map::assignTilePosition(const Position position) const {
+    return m_fullMap[position.y * m_mapWidth + position.x];
+}
+
 void Map::printMap() {
     for (unsigned int y = 0; y < m_mapHeight; ++y) {
         for (unsigned int x = 0; x < m_mapWidth; ++x) {
@@ -24,7 +29,7 @@ void Map::printMap() {
                 m_fullMap[y * m_mapWidth + x] = '#'; // Border character
                 putDoor(x, y);
             }
-            std::cout << (*this)(Position(x, y));
+            std::cout << assignTilePosition(Position(x, y));
         }
         std::cout << '\n';
     }
