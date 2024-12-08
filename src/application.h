@@ -6,6 +6,8 @@ class Application {
     static bool m_running;
     Game *m_game;
 
+    void clearScreen() const;
+
 public:
     Application();
 

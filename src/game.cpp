@@ -15,7 +15,6 @@ Game::~Game() {
 }
 
 void Game::render() {
-    system("cls");
     switch (m_menu->getCurrentScreen()) {
         case Screen::mainMenu:
             m_menu->displayMainMenu();
