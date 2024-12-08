@@ -4,7 +4,7 @@
 
 #include "menu.h"
 #include "application.h"
-
+#include "color.h"
 
 Menu::Menu() {
     selected = 0;
@@ -13,8 +13,10 @@ Menu::Menu() {
 
 void Menu::changeScreen(const Screen newScreen, const char key) {
     if (m_currentScreen != Screen::mainMenu && key == 27) {
+        clearConsoleOnNewScreen();
         m_currentScreen = Screen::mainMenu;
     } else if (key == 13 && m_currentScreen != Screen::game) {
+        clearConsoleOnNewScreen();
         m_currentScreen = newScreen;
     }
 }

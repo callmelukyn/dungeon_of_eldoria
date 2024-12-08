@@ -4,5 +4,7 @@
 
 void setColor(int color);
 
+void clearConsoleOnNewScreen();
+
 
 #endif //COLOR_H
