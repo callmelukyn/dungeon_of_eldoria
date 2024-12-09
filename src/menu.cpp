@@ -224,6 +224,7 @@ void Menu::displayHowToPlay() const {
 
 
 void Menu::displayRoleMenu() const {
+    clearConsoleOnNewScreen();
     headerMenu();
     std::cout << "<=== CHOOSE YOUR ROLE ===>\n";
     switch (selected) {

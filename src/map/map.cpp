@@ -4,6 +4,7 @@
 
 #include "map.h"
 
+#include <cassert>
 #include <iostream>
 
 Map::Map(const unsigned int mapHeight, const unsigned int mapWidth, const DoorPosition doorPosition)
@@ -71,17 +72,17 @@ void Map::putDoor(const unsigned int x, const unsigned int y) {
 
 Position Map::getStartingPosition(const DoorPosition doorPosition) const {
     switch (doorPosition) {
-        case DoorPosition::bottomDoor:
-            // Enter on the top of the new map
+        case DoorPosition::bottomDoor: assert(m_doorPosition != DoorPosition::topDoor);
+        // Enter on the top of the new map
             return Position{m_mapWidth / 2, 1};
-        case DoorPosition::topDoor:
-            // Enter on the bottom
+        case DoorPosition::topDoor: assert(m_doorPosition != DoorPosition::bottomDoor);
+        // Enter on the bottom
             return Position{m_mapWidth / 2, m_mapHeight - 2};
-        case DoorPosition::rightDoor:
-            // Enter on the left side
+        case DoorPosition::rightDoor: assert(m_doorPosition != DoorPosition::leftDoor);
+        // Enter on the left side
             return Position{1, m_mapHeight / 2};
-        case DoorPosition::leftDoor:
-            // Enter on the right side
+        case DoorPosition::leftDoor: assert(m_doorPosition != DoorPosition::rightDoor);
+        // Enter on the right side
             return Position{m_mapWidth - 2, m_mapHeight / 2};
         default:
             return Position{1, 1};
