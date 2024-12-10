@@ -61,8 +61,6 @@ public:
     //Functionality
     void handleMenuInput(char key);
 
-    void setColor(int color) const; //TODO Globalni metoda
-
     BOOL setFontSize(COORD dwfontSize) const; //TODO Globalni metoda
 
     COORD fontSize(); //TODO Globalni parametr

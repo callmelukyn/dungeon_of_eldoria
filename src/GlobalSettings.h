@@ -8,6 +8,7 @@
 #define COLOR_RED 04
 #define COLOR_DEFAULT 07
 #define COLOR_SELECTED 112
+#define COLOR_YELLOW 06
 
 
 class GlobalSettings {

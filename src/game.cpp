@@ -1,5 +1,6 @@
 #include "game.h"
 #include "color.h"
+#include "GlobalSettings.h"
 #include "domain/entities/player.h"
 
 Game::Game() {
@@ -67,13 +68,13 @@ void Game::displayHelp() const {
 
 void Game::displayPlayerProperties() const {
     std::cout << "HP: ";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << m_player->getHp();
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "        COINS: ";
-    setColor(06);
+    GlobalSettings::setColor(COLOR_YELLOW);
     std::cout << m_player->getCoins() << "\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "XP: " << m_player->getXp() << "/100";
     std::cout << "     HEAL POTIONS: ";
     std::cout << m_player->getNumberOfPotions() << "\n";

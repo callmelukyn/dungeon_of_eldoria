@@ -11,29 +11,29 @@ Scenes::Scenes() {
 
 void Scenes::sceneHeaderMenu() const {
     std::cout << " _____                                              __   ";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "______ _     _            _       \n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "|  __ \\                                            / _| ";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "|  ____| |   | |          (_)      \n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "| |  | |_   _ _ __   __ _  ___  ___  _ __     ___ | |_  ";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "| |__  | | __| | ___  _ __ _  __ _ \n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "| |  | | | | | '_ \\ / _` |/ _ \\/ _ \\| '_ \\   / _ \\|  _| ";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "|  __| | |/ _` |/ _ \\| '__| |/ _` |\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "| |__| | |_| | | | | (_| |  __/ (_) | | | | | (_) | |   ";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "| |____| | (_| | (_) | |  | | (_| |\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "|_____/ \\__,_|_| |_|\\__, |\\___|\\___/|_| |_|  \\___/|_|   ";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "|______|_|\\__,_|\\___/|_|  |_|\\__,_|\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "                    __/ |                                                                 \n";
     std::cout << "                   |___/                                                                  \n";
 }
@@ -48,9 +48,9 @@ void Scenes::sceneSmallHeaderMenu() const {
 }
 
 void Scenes::sceneMainSelectedPlay() const {
-    setColor(112);
+    GlobalSettings::setColor(COLOR_SELECTED);
     std::cout << "- PLAY\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "  CREDITS\n";
     std::cout << "  HOW TO PLAY\n";
     std::cout << "  EXIT\n";
@@ -58,9 +58,9 @@ void Scenes::sceneMainSelectedPlay() const {
 
 void Scenes::sceneMainSelectedCredits() const {
     std::cout << "  PLAY\n";
-    setColor(112);
+    GlobalSettings::setColor(COLOR_SELECTED);
     std::cout << "- CREDITS\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "  HOW TO PLAY\n";
     std::cout << "  EXIT\n";
 }
@@ -68,9 +68,9 @@ void Scenes::sceneMainSelectedCredits() const {
 void Scenes::sceneMainSelectedHTP() const {
     std::cout << "  PLAY\n";
     std::cout << "  CREDITS\n";
-    setColor(112);
+    GlobalSettings::setColor(COLOR_SELECTED);
     std::cout << "- HOW TO PLAY\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "  EXIT\n";
 }
 
@@ -78,9 +78,9 @@ void Scenes::sceneMainSelectedExit() const {
     std::cout << "  PLAY\n";
     std::cout << "  CREDITS\n";
     std::cout << "  HOW TO PLAY\n";
-    setColor(112);
+    GlobalSettings::setColor(COLOR_SELECTED);
     std::cout << "- EXIT\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
 }
 
 void Scenes::sceneCreditsMenu() const {
@@ -91,67 +91,67 @@ void Scenes::sceneCreditsMenu() const {
     std::cout << " / ____ \\ |_| | |_| | | | (_) | |  \\__ \\\n";
     std::cout << "/_/    \\_\\__,_|\\__|_| |_|\\___/|_|  |___/\n\n\n";
     std::cout << "          Lukas ";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "\"Lukyn\" ";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "Kulhanek\n";
     std::cout << "          Ivo ";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "\"Gonres\" ";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "Dubsik\n";
     std::cout << "          Vit ";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "\"SquEEzy\" ";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "Benda\n";
     std::cout << "\n\n";
-    setColor(112);
+    GlobalSettings::setColor(COLOR_SELECTED);
     std::cout << "[ESC] Back\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
 }
 
 void Scenes::sceneHTPMenu() const {
     std::cout << "  ---->  GAME MANUAL  <----\n";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "XP:\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "- You gain XP by either killing enemies from the darkness or rescuing prisoners of the dungeon.\n";
     std::cout << "- Leveling up will give you an extra amount of damage per each level depending on your class type.\n";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "Coins:\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "- In-game currency which you can obtain by killing enemies or rescuing prisoners.\n";
     std::cout << "- You can spend coins at Merchant.\n";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "Merchant:\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "- Civilian that is available each 3 stages of your journey through the dungeon.\n";
     std::cout << "- Use your coins at Merchant to buy certain type of items, depending on your class type.\n";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "Fights:\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "- You have an ability to fight with each enemy you might run into, and you will... a lot.\n";
     std::cout <<
             "- Your class type will be the key of each fight. Each class has a different range, that he can fight in.\n";
     std::cout << "- Use [F] to fight, if you are in your allowed range. Depending on your class and range, you will\n";
     std::cout << "  have an advantage of 1 or 2 attacks before the enemy will defend itself.\n";
     std::cout << "- Use your attacks wisely, because once they get too close, there is no going back.\n";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "Prisoners:\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout <<
             "- Civilians, which you can rescue from their cages. They will give you some coins and XP for exchange.\n";
     std::cout << "\n";
-    setColor(112);
+    GlobalSettings::setColor(COLOR_SELECTED);
     std::cout << "[ESC] Back\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
 }
 
 void Scenes::sceneRoleSelectedWarrior() const {
-    setColor(112);
+    GlobalSettings::setColor(COLOR_SELECTED);
     std::cout << "- WARRIOR";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "                 /|   ________________\n";
     std::cout << "  ARCHER";
     std::cout << "              O|===|* >________________>\n";
@@ -168,9 +168,9 @@ void Scenes::sceneRoleSelectedWarrior() const {
 
 void Scenes::sceneRoleSelectedArcher() const {
     std::cout << "  WARRIOR\n";
-    setColor(112);
+    GlobalSettings::setColor(COLOR_SELECTED);
     std::cout << "- ARCHER";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "          _.-\"/______________________/////\n";
     std::cout << "  MAGE";
     std::cout << "            `'-.\\~~~~~~~~~~~~~~~~~~~~~~\\\\\\\\\\\n";
@@ -188,18 +188,18 @@ void Scenes::sceneRoleSelectedMage() const {
     std::cout << "           ___________________    . , ; .\n";
     std::cout << "  ARCHER";
     std::cout << "           (___________________|~~~~~X.;' .\n";
-    setColor(112);
+    GlobalSettings::setColor(COLOR_SELECTED);
     std::cout << "- MAGE";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "                                     ' `\" ' `\n";
     std::cout << "\n";
     std::cout << "\n";
     std::cout << "The Mage is able to stay in the shadows far away from its targets.\n";
     std::cout << "Unlocks potential to fight from high range, but once the entities gets too close...";
     std::cout << " it might ";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "HURT.\n";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "\n";
     std::cout << "\n";
     std::cout << "[ESC] Back\n";

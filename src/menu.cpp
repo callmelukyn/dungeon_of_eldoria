@@ -60,11 +60,6 @@ void Menu::handleMenuInput(const char key) {
     }
 }
 
-void Menu::setColor(int color) const {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hConsole, color);
-}
-
 BOOL Menu::setFontSize(COORD dwfontSize) const {
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_FONT_INFOEX info{sizeof(CONSOLE_FONT_INFOEX)};
