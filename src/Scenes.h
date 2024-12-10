@@ -5,13 +5,15 @@
 #ifndef SCENES_H
 #define SCENES_H
 #include <iostream>
-
+#include "color.h"
 
 class Scenes {
 public:
-    void continueHint() const;
+    Scenes();
 
     //Scene text
+    void continueHint() const;
+
     void prologText1() const;
 
     void prologText2() const;
@@ -25,12 +27,35 @@ public:
 
     void prologArt3() const;
 
-    //Whole scene
+    //Whole cutscenes
     void sceneProlog1() const;
 
     void sceneProlog2() const;
 
     void sceneProlog3() const;
+
+    //Menu scenes
+    void sceneHeaderMenu() const;
+
+    void sceneSmallHeaderMenu() const;
+
+    void sceneMainSelectedPlay() const;
+
+    void sceneMainSelectedCredits() const;
+
+    void sceneMainSelectedHTP() const;
+
+    void sceneMainSelectedExit() const;
+
+    void sceneCreditsMenu() const;
+
+    void sceneHTPMenu() const;
+
+    void sceneRoleSelectedWarrior() const;
+
+    void sceneRoleSelectedArcher() const;
+
+    void sceneRoleSelectedMage() const;
 };
 
 

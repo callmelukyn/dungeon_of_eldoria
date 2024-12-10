@@ -20,6 +20,7 @@ private:
     int selected;
     Screen m_currentScreen;
     std::vector<Scenes *> m_scenes;
+    Scenes *m_scene;
 
     //Movement
     void navigateMenu(char key, int selectableItemsOnScreenCount);
@@ -36,6 +37,8 @@ private:
 
 public:
     Menu();
+
+    ~Menu();
 
     //Design methods
     void headerMenu() const;
