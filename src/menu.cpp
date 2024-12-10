@@ -4,7 +4,6 @@
 
 #include "menu.h"
 #include "application.h"
-#include "color.h"
 #include "GlobalSettings.h"
 
 Menu::Menu() {
@@ -23,10 +22,10 @@ Menu::~Menu() {
 
 void Menu::changeScreen(const Screen newScreen, const char keyboardKey) {
     if (m_currentScreen != Screen::mainMenu && keyboardKey == KEYBOARD_ESC) {
-        clearConsoleOnNewScreen();
+        GlobalSettings::clearConsoleOnNewScreen();
         m_currentScreen = Screen::mainMenu;
     } else if (keyboardKey == KEYBOARD_ENTER && m_currentScreen != Screen::game) {
-        clearConsoleOnNewScreen();
+        GlobalSettings::clearConsoleOnNewScreen();
         m_currentScreen = newScreen;
     }
 }
@@ -99,7 +98,7 @@ void Menu::displayHowToPlay() const {
 }
 
 void Menu::displayRoleMenu() const {
-    clearConsoleOnNewScreen();
+    GlobalSettings::clearConsoleOnNewScreen();;
     headerMenu();
     std::cout << "<=== CHOOSE YOUR ROLE ===>\n";
     switch (selected) {

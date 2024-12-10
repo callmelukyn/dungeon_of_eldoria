@@ -5,7 +5,6 @@
 #ifndef SCENES_H
 #define SCENES_H
 #include <iostream>
-#include "color.h"
 
 class Scenes {
 public:

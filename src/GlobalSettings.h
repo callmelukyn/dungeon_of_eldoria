@@ -29,9 +29,9 @@ public:
 
     static BOOL setFontSize();
 
-    static COORD fontSize();
-
     static void hideCursor();
+
+    static void clearConsoleOnNewScreen();
 };
 
 

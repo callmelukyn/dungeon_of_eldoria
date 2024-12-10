@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "../color.h"
+#include "../GlobalSettings.h"
 
 Levels::Levels() {
     m_currentLevel = 0;
@@ -25,7 +25,7 @@ void Levels::loadAllLevels() const {
 
 void Levels::nextLevel(Player *player) {
     if (m_currentLevel + 1 < m_maps.size()) {
-        clearConsoleOnNewScreen();
+        GlobalSettings::clearConsoleOnNewScreen();
         const DoorPosition lastDoorPosition = m_maps[m_currentLevel]->getDoorPosition();
         // Advance to the next level
         ++m_currentLevel;

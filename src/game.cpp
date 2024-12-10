@@ -1,5 +1,4 @@
 #include "game.h"
-#include "color.h"
 #include "GlobalSettings.h"
 #include "domain/entities/player.h"
 
