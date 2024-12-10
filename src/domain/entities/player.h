@@ -7,12 +7,10 @@
 #include <functional>
 #include <vector>
 
-#include "position.h"
 #include "../value_objects/potion.h"
 #include "../value_objects/role.h"
 #include "../value_objects/screen.h"
 #include "../../map/map.h"
-
 
 class Player {
 protected:

@@ -5,6 +5,7 @@
 #ifndef GLOBALSETTINGS_H
 #define GLOBALSETTINGS_H
 #include <Windows.h>
+
 #define COLOR_RED 04
 #define COLOR_DEFAULT 07
 #define COLOR_SELECTED 112
@@ -19,7 +20,6 @@
 #define KEYBOARD_SMALL_A 97
 #define KEYBOARD_CAPITAL_D 68
 #define KEYBOARD_SMALL_D 100
-
 
 class GlobalSettings {
 public:

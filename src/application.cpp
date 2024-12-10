@@ -1,6 +1,8 @@
 #include "application.h"
 
-#include "Tools/GlobalSettings.h"
+#include <conio.h>
+
+#include "tools/globalSettings.h"
 
 bool Application::m_running = true;
 

@@ -3,11 +3,14 @@
 //
 
 #include "menu.h"
+
+#include <iostream>
+
 #include "../application.h"
-#include "../Tools/GlobalSettings.h"
+#include "../tools/globalSettings.h"
 
 Menu::Menu() {
-    selected = 0;
+    m_selected = 0;
     m_currentScreen = Screen::mainMenu;
     m_scenes.push_back(new Scenes());
     m_scene = new Scenes();
@@ -72,7 +75,7 @@ void Menu::smallHeaderMenu() const {
 
 void Menu::displayMainMenu() const {
     headerMenu();
-    switch (selected) {
+    switch (m_selected) {
         case 0:
             m_scene->sceneMainSelectedPlay();
             break;
@@ -101,7 +104,7 @@ void Menu::displayRoleMenu() const {
     GlobalSettings::clearConsoleOnNewScreen();;
     headerMenu();
     std::cout << "<=== CHOOSE YOUR ROLE ===>\n";
-    switch (selected) {
+    switch (m_selected) {
         case 0:
             m_scene->sceneRoleSelectedWarrior();
             break;
@@ -120,24 +123,24 @@ void Menu::displayCutscene() const {
 
 void Menu::moveUpMenu(const char keyboardKey, const int selectableItemsOnScreenCount) {
     if (keyboardKey == KEYBOARD_SMALL_W || keyboardKey == KEYBOARD_CAPITAL_W) {
-        selected--;
-        if (selected < 0) {
-            selected = selectableItemsOnScreenCount - 1;
+        m_selected--;
+        if (m_selected < 0) {
+            m_selected = selectableItemsOnScreenCount - 1;
         }
     }
 }
 
 void Menu::moveDownMenu(const char keyboardKey, const int selectableItemsOnScreenCount) {
     if (keyboardKey == KEYBOARD_SMALL_S || keyboardKey == KEYBOARD_CAPITAL_S) {
-        selected++;
-        if (selected >= selectableItemsOnScreenCount) {
-            selected = 0;
+        m_selected++;
+        if (m_selected >= selectableItemsOnScreenCount) {
+            m_selected = 0;
         }
     }
 }
 
 void Menu::confirmSelectionMainMenu(const char keyboardKey) {
-    switch (selected) {
+    switch (m_selected) {
         case 0:
             changeScreen(Screen::roleMenu, keyboardKey);
             break;
@@ -157,7 +160,7 @@ void Menu::confirmSelectionMainMenu(const char keyboardKey) {
 }
 
 void Menu::confirmSelectionRoleMenu(const char keyboardKey) {
-    switch (selected) {
+    switch (m_selected) {
         case 0: //TODO Predat informaci o vyberu konkretni classy Player konstruktoru
             m_role = Role::warrior;
             changeScreen(Screen::cutscene, keyboardKey); //Test cutscene
