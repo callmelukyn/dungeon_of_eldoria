@@ -3,8 +3,8 @@
 //
 
 #include "menu.h"
-#include "application.h"
-#include "GlobalSettings.h"
+#include "../application.h"
+#include "../Tools/GlobalSettings.h"
 
 Menu::Menu() {
     selected = 0;

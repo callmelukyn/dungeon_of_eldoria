@@ -7,9 +7,9 @@
 #include <iostream>
 #include <vector>
 #include <conio.h>
-#include "domain/value_objects/screen.h"
+#include "../domain/value_objects/screen.h"
 #include "Scenes.h"
-#include "domain/value_objects/role.h"
+#include "../domain/value_objects/role.h"
 
 
 //TODO Pak nekde prednastavit urcity levely a pridat je do switche v renderu

@@ -1,7 +1,7 @@
 #ifndef LEVELS_H
 #define LEVELS_H
-#include <vector>
 
+#include <vector>
 #include "map.h"
 #include "../domain/entities/player.h"
 

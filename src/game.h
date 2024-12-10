@@ -1,6 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
-#include "menu.h"
+#include "UI/menu.h"
 #include "domain/entities/player.h"
 #include "map/levels.h"
 

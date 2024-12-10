@@ -1,6 +1,6 @@
 #include "application.h"
 
-#include "GlobalSettings.h"
+#include "Tools/GlobalSettings.h"
 
 bool Application::m_running = true;
 

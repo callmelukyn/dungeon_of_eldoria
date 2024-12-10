@@ -11,8 +11,8 @@ add_executable(zoo_project src/main.cpp
         src/map/levels.cpp
         src/map/levels.h
         src/domain/value_objects/potion.h
-        src/menu.cpp
-        src/menu.h
+        src/UI/menu.cpp
+        src/UI/menu.h
         src/application.cpp
         src/application.h
         src/domain/value_objects/role.h
@@ -21,8 +21,8 @@ add_executable(zoo_project src/main.cpp
         src/game.h
         src/domain/value_objects/Screen.h
         src/domain/value_objects/doorPosition.h
-        src/Scenes.cpp
-        src/Scenes.h
-        src/GlobalSettings.cpp
-        src/GlobalSettings.h
+        src/UI/Scenes.cpp
+        src/UI/Scenes.h
+        src/Tools/GlobalSettings.cpp
+        src/Tools/GlobalSettings.h
 )

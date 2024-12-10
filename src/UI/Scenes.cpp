@@ -3,8 +3,8 @@
 //
 
 #include "Scenes.h"
-
-#include "GlobalSettings.h"
+#include <iostream>
+#include "../Tools/GlobalSettings.h"
 
 Scenes::Scenes() {
 }

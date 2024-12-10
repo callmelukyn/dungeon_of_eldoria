@@ -1,5 +1,5 @@
 #include "game.h"
-#include "GlobalSettings.h"
+#include "Tools/GlobalSettings.h"
 #include "domain/entities/player.h"
 
 Game::Game() {

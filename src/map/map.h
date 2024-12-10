@@ -5,10 +5,8 @@
 #ifndef MAP_H
 #define MAP_H
 #include <vector>
-
 #include "../domain/entities/position.h"
 #include "../domain/value_objects/doorPosition.h"
-
 
 class Map {
     unsigned int m_mapHeight;
