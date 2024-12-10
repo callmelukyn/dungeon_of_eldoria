@@ -13,3 +13,28 @@ void GlobalSettings::setColor(int color) {
     SetConsoleTextAttribute(hConsole, color);
 }
 
+BOOL GlobalSettings::setFontSize() {
+    COORD fontSize = {25, 25};
+    HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_FONT_INFOEX info{sizeof(CONSOLE_FONT_INFOEX)};
+    if (!GetCurrentConsoleFontEx(output, false, &info))
+        return false;
+    info.dwFontSize = fontSize;
+    return SetCurrentConsoleFontEx(output, false, &info);
+}
+
+void GlobalSettings::hideCursor() {
+    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    CONSOLE_CURSOR_INFO cursorInfo;
+    GetConsoleCursorInfo(consoleHandle, &cursorInfo);
+
+    cursorInfo.bVisible = FALSE;
+    SetConsoleCursorInfo(consoleHandle, &cursorInfo);
+}
+
+
+
+
+
+

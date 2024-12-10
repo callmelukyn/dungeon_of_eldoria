@@ -60,24 +60,6 @@ void Menu::handleMenuInput(const char key) {
     }
 }
 
-BOOL Menu::setFontSize(COORD dwfontSize) const {
-    HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_FONT_INFOEX info{sizeof(CONSOLE_FONT_INFOEX)};
-    if (!GetCurrentConsoleFontEx(output, false, &info))
-        return false;
-    info.dwFontSize = dwfontSize;
-    return SetCurrentConsoleFontEx(output, false, &info);
-}
-
-void Menu::hideCursor() const {
-    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-
-    CONSOLE_CURSOR_INFO cursorInfo;
-    GetConsoleCursorInfo(consoleHandle, &cursorInfo);
-
-    cursorInfo.bVisible = FALSE;
-    SetConsoleCursorInfo(consoleHandle, &cursorInfo);
-}
 
 void Menu::headerMenu() const {
     m_scene->sceneHeaderMenu();
@@ -88,11 +70,6 @@ void Menu::smallHeaderMenu() const {
 }
 
 void Menu::displayMainMenu() const {
-    //TODO Tady ty nastavovače fontu,cursoru a picovin pak dat taky někam do globalniho nastaveni hry
-    COORD fontSize = {25, 25};
-
-    setFontSize(fontSize);
-    hideCursor();
     headerMenu();
     switch (selected) {
         case 0:

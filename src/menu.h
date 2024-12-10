@@ -7,8 +7,6 @@
 #include <iostream>
 #include <vector>
 #include <conio.h>
-#include <stdlib.h>
-#include <windows.h>
 #include "domain/value_objects/screen.h"
 #include "Scenes.h"
 
@@ -60,12 +58,6 @@ public:
 
     //Functionality
     void handleMenuInput(char key);
-
-    BOOL setFontSize(COORD dwfontSize) const; //TODO Globalni metoda
-
-    COORD fontSize(); //TODO Globalni parametr
-
-    void hideCursor() const; //TODO Globalni metoda
 };
 
 #endif //MENU_H

@@ -16,6 +16,12 @@ public:
     GlobalSettings();
 
     static void setColor(int color);
+
+    static BOOL setFontSize();
+
+    static COORD fontSize();
+
+    static void hideCursor();
 };
 
 

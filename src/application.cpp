@@ -1,6 +1,8 @@
 #include "application.h"
 #include <windows.h>
 
+#include "GlobalSettings.h"
+
 bool Application::m_running = true;
 
 Application::Application() {
@@ -14,6 +16,8 @@ Application::~Application() {
 void Application::run() const {
     while (m_running) {
         clearScreen();
+        GlobalSettings::setFontSize();
+        GlobalSettings::hideCursor();
         m_game->render();
         const char key = static_cast<char>(_getch()); // Get user input
         m_game->handleInputs(key);
