@@ -72,10 +72,13 @@ void GlobalSettings::clearConsoleOnNewScreen() {
 #endif
 }
 
-
-
-
-
-
-
-
+void GlobalSettings::clearScreen() {
+#ifdef _WIN32
+    COORD cursorPosition;
+    cursorPosition.X = 0;
+    cursorPosition.Y = 0;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cursorPosition);
+#else
+    system("clear");
+#endif
+}

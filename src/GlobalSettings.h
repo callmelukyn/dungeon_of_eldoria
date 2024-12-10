@@ -32,6 +32,8 @@ public:
     static void hideCursor();
 
     static void clearConsoleOnNewScreen();
+
+    static void clearScreen();
 };
 
 

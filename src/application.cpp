@@ -1,5 +1,4 @@
 #include "application.h"
-#include <windows.h>
 
 #include "GlobalSettings.h"
 
@@ -15,7 +14,7 @@ Application::~Application() {
 
 void Application::run() const {
     while (m_running) {
-        clearScreen();
+        GlobalSettings::clearScreen();
         GlobalSettings::setFontSize();
         GlobalSettings::hideCursor();
         m_game->render();
@@ -26,15 +25,4 @@ void Application::run() const {
 
 void Application::shutdown() {
     m_running = false;
-}
-
-void Application::clearScreen() const {
-#ifdef _WIN32
-    COORD cursorPosition;
-    cursorPosition.X = 0;
-    cursorPosition.Y = 0;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cursorPosition);
-#else
-    system("clear");
-#endif
 }
