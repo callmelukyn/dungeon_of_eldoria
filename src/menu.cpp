@@ -9,6 +9,7 @@
 Menu::Menu() {
     selected = 0;
     m_currentScreen = Screen::mainMenu;
+    m_scenes.push_back(new Scenes);
 }
 
 void Menu::changeScreen(const Screen newScreen, const char key) {
@@ -43,6 +44,9 @@ void Menu::handleMenuInput(const char key) {
             navigateMenu(key, 1);
             break;
         case Screen::howToPlayMenu:
+            navigateMenu(key, 1);
+            break;
+        case Screen::cutscene:
             navigateMenu(key, 1);
             break;
         default: navigateMenu(key, 4);
@@ -285,6 +289,10 @@ void Menu::displayRoleMenu() const {
     }
 }
 
+void Menu::displayCutscene() const {
+    m_scenes.at(0)->sceneProlog1();
+}
+
 
 void Menu::moveUpMenu(const char key, const int selectableItemsOnScreenCount) {
     if (key == 'w' || key == 'W') {
@@ -327,7 +335,8 @@ void Menu::confirmSelectionMainMenu(const char key) {
 void Menu::confirmSelectionRoleMenu(const char key) {
     switch (selected) {
         case 0: //TODO Predat informaci o vyberu konkretni classy Player konstruktoru
-            changeScreen(Screen::game, key);
+            changeScreen(Screen::cutscene, key); //Test cutscene
+        //changeScreen(Screen::game, key);
             break;
         case 1:
             changeScreen(Screen::game, key);

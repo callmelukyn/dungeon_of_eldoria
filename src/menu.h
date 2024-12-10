@@ -5,10 +5,12 @@
 #ifndef MENU_H
 #define MENU_H
 #include <iostream>
+#include <vector>
 #include <conio.h>
 #include <stdlib.h>
 #include <windows.h>
 #include "domain/value_objects/screen.h"
+#include "Scenes.h"
 
 
 //TODO Pak nekde prednastavit urcity levely a pridat je do switche v renderu
@@ -17,6 +19,7 @@ class Menu {
 private:
     int selected;
     Screen m_currentScreen;
+    std::vector<Scenes *> m_scenes;
 
     //Movement
     void navigateMenu(char key, int selectableItemsOnScreenCount);
@@ -49,6 +52,8 @@ public:
     void displayHowToPlay() const;
 
     Screen getCurrentScreen() const;
+
+    void displayCutscene() const;
 
     //Functionality
     void handleMenuInput(char key);

@@ -8,6 +8,7 @@ void setColor(int color) {
 
 void clearConsoleOnNewScreen() {
 #ifdef _WIN32
+    system("cls");
     HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
 
     // Fetch existing console mode so we correctly add a flag and not turn off others

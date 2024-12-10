@@ -28,6 +28,9 @@ void Game::render() {
         case Screen::howToPlayMenu:
             m_menu->displayHowToPlay();
             break;
+        case Screen::cutscene:
+            m_menu->displayCutscene();
+            break;
         case Screen::game:
             displayGUI();
             break;
