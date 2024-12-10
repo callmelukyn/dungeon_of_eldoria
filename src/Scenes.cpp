@@ -4,6 +4,8 @@
 
 #include "Scenes.h"
 
+#include "GlobalSettings.h"
+
 Scenes::Scenes() {
 }
 
@@ -38,9 +40,9 @@ void Scenes::sceneHeaderMenu() const {
 
 void Scenes::sceneSmallHeaderMenu() const {
     std::cout << "|=====> Dungeon of ";
-    setColor(04);
+    GlobalSettings::setColor(COLOR_RED);
     std::cout << "ELDORIA";
-    setColor(07);
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << " <=====|\n";
     std::cout << "\n";
 }

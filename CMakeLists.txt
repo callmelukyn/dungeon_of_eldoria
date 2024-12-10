@@ -25,4 +25,6 @@ add_executable(zoo_project src/main.cpp
         src/domain/value_objects/doorPosition.h
         src/Scenes.cpp
         src/Scenes.h
+        src/GlobalSettings.cpp
+        src/GlobalSettings.h
 )
