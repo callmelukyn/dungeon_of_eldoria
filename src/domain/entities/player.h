@@ -41,7 +41,7 @@ public:
 
     int getCoins() const;
 
-    void movePlayer(char key, Screen currentScreen, const std::vector<Map *> &maps, int currentLevel,
+    void movePlayer(char keyboardKey, Screen currentScreen, const std::vector<Map *> &maps, int currentLevel,
                     const std::function<void()> &nextLevel);
 
     void setPlayerPosition(Position playerPosition);

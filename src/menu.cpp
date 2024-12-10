@@ -20,11 +20,11 @@ Menu::~Menu() {
     }
 }
 
-void Menu::changeScreen(const Screen newScreen, const char key) {
-    if (m_currentScreen != Screen::mainMenu && key == KEYBOARD_ESC) {
+void Menu::changeScreen(const Screen newScreen, const char keyboardKey) {
+    if (m_currentScreen != Screen::mainMenu && keyboardKey == KEYBOARD_ESC) {
         clearConsoleOnNewScreen();
         m_currentScreen = Screen::mainMenu;
-    } else if (key == KEYBOARD_ENTER && m_currentScreen != Screen::game) {
+    } else if (keyboardKey == KEYBOARD_ENTER && m_currentScreen != Screen::game) {
         clearConsoleOnNewScreen();
         m_currentScreen = newScreen;
     }
@@ -34,30 +34,30 @@ Screen Menu::getCurrentScreen() const {
     return m_currentScreen;
 }
 
-void Menu::handleMenuInput(const char key) {
+void Menu::handleMenuInput(const char keyboardKey) {
     switch (m_currentScreen) {
         case Screen::mainMenu:
-            if (key == KEYBOARD_ESC) {
+            if (keyboardKey == KEYBOARD_ESC) {
                 Application::shutdown();
                 break;
             }
-            navigateMenu(key, 4);
-            confirmSelectionMainMenu(key);
+            navigateMenu(keyboardKey, 4);
+            confirmSelectionMainMenu(keyboardKey);
             break;
         case Screen::roleMenu:
-            navigateMenu(key, 3);
-            confirmSelectionRoleMenu(key);
+            navigateMenu(keyboardKey, 3);
+            confirmSelectionRoleMenu(keyboardKey);
             break;
         case Screen::creditsMenu: // NOLINT
-            navigateMenu(key, 1);
+            navigateMenu(keyboardKey, 1);
             break;
         case Screen::howToPlayMenu:
-            navigateMenu(key, 1);
+            navigateMenu(keyboardKey, 1);
             break;
         case Screen::cutscene:
-            navigateMenu(key, 1);
+            navigateMenu(keyboardKey, 1);
             break;
-        default: navigateMenu(key, 4);
+        default: navigateMenu(keyboardKey, 4);
     }
 }
 
@@ -118,8 +118,8 @@ void Menu::displayCutscene() const {
     m_scenes.at(0)->sceneProlog1();
 }
 
-void Menu::moveUpMenu(const char key, const int selectableItemsOnScreenCount) {
-    if (key == KEYBOARD_SMALL_W || key == KEYBOARD_CAPITAL_W) {
+void Menu::moveUpMenu(const char keyboardKey, const int selectableItemsOnScreenCount) {
+    if (keyboardKey == KEYBOARD_SMALL_W || keyboardKey == KEYBOARD_CAPITAL_W) {
         selected--;
         if (selected < 0) {
             selected = selectableItemsOnScreenCount - 1;
@@ -127,8 +127,8 @@ void Menu::moveUpMenu(const char key, const int selectableItemsOnScreenCount) {
     }
 }
 
-void Menu::moveDownMenu(const char key, const int selectableItemsOnScreenCount) {
-    if (key == KEYBOARD_SMALL_S || key == KEYBOARD_CAPITAL_S) {
+void Menu::moveDownMenu(const char keyboardKey, const int selectableItemsOnScreenCount) {
+    if (keyboardKey == KEYBOARD_SMALL_S || keyboardKey == KEYBOARD_CAPITAL_S) {
         selected++;
         if (selected >= selectableItemsOnScreenCount) {
             selected = 0;
@@ -136,19 +136,19 @@ void Menu::moveDownMenu(const char key, const int selectableItemsOnScreenCount) 
     }
 }
 
-void Menu::confirmSelectionMainMenu(const char key) {
+void Menu::confirmSelectionMainMenu(const char keyboardKey) {
     switch (selected) {
         case 0:
-            changeScreen(Screen::roleMenu, key);
+            changeScreen(Screen::roleMenu, keyboardKey);
             break;
         case 1:
-            changeScreen(Screen::creditsMenu, key);
+            changeScreen(Screen::creditsMenu, keyboardKey);
             break;
         case 2:
-            changeScreen(Screen::howToPlayMenu, key);
+            changeScreen(Screen::howToPlayMenu, keyboardKey);
             break;
         case 3:
-            if (key == KEYBOARD_ENTER) {
+            if (keyboardKey == KEYBOARD_ENTER) {
                 Application::shutdown();
                 break;
             }
@@ -156,24 +156,24 @@ void Menu::confirmSelectionMainMenu(const char key) {
     }
 }
 
-void Menu::confirmSelectionRoleMenu(const char key) {
+void Menu::confirmSelectionRoleMenu(const char keyboardKey) {
     switch (selected) {
         case 0: //TODO Predat informaci o vyberu konkretni classy Player konstruktoru
-            changeScreen(Screen::cutscene, key); //Test cutscene
-        //changeScreen(Screen::game, key);
+            changeScreen(Screen::cutscene, keyboardKey); //Test cutscene
+        //changeScreen(Screen::game, keyboardKey);
             break;
         case 1:
-            changeScreen(Screen::game, key);
+            changeScreen(Screen::game, keyboardKey);
             break;
         case 2:
-            changeScreen(Screen::game, key);
+            changeScreen(Screen::game, keyboardKey);
             break;
         default: break;
     }
 }
 
-void Menu::navigateMenu(const char key, const int selectableItemsOnScreenCount) {
-    moveUpMenu(key, selectableItemsOnScreenCount);
-    moveDownMenu(key, selectableItemsOnScreenCount);
-    changeScreen(Screen::mainMenu, key);
+void Menu::navigateMenu(const char keyboardKey, const int selectableItemsOnScreenCount) {
+    moveUpMenu(keyboardKey, selectableItemsOnScreenCount);
+    moveDownMenu(keyboardKey, selectableItemsOnScreenCount);
+    changeScreen(Screen::mainMenu, keyboardKey);
 }

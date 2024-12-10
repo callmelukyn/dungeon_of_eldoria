@@ -38,13 +38,13 @@ void Game::render() {
     }
 }
 
-void Game::handleInputs(const char key) {
+void Game::handleInputs(const char keyboardKey) {
     // Handle movement on the map
-    m_player->movePlayer(key, m_menu->getCurrentScreen(), m_levels->getMaps(), m_levels->getCurrentLevel(), [this] {
+    m_player->movePlayer(keyboardKey, m_menu->getCurrentScreen(), m_levels->getMaps(), m_levels->getCurrentLevel(), [this] {
         m_levels->nextLevel(m_player);
     });
     // Handle movement on menu
-    m_menu->handleMenuInput(key);
+    m_menu->handleMenuInput(keyboardKey);
 }
 
 

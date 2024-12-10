@@ -21,17 +21,17 @@ private:
     Scenes *m_scene;
 
     //Movement
-    void navigateMenu(char key, int selectableItemsOnScreenCount);
+    void navigateMenu(char keyboardKey, int selectableItemsOnScreenCount);
 
-    void moveUpMenu(char key, int selectableItemsOnScreenCount);
+    void moveUpMenu(char keyboardKey, int selectableItemsOnScreenCount);
 
-    void moveDownMenu(char key, int selectableItemsOnScreenCount);
+    void moveDownMenu(char keyboardKey, int selectableItemsOnScreenCount);
 
-    void confirmSelectionMainMenu(char key);
+    void confirmSelectionMainMenu(char keyboardKey);
 
-    void confirmSelectionRoleMenu(char key);
+    void confirmSelectionRoleMenu(char keyboardKey);
 
-    void changeScreen(Screen newScreen, char key);
+    void changeScreen(Screen newScreen, char keyboardKey);
 
 public:
     Menu();
@@ -57,7 +57,7 @@ public:
     void displayCutscene() const;
 
     //Functionality
-    void handleMenuInput(char key);
+    void handleMenuInput(char keyboardKey);
 };
 
 #endif //MENU_H

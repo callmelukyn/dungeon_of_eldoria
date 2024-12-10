@@ -25,7 +25,7 @@ public:
 
     void render();
 
-    void handleInputs(char key);
+    void handleInputs(char keyboardKey);
 };
 
 

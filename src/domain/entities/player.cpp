@@ -65,14 +65,14 @@ int Player::getNumberOfPotions() const {
     return m_numberOfPotions;
 }
 
-void Player::movePlayer(const char key, const Screen currentScreen, const std::vector<Map *> &maps,
+void Player::movePlayer(const char keyboardKey, const Screen currentScreen, const std::vector<Map *> &maps,
                         const int currentLevel, const std::function<void()> &nextLevel) {
     if (Screen::game == currentScreen) {
         Map *map = maps[currentLevel];
         Position nextPosition = m_playerPosition;
 
         // Calculate the next position based on the input key
-        switch (key) {
+        switch (keyboardKey) {
             case KEYBOARD_SMALL_W:
             case KEYBOARD_CAPITAL_W:
                 nextPosition.y -= 1;
