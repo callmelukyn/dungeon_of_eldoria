@@ -9,6 +9,7 @@
 #include <conio.h>
 #include "domain/value_objects/screen.h"
 #include "Scenes.h"
+#include "domain/value_objects/role.h"
 
 
 //TODO Pak nekde prednastavit urcity levely a pridat je do switche v renderu
@@ -19,6 +20,7 @@ private:
     Screen m_currentScreen;
     std::vector<Scenes *> m_scenes;
     Scenes *m_scene;
+    Role m_role;
 
     //Movement
     void navigateMenu(char keyboardKey, int selectableItemsOnScreenCount);
@@ -58,6 +60,8 @@ public:
 
     //Functionality
     void handleMenuInput(char keyboardKey);
+
+    Role getRole() const;
 };
 
 #endif //MENU_H

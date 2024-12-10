@@ -4,9 +4,9 @@
 #include "domain/entities/player.h"
 
 Game::Game() {
-    m_player = new Player(Role::warrior);
     m_menu = new Menu();
     m_levels = new Levels();
+    m_player = new Player(m_menu->getRole());
 }
 
 Game::~Game() {
@@ -40,9 +40,10 @@ void Game::render() {
 
 void Game::handleInputs(const char keyboardKey) {
     // Handle movement on the map
-    m_player->movePlayer(keyboardKey, m_menu->getCurrentScreen(), m_levels->getMaps(), m_levels->getCurrentLevel(), [this] {
-        m_levels->nextLevel(m_player);
-    });
+    m_player->movePlayer(keyboardKey, m_menu->getCurrentScreen(), m_levels->getMaps(), m_levels->getCurrentLevel(),
+                         [this] {
+                             m_levels->nextLevel(m_player);
+                         });
     // Handle movement on menu
     m_menu->handleMenuInput(keyboardKey);
 }

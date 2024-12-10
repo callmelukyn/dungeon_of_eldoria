@@ -12,6 +12,7 @@ Menu::Menu() {
     m_currentScreen = Screen::mainMenu;
     m_scenes.push_back(new Scenes());
     m_scene = new Scenes();
+    m_role = {};
 }
 
 Menu::~Menu() {
@@ -159,13 +160,16 @@ void Menu::confirmSelectionMainMenu(const char keyboardKey) {
 void Menu::confirmSelectionRoleMenu(const char keyboardKey) {
     switch (selected) {
         case 0: //TODO Predat informaci o vyberu konkretni classy Player konstruktoru
+            m_role = Role::warrior;
             changeScreen(Screen::cutscene, keyboardKey); //Test cutscene
         //changeScreen(Screen::game, keyboardKey);
             break;
         case 1:
+            m_role = Role::archer;
             changeScreen(Screen::game, keyboardKey);
             break;
         case 2:
+            m_role = Role::mage;
             changeScreen(Screen::game, keyboardKey);
             break;
         default: break;
@@ -177,3 +181,8 @@ void Menu::navigateMenu(const char keyboardKey, const int selectableItemsOnScree
     moveDownMenu(keyboardKey, selectableItemsOnScreenCount);
     changeScreen(Screen::mainMenu, keyboardKey);
 }
+
+Role Menu::getRole() const {
+    return m_role;
+}
+
