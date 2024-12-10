@@ -4,6 +4,7 @@
 
 #include "player.h"
 
+#include "../../GlobalSettings.h"
 #include "../value_objects/screen.h"
 
 Player::Player(const Role role) : m_playerPosition(Position{2, 2}) {
@@ -72,16 +73,20 @@ void Player::movePlayer(const char key, const Screen currentScreen, const std::v
 
         // Calculate the next position based on the input key
         switch (key) {
-            case 'w':
+            case KEYBOARD_SMALL_W:
+            case KEYBOARD_CAPITAL_W:
                 nextPosition.y -= 1;
                 break;
-            case 's':
+            case KEYBOARD_SMALL_S:
+            case KEYBOARD_CAPITAL_S:
                 nextPosition.y += 1;
                 break;
-            case 'a':
+            case KEYBOARD_SMALL_A:
+            case KEYBOARD_CAPITAL_A:
                 nextPosition.x -= 1;
                 break;
-            case 'd':
+            case KEYBOARD_SMALL_D:
+            case KEYBOARD_CAPITAL_D:
                 nextPosition.x += 1;
                 break;
             default:

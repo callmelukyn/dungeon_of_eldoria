@@ -5,6 +5,7 @@
 #include "menu.h"
 #include "application.h"
 #include "color.h"
+#include "GlobalSettings.h"
 
 Menu::Menu() {
     selected = 0;
@@ -20,10 +21,10 @@ Menu::~Menu() {
 }
 
 void Menu::changeScreen(const Screen newScreen, const char key) {
-    if (m_currentScreen != Screen::mainMenu && key == 27) {
+    if (m_currentScreen != Screen::mainMenu && key == KEYBOARD_ESC) {
         clearConsoleOnNewScreen();
         m_currentScreen = Screen::mainMenu;
-    } else if (key == 13 && m_currentScreen != Screen::game) {
+    } else if (key == KEYBOARD_ENTER && m_currentScreen != Screen::game) {
         clearConsoleOnNewScreen();
         m_currentScreen = newScreen;
     }
@@ -36,7 +37,7 @@ Screen Menu::getCurrentScreen() const {
 void Menu::handleMenuInput(const char key) {
     switch (m_currentScreen) {
         case Screen::mainMenu:
-            if (key == 27) {
+            if (key == KEYBOARD_ESC) {
                 Application::shutdown();
                 break;
             }
@@ -118,7 +119,7 @@ void Menu::displayCutscene() const {
 }
 
 void Menu::moveUpMenu(const char key, const int selectableItemsOnScreenCount) {
-    if (key == 'w' || key == 'W') {
+    if (key == KEYBOARD_SMALL_W || key == KEYBOARD_CAPITAL_W) {
         selected--;
         if (selected < 0) {
             selected = selectableItemsOnScreenCount - 1;
@@ -127,7 +128,7 @@ void Menu::moveUpMenu(const char key, const int selectableItemsOnScreenCount) {
 }
 
 void Menu::moveDownMenu(const char key, const int selectableItemsOnScreenCount) {
-    if (key == 's' || key == 'S') {
+    if (key == KEYBOARD_SMALL_S || key == KEYBOARD_CAPITAL_S) {
         selected++;
         if (selected >= selectableItemsOnScreenCount) {
             selected = 0;
@@ -147,7 +148,7 @@ void Menu::confirmSelectionMainMenu(const char key) {
             changeScreen(Screen::howToPlayMenu, key);
             break;
         case 3:
-            if (key == 13) {
+            if (key == KEYBOARD_ENTER) {
                 Application::shutdown();
                 break;
             }
