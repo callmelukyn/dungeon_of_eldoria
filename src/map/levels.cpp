@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "../Tools/GlobalSettings.h"
+#include "../tools/globalSettings.h"
 
 Levels::Levels() {
     m_currentLevel = 0;

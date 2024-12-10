@@ -5,7 +5,8 @@
 #ifndef MAP_H
 #define MAP_H
 #include <vector>
-#include "../domain/entities/position.h"
+
+#include "position.h"
 #include "../domain/value_objects/doorPosition.h"
 
 class Map {

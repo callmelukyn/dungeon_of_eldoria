@@ -4,19 +4,13 @@
 
 #ifndef MENU_H
 #define MENU_H
-#include <iostream>
 #include <vector>
-#include <conio.h>
 #include "../domain/value_objects/screen.h"
-#include "Scenes.h"
+#include "scenes.h"
 #include "../domain/value_objects/role.h"
 
-
-//TODO Pak nekde prednastavit urcity levely a pridat je do switche v renderu
-
 class Menu {
-private:
-    int selected;
+    int m_selected;
     Screen m_currentScreen;
     std::vector<Scenes *> m_scenes;
     Scenes *m_scene;

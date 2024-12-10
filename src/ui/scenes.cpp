@@ -2,9 +2,9 @@
 // Created by Lukyn on 06.12.2024.
 //
 
-#include "Scenes.h"
+#include "scenes.h"
 #include <iostream>
-#include "../Tools/GlobalSettings.h"
+#include "../tools/globalSettings.h"
 
 Scenes::Scenes() {
 }

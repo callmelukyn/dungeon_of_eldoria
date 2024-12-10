@@ -1,9 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
-#include "UI/menu.h"
+#include "ui/menu.h"
 #include "domain/entities/player.h"
 #include "map/levels.h"
-
 
 class Game {
     Player *m_player;

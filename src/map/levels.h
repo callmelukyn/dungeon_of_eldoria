@@ -5,7 +5,6 @@
 #include "map.h"
 #include "../domain/entities/player.h"
 
-
 class Levels {
     int m_currentLevel;
     std::vector<Map *> m_maps;

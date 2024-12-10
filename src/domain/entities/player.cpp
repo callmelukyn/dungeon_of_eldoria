@@ -4,7 +4,7 @@
 
 #include "player.h"
 
-#include "../../Tools/GlobalSettings.h"
+#include "../../tools/globalSettings.h"
 #include "../value_objects/screen.h"
 
 Player::Player(const Role role) : m_playerPosition(Position{2, 2}) {
