@@ -17,7 +17,7 @@ Game::~Game() {
     delete m_levels;
 }
 
-void Game::render() {
+void Game::render() const {
     switch (m_menu->getCurrentScreen()) {
         case Screen::mainMenu:
             m_menu->displayMainMenu();
@@ -31,17 +31,8 @@ void Game::render() {
         case Screen::howToPlayMenu:
             m_menu->displayHowToPlay();
             break;
-        case Screen::cutscene1:
-            m_menu->displayCutscene1();
-            break;
-        case Screen::cutscene2:
-            m_menu->displayCutscene2();
-            break;
-        case Screen::cutscene3:
-            m_menu->displayCutscene3();
-            break;
-        case Screen::cutscene4:
-            m_menu->displayCutscene4();
+        case Screen::cutscenes:
+            m_menu->displayCutscenes();
             break;
         case Screen::game:
             displayGUI();
@@ -49,7 +40,7 @@ void Game::render() {
     }
 }
 
-void Game::handleInputs(const char keyboardKey) {
+void Game::handleInputs(const char keyboardKey) const {
     // Handle movement on the map
     m_player->movePlayer(keyboardKey, m_menu->getCurrentScreen(), m_levels->getMaps(), m_levels->getCurrentLevel(),
                          [this] {
@@ -59,12 +50,11 @@ void Game::handleInputs(const char keyboardKey) {
     m_menu->handleMenuInput(keyboardKey);
 }
 
-
 void Game::displayMap() const {
     m_levels->loadAllLevels();
 }
 
-void Game::displayGUI() {
+void Game::displayGUI() const {
     m_menu->smallHeaderMenu();
     displayPlayerProperties();
     displayMap();

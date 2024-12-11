@@ -12,15 +12,12 @@
 Menu::Menu() {
     m_selected = 0;
     m_currentScreen = Screen::mainMenu;
-    m_scenes.push_back(new Scenes());
     m_scene = new Scenes();
     m_role = {};
 }
 
 Menu::~Menu() {
-    for (Scenes *scene: m_scenes) {
-        delete scene;
-    }
+    delete m_scene;
 }
 
 void Menu::changeScreen(const Screen newScreen, const char keyboardKey) {
@@ -57,25 +54,8 @@ void Menu::handleMenuInput(const char keyboardKey) {
         case Screen::howToPlayMenu:
             navigateMenu(keyboardKey, 1);
             break;
-        case Screen::cutscene1:
-            if (keyboardKey == KEYBOARD_ENTER) {
-                changeScreen(Screen::cutscene2, keyboardKey);
-            }
-            break;
-        case Screen::cutscene2:
-            if (keyboardKey == KEYBOARD_ENTER) {
-                changeScreen(Screen::cutscene3, keyboardKey);
-            }
-            break;
-        case Screen::cutscene3:
-            if (keyboardKey == KEYBOARD_ENTER) {
-                changeScreen(Screen::cutscene4, keyboardKey);
-            }
-            break;
-        case Screen::cutscene4:
-            if (keyboardKey == KEYBOARD_ENTER) {
-                changeScreen(Screen::game, keyboardKey);
-            }
+        case Screen::cutscenes:
+            confirmCutscene(keyboardKey);
             break;
         default: navigateMenu(keyboardKey, 4);
     }
@@ -104,6 +84,7 @@ void Menu::displayMainMenu() const {
         case 3:
             m_scene->sceneMainSelectedExit();
             break;
+        default: break;
     }
 }
 
@@ -117,7 +98,7 @@ void Menu::displayHowToPlay() const {
 }
 
 void Menu::displayRoleMenu() const {
-    GlobalSettings::clearConsoleOnNewScreen();;
+    GlobalSettings::clearConsoleOnNewScreen();
     headerMenu();
     std::cout << "<=== CHOOSE YOUR ROLE ===>\n";
     switch (m_selected) {
@@ -130,23 +111,12 @@ void Menu::displayRoleMenu() const {
         case 2:
             m_scene->sceneRoleSelectedMage();
             break;
+        default: break;
     }
 }
 
-void Menu::displayCutscene1() const {
-    m_scene->sceneProlog1();
-}
-
-void Menu::displayCutscene2() const {
-    m_scene->sceneProlog2();
-}
-
-void Menu::displayCutscene3() const {
-    m_scene->sceneProlog3();
-}
-
-void Menu::displayCutscene4() const {
-    m_scene->sceneProlog4();
+void Menu::displayCutscenes() const {
+    m_scene->printScenes();
 }
 
 void Menu::moveUpMenu(const char keyboardKey, const int selectableItemsOnScreenCount) {
@@ -181,8 +151,8 @@ void Menu::confirmSelectionMainMenu(const char keyboardKey) {
         case 3:
             if (keyboardKey == KEYBOARD_ENTER) {
                 Application::shutdown();
-                break;
             }
+            break;
         default: break;
     }
 }
@@ -191,17 +161,30 @@ void Menu::confirmSelectionRoleMenu(const char keyboardKey) {
     switch (m_selected) {
         case 0: //TODO Predat informaci o vyberu konkretni classy Player konstruktoru
             m_role = Role::warrior;
-            changeScreen(Screen::cutscene1, keyboardKey);
+            changeScreen(Screen::cutscenes, keyboardKey);
             break;
         case 1:
             m_role = Role::archer;
-            changeScreen(Screen::cutscene1, keyboardKey);
+            changeScreen(Screen::cutscenes, keyboardKey);
             break;
         case 2:
             m_role = Role::mage;
-            changeScreen(Screen::cutscene1, keyboardKey);
+            changeScreen(Screen::cutscenes, keyboardKey);
             break;
         default: break;
+    }
+}
+
+void Menu::confirmCutscene(const char keyboardKey) {
+    if (keyboardKey != KEYBOARD_ENTER) {
+        system("cls");
+    } else {
+        system("cls");
+        m_scene->incrementCurrentScene(keyboardKey);
+        if (m_scene->getCurrentScene() > 3) {
+            changeScreen(Screen::game, keyboardKey);
+            m_scene->setCurrentScene(0);
+        }
     }
 }
 

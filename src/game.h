@@ -11,7 +11,7 @@ class Game {
 
     void displayMap() const;
 
-    void displayGUI();
+    void displayGUI() const;
 
     void displayHelp() const;
 
@@ -22,9 +22,9 @@ public:
 
     ~Game();
 
-    void render();
+    void render() const;
 
-    void handleInputs(char keyboardKey);
+    void handleInputs(char keyboardKey) const;
 };
 
 

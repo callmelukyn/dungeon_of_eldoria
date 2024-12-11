@@ -4,7 +4,6 @@
 
 #ifndef MENU_H
 #define MENU_H
-#include <vector>
 #include "../domain/value_objects/screen.h"
 #include "scenes.h"
 #include "../domain/value_objects/role.h"
@@ -12,7 +11,6 @@
 class Menu {
     int m_selected;
     Screen m_currentScreen;
-    std::vector<Scenes *> m_scenes;
     Scenes *m_scene;
     Role m_role;
 
@@ -26,6 +24,8 @@ class Menu {
     void confirmSelectionMainMenu(char keyboardKey);
 
     void confirmSelectionRoleMenu(char keyboardKey);
+
+    void confirmCutscene(char keyboardKey);
 
     void changeScreen(Screen newScreen, char keyboardKey);
 
@@ -48,15 +48,9 @@ public:
 
     void displayHowToPlay() const;
 
+    void displayCutscenes() const;
+
     Screen getCurrentScreen() const;
-
-    void displayCutscene1() const;
-
-    void displayCutscene2() const;
-
-    void displayCutscene3() const;
-
-    void displayCutscene4() const;
 
     //Functionality
     void handleMenuInput(char keyboardKey);

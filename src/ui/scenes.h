@@ -6,8 +6,18 @@
 #define SCENES_H
 
 class Scenes {
+    int m_currentScene;
+
 public:
     Scenes();
+
+    void printScenes() const;
+
+    void setCurrentScene(int currentScene);
+
+    void incrementCurrentScene(char keyboardKey);
+
+    int getCurrentScene() const;
 
     //Scene text
     void continueHint() const;

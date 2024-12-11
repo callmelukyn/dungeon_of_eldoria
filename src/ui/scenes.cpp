@@ -7,6 +7,39 @@
 #include "../tools/globalSettings.h"
 
 Scenes::Scenes() {
+    m_currentScene = 0;
+}
+
+void Scenes::printScenes() const {
+    switch (m_currentScene) {
+        case 0:
+            sceneProlog1();
+            break;
+        case 1:
+            sceneProlog2();
+            break;
+        case 2:
+            sceneProlog3();
+            break;
+        case 3:
+            sceneProlog4();
+            break;
+        default: break;
+    }
+}
+
+void Scenes::setCurrentScene(const int currentScene) {
+    m_currentScene = currentScene;
+}
+
+void Scenes::incrementCurrentScene(const char keyboardKey) {
+    if (keyboardKey == KEYBOARD_ENTER) {
+        m_currentScene++;
+    }
+}
+
+int Scenes::getCurrentScene() const {
+    return m_currentScene;
 }
 
 void Scenes::sceneHeaderMenu() const {
