@@ -301,56 +301,56 @@ void Scenes::prologText3() const {
 }
 
 void Scenes::prologArt3() const {
-    std::cout << "                 __                                                       |                     \n";
-    std::cout << "                /__`.                                                     |                     \n";
+    std::cout << "                 __                                                  |                     \n";
+    std::cout << "                /__`.                                                |                     \n";
     std::cout <<
-            "               / \\ `\\\\                                                    |                     \n";
+            "               / \\ `\\\\                                               |                     \n";
     std::cout <<
-            "              /   \\  `\\                                                   |                     \n";
+            "              /   \\  `\\                                              |                     \n";
     std::cout <<
-            "             /     \\   \\                                                  |                           _,.                 '``oH NOoo, they have captured\n";
+            "             /     \\   \\                                             |                           _,.         '``oH NOoo, they have captured\n";
     std::cout <<
-            "            /_______\\  /\\                                                 |                         ,` -.)                    the princess Laurien``'\n";
+            "            /_______\\  /\\                                            |                         ,` -.)            the princess Laurien``'\n";
     std::cout <<
-            "            (((( ))))                                                     |                        ( _/-\\\\-._\n";
+            "            (((( ))))                                                |                        ( _/-\\\\-._\n";
     std::cout <<
-            "           (((' . ')))                                                    |                       /,|`--._,-^|            ,\n";
+            "           (((' . ')))                                               |                       /,|`--._,-^|            ,\n";
     std::cout <<
-            "           (((\\_O_/)))                                                    |                       \\_| |`-._/||          ,'|\n";
+            "           (((\\_O_/)))                                               |                       \\_| |`-._/||          ,'|\n";
     std::cout <<
-            "           (((_) (_)))                                                    |                         |  `-, / |         /  /\n";
+            "           (((_) (_)))                                               |                         |  `-, / |         /  /\n";
     std::cout <<
-            "          /((( \\ / )))\\                                                   |                         |     || |        /  /\n";
+            "          /((( \\ / )))\\                                              |                         |     || |        /  /\n";
     std::cout <<
-            "         / (((  ^  ))) \\                                                  |                          `r-._||/   __   /  /\n";
+            "         / (((  ^  ))) \\                                             |                          `r-._||/   __   /  /\n";
     std::cout <<
-            "        / / ((  ^  )) \\ \\                                                 |                      __,-<_     )`-/  `./  /\n";
+            "        / / ((  ^  )) \\ \\                                            |                      __,-<_     )`-/  `./  /\n";
     std::cout <<
-            "       ( (   \\  ^  /   ) )                                                |                     /  \\   `---'   \\   /  /\n";
+            "       ( (   \\  ^  /   ) )                                           |                     /  \\   `---'   \\   /  /\n";
     std::cout <<
-            "        \\ \\   )www(   / /                                                 |                    |    |           |./  /\n";
+            "        \\ \\   )www(   / /                                            |                    |    |           |./  /\n";
     std::cout <<
-            "         `\\\\ /     \\ //'                                                  |                    \\    /           //  /\n";
+            "         `\\\\ /     \\ //'                                             |                    \\    /           //  /\n";
     std::cout <<
-            "           /'       `\\                                                    |                     \\_/' \\         |/  /\n";
+            "           /'       `\\                                               |                     \\_/' \\         |/  /\n";
     std::cout <<
-            "          /           \\                                                   |                      |    |   _,^-'/  /\n";
+            "          /           \\                                              |                      |    |   _,^-'/  /\n";
     std::cout <<
-            "         /             \\                                                  |                      |    , ``  (\\/  /_\n";
+            "         /             \\                                             |                      |    , ``  (\\/  /_\n";
     std::cout <<
-            "        /               \\                                                 |                       \\,.->._    \\X-=/^\n";
+            "        /               \\                                            |                       \\,.->._    \\X-=/^\n";
     std::cout <<
-            "       /                 \\                                                |                       (  /   `-._//^`\n";
+            "       /                 \\                                           |                       (  /   `-._//^`\n";
     std::cout <<
-            "      /                   \\                                               |                        `Y-.____(__}\n";
+            "      /                   \\                                          |                        `Y-.____(__}\n";
     std::cout <<
-            "     /                     \\                                              |                         |     {__)\n";
+            "     /                     \\                                         |                         |     {__)\n";
     std::cout <<
-            "    /                       \\                                             |                               ()\n";
-    std::cout << "   /                         \\                                            |\n";
-    std::cout << "  /                           \\                                           |\n";
-    std::cout << " |                             |                                          |\n";
-    std::cout << "  `-----......_____......-----'                                           |\n";
+            "    /                       \\                                        |                               ()\n";
+    std::cout << "   /                         \\                                       |\n";
+    std::cout << "  /                           \\                                      |\n";
+    std::cout << " |                             |                                     |\n";
+    std::cout << "  `-----......_____......-----'                                      |\n";
 }
 
 void Scenes::sceneProlog3() const {
@@ -363,7 +363,7 @@ void Scenes::prologText4() const {
     std::cout <<
             "\n   Trail led you to a nearby tomb known as the Tomb of Oblivion - feared by all, for no one who entered ever returned. \n";
     std::cout <<
-            "    Kaelan wasted no time and, armed only with his solitary weapon, ventured into the tomb, ";
+            "   Kaelan wasted no time and, armed only with his solitary weapon, ventured into the tomb, ";
     GlobalSettings::setColor(COLOR_RED);
     std::cout << "ALONE.\n\n";
     GlobalSettings::setColor(COLOR_DEFAULT);
