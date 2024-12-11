@@ -57,13 +57,24 @@ void Menu::handleMenuInput(const char keyboardKey) {
         case Screen::howToPlayMenu:
             navigateMenu(keyboardKey, 1);
             break;
-        case Screen::cutscene:
-            navigateMenu(keyboardKey, 1);
+        case Screen::cutscene1:
+            if (keyboardKey == KEYBOARD_ENTER) {
+                changeScreen(Screen::cutscene2, keyboardKey);
+            }
+            break;
+        case Screen::cutscene2:
+            if (keyboardKey == KEYBOARD_ENTER) {
+                changeScreen(Screen::cutscene3, keyboardKey);
+            }
+            break;
+        case Screen::cutscene3:
+            if (keyboardKey == KEYBOARD_ENTER) {
+                changeScreen(Screen::game, keyboardKey);
+            }
             break;
         default: navigateMenu(keyboardKey, 4);
     }
 }
-
 
 void Menu::headerMenu() const {
     m_scene->sceneHeaderMenu();
@@ -117,8 +128,16 @@ void Menu::displayRoleMenu() const {
     }
 }
 
-void Menu::displayCutscene() const {
-    m_scenes.at(0)->sceneProlog1();
+void Menu::displayCutscene1() const {
+    m_scene->sceneProlog1();
+}
+
+void Menu::displayCutscene2() const {
+    m_scene->sceneProlog2();
+}
+
+void Menu::displayCutscene3() const {
+    m_scene->sceneProlog3();
 }
 
 void Menu::moveUpMenu(const char keyboardKey, const int selectableItemsOnScreenCount) {
@@ -163,16 +182,15 @@ void Menu::confirmSelectionRoleMenu(const char keyboardKey) {
     switch (m_selected) {
         case 0: //TODO Predat informaci o vyberu konkretni classy Player konstruktoru
             m_role = Role::warrior;
-            changeScreen(Screen::cutscene, keyboardKey); //Test cutscene
-        //changeScreen(Screen::game, keyboardKey);
+            changeScreen(Screen::cutscene1, keyboardKey);
             break;
         case 1:
             m_role = Role::archer;
-            changeScreen(Screen::game, keyboardKey);
+            changeScreen(Screen::cutscene1, keyboardKey);
             break;
         case 2:
             m_role = Role::mage;
-            changeScreen(Screen::game, keyboardKey);
+            changeScreen(Screen::cutscene1, keyboardKey);
             break;
         default: break;
     }

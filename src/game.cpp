@@ -31,8 +31,14 @@ void Game::render() {
         case Screen::howToPlayMenu:
             m_menu->displayHowToPlay();
             break;
-        case Screen::cutscene:
-            m_menu->displayCutscene();
+        case Screen::cutscene1:
+            m_menu->displayCutscene1();
+            break;
+        case Screen::cutscene2:
+            m_menu->displayCutscene2();
+            break;
+        case Screen::cutscene3:
+            m_menu->displayCutscene3();
             break;
         case Screen::game:
             displayGUI();

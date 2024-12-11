@@ -206,7 +206,7 @@ void Scenes::sceneRoleSelectedMage() const {
 }
 
 void Scenes::continueHint() const {
-    std::cout << "\n   Press any key to continue...";
+    std::cout << "\n   Press [ENTER] to continue...";
 }
 
 void Scenes::prologText1() const {
@@ -294,11 +294,13 @@ void Scenes::prologText3() const {
     std::cout << "You, Prince Kaelan, have noticed this and decided to pursue the evil with the kidnapped princess.\n";
     std::cout << "It led you to a nearby tomb, which everyone in the area knew as the Tomb of Oblivion.\n";
     std::cout <<
-            "No one ever returned from visiting it. Kaelan did not waste any more time and went to the tomb, with his only weapon, ALONE.\n\n";
+            "No one ever returned from visiting it. Kaelan did not waste any more time and went to the tomb, with his only weapon, ";
+    GlobalSettings::setColor(COLOR_RED);
+    std::cout << "ALONE.\n\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
 }
 
 void Scenes::prologArt3() const {
-    std::cout << "                                          .\n";
     std::cout << "                                    .' '.\n";
     std::cout << "                                  .'  |  `.\n";
     std::cout << "                                .'    |    `.\n";
@@ -308,7 +310,6 @@ void Scenes::prologArt3() const {
     std::cout << "                               ||`-._|=|_.-'||\n";
     std::cout << "                          _____||    |=|    ||__\n";
     std::cout << "            ____________.'     `-.   |=|  .'_.'\\/`.\n";
-    std::cout << "          .'       _  .' _______  `-.|_|.' .'\\.'`./`.\n";
     std::cout << "        .'     _   _.'      _   _        .'\\.' `._`./`.\n";
     std::cout << "      .' _       _.' __          __    .'\\.'  ___`._`./`.\n";
     std::cout << "    .'        _ .'   _____           .'\\.'         `._`./`.\n";

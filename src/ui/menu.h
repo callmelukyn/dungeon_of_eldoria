@@ -50,7 +50,11 @@ public:
 
     Screen getCurrentScreen() const;
 
-    void displayCutscene() const;
+    void displayCutscene1() const;
+
+    void displayCutscene2() const;
+
+    void displayCutscene3() const;
 
     //Functionality
     void handleMenuInput(char keyboardKey);

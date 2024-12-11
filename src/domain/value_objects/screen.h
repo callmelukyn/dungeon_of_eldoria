@@ -1,6 +1,6 @@
 #ifndef MENUSCREEN_H
 #define MENUSCREEN_H
 
-enum class Screen { mainMenu, roleMenu, creditsMenu, howToPlayMenu, cutscene, game };
+enum class Screen { mainMenu, roleMenu, creditsMenu, howToPlayMenu, cutscene1, cutscene2, cutscene3, game };
 
 #endif //MENUSCREEN_H
