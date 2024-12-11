@@ -56,6 +56,8 @@ public:
 
     void displayCutscene3() const;
 
+    void displayCutscene4() const;
+
     //Functionality
     void handleMenuInput(char keyboardKey);
 

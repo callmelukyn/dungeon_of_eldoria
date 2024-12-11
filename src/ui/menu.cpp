@@ -69,6 +69,11 @@ void Menu::handleMenuInput(const char keyboardKey) {
             break;
         case Screen::cutscene3:
             if (keyboardKey == KEYBOARD_ENTER) {
+                changeScreen(Screen::cutscene4, keyboardKey);
+            }
+            break;
+        case Screen::cutscene4:
+            if (keyboardKey == KEYBOARD_ENTER) {
                 changeScreen(Screen::game, keyboardKey);
             }
             break;
@@ -138,6 +143,10 @@ void Menu::displayCutscene2() const {
 
 void Menu::displayCutscene3() const {
     m_scene->sceneProlog3();
+}
+
+void Menu::displayCutscene4() const {
+    m_scene->sceneProlog4();
 }
 
 void Menu::moveUpMenu(const char keyboardKey, const int selectableItemsOnScreenCount) {

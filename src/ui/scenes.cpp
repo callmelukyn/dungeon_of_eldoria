@@ -211,8 +211,9 @@ void Scenes::continueHint() const {
 
 void Scenes::prologText1() const {
     std::cout <<
-            "Switzerland, Arosa Valley, Kingdom of Eldoria, year 1638. Local scientists are trying to gain power\n";
-    std::cout << "and a certain battle advantage over other kingdoms with the help of black magic.\n\n";
+            "\n   Switzerland, Arosa Valley, Kingdom of Eldoria, year 1638. Local scientists are attempting to gain power\n";
+    std::cout <<
+            "   and secure a strategic advantage over other kingdoms by summoning the demon Necromancer.\n\n";
 }
 
 void Scenes::prologArt1() const {
@@ -244,14 +245,14 @@ void Scenes::sceneProlog1() const {
 
 void Scenes::prologText2() const {
     std::cout <<
-            "However, the evil they have created has gotten out of the scientist's hands and chaos has broken out in the kingdom.\n";
-    std::cout << "Every night, while everyone is asleep, people have started disappearing and no one knows where.\n\n";
+            "\n   However, the evil they have summoned has gotten out of the scientist's hands and chaos has broken out in the kingdom.\n";
+    std::cout <<
+            "   Every night, evil entities descend upon the kingdom, and people begin to vanish without a trace.\n\n";
 }
 
 void Scenes::prologArt2() const {
-    std::cout << "                  .7\n";
-    std::cout << "                .'/\n";
-    std::cout << "               / /\n";
+    std::cout << "                 .7\n";
+    std::cout << "               .'/\n";
     std::cout << "              / /\n";
     std::cout << "             / /\n";
     std::cout << "            / /\n";
@@ -290,23 +291,90 @@ void Scenes::sceneProlog2() const {
 }
 
 void Scenes::prologText3() const {
-    std::cout << "One night, the evil has come for the princess herself.\n";
-    std::cout << "You, Prince Kaelan, have noticed this and decided to pursue the evil with the kidnapped princess.\n";
-    std::cout << "It led you to a nearby tomb, which everyone in the area knew as the Tomb of Oblivion.\n";
+    std::cout << "\n   One night, ";
+    GlobalSettings::setColor(COLOR_RED);
+    std::cout << "THE EVIL";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << " had come for the princess herself.\n";
     std::cout <<
-            "No one ever returned from visiting it. Kaelan did not waste any more time and went to the tomb, with his only weapon, ";
+            "   You, Prince Kaelan, have noticed this and decided to pursue the evil with the helpless princess.\n\n";
+}
+
+void Scenes::prologArt3() const {
+    std::cout << "                 __                                                       |                     \n";
+    std::cout << "                /__`.                                                     |                     \n";
+    std::cout <<
+            "               / \\ `\\\\                                                    |                     \n";
+    std::cout <<
+            "              /   \\  `\\                                                   |                     \n";
+    std::cout <<
+            "             /     \\   \\                                                  |                           _,.                 '``oH NOoo, they have captured\n";
+    std::cout <<
+            "            /_______\\  /\\                                                 |                         ,` -.)                    the princess Laurien``'\n";
+    std::cout <<
+            "            (((( ))))                                                     |                        ( _/-\\\\-._\n";
+    std::cout <<
+            "           (((' . ')))                                                    |                       /,|`--._,-^|            ,\n";
+    std::cout <<
+            "           (((\\_O_/)))                                                    |                       \\_| |`-._/||          ,'|\n";
+    std::cout <<
+            "           (((_) (_)))                                                    |                         |  `-, / |         /  /\n";
+    std::cout <<
+            "          /((( \\ / )))\\                                                   |                         |     || |        /  /\n";
+    std::cout <<
+            "         / (((  ^  ))) \\                                                  |                          `r-._||/   __   /  /\n";
+    std::cout <<
+            "        / / ((  ^  )) \\ \\                                                 |                      __,-<_     )`-/  `./  /\n";
+    std::cout <<
+            "       ( (   \\  ^  /   ) )                                                |                     /  \\   `---'   \\   /  /\n";
+    std::cout <<
+            "        \\ \\   )www(   / /                                                 |                    |    |           |./  /\n";
+    std::cout <<
+            "         `\\\\ /     \\ //'                                                  |                    \\    /           //  /\n";
+    std::cout <<
+            "           /'       `\\                                                    |                     \\_/' \\         |/  /\n";
+    std::cout <<
+            "          /           \\                                                   |                      |    |   _,^-'/  /\n";
+    std::cout <<
+            "         /             \\                                                  |                      |    , ``  (\\/  /_\n";
+    std::cout <<
+            "        /               \\                                                 |                       \\,.->._    \\X-=/^\n";
+    std::cout <<
+            "       /                 \\                                                |                       (  /   `-._//^`\n";
+    std::cout <<
+            "      /                   \\                                               |                        `Y-.____(__}\n";
+    std::cout <<
+            "     /                     \\                                              |                         |     {__)\n";
+    std::cout <<
+            "    /                       \\                                             |                               ()\n";
+    std::cout << "   /                         \\                                            |\n";
+    std::cout << "  /                           \\                                           |\n";
+    std::cout << " |                             |                                          |\n";
+    std::cout << "  `-----......_____......-----'                                           |\n";
+}
+
+void Scenes::sceneProlog3() const {
+    prologText3();
+    prologArt3();
+    continueHint();
+}
+
+void Scenes::prologText4() const {
+    std::cout <<
+            "\n   Trail led you to a nearby tomb known as the Tomb of Oblivion - feared by all, for no one who entered ever returned. \n";
+    std::cout <<
+            "    Kaelan wasted no time and, armed only with his solitary weapon, ventured into the tomb, ";
     GlobalSettings::setColor(COLOR_RED);
     std::cout << "ALONE.\n\n";
     GlobalSettings::setColor(COLOR_DEFAULT);
 }
 
-void Scenes::prologArt3() const {
+void Scenes::prologArt4() const {
     std::cout << "                                    .' '.\n";
     std::cout << "                                  .'  |  `.\n";
     std::cout << "                                .'    |    `.\n";
     std::cout << "                              .`---.._|_..---'.\n";
     std::cout << "                               ||    |=|    ||\n";
-    std::cout << "                               ||_.-'|=|`-._||\n";
     std::cout << "                               ||`-._|=|_.-'||\n";
     std::cout << "                          _____||    |=|    ||__\n";
     std::cout << "            ____________.'     `-.   |=|  .'_.'\\/`.\n";
@@ -314,9 +382,9 @@ void Scenes::prologArt3() const {
     std::cout << "      .' _       _.' __          __    .'\\.'  ___`._`./`.\n";
     std::cout << "    .'        _ .'   _____           .'\\.'         `._`./`.\n";
     std::cout << "  .'  _  _    .'       ______      .'\\.'  __         `._`./`.\n";
-    std::cout << ".'`--...__ _.'            ______ .'\\.'    TOMB   __    `._`./`.\n";
-    std::cout << " `--...__ .'   ____            .'\\.'           _    OF   `._`./`.\n";
-    std::cout << " |      .`--...__            .'\\.'     _   OBLIVION    ____`._`./`.\n";
+    std::cout << ".'`--...__ _.'            ______ .'\\.'           __    `._`./`.\n";
+    std::cout << " `--...__ .'   ____            .'\\.'           _         `._`./`.\n";
+    std::cout << " |      .`--...__            .'\\.'     _               ____`._`./`.\n";
     std::cout << " | /`-._ `--...__`--...___ .'\\.'              _______       _`._`./`.\n";
     std::cout << " | | ) ( |       `--...____\\.'     _     _  .'      .`.        `._`./\n";
     std::cout << " | |)   (| /`-._             |            .'      .'   `.     _ |\n";
@@ -328,15 +396,14 @@ void Scenes::prologArt3() const {
     std::cout << " '-._    | `--._/  |) |(|    |      __ |      |   | |`- |  | _  |\n";
     std::cout << "     `-._| `--.    `--._/    |  ___    | _    |   | |`- |  |   '|\n";
     std::cout << "         |      `--._        |       _ |    ' |   |O|`- | _| _  |\n";
-    std::cout << "         '--._         `--._ |         | _    |_ \"| |`- |. |  __|\n";
-    std::cout << "              `--._          |       __|      |   | |`- |. | __ |\n";
+    std::cout << "         '--. ._. _    `--._ |         | _    |_ \"| |`- |. |  __|\n";
     std::cout << "                   `--._     |__       |   _  |\"  | |`- |  |___ |\n";
     std::cout << "                        `--._|_________|_     | _ |  `- |_ |____|\n";
     std::cout << "                                         '--._|___|     |__|\n";
 }
 
-void Scenes::sceneProlog3() const {
-    prologText3();
-    prologArt3();
+void Scenes::sceneProlog4() const {
+    prologText4();
+    prologArt4();
     continueHint();
 }

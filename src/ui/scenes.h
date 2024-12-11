@@ -18,6 +18,8 @@ public:
 
     void prologText3() const;
 
+    void prologText4() const;
+
     //Scene arts
     void prologArt1() const;
 
@@ -25,12 +27,16 @@ public:
 
     void prologArt3() const;
 
+    void prologArt4() const;
+
     //Whole cutscenes
     void sceneProlog1() const;
 
     void sceneProlog2() const;
 
     void sceneProlog3() const;
+
+    void sceneProlog4() const;
 
     //Menu scenes
     void sceneHeaderMenu() const;

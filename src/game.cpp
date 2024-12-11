@@ -40,6 +40,9 @@ void Game::render() {
         case Screen::cutscene3:
             m_menu->displayCutscene3();
             break;
+        case Screen::cutscene4:
+            m_menu->displayCutscene4();
+            break;
         case Screen::game:
             displayGUI();
             break;
