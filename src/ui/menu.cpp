@@ -177,9 +177,9 @@ void Menu::confirmSelectionRoleMenu(const char keyboardKey) {
 
 void Menu::confirmCutscene(const char keyboardKey) {
     if (keyboardKey != KEYBOARD_ENTER) {
-        system("cls");
+        GlobalSettings::clearConsoleOnNewScreen();
     } else {
-        system("cls");
+        GlobalSettings::clearConsoleOnNewScreen();
         m_scene->incrementCurrentScene(keyboardKey);
         if (m_scene->getCurrentScene() > 3) {
             changeScreen(Screen::game, keyboardKey);

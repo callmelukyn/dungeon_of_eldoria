@@ -35,6 +35,7 @@ void GlobalSettings::hideCursor() {
 
 void GlobalSettings::clearConsoleOnNewScreen() {
 #ifdef _WIN32
+    std::cout << "\x1B[3J";
     COORD topLeft = {0, 0};
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_SCREEN_BUFFER_INFO screen;
@@ -56,6 +57,7 @@ void GlobalSettings::clearConsoleOnNewScreen() {
 
 void GlobalSettings::clearScreen() {
 #ifdef _WIN32
+    std::cout << "\x1B[3J";
     COORD cursorPosition;
     cursorPosition.X = 0;
     cursorPosition.Y = 0;
