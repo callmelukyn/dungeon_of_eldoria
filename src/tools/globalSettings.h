@@ -22,6 +22,8 @@
 #define KEYBOARD_SMALL_D 100
 
 class GlobalSettings {
+    static bool supportsANSI();
+
 public:
     GlobalSettings();
 
@@ -34,6 +36,8 @@ public:
     static void clearConsoleOnNewScreen();
 
     static void clearScreen();
+
+    static void turnOnSupportForANSI();
 };
 
 

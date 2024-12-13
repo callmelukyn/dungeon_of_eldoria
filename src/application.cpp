@@ -15,6 +15,7 @@ Application::~Application() {
 }
 
 void Application::run() const {
+    GlobalSettings::turnOnSupportForANSI();
     while (m_running) {
         GlobalSettings::clearScreen();
         GlobalSettings::setFontSize();
