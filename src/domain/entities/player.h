@@ -13,7 +13,6 @@
 #include "../../map/map.h"
 
 class Player {
-protected:
     int m_xp;
     int m_coins;
     Role m_role;
@@ -25,7 +24,7 @@ protected:
     Position m_playerPosition;
 
 public:
-    Player(Role role);
+    Player(Role role, int hp, int damage, int armor, int range);
 
     void addPotion();
 

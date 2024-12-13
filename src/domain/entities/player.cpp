@@ -7,31 +7,16 @@
 #include "../../tools/globalSettings.h"
 #include "../value_objects/screen.h"
 
-Player::Player(const Role role) : m_playerPosition(Position{2, 2}) {
+Player::Player(const Role role, const int hp, const int damage, const int armor, const int range)
+    : m_playerPosition(Position{2, 2}) {
     m_role = role;
+    m_hp = hp;
+    m_damage = damage;
+    m_armor = armor;
+    m_range = range;
     m_xp = 0;
     m_coins = 0;
     m_numberOfPotions = 0;
-    switch (role) {
-        case Role::warrior:
-            m_hp = 100;
-            m_damage = 15;
-            m_armor = 15;
-            m_range = 1;
-            break;
-        case Role::archer:
-            m_hp = 50;
-            m_damage = 12;
-            m_armor = 8;
-            m_range = 3;
-            break;
-        case Role::mage:
-            m_hp = 20;
-            m_damage = 10;
-            m_armor = 5;
-            m_range = 5;
-            break;
-    }
 }
 
 void Player::addPotion() {

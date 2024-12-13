@@ -17,12 +17,14 @@ class Game {
 
     void displayPlayerProperties() const;
 
+    Player *initializePlayer();
+
 public:
     Game();
 
     ~Game();
 
-    void render() const;
+    void render();
 
     void handleInputs(char keyboardKey) const;
 };

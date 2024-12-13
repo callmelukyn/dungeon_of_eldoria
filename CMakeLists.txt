@@ -25,4 +25,14 @@ add_executable(zoo_project src/main.cpp
         src/ui/scenes.h
         src/tools/globalSettings.cpp
         src/tools/globalSettings.h
+        src/domain/entities/playerBuilder/playerBuilder.cpp
+        src/domain/entities/playerBuilder/playerBuilder.h
+        src/domain/entities/playerBuilder/warriorBuilder.cpp
+        src/domain/entities/playerBuilder/warriorBuilder.h
+        src/domain/entities/playerBuilder/playerDirector.cpp
+        src/domain/entities/playerBuilder/playerDirector.h
+        src/domain/entities/playerBuilder/archerBuilder.cpp
+        src/domain/entities/playerBuilder/archerBuilder.h
+        src/domain/entities/playerBuilder/mageBuilder.cpp
+        src/domain/entities/playerBuilder/mageBuilder.h
 )

@@ -7,17 +7,21 @@
 #include <iostream>
 
 #include "../application.h"
+#include "../domain/entities/playerBuilder/archerBuilder.h"
+#include "../domain/entities/playerBuilder/mageBuilder.h"
+#include "../domain/entities/playerBuilder/warriorBuilder.h"
 #include "../tools/globalSettings.h"
 
 Menu::Menu() {
     m_selected = 0;
     m_currentScreen = Screen::mainMenu;
     m_scene = new Scenes();
-    m_role = {};
+    m_playerDirector = new PlayerDirector(nullptr);
 }
 
 Menu::~Menu() {
     delete m_scene;
+    delete m_playerDirector;
 }
 
 void Menu::changeScreen(const Screen newScreen, const char keyboardKey) {
@@ -159,20 +163,18 @@ void Menu::confirmSelectionMainMenu(const char keyboardKey) {
 
 void Menu::confirmSelectionRoleMenu(const char keyboardKey) {
     switch (m_selected) {
-        case 0: //TODO Predat informaci o vyberu konkretni classy Player konstruktoru
-            m_role = Role::warrior;
-            changeScreen(Screen::cutscenes, keyboardKey);
+        case 0:
+            m_playerDirector->setBuilder(new WarriorBuilder());
             break;
         case 1:
-            m_role = Role::archer;
-            changeScreen(Screen::cutscenes, keyboardKey);
+            m_playerDirector->setBuilder(new ArcherBuilder());
             break;
         case 2:
-            m_role = Role::mage;
-            changeScreen(Screen::cutscenes, keyboardKey);
+            m_playerDirector->setBuilder(new MageBuilder());
             break;
         default: break;
     }
+    changeScreen(Screen::cutscenes, keyboardKey);
 }
 
 void Menu::confirmCutscene(const char keyboardKey) {
@@ -194,7 +196,7 @@ void Menu::navigateMenu(const char keyboardKey, const int selectableItemsOnScree
     changeScreen(Screen::mainMenu, keyboardKey);
 }
 
-Role Menu::getRole() const {
-    return m_role;
+PlayerDirector *Menu::getPlayerDirector() const {
+    return m_playerDirector;
 }
 

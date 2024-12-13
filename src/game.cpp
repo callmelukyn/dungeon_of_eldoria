@@ -8,16 +8,16 @@
 Game::Game() {
     m_menu = new Menu();
     m_levels = new Levels();
-    m_player = new Player(m_menu->getRole());
+    m_player = nullptr;
 }
 
 Game::~Game() {
-    delete m_player;
     delete m_menu;
     delete m_levels;
+    delete m_player;
 }
 
-void Game::render() const {
+void Game::render() {
     switch (m_menu->getCurrentScreen()) {
         case Screen::mainMenu:
             m_menu->displayMainMenu();
@@ -35,17 +35,20 @@ void Game::render() const {
             m_menu->displayCutscenes();
             break;
         case Screen::game:
+            initializePlayer();
             displayGUI();
             break;
     }
 }
 
 void Game::handleInputs(const char keyboardKey) const {
-    // Handle movement on the map
-    m_player->movePlayer(keyboardKey, m_menu->getCurrentScreen(), m_levels->getMaps(), m_levels->getCurrentLevel(),
-                         [this] {
-                             m_levels->nextLevel(m_player);
-                         });
+    if (m_player) {
+        // Handle movement on the map
+        m_player->movePlayer(keyboardKey, m_menu->getCurrentScreen(), m_levels->getMaps(), m_levels->getCurrentLevel(),
+                             [this] {
+                                 m_levels->nextLevel(m_player);
+                             });
+    }
     // Handle movement on menu
     m_menu->handleMenuInput(keyboardKey);
 }
@@ -80,4 +83,11 @@ void Game::displayPlayerProperties() const {
     std::cout << "XP: " << m_player->getXp() << "/100";
     std::cout << "     HEAL POTIONS: ";
     std::cout << m_player->getNumberOfPotions() << "\n";
+}
+
+Player *Game::initializePlayer() {
+    if (m_player == nullptr) {
+        m_player = m_menu->getPlayerDirector()->createPlayer();
+    }
+    return m_player;
 }
