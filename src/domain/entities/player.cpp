@@ -44,6 +44,14 @@ int Player::getXp() const {
     return m_xp;
 }
 
+int Player::addXp(int xp) {
+    m_xp += xp;
+}
+
+int Player::addCoins(int coins) {
+    m_coins += coins;
+}
+
 int Player::getCoins() const {
     return m_coins;
 }

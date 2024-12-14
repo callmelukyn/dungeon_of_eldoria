@@ -34,6 +34,10 @@ public:
 
     int getXp() const;
 
+    int addXp(int xp);
+
+    int addCoins(int coins);
+
     int getNumberOfPotions() const;
 
     int getCoins() const;

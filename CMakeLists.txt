@@ -52,4 +52,10 @@ add_executable(zoo_project src/main.cpp
         src/domain/entities/enemyBuilder/basiliskBuilder.h
         src/domain/entities/enemyBuilder/necromancerBuilder.cpp
         src/domain/entities/enemyBuilder/necromancerBuilder.h
+        src/domain/entities/merchant.cpp
+        src/domain/entities/merchant.h
+        src/domain/entities/prisoner.cpp
+        src/domain/entities/prisoner.h
+        src/ui/shop.cpp
+        src/ui/shop.h
 )
