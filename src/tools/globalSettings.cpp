@@ -36,26 +36,27 @@ void GlobalSettings::hideCursor() {
 void GlobalSettings::clearConsoleOnNewScreen() {
 #ifdef _WIN32
     if (supportsANSI()) {
-        COORD topLeft = {0, 0};
-        HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-        DWORD written;
-        CONSOLE_SCREEN_BUFFER_INFO screen;
-
-        int windowWidth = screen.srWindow.Right - screen.srWindow.Left + 1;
-        int windowHeight = screen.srWindow.Bottom - screen.srWindow.Top + 1;
-        if (windowHeight < screen.dwSize.Y || windowWidth < screen.dwSize.X) {
-            std::cout << "\x1B[3J";
-        }
-
-        GetConsoleScreenBufferInfo(console, &screen);
-        FillConsoleOutputCharacterA(
-            console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written
-        );
-        FillConsoleOutputAttribute(
-            console, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE,
-            screen.dwSize.X * screen.dwSize.Y, topLeft, &written
-        );
-        SetConsoleCursorPosition(console, topLeft);
+        system("cls");
+        // COORD topLeft = {0, 0};
+        // HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+        // DWORD written;
+        // CONSOLE_SCREEN_BUFFER_INFO screen;
+        //
+        // int windowWidth = screen.srWindow.Right - screen.srWindow.Left + 1;
+        // int windowHeight = screen.srWindow.Bottom - screen.srWindow.Top + 1;
+        // if (windowHeight < screen.dwSize.Y || windowWidth < screen.dwSize.X) {
+        //     std::cout << "\x1B[3J";
+        // }
+        //
+        // GetConsoleScreenBufferInfo(console, &screen);
+        // FillConsoleOutputCharacterA(
+        //     console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written
+        // );
+        // FillConsoleOutputAttribute(
+        //     console, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE,
+        //     screen.dwSize.X * screen.dwSize.Y, topLeft, &written
+        // );
+        // SetConsoleCursorPosition(console, topLeft);
     }
 #else
     system("clear");
@@ -67,11 +68,11 @@ void GlobalSettings::clearScreen() {
     if (supportsANSI()) {
         CONSOLE_SCREEN_BUFFER_INFO screen;
 
-        int windowWidth = screen.srWindow.Right - screen.srWindow.Left + 1;
-        int windowHeight = screen.srWindow.Bottom - screen.srWindow.Top + 1;
-        if (windowHeight < screen.dwSize.Y || windowWidth < screen.dwSize.X) {
-            std::cout << "\x1B[3J";
-        }
+        // int windowWidth = screen.srWindow.Right - screen.srWindow.Left + 1;
+        // int windowHeight = screen.srWindow.Bottom - screen.srWindow.Top + 1;
+        // // if (windowHeight < screen.dwSize.Y || windowWidth < screen.dwSize.X) {
+        // //     std::cout << "\x1B[3J";
+        // // }
         COORD cursorPosition;
         cursorPosition.X = 0;
         cursorPosition.Y = 0;
