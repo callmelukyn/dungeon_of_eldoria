@@ -8,7 +8,7 @@
 #include "../value_objects/screen.h"
 
 Player::Player(const Role role, const int hp, const int damage, const int armor, const int range)
-    : m_playerPosition(Position{2, 2}) {
+    : m_playerPosition(Position{5, 1}) {
     m_role = role;
     m_hp = hp;
     m_damage = damage;

@@ -13,6 +13,14 @@ class Levels {
 
     void level1(Map *map) const;
 
+    void level2(Map *map) const;
+
+    void level3(Map *map) const;
+
+    void level4(Map *map) const;
+
+    void level5(Map *map) const;
+
 public:
     Levels();
 
