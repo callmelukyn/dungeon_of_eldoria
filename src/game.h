@@ -9,8 +9,6 @@ class Game {
     Menu *m_menu;
     Levels *m_levels;
 
-    void displayMap() const;
-
     void displayGUI() const;
 
     void displayHelp() const;

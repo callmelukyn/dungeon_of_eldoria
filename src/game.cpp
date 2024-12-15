@@ -53,14 +53,10 @@ void Game::handleInputs(const char keyboardKey) const {
     m_menu->handleMenuInput(keyboardKey);
 }
 
-void Game::displayMap() const {
-    m_levels->loadAllLevels();
-}
-
 void Game::displayGUI() const {
     m_menu->smallHeaderMenu();
     displayPlayerProperties();
-    displayMap();
+    m_levels->loadAllLevels();
     displayHelp();
 }
 
