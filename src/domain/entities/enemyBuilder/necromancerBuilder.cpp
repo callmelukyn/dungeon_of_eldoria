@@ -11,5 +11,5 @@ NecromancerBuilder::~NecromancerBuilder() {
 }
 
 void NecromancerBuilder::createEnemy() {
-    m_enemy = new Enemy(EnemyType::necromancer, 200, 50, 0, 0, 0);
+    // m_enemy = new Enemy(EnemyType::necromancer, 200, 50, 0, 0, 0);
 }

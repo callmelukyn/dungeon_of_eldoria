@@ -1,5 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
+#include "domain/entities/enemy.h"
 #include "ui/menu.h"
 #include "domain/entities/player.h"
 #include "map/levels.h"

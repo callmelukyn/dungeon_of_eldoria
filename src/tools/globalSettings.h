@@ -4,7 +4,7 @@
 
 #ifndef GLOBALSETTINGS_H
 #define GLOBALSETTINGS_H
-#include <Windows.h>
+#include <windows.h>
 
 #define COLOR_RED 04
 #define COLOR_DEFAULT 07

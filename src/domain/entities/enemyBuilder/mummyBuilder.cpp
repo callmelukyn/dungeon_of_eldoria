@@ -11,5 +11,5 @@ MummyBuilder::~MummyBuilder() {
 }
 
 void MummyBuilder::createEnemy() {
-    m_enemy = new Enemy(EnemyType::mummy, 10, 10, 100, 20, 10);
+    // m_enemy = new Enemy(EnemyType::mummy, 10, 10, 100, 20, 10);
 }

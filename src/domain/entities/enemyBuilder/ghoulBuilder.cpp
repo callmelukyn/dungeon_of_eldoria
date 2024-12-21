@@ -11,5 +11,5 @@ GhoulBuilder::~GhoulBuilder() {
 }
 
 void GhoulBuilder::createEnemy() {
-    m_enemy = new Enemy(EnemyType::ghoul, 35, 30, 300, 55, 25);
+    // m_enemy = new Enemy(EnemyType::ghoul, 35, 30, 300, 55, 25);
 }

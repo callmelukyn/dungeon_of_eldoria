@@ -4,6 +4,7 @@
 
 #include "player.h"
 
+#include "enemy.h"
 #include "../../tools/globalSettings.h"
 #include "../value_objects/screen.h"
 
@@ -64,6 +65,9 @@ void Player::movePlayer(const char keyboardKey, const Screen currentScreen, cons
         Map *map = maps[currentLevel];
         Position nextPosition = m_position;
 
+        if (Enemy::isAggroed()) {
+            return;
+        }
         // Calculate the next position based on the input key
         switch (keyboardKey) {
             case KEYBOARD_SMALL_W:

@@ -4,22 +4,24 @@
 #include <vector>
 #include "map.h"
 #include "../domain/entities/player.h"
+#include "../commands/add_enemy.h"
 
 class Levels {
     int m_currentLevel;
     std::vector<Map *> m_maps;
+    AddEnemy *m_addEnemy;
 
-    void level0(Map *map) const;
+    void level0() const;
 
-    void level1(Map *map) const;
+    void level1() const;
 
-    void level2(Map *map) const;
+    void level2() const;
 
-    void level3(Map *map) const;
+    void level3() const;
 
-    void level4(Map *map) const;
+    void level4() const;
 
-    void level5(Map *map) const;
+    void level5() const;
 
 public:
     Levels();
@@ -28,13 +30,15 @@ public:
 
     void loadAllLevels() const;
 
-    void nextLevel(Player *player);
+    void renderCurrentLevel() const;
 
-    void loadLevel(int level);
+    void nextLevel(Player *player);
 
     std::vector<Map *> getMaps();
 
     int getCurrentLevel() const;
+
+    AddEnemy *getEnemy() const;
 };
 
 

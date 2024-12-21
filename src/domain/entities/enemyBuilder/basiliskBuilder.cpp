@@ -11,5 +11,5 @@ BasiliskBuilder::~BasiliskBuilder() {
 }
 
 void BasiliskBuilder::createEnemy() {
-    m_enemy = new Enemy(EnemyType::basilisk, 50, 45, 500, 80, 40);
+    // m_enemy = new Enemy(EnemyType::basilisk, 50, 45, 500, 80, 40);
 }

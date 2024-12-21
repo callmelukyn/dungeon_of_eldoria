@@ -1,7 +1,10 @@
 #include "levels.h"
 
 #include <iostream>
+#include <map>
 
+
+#include "../domain/entities/mummy.h"
 #include "../tools/globalSettings.h"
 
 Levels::Levels() {
@@ -13,26 +16,49 @@ Levels::Levels() {
     m_maps.push_back(new Map(8, 10, DoorPosition::bottomDoor));
     m_maps.push_back(new Map(15, 25, DoorPosition::leftDoor));
     m_maps[0]->putCharacterInPosition(Position{5, 1}, '@');
+    m_addEnemy = new AddEnemy(m_maps);
 }
 
 Levels::~Levels() {
     for (const Map *map: m_maps) {
         delete map;
     }
+    delete m_addEnemy;
 }
 
 void Levels::loadAllLevels() const {
-    Map *map = m_maps[m_currentLevel];
-    level0(map);
-    level1(map);
-    level2(map);
-    level3(map);
-    level4(map);
-    level5(map);
+    static std::vector levelsLoaded(m_maps.size(), false);
+    std::map<int, std::function<void()> > levels = {
+        {0, [this] { level0(); }},
+        {1, [this] { level1(); }},
+        {2, [this] { level2(); }},
+        {3, [this] { level3(); }},
+        {4, [this] { level4(); }},
+        {5, [this] { level5(); }}
+    };
+    if (!levelsLoaded[m_currentLevel]) {
+        auto it = levels.find(m_currentLevel);
+        if (it != levels.end()) {
+            it->second();
+            levelsLoaded[m_currentLevel] = true;
+        }
+    }
+}
+
+void Levels::renderCurrentLevel() const {
+    if (m_currentLevel >= 0 && m_currentLevel < m_maps.size()) {
+        m_maps[m_currentLevel]->printMap();
+    }
 }
 
 void Levels::nextLevel(Player *player) {
     if (m_currentLevel + 1 < m_maps.size()) {
+        // Clear enemies from the previous level
+        for (Enemy *enemy: m_addEnemy->getEnemies()) {
+            m_maps[m_currentLevel]->clearCharacterFromPosition(enemy->getEnemyPosition());
+        }
+        m_addEnemy->clearEnemies();
+
         GlobalSettings::clearConsoleOnNewScreen();
         const DoorPosition lastDoorPosition = m_maps[m_currentLevel]->getDoorPosition();
         // Advance to the next level
@@ -42,15 +68,8 @@ void Levels::nextLevel(Player *player) {
         // Put player on the side which he walked from
         player->setPlayerPosition(newPlayerPosition);
         m_maps[m_currentLevel]->putCharacterInPosition(newPlayerPosition, '@');
-        loadLevel(m_currentLevel);
     } else {
         std::cout << "You have completed the game!" << std::endl;
-    }
-}
-
-void Levels::loadLevel(const int level) {
-    if (level >= 0 && level < m_maps.size()) {
-        m_currentLevel = level;
     }
 }
 
@@ -62,50 +81,39 @@ int Levels::getCurrentLevel() const {
     return m_currentLevel;
 }
 
-void Levels::level0(Map *map) const {
-    if (m_currentLevel == 0) {
-        map->putCharacterInPosition(Position{3, 3}, '?'); //Prisoner
-        map->printMap();
-    }
+AddEnemy *Levels::getEnemy() const {
+    return m_addEnemy;
 }
 
-void Levels::level1(Map *map) const {
-    if (m_currentLevel == 1) {
-        map->putCharacterInPosition(Position{6, 4}, '!'); //Mummy
-        map->putCharacterInPosition(Position{5, 6}, '?'); //Prisoner
-        map->printMap();
-    }
+void Levels::level0() const {
+    m_addEnemy->addMummy(m_currentLevel, Position{2, 4});
+    m_addEnemy->addMummy(m_currentLevel, Position{1, 1});
+    m_maps[m_currentLevel]->putCharacterInPosition(Position{3, 3}, '?'); //Prisoner
 }
 
-void Levels::level2(Map *map) const {
-    if (m_currentLevel == 2) {
-        map->putCharacterInPosition(Position{7, 6}, '!'); //Mummy
-        map->putCharacterInPosition(Position{8, 3}, '?'); //Prisoner
-        map->printMap();
-    }
+void Levels::level1() const {
+    m_addEnemy->addMummy(m_currentLevel, Position{2, 4});
+    m_maps[m_currentLevel]->putCharacterInPosition(Position{6, 4}, '!'); //Mummy
+    m_maps[m_currentLevel]->putCharacterInPosition(Position{5, 6}, '?'); //Prisoner
 }
 
-void Levels::level3(Map *map) const {
-    if (m_currentLevel == 3) {
-        map->putCharacterInPosition(Position{10, 4}, '!'); //Mummy
-        map->putCharacterInPosition(Position{13, 8}, '!'); //Mummy
-        map->putCharacterInPosition(Position{4, 6}, '?'); //Prisoner
-        map->printMap();
-    }
+void Levels::level2() const {
+    m_maps[m_currentLevel]->putCharacterInPosition(Position{7, 6}, '!'); //Mummy
+    m_maps[m_currentLevel]->putCharacterInPosition(Position{8, 3}, '?'); //Prisoner
 }
 
-void Levels::level4(Map *map) const {
-    if (m_currentLevel == 4) {
-        map->putCharacterInPosition(Position{6, 3}, '$'); //Merchant level
-        map->printMap();
-    }
+void Levels::level3() const {
+    m_maps[m_currentLevel]->putCharacterInPosition(Position{10, 4}, '!'); //Mummy
+    m_maps[m_currentLevel]->putCharacterInPosition(Position{13, 8}, '!'); //Mummy
+    m_maps[m_currentLevel]->putCharacterInPosition(Position{4, 6}, '?'); //Prisoner
 }
 
-void Levels::level5(Map *map) const {
-    if (m_currentLevel == 5) {
-        map->putCharacterInPosition(Position{4, 12}, '!'); //Mummy
-        map->putCharacterInPosition(Position{6, 8}, '!'); //Basilisk
-        map->putCharacterInPosition(Position{12, 9}, '?'); //Prisoner
-        map->printMap();
-    }
+void Levels::level4() const {
+    m_maps[m_currentLevel]->putCharacterInPosition(Position{6, 3}, '$'); //Merchant level
+}
+
+void Levels::level5() const {
+    m_maps[m_currentLevel]->putCharacterInPosition(Position{4, 12}, '!'); //Mummy
+    m_maps[m_currentLevel]->putCharacterInPosition(Position{6, 8}, '!'); //Basilisk
+    m_maps[m_currentLevel]->putCharacterInPosition(Position{12, 9}, '?'); //Prisoner
 }

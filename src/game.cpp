@@ -43,13 +43,19 @@ void Game::render() {
 
 void Game::handleInputs(const char keyboardKey) const {
     if (m_player) {
-        // Handle movement on the map
-        m_player->movePlayer(keyboardKey, m_menu->getCurrentScreen(), m_levels->getMaps(), m_levels->getCurrentLevel(),
-                             [this] {
-                                 m_levels->nextLevel(m_player);
-                             });
+        // Handle player movement on the map.
+        m_player->movePlayer(keyboardKey, m_menu->getCurrentScreen(), m_levels->getMaps(),
+                             m_levels->getCurrentLevel(), [this] { m_levels->nextLevel(m_player); }
+        );
+        // Handle movement for enemies.
+        for (Enemy *enemy: m_levels->getEnemy()->getEnemies()) {
+            if (!m_levels->getEnemy()->getEnemies().empty()) {
+                enemy->moveEnemy(m_menu->getCurrentScreen(), m_levels->getMaps(), m_levels->getCurrentLevel(), m_player,
+                                 keyboardKey);
+            }
+        }
     }
-    // Handle movement on menu
+    // Handle movement on menu.
     m_menu->handleMenuInput(keyboardKey);
 }
 
@@ -57,6 +63,7 @@ void Game::displayGUI() const {
     m_menu->smallHeaderMenu();
     displayPlayerProperties();
     m_levels->loadAllLevels();
+    m_levels->renderCurrentLevel();
     displayHelp();
 }
 

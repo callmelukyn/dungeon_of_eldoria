@@ -11,5 +11,5 @@ GargoilBuilder::~GargoilBuilder() {
 }
 
 void GargoilBuilder::createEnemy() {
-    m_enemy = new Enemy(EnemyType::gargoil, 20, 25, 200, 35, 20);
+    // m_enemy = new Enemy(EnemyType::gargoil, 20, 25, 200, 35, 20, {});
 }
