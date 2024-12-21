@@ -7,12 +7,14 @@
 
 Game::Game() {
     m_menu = new Menu();
+    m_shop = new Shop();
     m_levels = new Levels();
     m_player = nullptr;
 }
 
 Game::~Game() {
     delete m_menu;
+    delete m_shop;
     delete m_levels;
     delete m_player;
 }
@@ -39,6 +41,14 @@ void Game::render() {
             displayGUI();
             break;
     }
+    switch (m_shop->getCurrentScreen()) {
+        case Screen::shopMain:
+            shopGUI();
+            break;
+        case Screen::shopSub:
+            //m_shop->displayMainMenu();
+            break;
+    }
 }
 
 void Game::handleInputs(const char keyboardKey) const {
@@ -57,6 +67,9 @@ void Game::handleInputs(const char keyboardKey) const {
     }
     // Handle movement on menu.
     m_menu->handleMenuInput(keyboardKey);
+
+    // Handle movement in shop.
+    m_shop->handleShopInput(keyboardKey);
 }
 
 void Game::displayGUI() const {
@@ -65,6 +78,11 @@ void Game::displayGUI() const {
     m_levels->loadAllLevels();
     m_levels->renderCurrentLevel();
     displayHelp();
+}
+
+void Game::shopGUI() const {
+    m_menu->smallHeaderMenu();
+    std::cout << "Test shop GUI" << "\n";
 }
 
 void Game::displayHelp() const {
