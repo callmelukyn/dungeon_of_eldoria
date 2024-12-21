@@ -7,24 +7,22 @@
 #include <functional>
 #include <vector>
 
+#include "entity.h"
 #include "../value_objects/potion.h"
 #include "../value_objects/role.h"
 #include "../value_objects/screen.h"
 #include "../../map/map.h"
 
-class Player {
+class Player : public Entity {
     int m_xp;
     int m_coins;
     Role m_role;
     int m_numberOfPotions;
-    int m_hp;
-    int m_damage;
     int m_armor;
     int m_range;
-    Position m_playerPosition;
 
 public:
-    Player(Role role, int hp, int damage, int armor, int range);
+    Player(Role role, int hp, int damage, int armor, int range, bool alive);
 
     void addPotion();
 

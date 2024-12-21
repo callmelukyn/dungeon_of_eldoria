@@ -7,5 +7,5 @@ ArcherBuilder::~ArcherBuilder() {
 }
 
 void ArcherBuilder::createPlayer() {
-    m_player = new Player(Role::archer, 50, 12, 8, 3);
+    m_player = new Player(Role::archer, 50, 12, 8, 3, 1);
 }

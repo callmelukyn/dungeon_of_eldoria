@@ -58,4 +58,6 @@ add_executable(zoo_project src/main.cpp
         src/domain/entities/prisoner.h
         src/ui/shop.cpp
         src/ui/shop.h
+        src/domain/entities/entity.cpp
+        src/domain/entities/entity.h
 )

@@ -7,11 +7,9 @@
 #include "../../tools/globalSettings.h"
 #include "../value_objects/screen.h"
 
-Player::Player(const Role role, const int hp, const int damage, const int armor, const int range)
-    : m_playerPosition(Position{5, 1}) {
+Player::Player(const Role role, const int hp, const int damage, const int armor, const int range,
+               bool alive): Entity(hp, damage, alive, Position{5, 1}) {
     m_role = role;
-    m_hp = hp;
-    m_damage = damage;
     m_armor = armor;
     m_range = range;
     m_xp = 0;
@@ -64,7 +62,7 @@ void Player::movePlayer(const char keyboardKey, const Screen currentScreen, cons
                         const int currentLevel, const std::function<void()> &nextLevel) {
     if (Screen::game == currentScreen) {
         Map *map = maps[currentLevel];
-        Position nextPosition = m_playerPosition;
+        Position nextPosition = m_position;
 
         // Calculate the next position based on the input key
         switch (keyboardKey) {
@@ -91,23 +89,23 @@ void Player::movePlayer(const char keyboardKey, const Screen currentScreen, cons
         const char nextTile = map->assignTilePosition(nextPosition); // Access the tile at the next position
         // Movement only through '.' or doors
         if (nextTile == '.') {
-            map->clearCharacterFromPosition(m_playerPosition);
-            m_playerPosition = nextPosition;
-            map->putCharacterInPosition(m_playerPosition, '@');
+            map->clearCharacterFromPosition(m_position);
+            m_position = nextPosition;
+            map->putCharacterInPosition(m_position, '@');
         }
         if (nextTile == '|') {
             nextLevel();
-            map->clearCharacterFromPosition(m_playerPosition);
+            map->clearCharacterFromPosition(m_position);
         }
     }
 }
 
 void Player::setPlayerPosition(const Position playerPosition) {
-    m_playerPosition = playerPosition;
+    m_position = playerPosition;
 }
 
 Position Player::getPlayerPosition() const {
-    return m_playerPosition;
+    return m_position;
 }
 
 
