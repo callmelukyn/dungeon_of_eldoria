@@ -15,21 +15,40 @@ class Shop {
     Screen m_currentScreen;
     Scenes *m_scene;
 
-public:
-    Shop();
-
-    ~Shop();
-
+    //Movement
     void navigateShop(char keyboardKey, int selectableItemsOnScreenCount);
 
     void moveUpShop(char keyboardKey, int selectableItemsOnScreenCount);
 
     void moveDownShop(char keyboardKey, int selectableItemsOnScreenCount);
 
-    void confirmSelectionShopMenu(char keyboardKey);
-
     void changeScreen(Screen newScreen, char keyboardKey);
 
+    void confirmSelectionShopMain(char keyboardKey);
+
+    void confirmSelectionShopWeapons(char keyboardKey);
+
+    void confirmSelectionShopArmor(char keyboardKey);
+
+    void confirmSelectionShopPotions(char keyboardKey);
+
+public:
+    Shop();
+
+    ~Shop();
+
+    //Individual screens
+    void displayShopHeader() const;
+
+    void displayShopMain() const;
+
+    void displayShopWeapons() const;
+
+    void displayShopArmor() const;
+
+    void displayShopPotions() const;
+
+    //Functionality
     void handleShopInput(char keyboardKey);
 
     Screen getCurrentScreen() const;

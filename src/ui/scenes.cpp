@@ -42,6 +42,10 @@ int Scenes::getCurrentScene() const {
     return m_currentScene;
 }
 
+//
+//MAIN MENU
+//
+
 void Scenes::sceneHeaderMenu() const {
     std::cout << " _____                                              __   ";
     GlobalSettings::setColor(COLOR_RED);
@@ -237,6 +241,116 @@ void Scenes::sceneRoleSelectedMage() const {
     std::cout << "\n";
     std::cout << "[ESC] Back\n";
 }
+
+//
+//MAIN MENU
+//
+
+void Scenes::sceneShopHeader() const {
+    std::cout << "THIS IS SHOP HEADER\n";
+}
+
+void Scenes::sceneShopMainSelectedWeapons() const {
+    GlobalSettings::setColor(COLOR_SELECTED);
+    std::cout << "- WEAPONS\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "  ARMOR\n";
+    std::cout << "  POTION\n";
+    std::cout << "  EXIT\n";
+}
+
+void Scenes::sceneShopMainSelectedArmor() const {
+    std::cout << "  WEAPONS\n";
+    GlobalSettings::setColor(COLOR_SELECTED);
+    std::cout << "- ARMOR\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "  POTION\n";
+    std::cout << "  EXIT\n";
+}
+
+void Scenes::sceneShopMainSelectedPotions() const {
+    std::cout << "  WEAPONS\n";
+    std::cout << "  ARMOR\n";
+    GlobalSettings::setColor(COLOR_SELECTED);
+    std::cout << "- POTION\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "  EXIT\n";
+}
+
+void Scenes::sceneShopMainSelectedExit() const {
+    std::cout << "  WEAPONS\n";
+    std::cout << "  ARMOR\n";
+    std::cout << "  POTION\n";
+    GlobalSettings::setColor(COLOR_SELECTED);
+    std::cout << "- EXIT\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+}
+
+void Scenes::sceneShopWeaponsSelectedWeapon1() const {
+    GlobalSettings::setColor(COLOR_SELECTED);
+    std::cout << "- Weapon 1\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "  Weapon 2\n";
+    std::cout << "  Weapon 3\n";
+}
+
+void Scenes::sceneShopWeaponsSelectedWeapon2() const {
+    std::cout << "  Weapon 1\n";
+    GlobalSettings::setColor(COLOR_SELECTED);
+    std::cout << "- Weapon 2\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "  Weapon 3\n";
+}
+
+void Scenes::sceneShopWeaponsSelectedWeapon3() const {
+    std::cout << "  Weapon 1\n";
+    std::cout << "  Weapon 2\n";
+    GlobalSettings::setColor(COLOR_SELECTED);
+    std::cout << "- Weapon 3\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+}
+
+void Scenes::sceneShopArmorSelectedArmor1() const {
+    GlobalSettings::setColor(COLOR_SELECTED);
+    std::cout << "- Armor 1\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "  Armor 2\n";
+    std::cout << "  Armor 3\n";
+}
+
+void Scenes::sceneShopArmorSelectedArmor2() const {
+    std::cout << "  Armor 1\n";
+    GlobalSettings::setColor(COLOR_SELECTED);
+    std::cout << "- Armor 2\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "  Armor 3\n";
+}
+
+void Scenes::sceneShopArmorSelectedArmor3() const {
+    std::cout << "  Armor 1\n";
+    std::cout << "  Armor 2\n";
+    GlobalSettings::setColor(COLOR_SELECTED);
+    std::cout << "- Armor 3\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+}
+
+void Scenes::sceneShopPotionsSelectedPotion1() const {
+    GlobalSettings::setColor(COLOR_SELECTED);
+    std::cout << "- Potion 1\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "  Potion 2\n";
+}
+
+void Scenes::sceneShopPotionsSelectedPotion2() const {
+    std::cout << "  Potion 1\n";
+    GlobalSettings::setColor(COLOR_SELECTED);
+    std::cout << "- Potion 2\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+}
+
+//
+//CUTSCENES
+//
 
 void Scenes::continueHint() const {
     std::cout << "\n   Press [ENTER] to continue...";

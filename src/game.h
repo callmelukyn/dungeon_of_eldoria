@@ -14,8 +14,6 @@ class Game {
 
     void displayGUI() const;
 
-    void shopGUI() const;
-
     void displayHelp() const;
 
     void displayPlayerProperties() const;

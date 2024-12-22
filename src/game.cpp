@@ -43,11 +43,15 @@ void Game::render() {
     }
     switch (m_shop->getCurrentScreen()) {
         case Screen::shopMain:
-            shopGUI();
+            m_shop->displayShopMain();
             break;
-        case Screen::shopSub:
-            //m_shop->displayMainMenu();
+        case Screen::shopWeapons:
+            m_shop->displayShopWeapons();
             break;
+        case Screen::shopArmor:
+            m_shop->displayShopArmor();
+        case Screen::shopPotions:
+            m_shop->displayShopPotions();
     }
 }
 
@@ -78,11 +82,6 @@ void Game::displayGUI() const {
     m_levels->loadAllLevels();
     m_levels->renderCurrentLevel();
     displayHelp();
-}
-
-void Game::shopGUI() const {
-    m_menu->smallHeaderMenu();
-    std::cout << "Test shop GUI" << "\n";
 }
 
 void Game::displayHelp() const {

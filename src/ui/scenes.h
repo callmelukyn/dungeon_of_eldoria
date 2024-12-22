@@ -70,6 +70,33 @@ public:
     void sceneRoleSelectedArcher() const;
 
     void sceneRoleSelectedMage() const;
+
+    //Shop scenes
+    void sceneShopHeader() const;
+
+    void sceneShopMainSelectedWeapons() const;
+
+    void sceneShopMainSelectedArmor() const;
+
+    void sceneShopMainSelectedPotions() const;
+
+    void sceneShopMainSelectedExit() const;
+
+    void sceneShopWeaponsSelectedWeapon1() const;
+
+    void sceneShopWeaponsSelectedWeapon2() const;
+
+    void sceneShopWeaponsSelectedWeapon3() const;
+
+    void sceneShopArmorSelectedArmor1() const;
+
+    void sceneShopArmorSelectedArmor2() const;
+
+    void sceneShopArmorSelectedArmor3() const;
+
+    void sceneShopPotionsSelectedPotion1() const;
+
+    void sceneShopPotionsSelectedPotion2() const;
 };
 
 
