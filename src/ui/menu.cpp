@@ -32,6 +32,15 @@ void Menu::changeScreenNormal(Screen newScreen) {
 }
 
 void Menu::changeScreen(const Screen newScreen, const char keyboardKey) {
+    if (m_currentScreen == Screen::shopMain && keyboardKey == KEYBOARD_ESC) {
+        return;
+    }
+    if ((m_currentScreen == Screen::shopArmor || m_currentScreen == Screen::shopPotions || m_currentScreen ==
+         Screen::shopWeapons) && keyboardKey == KEYBOARD_ESC) {
+        GlobalSettings::clearConsoleOnNewScreen();
+        m_currentScreen = Screen::shopMain;
+        return;
+    }
     if (m_currentScreen != Screen::mainMenu && keyboardKey == KEYBOARD_ESC) {
         GlobalSettings::clearConsoleOnNewScreen();
         m_selected = 0;
