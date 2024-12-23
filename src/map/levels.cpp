@@ -18,6 +18,7 @@ Levels::Levels() {
     m_maps[0]->putCharacterInPosition(Position{5, 1}, '@');
     m_addEnemy = new AddEnemy(m_maps);
     m_addMerchant = new AddMerchant(m_maps);
+    m_addPrisoner = new AddPrisoner(m_maps);
 }
 
 Levels::~Levels() {
@@ -95,32 +96,32 @@ void Levels::level0() const {
     m_addEnemy->addMummy(m_currentLevel, Position{2, 4});
     m_addEnemy->addMummy(m_currentLevel, Position{1, 1});
     m_addMerchant->addMerchant(m_currentLevel, Position{4, 4});
-    m_maps[m_currentLevel]->putCharacterInPosition(Position{3, 3}, '?'); //Prisoner
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{3, 3});
 }
 
 void Levels::level1() const {
     m_addEnemy->addMummy(m_currentLevel, Position{2, 4});
-    m_maps[m_currentLevel]->putCharacterInPosition(Position{6, 4}, '!'); //Mummy
-    m_maps[m_currentLevel]->putCharacterInPosition(Position{5, 6}, '?'); //Prisoner
+    m_addEnemy->addMummy(m_currentLevel, Position{6, 4});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{5, 6});
 }
 
 void Levels::level2() const {
-    m_maps[m_currentLevel]->putCharacterInPosition(Position{7, 6}, '!'); //Mummy
-    m_maps[m_currentLevel]->putCharacterInPosition(Position{8, 3}, '?'); //Prisoner
+    m_addEnemy->addMummy(m_currentLevel, Position{7, 6});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{8, 3});
 }
 
 void Levels::level3() const {
-    m_maps[m_currentLevel]->putCharacterInPosition(Position{10, 4}, '!'); //Mummy
-    m_maps[m_currentLevel]->putCharacterInPosition(Position{13, 8}, '!'); //Mummy
-    m_maps[m_currentLevel]->putCharacterInPosition(Position{4, 6}, '?'); //Prisoner
+    m_addEnemy->addMummy(m_currentLevel, Position{10, 4});
+    m_addEnemy->addMummy(m_currentLevel, Position{13, 8});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{4, 6});
 }
 
 void Levels::level4() const {
-    m_maps[m_currentLevel]->putCharacterInPosition(Position{6, 3}, '$'); //Merchant level
+    m_addMerchant->addMerchant(m_currentLevel, Position{6, 3});
 }
 
 void Levels::level5() const {
-    m_maps[m_currentLevel]->putCharacterInPosition(Position{4, 12}, '!'); //Mummy
-    m_maps[m_currentLevel]->putCharacterInPosition(Position{6, 8}, '!'); //Basilisk
-    m_maps[m_currentLevel]->putCharacterInPosition(Position{12, 9}, '?'); //Prisoner
+    m_addEnemy->addMummy(m_currentLevel, Position{4, 12});
+    m_addEnemy->addBasilisk(m_currentLevel, Position{6, 8}); //Ten pujde do vetsiho levelu
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{12, 9});
 }

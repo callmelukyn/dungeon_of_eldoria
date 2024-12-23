@@ -14,6 +14,8 @@ public:
 
     void addMummy(int currentLevel, Position position);
 
+    void addBasilisk(int currentLevel, Position position);
+
     std::vector<Enemy *> getEnemies();
 
     void clearEnemies();
