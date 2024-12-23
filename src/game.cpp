@@ -7,14 +7,12 @@
 
 Game::Game() {
     m_menu = new Menu();
-    m_shop = new Shop();
     m_levels = new Levels();
     m_player = nullptr;
 }
 
 Game::~Game() {
     delete m_menu;
-    delete m_shop;
     delete m_levels;
     delete m_player;
 }
@@ -36,26 +34,38 @@ void Game::render() {
         case Screen::cutscenes:
             m_menu->displayCutscenes();
             break;
+        case Screen::shopMain:
+            m_menu->getShop()->displayShopMain(m_menu->getSelected());
+            break;
+        case Screen::shopWeapons:
+            m_menu->getShop()->displayShopWeapons(m_menu->getSelected());
+            break;
+        case Screen::shopArmor:
+            m_menu->getShop()->displayShopArmor(m_menu->getSelected());
+            break;
+        case Screen::shopPotions:
+            m_menu->getShop()->displayShopPotions(m_menu->getSelected());
+            break;
         case Screen::game:
             initializePlayer();
             displayGUI();
             break;
     }
-    if (m_menu->getCurrentScreen() == Screen::shopMain || m_menu->getCurrentScreen() == Screen::shopArmor || m_menu->
-        getCurrentScreen() == Screen::shopPotions || m_menu->getCurrentScreen() == Screen::shopWeapons) {
-        switch (m_shop->getCurrentScreen()) {
-            case Screen::shopMain:
-                m_shop->displayShopMain();
-                break;
-            case Screen::shopWeapons:
-                m_shop->displayShopWeapons();
-                break;
-            case Screen::shopArmor:
-                m_shop->displayShopArmor();
-            case Screen::shopPotions:
-                m_shop->displayShopPotions();
-        }
-    }
+    /*    if (m_menu->getCurrentScreen() == Screen::shopMain || m_menu->getCurrentScreen() == Screen::shopArmor || m_menu->
+            getCurrentScreen() == Screen::shopPotions || m_menu->getCurrentScreen() == Screen::shopWeapons) {
+            switch (m_shop->getCurrentScreen()) {
+                case Screen::shopMain:
+                    m_shop->displayShopMain();
+                    break;
+                case Screen::shopWeapons:
+                    m_shop->displayShopWeapons();
+                    break;
+                case Screen::shopArmor:
+                    m_shop->displayShopArmor();
+                case Screen::shopPotions:
+                    m_shop->displayShopPotions();
+            }
+        }*/
 }
 
 void Game::handleInputs(const char keyboardKey) const {
@@ -78,9 +88,6 @@ void Game::handleInputs(const char keyboardKey) const {
     }
     // Handle movement on menu.
     m_menu->handleMenuInput(keyboardKey);
-
-    // Handle movement in shop.
-    m_shop->handleShopInput(keyboardKey);
 }
 
 void Game::displayGUI() const {

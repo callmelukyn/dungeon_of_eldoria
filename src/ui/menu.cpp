@@ -16,6 +16,7 @@ Menu::Menu() {
     m_selected = 0;
     m_currentScreen = Screen::mainMenu;
     m_scene = new Scenes();
+    m_shop = new Shop([this] { changeScreenNormal(m_currentScreen); });
     m_playerDirector = new PlayerDirector(nullptr);
 }
 
@@ -45,6 +46,15 @@ Screen Menu::getCurrentScreen() const {
     return m_currentScreen;
 }
 
+Shop *Menu::getShop() const {
+    return m_shop;
+}
+
+int Menu::getSelected() const {
+    return m_selected;
+}
+
+
 void Menu::handleMenuInput(const char keyboardKey) {
     switch (m_currentScreen) {
         case Screen::mainMenu:
@@ -64,6 +74,22 @@ void Menu::handleMenuInput(const char keyboardKey) {
             break;
         case Screen::howToPlayMenu:
             navigateMenu(keyboardKey, 1);
+            break;
+        case Screen::shopMain:
+            navigateMenu(keyboardKey, 4);
+            m_shop->confirmSelectionShopMain(keyboardKey, m_selected);
+            break;
+        case Screen::shopArmor:
+            navigateMenu(keyboardKey, 3);
+            m_shop->confirmSelectionShopArmor(keyboardKey, m_selected);
+            break;
+        case Screen::shopPotions:
+            navigateMenu(keyboardKey, 2);
+            m_shop->confirmSelectionShopPotions(keyboardKey, m_selected);
+            break;
+        case Screen::shopWeapons:
+            navigateMenu(keyboardKey, 3);
+            m_shop->confirmSelectionShopWeapons(keyboardKey, m_selected);
             break;
         case Screen::cutscenes:
             confirmCutscene(keyboardKey);

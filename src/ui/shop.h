@@ -4,6 +4,8 @@
 
 #ifndef SHOP_H
 #define SHOP_H
+#include <functional>
+
 #include "scenes.h"
 #include "../tools/globalSettings.h"
 
@@ -11,47 +13,34 @@
 enum class Screen;
 
 class Shop {
-    int m_selected;
-    Screen m_currentScreen;
     Scenes *m_scene;
-
-    //Movement
-    void navigateShop(char keyboardKey, int selectableItemsOnScreenCount);
-
-    void moveUpShop(char keyboardKey, int selectableItemsOnScreenCount);
-
-    void moveDownShop(char keyboardKey, int selectableItemsOnScreenCount);
-
-    void changeScreen(Screen newScreen, char keyboardKey);
-
-    void confirmSelectionShopMain(char keyboardKey);
-
-    void confirmSelectionShopWeapons(char keyboardKey);
-
-    void confirmSelectionShopArmor(char keyboardKey);
-
-    void confirmSelectionShopPotions(char keyboardKey);
+    std::function<void()> m_changeScreenCallback;
 
 public:
-    Shop();
+    void confirmSelectionShopMain(char keyboardKey, int selected);
+
+    void confirmSelectionShopWeapons(char keyboardKey, int selected);
+
+    void confirmSelectionShopArmor(char keyboardKey, int selected);
+
+    void confirmSelectionShopPotions(char keyboardKey, int selected);
+
+    void changeScreen(const Screen newScreen, const char keyboardKey);
+
+    Shop(std::function<void()> changeScreenCallback);
 
     ~Shop();
 
     //Individual screens
     void displayShopHeader() const;
 
-    void displayShopMain() const;
+    void displayShopMain(int selected) const;
 
-    void displayShopWeapons() const;
+    void displayShopWeapons(int selected) const;
 
-    void displayShopArmor() const;
+    void displayShopArmor(int selected) const;
 
-    void displayShopPotions() const;
-
-    //Functionality
-    void handleShopInput(char keyboardKey);
-
-    Screen getCurrentScreen() const;
+    void displayShopPotions(int selected) const;
 };
 
 

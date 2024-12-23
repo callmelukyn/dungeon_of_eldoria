@@ -6,6 +6,7 @@
 #define MENU_H
 #include "../domain/value_objects/screen.h"
 #include "scenes.h"
+#include "shop.h"
 #include "../domain/entities/playerBuilder/playerDirector.h"
 
 
@@ -13,7 +14,9 @@ class Menu {
     int m_selected;
     Screen m_currentScreen;
     Scenes *m_scene;
+    Shop *m_shop;
     PlayerDirector *m_playerDirector;
+
 
     //Movement
     void navigateMenu(char keyboardKey, int selectableItemsOnScreenCount);
@@ -58,7 +61,11 @@ public:
     //Functionality
     void handleMenuInput(char keyboardKey);
 
+    Shop *getShop() const;
+
     PlayerDirector *getPlayerDirector() const;
+
+    int getSelected() const;
 };
 
 #endif //MENU_H

@@ -9,7 +9,6 @@
 class Game {
     Player *m_player;
     Menu *m_menu;
-    Shop *m_shop;
     Levels *m_levels;
 
     void displayGUI() const;
