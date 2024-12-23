@@ -39,6 +39,8 @@ void Menu::changeScreen(const Screen newScreen, const char keyboardKey) {
     } else if (keyboardKey == KEYBOARD_ENTER && m_currentScreen != Screen::game) {
         GlobalSettings::clearConsoleOnNewScreen();
         m_currentScreen = newScreen;
+    } else if (m_currentScreen == Screen::shopMain && keyboardKey == KEYBOARD_ESC) {
+        m_currentScreen = Screen::game;
     }
 }
 

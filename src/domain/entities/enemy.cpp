@@ -9,15 +9,13 @@
 bool Enemy::m_aggroed = false;
 
 Enemy::Enemy(EnemyType enemyType, int hp, int damage, int coinReward, int xpReward,
-             int potionDropChance, int range, Position enemyPosition): m_enemyPosition(enemyPosition) {
+             int potionDropChance, int range, bool alive,
+             Position enemyPosition): Entity(hp, damage, alive, enemyPosition) {
     m_enemyType = enemyType;
-    m_hp = hp;
-    m_damage = damage;
     m_coinReward = coinReward;
     m_xpReward = xpReward;
     m_potionDropChance = potionDropChance;
     m_range = range;
-    m_alive = true;
 }
 
 int Enemy::getDamage() {
@@ -48,7 +46,7 @@ void Enemy::moveEnemy(const Screen currentScreen, const std::vector<Map *> &maps
                       const Player *player, const char keyboardKey) {
     if (Screen::game == currentScreen) {
         Map *map = maps[currentLevel];
-        Position nextPosition = m_enemyPosition;
+        Position nextPosition = m_position;
         const unsigned int distanceX = abs(static_cast<int>(player->getPlayerPosition().x - nextPosition.x));
         const unsigned int distanceY = abs(static_cast<int>(player->getPlayerPosition().y - nextPosition.y));
 
@@ -76,15 +74,15 @@ void Enemy::moveEnemy(const Screen currentScreen, const std::vector<Map *> &maps
         const char nextTile = map->assignTilePosition(nextPosition); // Access the tile at the next position
         // Movement only through '.'
         if (nextTile == '.') {
-            map->clearCharacterFromPosition(m_enemyPosition);
-            m_enemyPosition = nextPosition;
-            map->putCharacterInPosition(m_enemyPosition, '!');
+            map->clearCharacterFromPosition(m_position);
+            m_position = nextPosition;
+            map->putCharacterInPosition(m_position, '!');
         }
     }
 }
 
 Position Enemy::getEnemyPosition() {
-    return m_enemyPosition;
+    return m_position;
 }
 
 bool Enemy::isAggroed() {
