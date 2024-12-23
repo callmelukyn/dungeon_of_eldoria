@@ -9,22 +9,18 @@
 #include "../value_objects/enemyType.h"
 #include "../value_objects/screen.h"
 
-class Enemy {
+class Enemy : public Entity {
 protected:
     EnemyType m_enemyType;
-    int m_hp;
-    int m_damage;
     int m_coinReward;
     int m_xpReward;
     int m_potionDropChance;
     int m_range;
-    bool m_alive;
     static bool m_aggroed;
-    Position m_enemyPosition;
 
 public:
     Enemy(EnemyType enemyType, int hp, int damage, int coinReward, int xpReward, int potionDropChance,
-          int range, Position enemyPosition);
+          int range, bool alive, Position enemyPosition);
 
     int getHp();
 
