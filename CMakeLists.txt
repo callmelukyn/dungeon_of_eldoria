@@ -64,4 +64,6 @@ add_executable(zoo_project src/main.cpp
         src/domain/entities/mummy.h
         src/domain/entities/entity.cpp
         src/domain/entities/entity.h
+        src/commands/add_merchant.cpp
+        src/commands/add_merchant.h
 )

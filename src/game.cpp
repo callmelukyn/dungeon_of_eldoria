@@ -41,17 +41,20 @@ void Game::render() {
             displayGUI();
             break;
     }
-    switch (m_shop->getCurrentScreen()) {
-        case Screen::shopMain:
-            m_shop->displayShopMain();
-            break;
-        case Screen::shopWeapons:
-            m_shop->displayShopWeapons();
-            break;
-        case Screen::shopArmor:
-            m_shop->displayShopArmor();
-        case Screen::shopPotions:
-            m_shop->displayShopPotions();
+    if (m_menu->getCurrentScreen() == Screen::shopMain || m_menu->getCurrentScreen() == Screen::shopArmor || m_menu->
+        getCurrentScreen() == Screen::shopPotions || m_menu->getCurrentScreen() == Screen::shopWeapons) {
+        switch (m_shop->getCurrentScreen()) {
+            case Screen::shopMain:
+                m_shop->displayShopMain();
+                break;
+            case Screen::shopWeapons:
+                m_shop->displayShopWeapons();
+                break;
+            case Screen::shopArmor:
+                m_shop->displayShopArmor();
+            case Screen::shopPotions:
+                m_shop->displayShopPotions();
+        }
     }
 }
 
@@ -64,10 +67,14 @@ void Game::handleInputs(const char keyboardKey) const {
         // Handle movement for enemies.
         for (Enemy *enemy: m_levels->getEnemy()->getEnemies()) {
             if (!m_levels->getEnemy()->getEnemies().empty()) {
-                enemy->moveEnemy(m_menu->getCurrentScreen(), m_levels->getMaps(), m_levels->getCurrentLevel(), m_player,
-                                 keyboardKey);
+                enemy->moveEnemy(m_menu->getCurrentScreen(), m_levels->getMaps(), m_levels->getCurrentLevel(),
+                                 m_player, keyboardKey);
             }
         }
+        m_levels->getMerchant()->getMerchant()->interaction(m_menu->getCurrentScreen(), m_player,
+                                                            keyboardKey, [this] {
+                                                                m_menu->changeScreenNormal(Screen::shopMain);
+                                                            });
     }
     // Handle movement on menu.
     m_menu->handleMenuInput(keyboardKey);

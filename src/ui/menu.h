@@ -35,6 +35,8 @@ public:
 
     ~Menu();
 
+    void changeScreenNormal(Screen newScreen);
+
     //Design methods
     void headerMenu() const;
 

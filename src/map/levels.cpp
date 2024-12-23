@@ -17,6 +17,7 @@ Levels::Levels() {
     m_maps.push_back(new Map(15, 25, DoorPosition::leftDoor));
     m_maps[0]->putCharacterInPosition(Position{5, 1}, '@');
     m_addEnemy = new AddEnemy(m_maps);
+    m_addMerchant = new AddMerchant(m_maps);
 }
 
 Levels::~Levels() {
@@ -58,6 +59,7 @@ void Levels::nextLevel(Player *player) {
             m_maps[m_currentLevel]->clearCharacterFromPosition(enemy->getEnemyPosition());
         }
         m_addEnemy->clearEnemies();
+        delete m_addMerchant->getMerchant();
 
         GlobalSettings::clearConsoleOnNewScreen();
         const DoorPosition lastDoorPosition = m_maps[m_currentLevel]->getDoorPosition();
@@ -85,9 +87,14 @@ AddEnemy *Levels::getEnemy() const {
     return m_addEnemy;
 }
 
+AddMerchant *Levels::getMerchant() const {
+    return m_addMerchant;
+}
+
 void Levels::level0() const {
     m_addEnemy->addMummy(m_currentLevel, Position{2, 4});
     m_addEnemy->addMummy(m_currentLevel, Position{1, 1});
+    m_addMerchant->addMerchant(m_currentLevel, Position{4, 4});
     m_maps[m_currentLevel]->putCharacterInPosition(Position{3, 3}, '?'); //Prisoner
 }
 

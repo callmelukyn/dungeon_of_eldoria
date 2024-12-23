@@ -24,6 +24,12 @@ Menu::~Menu() {
     delete m_playerDirector;
 }
 
+void Menu::changeScreenNormal(Screen newScreen) {
+    m_selected = 0;
+    GlobalSettings::clearConsoleOnNewScreen();
+    m_currentScreen = newScreen;
+}
+
 void Menu::changeScreen(const Screen newScreen, const char keyboardKey) {
     if (m_currentScreen != Screen::mainMenu && keyboardKey == KEYBOARD_ESC) {
         GlobalSettings::clearConsoleOnNewScreen();

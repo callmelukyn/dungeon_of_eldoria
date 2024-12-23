@@ -5,11 +5,13 @@
 #include "map.h"
 #include "../domain/entities/player.h"
 #include "../commands/add_enemy.h"
+#include "../commands/add_merchant.h"
 
 class Levels {
     int m_currentLevel;
     std::vector<Map *> m_maps;
     AddEnemy *m_addEnemy;
+    AddMerchant *m_addMerchant;
 
     void level0() const;
 
@@ -39,6 +41,8 @@ public:
     int getCurrentLevel() const;
 
     AddEnemy *getEnemy() const;
+
+    AddMerchant *getMerchant() const;
 };
 
 
