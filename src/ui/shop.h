@@ -14,7 +14,7 @@ enum class Screen;
 
 class Shop {
     Scenes *m_scene;
-    std::function<void()> m_changeScreenCallback;
+    std::function<void(Screen screen, char keyboardKey)> m_changeScreenCallback;
 
 public:
     void confirmSelectionShopMain(char keyboardKey, int selected);
@@ -27,7 +27,7 @@ public:
 
     void changeScreen(const Screen newScreen, const char keyboardKey);
 
-    Shop(std::function<void()> changeScreenCallback);
+    Shop(const std::function<void(Screen screen, char keyboardKey)> &changeScreenCallback);
 
     ~Shop();
 

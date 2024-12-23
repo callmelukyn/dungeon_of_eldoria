@@ -6,7 +6,7 @@
 
 #include "../domain/value_objects/screen.h"
 
-Shop::Shop(std::function<void()> changeScreenCallback) {
+Shop::Shop(const std::function<void(Screen screen, char keyboardKey)> &changeScreenCallback) {
     m_scene = new Scenes();
     m_changeScreenCallback = changeScreenCallback;
 }
@@ -17,7 +17,7 @@ Shop::~Shop() {
 
 //Functionality
 void Shop::changeScreen(const Screen newScreen, const char keyboardKey) {
-    m_changeScreenCallback();
+    m_changeScreenCallback(newScreen, keyboardKey);
 
     /*if (m_currentScreen != Screen::shopMain && keyboardKey == KEYBOARD_ESC) {
         GlobalSettings::clearConsoleOnNewScreen();

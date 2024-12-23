@@ -16,7 +16,7 @@ Menu::Menu() {
     m_selected = 0;
     m_currentScreen = Screen::mainMenu;
     m_scene = new Scenes();
-    m_shop = new Shop([this] { changeScreenNormal(m_currentScreen); });
+    m_shop = new Shop([this](const Screen screen, const char keyboardKey) { changeScreen(screen, keyboardKey); });
     m_playerDirector = new PlayerDirector(nullptr);
 }
 
