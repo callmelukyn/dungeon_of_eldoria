@@ -102,7 +102,7 @@ void Game::displayPlayerProperties() const {
     std::cout << "XP: " << m_player->getXp() << "/100";
     std::cout << "     HEAL POTIONS: ";
     std::cout << m_player->getNumberOfPotions() << "\n";
-    std::cout << "LEVEL: " << m_levels->getCurrentLevel() + 1 << "\n\n";
+    std::cout << "CAVE: " << m_levels->getCurrentLevel() + 1 << "\n\n";
 }
 
 Player *Game::initializePlayer() {

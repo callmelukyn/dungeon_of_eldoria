@@ -291,7 +291,7 @@ void Scenes::sceneShopPotionHeader(Player *player) const {
     std::cout << "    | |__) |__ | |_ _  ___  _ __  ___ \n";
     std::cout << "    |  ___/ _ \\| __| |/ _ \\| '_ \\/ __|\n";
     std::cout << "    | |  | (_) | |_| | (_) | | | \\__ \\\n";
-    std::cout << "    |_|   \\___/ \\__|_|\\___/|_| |_|___/\n";
+    std::cout << "    |_|   \\___/ \\__|_|\\___/|_| |_|___/\n\n";
     std::cout << "  COINS: ";
     GlobalSettings::setColor(COLOR_YELLOW);
     std::cout << player->getCoins() << "\n\n";
