@@ -32,6 +32,8 @@ public:
 
     int getXp() const;
 
+    Role getRole() const;
+
     int addXp(int xp);
 
     int addCoins(int coins);

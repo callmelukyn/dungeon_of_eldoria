@@ -43,6 +43,10 @@ int Player::getXp() const {
     return m_xp;
 }
 
+Role Player::getRole() const {
+    return m_role;
+}
+
 int Player::addXp(int xp) {
     m_xp += xp;
 }

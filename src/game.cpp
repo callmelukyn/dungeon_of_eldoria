@@ -38,34 +38,19 @@ void Game::render() {
             m_menu->getShop()->displayShopMain(m_menu->getSelected());
             break;
         case Screen::shopWeapons:
-            m_menu->getShop()->displayShopWeapons(m_menu->getSelected());
+            m_menu->getShop()->displayShopWeapons(m_menu->getSelected(), m_player);
             break;
         case Screen::shopArmor:
-            m_menu->getShop()->displayShopArmor(m_menu->getSelected());
+            m_menu->getShop()->displayShopArmor(m_menu->getSelected(), m_player);
             break;
         case Screen::shopPotions:
-            m_menu->getShop()->displayShopPotions(m_menu->getSelected());
+            m_menu->getShop()->displayShopPotions(m_menu->getSelected(), m_player);
             break;
         case Screen::game:
             initializePlayer();
             displayGUI();
             break;
     }
-    /*    if (m_menu->getCurrentScreen() == Screen::shopMain || m_menu->getCurrentScreen() == Screen::shopArmor || m_menu->
-            getCurrentScreen() == Screen::shopPotions || m_menu->getCurrentScreen() == Screen::shopWeapons) {
-            switch (m_shop->getCurrentScreen()) {
-                case Screen::shopMain:
-                    m_shop->displayShopMain();
-                    break;
-                case Screen::shopWeapons:
-                    m_shop->displayShopWeapons();
-                    break;
-                case Screen::shopArmor:
-                    m_shop->displayShopArmor();
-                case Screen::shopPotions:
-                    m_shop->displayShopPotions();
-            }
-        }*/
 }
 
 void Game::handleInputs(const char keyboardKey) const {
@@ -99,7 +84,7 @@ void Game::displayGUI() const {
 }
 
 void Game::displayHelp() const {
-    std::cout << "[WASD] Move around" << "\n";
+    std::cout << "\n[WASD] Move around" << "\n";
     std::cout << "[F] Fight" << "\n";
     std::cout << "[E] Interact" << "\n";
     std::cout << "[H] Use Heal Potion" << "\n";
@@ -117,7 +102,7 @@ void Game::displayPlayerProperties() const {
     std::cout << "XP: " << m_player->getXp() << "/100";
     std::cout << "     HEAL POTIONS: ";
     std::cout << m_player->getNumberOfPotions() << "\n";
-    std::cout << "LEVEL: " << m_levels->getCurrentLevel() + 1 << "\n";
+    std::cout << "LEVEL: " << m_levels->getCurrentLevel() + 1 << "\n\n";
 }
 
 Player *Game::initializePlayer() {

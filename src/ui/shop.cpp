@@ -81,10 +81,7 @@ void Shop::confirmSelectionShopArmor(char keyboardKey, int selected) {
 
 void Shop::confirmSelectionShopPotions(char keyboardKey, int selected) {
     switch (selected) {
-        case 0:
-            //TODO IMPLEMENTACE
-            break;
-        case 1:
+        case 2:
             //TODO IMPLEMENTACE
             break;
         default: break;
@@ -94,6 +91,22 @@ void Shop::confirmSelectionShopPotions(char keyboardKey, int selected) {
 //Scenes
 void Shop::displayShopHeader() const {
     m_scene->sceneShopHeader();
+}
+
+void Shop::displayShopWeaponHeader(Player *player) const {
+    m_scene->sceneShopWeaponHeader(player);
+}
+
+void Shop::displayShopArmorHeader(Player *player) const {
+    m_scene->sceneShopArmorHeader(player);
+}
+
+void Shop::displayShopPotionHeader(Player *player) const {
+    m_scene->sceneShopPotionHeader(player);
+}
+
+void Shop::displayShopHint() const {
+    m_scene->sceneShopHint();
 }
 
 void Shop::displayShopMain(int selected) const {
@@ -113,45 +126,46 @@ void Shop::displayShopMain(int selected) const {
             break;
         default: break;
     }
+    displayShopHint();
 }
 
-void Shop::displayShopWeapons(int selected) const {
+void Shop::displayShopWeapons(int selected, Player *player) const {
+    displayShopWeaponHeader(player);
     switch (selected) {
         case 0:
-            m_scene->sceneShopWeaponsSelectedWeapon1();
+            m_scene->sceneShopWeaponsSelectedWeapon1(player);
             break;
         case 1:
-            m_scene->sceneShopWeaponsSelectedWeapon2();
+            m_scene->sceneShopWeaponsSelectedWeapon2(player);
             break;
         case 2:
-            m_scene->sceneShopWeaponsSelectedWeapon3();
+            m_scene->sceneShopWeaponsSelectedWeapon3(player);
             break;
         default: break;
     }
 }
 
-void Shop::displayShopArmor(int selected) const {
+void Shop::displayShopArmor(int selected, Player *player) const {
+    displayShopArmorHeader(player);
     switch (selected) {
         case 0:
-            m_scene->sceneShopArmorSelectedArmor1();
+            m_scene->sceneShopArmorSelectedArmor1(player);
             break;
         case 1:
-            m_scene->sceneShopArmorSelectedArmor2();
+            m_scene->sceneShopArmorSelectedArmor2(player);
             break;
         case 2:
-            m_scene->sceneShopArmorSelectedArmor3();
+            m_scene->sceneShopArmorSelectedArmor3(player);
             break;
         default: break;
     }
 }
 
-void Shop::displayShopPotions(int selected) const {
+void Shop::displayShopPotions(int selected, Player *player) const {
+    displayShopPotionHeader(player);
     switch (selected) {
-        case 0:
+        case 2:
             m_scene->sceneShopPotionsSelectedPotion1();
-            break;
-        case 1:
-            m_scene->sceneShopPotionsSelectedPotion2();
             break;
         default: break;
     }

@@ -4,6 +4,7 @@
 
 #ifndef SCENES_H
 #define SCENES_H
+#include "../domain/entities/player.h"
 
 class Scenes {
     int m_currentScene;
@@ -74,6 +75,14 @@ public:
     //Shop scenes
     void sceneShopHeader() const;
 
+    void sceneShopWeaponHeader(Player *player) const;
+
+    void sceneShopArmorHeader(Player *player) const;
+
+    void sceneShopPotionHeader(Player *player) const;
+
+    void sceneShopHint() const;
+
     void sceneShopMainSelectedWeapons() const;
 
     void sceneShopMainSelectedArmor() const;
@@ -82,21 +91,19 @@ public:
 
     void sceneShopMainSelectedExit() const;
 
-    void sceneShopWeaponsSelectedWeapon1() const;
+    void sceneShopWeaponsSelectedWeapon1(Player *player) const;
 
-    void sceneShopWeaponsSelectedWeapon2() const;
+    void sceneShopWeaponsSelectedWeapon2(Player *player) const;
 
-    void sceneShopWeaponsSelectedWeapon3() const;
+    void sceneShopWeaponsSelectedWeapon3(Player *player) const;
 
-    void sceneShopArmorSelectedArmor1() const;
+    void sceneShopArmorSelectedArmor1(Player *player) const;
 
-    void sceneShopArmorSelectedArmor2() const;
+    void sceneShopArmorSelectedArmor2(Player *player) const;
 
-    void sceneShopArmorSelectedArmor3() const;
+    void sceneShopArmorSelectedArmor3(Player *player) const;
 
     void sceneShopPotionsSelectedPotion1() const;
-
-    void sceneShopPotionsSelectedPotion2() const;
 };
 
 

@@ -8,9 +8,9 @@
 
 #include "scenes.h"
 #include "../tools/globalSettings.h"
+#include "../domain/entities/player.h"
+#include "../domain/value_objects/screen.h"
 
-
-enum class Screen;
 
 class Shop {
     Scenes *m_scene;
@@ -34,13 +34,21 @@ public:
     //Individual screens
     void displayShopHeader() const;
 
+    void displayShopWeaponHeader(Player *player) const;
+
+    void displayShopArmorHeader(Player *player) const;
+
+    void displayShopPotionHeader(Player *player) const;
+
+    void displayShopHint() const;
+
     void displayShopMain(int selected) const;
 
-    void displayShopWeapons(int selected) const;
+    void displayShopWeapons(int selected, Player *player) const;
 
-    void displayShopArmor(int selected) const;
+    void displayShopArmor(int selected, Player *player) const;
 
-    void displayShopPotions(int selected) const;
+    void displayShopPotions(int selected, Player *player) const;
 };
 
 

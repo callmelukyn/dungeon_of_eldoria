@@ -95,7 +95,7 @@ void Menu::handleMenuInput(const char keyboardKey) {
             m_shop->confirmSelectionShopArmor(keyboardKey, m_selected);
             break;
         case Screen::shopPotions:
-            navigateMenu(keyboardKey, 2);
+            navigateMenu(keyboardKey, 1);
             m_shop->confirmSelectionShopPotions(keyboardKey, m_selected);
             break;
         case Screen::shopWeapons:
