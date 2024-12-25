@@ -26,6 +26,7 @@ Levels::~Levels() {
         delete map;
     }
     delete m_addEnemy;
+    delete m_addMerchant;
 }
 
 void Levels::loadAllLevels() const {
@@ -55,13 +56,7 @@ void Levels::renderCurrentLevel() const {
 
 void Levels::nextLevel(Player *player) {
     if (m_currentLevel + 1 < m_maps.size()) {
-        // Clear enemies from the previous level
-        for (Enemy *enemy: m_addEnemy->getEnemies()) {
-            m_maps[m_currentLevel]->clearCharacterFromPosition(enemy->getEnemyPosition());
-        }
-        m_addEnemy->clearEnemies();
-        delete m_addMerchant->getMerchant();
-
+        clearCharactersFromPreviousLevel();
         GlobalSettings::clearConsoleOnNewScreen();
         const DoorPosition lastDoorPosition = m_maps[m_currentLevel]->getDoorPosition();
         // Advance to the next level
@@ -90,6 +85,14 @@ AddEnemy *Levels::getEnemy() const {
 
 AddMerchant *Levels::getMerchant() const {
     return m_addMerchant;
+}
+
+void Levels::clearCharactersFromPreviousLevel() const {
+    for (Enemy *enemy: m_addEnemy->getEnemies()) {
+        m_maps[m_currentLevel]->clearCharacterFromPosition(enemy->getEnemyPosition());
+    }
+    m_addEnemy->clearEnemies();
+    m_maps[m_currentLevel]->clearCharacterFromPosition(m_addMerchant->getMerchant()->getPosition());
 }
 
 void Levels::level0() const {

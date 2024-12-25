@@ -15,6 +15,8 @@ class Levels {
     AddMerchant *m_addMerchant;
     AddPrisoner *m_addPrisoner;
 
+    void clearCharactersFromPreviousLevel() const;
+
     void level0() const;
 
     void level1() const;
