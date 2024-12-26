@@ -36,21 +36,7 @@ add_executable(zoo_project src/main.cpp
         src/domain/entities/playerBuilder/mageBuilder.h
         src/domain/entities/enemy.cpp
         src/domain/entities/enemy.h
-        src/domain/entities/enemyBuilder/enemyBuilder.cpp
-        src/domain/entities/enemyBuilder/enemyBuilder.h
-        src/domain/entities/enemyBuilder/enemyDirector.cpp
-        src/domain/entities/enemyBuilder/enemyDirector.h
         src/domain/value_objects/enemyType.h
-        src/domain/entities/enemyBuilder/mummyBuilder.cpp
-        src/domain/entities/enemyBuilder/mummyBuilder.h
-        src/domain/entities/enemyBuilder/gargoilBuilder.cpp
-        src/domain/entities/enemyBuilder/gargoilBuilder.h
-        src/domain/entities/enemyBuilder/ghoulBuilder.cpp
-        src/domain/entities/enemyBuilder/ghoulBuilder.h
-        src/domain/entities/enemyBuilder/basiliskBuilder.cpp
-        src/domain/entities/enemyBuilder/basiliskBuilder.h
-        src/domain/entities/enemyBuilder/necromancerBuilder.cpp
-        src/domain/entities/enemyBuilder/necromancerBuilder.h
         src/domain/entities/merchant.cpp
         src/domain/entities/merchant.h
         src/domain/entities/prisoner.cpp
@@ -75,4 +61,10 @@ add_executable(zoo_project src/main.cpp
         src/domain/value_objects/items/armor.h
         src/domain/value_objects/items/potion.cpp
         src/domain/value_objects/items/potion.h
+        src/domain/entities/ghoul.cpp
+        src/domain/entities/ghoul.h
+        src/domain/entities/gargoil.cpp
+        src/domain/entities/gargoil.h
+        src/domain/entities/necromancer.cpp
+        src/domain/entities/necromancer.h
 )
