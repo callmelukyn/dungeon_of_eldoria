@@ -64,7 +64,7 @@ int Menu::getSelected() const {
 }
 
 
-void Menu::handleMenuInput(const char keyboardKey) {
+void Menu::handleMenuInput(const char keyboardKey, Player *player) {
     switch (m_currentScreen) {
         case Screen::mainMenu:
             if (keyboardKey == KEYBOARD_ESC) {
@@ -90,15 +90,15 @@ void Menu::handleMenuInput(const char keyboardKey) {
             break;
         case Screen::shopArmor:
             navigateMenu(keyboardKey, 3);
-            m_shop->confirmSelectionShopArmor(keyboardKey, m_selected);
+            m_shop->confirmSelectionShopArmor(keyboardKey, m_selected, player);
             break;
         case Screen::shopPotions:
             navigateMenu(keyboardKey, 1);
-            m_shop->confirmSelectionShopPotions(keyboardKey, m_selected);
+            m_shop->confirmSelectionShopPotions(keyboardKey, m_selected, player);
             break;
         case Screen::shopWeapons:
             navigateMenu(keyboardKey, 3);
-            m_shop->confirmSelectionShopWeapons(keyboardKey, m_selected);
+            m_shop->confirmSelectionShopWeapons(keyboardKey, m_selected, player);
             break;
         case Screen::cutscenes:
             confirmCutscene(keyboardKey);

@@ -59,7 +59,7 @@ public:
     Screen getCurrentScreen() const;
 
     //Functionality
-    void handleMenuInput(char keyboardKey);
+    void handleMenuInput(char keyboardKey, Player *player);
 
     Shop *getShop() const;
 

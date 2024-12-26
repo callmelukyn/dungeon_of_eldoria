@@ -14,7 +14,7 @@ Player::Player(const Role role, const int hp, const int damage, const int armor,
     m_armor = armor;
     m_range = range;
     m_xp = 0;
-    m_coins = 0;
+    m_coins = 10000;
     m_numberOfPotions = 0;
 }
 
@@ -22,6 +22,15 @@ void Player::addPotion() {
     m_numberOfPotions += 1;
 }
 
+void Player::addDamage(int damage) {
+    m_damage += damage;
+}
+
+void Player::addArmor(int armor) {
+    m_armor += armor;
+}
+
+/*
 void Player::usePotion() {
     if (m_numberOfPotions > 0) {
         Potion potion;
@@ -33,7 +42,7 @@ void Player::usePotion() {
         }
         m_numberOfPotions -= 1;
     }
-}
+} */
 
 int Player::getHp() const {
     return m_hp;
@@ -41,6 +50,10 @@ int Player::getHp() const {
 
 int Player::getXp() const {
     return m_xp;
+}
+
+int Player::getDamage() const {
+    return m_damage;
 }
 
 Role Player::getRole() const {
@@ -51,8 +64,12 @@ int Player::addXp(int xp) {
     m_xp += xp;
 }
 
-int Player::addCoins(int coins) {
+void Player::addCoins(int coins) {
     m_coins += coins;
+}
+
+void Player::removeCoins(int coins) {
+    m_coins -= coins;
 }
 
 int Player::getCoins() const {

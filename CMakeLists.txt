@@ -11,7 +11,6 @@ add_executable(zoo_project src/main.cpp
         src/map/levels.cpp
         src/map/levels.h
         src/map/position.h
-        src/domain/value_objects/potion.h
         src/ui/menu.cpp
         src/ui/menu.h
         src/application.cpp
@@ -70,4 +69,10 @@ add_executable(zoo_project src/main.cpp
         src/commands/add_prisoner.h
         src/domain/entities/basilisk.cpp
         src/domain/entities/basilisk.h
+        src/domain/value_objects/items/weapon.cpp
+        src/domain/value_objects/items/weapon.h
+        src/domain/value_objects/items/armor.cpp
+        src/domain/value_objects/items/armor.h
+        src/domain/value_objects/items/potion.cpp
+        src/domain/value_objects/items/potion.h
 )

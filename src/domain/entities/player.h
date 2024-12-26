@@ -8,7 +8,7 @@
 #include <vector>
 
 #include "entity.h"
-#include "../value_objects/potion.h"
+#include "../value_objects/items/potion.h"
 #include "../value_objects/role.h"
 #include "../value_objects/screen.h"
 #include "../../map/map.h"
@@ -32,11 +32,19 @@ public:
 
     int getXp() const;
 
+    int getDamage() const;
+
     Role getRole() const;
 
     int addXp(int xp);
 
-    int addCoins(int coins);
+    void addDamage(int damage);
+
+    void addArmor(int armor);
+
+    void addCoins(int coins);
+
+    void removeCoins(int coins);
 
     int getNumberOfPotions() const;
 

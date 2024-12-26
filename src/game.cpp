@@ -72,7 +72,7 @@ void Game::handleInputs(const char keyboardKey) const {
                                                             });
     }
     // Handle movement on menu.
-    m_menu->handleMenuInput(keyboardKey);
+    m_menu->handleMenuInput(keyboardKey, m_player);
 }
 
 void Game::displayGUI() const {
