@@ -7,6 +7,7 @@
 #include <functional>
 #include <vector>
 
+#include "enemy.h"
 #include "entity.h"
 #include "../value_objects/items/potion.h"
 #include "../value_objects/role.h"
@@ -51,7 +52,7 @@ public:
     int getCoins() const;
 
     void movePlayer(char keyboardKey, Screen currentScreen, const std::vector<Map *> &maps, int currentLevel,
-                    const std::function<void()> &nextLevel);
+                    const std::function<void()> &nextLevel, const std::vector<Enemy *> &enemies);
 
     void setPlayerPosition(Position playerPosition);
 

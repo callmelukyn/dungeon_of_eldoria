@@ -4,7 +4,6 @@
 
 #include "player.h"
 
-#include "enemy.h"
 #include "../../tools/globalSettings.h"
 #include "../value_objects/screen.h"
 
@@ -81,13 +80,16 @@ int Player::getNumberOfPotions() const {
 }
 
 void Player::movePlayer(const char keyboardKey, const Screen currentScreen, const std::vector<Map *> &maps,
-                        const int currentLevel, const std::function<void()> &nextLevel) {
+                        const int currentLevel, const std::function<void()> &nextLevel,
+                        const std::vector<Enemy *> &enemies) {
     if (Screen::game == currentScreen) {
         Map *map = maps[currentLevel];
         Position nextPosition = m_position;
 
-        if (Enemy::isAggroed()) {
-            return;
+        for (const Enemy *enemy: enemies) {
+            if (enemy->isAggroed()) {
+                return;
+            }
         }
         // Calculate the next position based on the input key
         switch (keyboardKey) {

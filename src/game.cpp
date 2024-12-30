@@ -57,8 +57,8 @@ void Game::handleInputs(const char keyboardKey) const {
     if (m_player) {
         // Handle player movement on the map.
         m_player->movePlayer(keyboardKey, m_menu->getCurrentScreen(), m_levels->getMaps(),
-                             m_levels->getCurrentLevel(), [this] { m_levels->nextLevel(m_player); }
-        );
+                             m_levels->getCurrentLevel(), [this] { m_levels->nextLevel(m_player); },
+                             m_levels->getEnemy()->getEnemies());
         // Handle movement for enemies.
         for (Enemy *enemy: m_levels->getEnemy()->getEnemies()) {
             if (!m_levels->getEnemy()->getEnemies().empty()) {

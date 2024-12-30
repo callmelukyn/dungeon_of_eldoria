@@ -4,10 +4,12 @@
 
 #ifndef ENEMY_H
 #define ENEMY_H
-#include "player.h"
+#include "entity.h"
 #include "../../map/map.h"
 #include "../value_objects/enemyType.h"
 #include "../value_objects/screen.h"
+
+class Player;
 
 class Enemy : public Entity {
 protected:
@@ -16,7 +18,7 @@ protected:
     int m_xpReward;
     int m_potionDropChance;
     int m_range;
-    static bool m_aggroed;
+    bool m_aggroed;
 
 public:
     Enemy(EnemyType enemyType, int hp, int damage, int coinReward, int xpReward, int potionDropChance,
@@ -32,14 +34,12 @@ public:
 
     int getPotionDropChance();
 
-    bool getAggroed() const;
-
     void moveEnemy(Screen currentScreen, const std::vector<Map *> &maps, int currentLevel, const Player *player,
                    char keyboardKey);
 
     Position getEnemyPosition();
 
-    static bool isAggroed();
+    bool isAggroed() const;
 };
 
 #endif //ENEMY_H

@@ -4,9 +4,8 @@
 
 #include "enemy.h"
 
+#include "player.h"
 #include "../../tools/globalSettings.h"
-
-bool Enemy::m_aggroed = false;
 
 Enemy::Enemy(EnemyType enemyType, int hp, int damage, int coinReward, int xpReward,
              int potionDropChance, int range, bool alive,
@@ -16,6 +15,7 @@ Enemy::Enemy(EnemyType enemyType, int hp, int damage, int coinReward, int xpRewa
     m_xpReward = xpReward;
     m_potionDropChance = potionDropChance;
     m_range = range;
+    m_aggroed = false;
 }
 
 int Enemy::getDamage() {
@@ -38,10 +38,6 @@ int Enemy::getPotionDropChance() {
     return m_potionDropChance;
 }
 
-bool Enemy::getAggroed() const {
-    return m_aggroed;
-}
-
 void Enemy::moveEnemy(const Screen currentScreen, const std::vector<Map *> &maps, const int currentLevel,
                       const Player *player, const char keyboardKey) {
     if (Screen::game == currentScreen) {
@@ -54,11 +50,7 @@ void Enemy::moveEnemy(const Screen currentScreen, const std::vector<Map *> &maps
             m_aggroed = true;
         }
         if (m_aggroed) {
-            if (keyboardKey == KEYBOARD_SMALL_W || keyboardKey == KEYBOARD_SMALL_S || keyboardKey ==
-                KEYBOARD_SMALL_D ||
-                keyboardKey == KEYBOARD_SMALL_A || keyboardKey == KEYBOARD_CAPITAL_W || keyboardKey ==
-                KEYBOARD_CAPITAL_S ||
-                keyboardKey == KEYBOARD_CAPITAL_A || keyboardKey == KEYBOARD_CAPITAL_D) {
+            if (keyboardKey == 'f') {
                 if (distanceX > distanceY) {
                     player->getPlayerPosition().x > nextPosition.x
                         ? nextPosition.x += 1
@@ -85,6 +77,6 @@ Position Enemy::getEnemyPosition() {
     return m_position;
 }
 
-bool Enemy::isAggroed() {
+bool Enemy::isAggroed() const {
     return m_aggroed;
 }
