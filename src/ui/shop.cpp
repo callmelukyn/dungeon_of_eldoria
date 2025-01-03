@@ -97,12 +97,15 @@ void Shop::confirmSelectionShopWeapons(char keyboardKey, int selected, Player *p
                 switch (player->getRole()) {
                     case Role::warrior:
                         buyWeapon(player, m_warriorWeapon1);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                     case Role::archer:
                         buyWeapon(player, m_archerWeapon1);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                     case Role::mage:
                         buyWeapon(player, m_mageWeapon1);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                 }
                 break;
@@ -110,12 +113,15 @@ void Shop::confirmSelectionShopWeapons(char keyboardKey, int selected, Player *p
                 switch (player->getRole()) {
                     case Role::warrior:
                         buyWeapon(player, m_warriorWeapon2);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                     case Role::archer:
                         buyWeapon(player, m_archerWeapon2);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                     case Role::mage:
                         buyWeapon(player, m_mageWeapon2);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                 }
                 break;
@@ -123,12 +129,15 @@ void Shop::confirmSelectionShopWeapons(char keyboardKey, int selected, Player *p
                 switch (player->getRole()) {
                     case Role::warrior:
                         buyWeapon(player, m_warriorWeapon3);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                     case Role::archer:
                         buyWeapon(player, m_archerWeapon3);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                     case Role::mage:
                         buyWeapon(player, m_mageWeapon3);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                 }
                 break;
@@ -144,12 +153,15 @@ void Shop::confirmSelectionShopArmor(char keyboardKey, int selected, Player *pla
                 switch (player->getRole()) {
                     case Role::warrior:
                         buyArmor(player, m_warriorArmor1);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                     case Role::archer:
                         buyArmor(player, m_archerArmor1);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                     case Role::mage:
                         buyArmor(player, m_mageArmor1);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                 }
                 break;
@@ -157,12 +169,15 @@ void Shop::confirmSelectionShopArmor(char keyboardKey, int selected, Player *pla
                 switch (player->getRole()) {
                     case Role::warrior:
                         buyArmor(player, m_warriorArmor2);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                     case Role::archer:
                         buyArmor(player, m_archerArmor2);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                     case Role::mage:
                         buyArmor(player, m_mageArmor2);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                 }
                 break;
@@ -170,12 +185,15 @@ void Shop::confirmSelectionShopArmor(char keyboardKey, int selected, Player *pla
                 switch (player->getRole()) {
                     case Role::warrior:
                         buyArmor(player, m_warriorArmor3);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                     case Role::archer:
                         buyArmor(player, m_archerArmor3);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                     case Role::mage:
                         buyArmor(player, m_mageArmor3);
+                        changeScreen(Screen::shopMain, keyboardKey);
                         break;
                 }
                 break;
@@ -189,6 +207,7 @@ void Shop::confirmSelectionShopPotions(char keyboardKey, int selected, Player *p
         switch (selected) {
             case 2:
                 buyPotion(player, m_potion);
+                changeScreen(Screen::shopMain, keyboardKey);
                 break;
             default: break;
         }
