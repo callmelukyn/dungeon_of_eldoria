@@ -52,11 +52,11 @@ void Player::addDamage(int damage) {
     m_damage += damage;
 }
 
-int Player::addHp(int hp) {
+void Player::addHp(int hp) {
     m_hp += hp;
 }
 
-int Player::addMaxHp(int maxHp) {
+void Player::addMaxHp(int maxHp) {
     m_maxHp += maxHp;
 }
 
@@ -98,7 +98,7 @@ Role Player::getRole() const {
     return m_role;
 }
 
-int Player::addXp(int xp) {
+void Player::addXp(int xp) {
     m_xp += xp;
 }
 
