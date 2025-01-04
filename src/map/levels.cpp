@@ -61,6 +61,7 @@ void Levels::nextLevel(Player *player) {
         const DoorPosition lastDoorPosition = m_maps[m_currentLevel]->getDoorPosition();
         // Advance to the next level
         ++m_currentLevel;
+        //player->addXp(20);
 
         const Position newPlayerPosition = m_maps[m_currentLevel]->getStartingPosition(lastDoorPosition);
         // Put player on the side which he walked from

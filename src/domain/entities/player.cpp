@@ -12,9 +12,36 @@ Player::Player(const Role role, const int hp, const int damage, const int armor,
     m_role = role;
     m_armor = armor;
     m_range = range;
+    m_maxHp = hp;
     m_xp = 0;
-    m_coins = 10000;
+    m_level = 1;
+    m_coins = 10000; //TODO Jen na test, pak zmenit na 0
     m_numberOfPotions = 0;
+}
+
+void Player::levelUp() {
+    m_level += 1;
+    m_xp -= 100;
+    switch (m_role) {
+        case Role::warrior:
+            m_maxHp += 10;
+            m_damage += 7;
+            break;
+        case Role::archer:
+            m_maxHp += 8;
+            m_damage += 7;
+            break;
+        case Role::mage:
+            m_maxHp += 5;
+            m_damage += 15;
+            break;
+    }
+}
+
+void Player::checkLevelStatus() {
+    if (m_xp >= 100) {
+        levelUp();
+    }
 }
 
 void Player::addPotion() {
@@ -23,6 +50,14 @@ void Player::addPotion() {
 
 void Player::addDamage(int damage) {
     m_damage += damage;
+}
+
+int Player::addHp(int hp) {
+    m_hp += hp;
+}
+
+int Player::addMaxHp(int maxHp) {
+    m_maxHp += maxHp;
 }
 
 void Player::addArmor(int armor) {
@@ -49,6 +84,10 @@ int Player::getHp() const {
 
 int Player::getXp() const {
     return m_xp;
+}
+
+int Player::getLevel() const {
+    return m_level;
 }
 
 int Player::getDamage() const {

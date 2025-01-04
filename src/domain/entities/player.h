@@ -16,6 +16,8 @@
 
 class Player : public Entity {
     int m_xp;
+    int m_maxHp; //MAX HP you can achieve by healing. It increases with LVL Ups - but not your current HP.
+    int m_level;
     int m_coins;
     Role m_role;
     int m_numberOfPotions;
@@ -25,6 +27,10 @@ class Player : public Entity {
 public:
     Player(Role role, int hp, int damage, int armor, int range, bool alive);
 
+    void checkLevelStatus();
+
+    void levelUp();
+
     void addPotion();
 
     void usePotion();
@@ -33,11 +39,17 @@ public:
 
     int getXp() const;
 
+    int getLevel() const; //XP Level
+
     int getDamage() const;
 
     Role getRole() const;
 
     int addXp(int xp);
+
+    int addHp(int hp);
+
+    int addMaxHp(int maxHp);
 
     void addDamage(int damage);
 

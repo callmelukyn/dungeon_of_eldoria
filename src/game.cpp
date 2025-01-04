@@ -48,6 +48,7 @@ void Game::render() {
             break;
         case Screen::game:
             initializePlayer();
+            m_player->checkLevelStatus();
             displayGUI();
             break;
     }
@@ -99,8 +100,8 @@ void Game::displayPlayerProperties() const {
     GlobalSettings::setColor(COLOR_YELLOW);
     std::cout << m_player->getCoins() << "\n";
     GlobalSettings::setColor(COLOR_DEFAULT);
-    std::cout << "XP: " << m_player->getXp() << "/100";
-    std::cout << "     HEAL POTIONS: ";
+    std::cout << "LVL: " << m_player->getLevel() << "      -     " << m_player->getXp() << "/100 XP\n";
+    std::cout << "HEAL POTIONS: ";
     std::cout << m_player->getNumberOfPotions() << "\n";
     std::cout << "CAVE: " << m_levels->getCurrentLevel() + 1 << "\n\n";
 }
