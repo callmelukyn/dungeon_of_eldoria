@@ -33,7 +33,7 @@ public:
 
     void addPotion();
 
-    void usePotion();
+    void usePotion(Potion *potion);
 
     int getHp() const;
 

@@ -64,19 +64,18 @@ void Player::addArmor(int armor) {
     m_armor += armor;
 }
 
-/*
-void Player::usePotion() {
-    if (m_numberOfPotions > 0) {
-        Potion potion;
-        if (m_hp + potion.m_hpGain >= 100) {
-            //TODO Mozna vyresit, aby nesel potion pouzit s plnymi zivoty
-            m_hp = 100;
-        } else if (m_hp + potion.m_hpGain < 100) {
-            m_hp += potion.m_hpGain;
+void Player::usePotion(Potion *potion) {
+    if (m_hp != m_maxHp) {
+        if (m_numberOfPotions > 0) {
+            if (m_hp + potion->getHpGain() >= m_maxHp) {
+                m_hp = m_maxHp;
+            } else {
+                m_hp += potion->getHpGain();
+            }
+            m_numberOfPotions -= 1;
         }
-        m_numberOfPotions -= 1;
     }
-} */
+}
 
 int Player::getHp() const {
     return m_hp;
