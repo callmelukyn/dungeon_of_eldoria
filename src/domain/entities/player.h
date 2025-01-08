@@ -73,6 +73,8 @@ public:
 
     int getCoins() const;
 
+    int getRange() const;
+
     void movePlayer(char keyboardKey, Screen currentScreen, const std::vector<Map *> &maps, int currentLevel,
                     const std::function<void()> &nextLevel, const std::vector<Enemy *> &enemies);
 

@@ -136,6 +136,10 @@ int Player::getCoins() const {
     return m_coins;
 }
 
+int Player::getRange() const {
+    return m_range;
+}
+
 int Player::getNumberOfPotions() const {
     return m_numberOfPotions;
 }
@@ -147,8 +151,11 @@ void Player::movePlayer(const char keyboardKey, const Screen currentScreen, cons
         Map *map = maps[currentLevel];
         Position nextPosition = m_position;
 
-        for (const Enemy *enemy: enemies) {
-            if (enemy->isAggroed()) {
+        // If enemy is in range 1 of player then player cannot move.
+        for (Enemy *enemy: enemies) {
+            const unsigned int distanceX = abs(static_cast<int>(m_position.x - enemy->getEnemyPosition().x));
+            const unsigned int distanceY = abs(static_cast<int>(m_position.y - enemy->getEnemyPosition().y));
+            if (enemy->isAggroed() && m_range >= distanceX && m_range >= distanceY) {
                 return;
             }
         }
@@ -180,8 +187,7 @@ void Player::movePlayer(const char keyboardKey, const Screen currentScreen, cons
             map->clearCharacterFromPosition(m_position);
             m_position = nextPosition;
             map->putCharacterInPosition(m_position, '@');
-        }
-        if (nextTile == '|') {
+        } else if (nextTile == '|') {
             nextLevel();
             map->clearCharacterFromPosition(m_position);
         }

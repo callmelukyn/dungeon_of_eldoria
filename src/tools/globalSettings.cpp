@@ -93,6 +93,17 @@ void GlobalSettings::turnOnSupportForANSI() {
     SetConsoleMode(hStdOut, mode);
 }
 
+bool GlobalSettings::movementKeys(const char keyboardKey) {
+    return keyboardKey == KEYBOARD_CAPITAL_W ||
+           keyboardKey == KEYBOARD_SMALL_W ||
+           keyboardKey == KEYBOARD_CAPITAL_S ||
+           keyboardKey == KEYBOARD_SMALL_S ||
+           keyboardKey == KEYBOARD_CAPITAL_A ||
+           keyboardKey == KEYBOARD_SMALL_A ||
+           keyboardKey == KEYBOARD_CAPITAL_D ||
+           keyboardKey == KEYBOARD_SMALL_D;
+}
+
 bool GlobalSettings::supportsANSI() {
     HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
     if (hStdOut == INVALID_HANDLE_VALUE) {

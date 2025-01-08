@@ -38,6 +38,8 @@ public:
     static void clearScreen();
 
     static void turnOnSupportForANSI();
+
+    static bool movementKeys(char keyboardKey);
 };
 
 

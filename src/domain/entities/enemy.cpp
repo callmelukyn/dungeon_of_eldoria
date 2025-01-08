@@ -46,11 +46,19 @@ void Enemy::moveEnemy(const Screen currentScreen, const std::vector<Map *> &maps
         const unsigned int distanceX = abs(static_cast<int>(player->getPlayerPosition().x - nextPosition.x));
         const unsigned int distanceY = abs(static_cast<int>(player->getPlayerPosition().y - nextPosition.y));
 
-        if (distanceX <= m_range && distanceY <= m_range) {
+        if (!m_aggroed && (distanceX <= m_range && distanceY <= m_range)) {
+            m_aggroed = true;
+        } else if (!m_aggroed && (distanceX <= player->getRange() && distanceY <= player->getRange()
+                                  && keyboardKey == 'f')) {
+            m_hp -= player->getDamage();
             m_aggroed = true;
         }
-        if (m_aggroed) {
-            if (keyboardKey == 'f') {
+
+        if (m_aggroed && m_alive) {
+            if (player->getRange() >= distanceX && player->getRange() >= distanceY && keyboardKey == 'f') {
+                m_hp -= player->getDamage();
+            }
+            if (keyboardKey == 'f' || GlobalSettings::movementKeys(keyboardKey)) {
                 if (distanceX > distanceY) {
                     player->getPlayerPosition().x > nextPosition.x
                         ? nextPosition.x += 1
@@ -63,9 +71,17 @@ void Enemy::moveEnemy(const Screen currentScreen, const std::vector<Map *> &maps
             }
         }
 
+        if (m_hp <= 0) {
+            m_aggroed = false;
+            m_alive = false;
+            map->clearCharacterFromPosition(m_position);
+            m_position = Position{0, 0};
+            return;
+        }
+
         const char nextTile = map->assignTilePosition(nextPosition); // Access the tile at the next position
         // Movement only through '.'
-        if (nextTile == '.') {
+        if (nextTile == '.' && m_alive) {
             map->clearCharacterFromPosition(m_position);
             m_position = nextPosition;
             map->putCharacterInPosition(m_position, '!');
