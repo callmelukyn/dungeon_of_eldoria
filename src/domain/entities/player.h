@@ -10,11 +10,15 @@
 #include "enemy.h"
 #include "entity.h"
 #include "../value_objects/items/potion.h"
+#include "../value_objects/items/weapon.h"
+#include "../value_objects/items/armor.h"
 #include "../value_objects/role.h"
 #include "../value_objects/screen.h"
 #include "../../map/map.h"
 
 class Player : public Entity {
+    std::vector<Weapon *> m_weapons;
+    std::vector<Armor *> m_armors;
     int m_xp;
     int m_maxHp; //MAX HP you can achieve by healing. It increases with LVL Ups - but not your current HP.
     int m_level; //XP Level
@@ -43,7 +47,15 @@ public:
 
     int getDamage() const;
 
+    int getTotalDefense(); //Methods for fighting
+
+    int getTotalDamage(); //Methods for fighting
+
     Role getRole() const;
+
+    void addWeapon(Weapon *weapon);
+
+    void addArmor(Armor *armor);
 
     void addXp(int xp);
 
@@ -52,8 +64,6 @@ public:
     void addMaxHp(int maxHp);
 
     void addDamage(int damage);
-
-    void addArmor(int armor);
 
     void addCoins(int coins);
 

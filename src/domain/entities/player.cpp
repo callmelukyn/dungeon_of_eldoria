@@ -9,6 +9,8 @@
 
 Player::Player(const Role role, const int hp, const int damage, const int armor, const int range,
                bool alive): Entity(hp, damage, alive, Position{5, 1}) {
+    m_armors = {};
+    m_weapons = {};
     m_role = role;
     m_armor = armor;
     m_range = range;
@@ -22,6 +24,7 @@ Player::Player(const Role role, const int hp, const int damage, const int armor,
 void Player::levelUp() {
     m_level += 1;
     m_xp -= 100;
+    addCoins(100);
     switch (m_role) {
         case Role::warrior:
             m_maxHp += 10;
@@ -44,6 +47,14 @@ void Player::checkLevelStatus() {
     }
 }
 
+void Player::addWeapon(Weapon *weapon) {
+    m_weapons.push_back(weapon);
+}
+
+void Player::addArmor(Armor *armor) {
+    m_armors.push_back(armor);
+}
+
 void Player::addPotion() {
     m_numberOfPotions += 1;
 }
@@ -60,10 +71,6 @@ void Player::addMaxHp(int maxHp) {
     m_maxHp += maxHp;
 }
 
-void Player::addArmor(int armor) {
-    m_armor += armor;
-}
-
 void Player::usePotion(Potion *potion) {
     if (m_hp != m_maxHp) {
         if (m_numberOfPotions > 0) {
@@ -75,6 +82,22 @@ void Player::usePotion(Potion *potion) {
             m_numberOfPotions -= 1;
         }
     }
+}
+
+int Player::getTotalDamage() {
+    int damage = m_damage;
+    for (auto weapon: m_weapons) {
+        damage += weapon->getDamage();
+    }
+    return damage;
+}
+
+int Player::getTotalDefense() {
+    int defense = m_armor;
+    for (auto armor: m_armors) {
+        defense += armor->getArmor();
+    }
+    return defense;
 }
 
 int Player::getHp() const {

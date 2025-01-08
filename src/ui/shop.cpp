@@ -46,7 +46,7 @@ void Shop::changeScreen(const Screen newScreen, const char keyboardKey) {
 void Shop::buyWeapon(Player *player, Weapon *weapon) {
     if (player->getCoins() - weapon->getPrice() >= 0) {
         player->removeCoins(weapon->getPrice());
-        player->addDamage(weapon->getDamage());
+        player->addWeapon(weapon);
     } else {
         std::cout << "NOT ENOUGH COINS\n";
     }
@@ -55,7 +55,7 @@ void Shop::buyWeapon(Player *player, Weapon *weapon) {
 void Shop::buyArmor(Player *player, Armor *armor) {
     if (player->getCoins() - armor->getPrice() >= 0) {
         player->removeCoins(armor->getPrice());
-        player->addArmor(armor->getArmor());
+        player->addArmor(armor);
     } else {
         std::cout << "NOT ENOUGH COINS\n";
     }
