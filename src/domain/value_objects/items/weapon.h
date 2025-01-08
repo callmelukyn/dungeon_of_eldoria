@@ -9,6 +9,8 @@
 class Weapon {
     int m_damage;
     int m_price;
+    int m_id;
+    static int s_counter;
 
 public:
     Weapon(int damage, int price);
@@ -16,6 +18,8 @@ public:
     int getDamage();
 
     int getPrice();
+
+    int getId();
 };
 
 

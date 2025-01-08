@@ -86,6 +86,10 @@ public:
 
     void sceneShopHint() const;
 
+    void sceneShopOwnedWeapon(Player *player, Weapon *weapon) const;
+
+    void sceneShopOwnedArmor(Player *player, Armor *armor) const;
+
     void sceneShopMainSelectedWeapons() const;
 
     void sceneShopMainSelectedArmor() const;

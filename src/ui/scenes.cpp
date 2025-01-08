@@ -305,6 +305,26 @@ void Scenes::sceneShopHint() const {
     GlobalSettings::setColor(COLOR_DEFAULT);
 }
 
+void Scenes::sceneShopOwnedWeapon(Player *player, Weapon *weapon) const {
+    switch (player->weaponOwned(weapon)) {
+        case 0:
+            break;
+        case 1:
+            std::cout << "[OWNED]\n";
+            break;
+    }
+}
+
+void Scenes::sceneShopOwnedArmor(Player *player, Armor *armor) const {
+    switch (player->armorOwned(armor)) {
+        case 0:
+            break;
+        case 1:
+            std::cout << "[OWNED]\n";
+            break;
+    }
+}
+
 void Scenes::sceneShopMainSelectedWeapons() const {
     GlobalSettings::setColor(COLOR_SELECTED);
     std::cout << "- WEAPONS\n";
@@ -351,6 +371,7 @@ void Scenes::sceneShopWeaponsSelectedWeapon1(Player *player, Weapon *weapon) con
             std::cout << "  Axe of Eternal Flame\n";
             std::cout << "\n PRICE: " << weapon->getPrice() << " coins\n";
             std::cout << " Adds " << weapon->getDamage() << " damage points to attacks\n";
+            sceneShopOwnedWeapon(player, weapon);
             break;
         case Role::archer:
             GlobalSettings::setColor(COLOR_SELECTED);
@@ -360,6 +381,7 @@ void Scenes::sceneShopWeaponsSelectedWeapon1(Player *player, Weapon *weapon) con
             std::cout << "  Crossbow of the Night's Mark\n";
             std::cout << "\n PRICE: " << weapon->getPrice() << " coins\n";
             std::cout << " Adds " << weapon->getDamage() << " damage points to attacks\n";
+            sceneShopOwnedWeapon(player, weapon);
             break;
         case Role::mage:
             GlobalSettings::setColor(COLOR_SELECTED);
@@ -369,6 +391,7 @@ void Scenes::sceneShopWeaponsSelectedWeapon1(Player *player, Weapon *weapon) con
             std::cout << "  Orb of Destructive Energy\n";
             std::cout << "\n PRICE: " << weapon->getPrice() << " coins\n";
             std::cout << " Adds " << weapon->getDamage() << " damage points to attacks\n";
+            sceneShopOwnedWeapon(player, weapon);
             break;
     }
 }
@@ -383,6 +406,7 @@ void Scenes::sceneShopWeaponsSelectedWeapon2(Player *player, Weapon *weapon) con
             std::cout << "  Axe of Eternal Flame\n";
             std::cout << "\n PRICE: " << weapon->getPrice() << " coins\n";
             std::cout << " Adds " << weapon->getDamage() << " damage points to attacks\n";
+            sceneShopOwnedWeapon(player, weapon);
             break;
         case Role::archer:
             std::cout << "  Flame Arrows\n";
@@ -392,6 +416,7 @@ void Scenes::sceneShopWeaponsSelectedWeapon2(Player *player, Weapon *weapon) con
             std::cout << "  Crossbow of the Night's Mark\n";
             std::cout << "\n PRICE: " << weapon->getPrice() << " coins\n";
             std::cout << " Adds " << weapon->getDamage() << " damage points to attacks\n";
+            sceneShopOwnedWeapon(player, weapon);
             break;
         case Role::mage:
             std::cout << "  Staff of Fate\n";
@@ -401,6 +426,7 @@ void Scenes::sceneShopWeaponsSelectedWeapon2(Player *player, Weapon *weapon) con
             std::cout << "  Orb of Destructive Energy\n";
             std::cout << "\n PRICE: " << weapon->getPrice() << " coins\n";
             std::cout << " Adds " << weapon->getDamage() << " damage points to attacks\n";
+            sceneShopOwnedWeapon(player, weapon);
             break;
     }
 }
@@ -415,6 +441,7 @@ void Scenes::sceneShopWeaponsSelectedWeapon3(Player *player, Weapon *weapon) con
             GlobalSettings::setColor(COLOR_DEFAULT);
             std::cout << "\n PRICE: " << weapon->getPrice() << " coins\n";
             std::cout << " Adds " << weapon->getDamage() << " damage points to attacks\n";
+            sceneShopOwnedWeapon(player, weapon);
             break;
         case Role::archer:
             std::cout << "  Flame Arrows\n";
@@ -424,6 +451,7 @@ void Scenes::sceneShopWeaponsSelectedWeapon3(Player *player, Weapon *weapon) con
             GlobalSettings::setColor(COLOR_DEFAULT);
             std::cout << "\n PRICE: " << weapon->getPrice() << " coins\n";
             std::cout << " Adds " << weapon->getDamage() << " damage points to attacks\n";
+            sceneShopOwnedWeapon(player, weapon);
             break;
         case Role::mage:
             std::cout << "  Staff of Fate\n";
@@ -433,6 +461,7 @@ void Scenes::sceneShopWeaponsSelectedWeapon3(Player *player, Weapon *weapon) con
             GlobalSettings::setColor(COLOR_DEFAULT);
             std::cout << "\n PRICE: " << weapon->getPrice() << " coins\n";
             std::cout << " Adds " << weapon->getDamage() << " damage points to attacks\n";
+            sceneShopOwnedWeapon(player, weapon);
             break;
     }
 }
@@ -447,6 +476,7 @@ void Scenes::sceneShopArmorSelectedArmor1(Player *player, Armor *armor) const {
             std::cout << "  Tombkeeper's Shield\n";
             std::cout << "\n PRICE: " << armor->getPrice() << " coins\n";
             std::cout << " Adds " << armor->getArmor() << " defense points against enemy attacks\n";
+            sceneShopOwnedArmor(player, armor);
             break;
         case Role::archer:
             GlobalSettings::setColor(COLOR_SELECTED);
@@ -456,6 +486,7 @@ void Scenes::sceneShopArmorSelectedArmor1(Player *player, Armor *armor) const {
             std::cout << "  Forest Warden's Helm\n";
             std::cout << "\n PRICE: " << armor->getPrice() << " coins\n";
             std::cout << " Adds " << armor->getArmor() << " defense points against enemy attacks\n";
+            sceneShopOwnedArmor(player, armor);
             break;
         case Role::mage:
             GlobalSettings::setColor(COLOR_SELECTED);
@@ -465,6 +496,7 @@ void Scenes::sceneShopArmorSelectedArmor1(Player *player, Armor *armor) const {
             std::cout << "  Aura of Arcane Spell\n";
             std::cout << "\n PRICE: " << armor->getPrice() << " coins\n";
             std::cout << " Adds " << armor->getArmor() << " defense points against enemy attacks\n";
+            sceneShopOwnedArmor(player, armor);
             break;
     }
 }
@@ -479,6 +511,7 @@ void Scenes::sceneShopArmorSelectedArmor2(Player *player, Armor *armor) const {
             std::cout << "  Tombkeeper's Shield\n";
             std::cout << "\n PRICE: " << armor->getPrice() << " coins\n";
             std::cout << " Adds " << armor->getArmor() << " defense points against enemy attacks\n";
+            sceneShopOwnedArmor(player, armor);
             break;
         case Role::archer:
             std::cout << "  Cloak of Whispering Wind\n";
@@ -488,6 +521,7 @@ void Scenes::sceneShopArmorSelectedArmor2(Player *player, Armor *armor) const {
             std::cout << "  Forest Warden's Helm\n";
             std::cout << "\n PRICE: " << armor->getPrice() << " coins\n";
             std::cout << " Adds " << armor->getArmor() << " defense points against enemy attacks\n";
+            sceneShopOwnedArmor(player, armor);
             break;
         case Role::mage:
             std::cout << "  Robe of Fiery Circle\n";
@@ -497,6 +531,7 @@ void Scenes::sceneShopArmorSelectedArmor2(Player *player, Armor *armor) const {
             std::cout << "  Aura of Arcane Spell\n";
             std::cout << "\n PRICE: " << armor->getPrice() << " coins\n";
             std::cout << " Adds " << armor->getArmor() << " defense points against enemy attacks\n";
+            sceneShopOwnedArmor(player, armor);
             break;
     }
 }
@@ -511,6 +546,7 @@ void Scenes::sceneShopArmorSelectedArmor3(Player *player, Armor *armor) const {
             GlobalSettings::setColor(COLOR_DEFAULT);
             std::cout << "\n PRICE: " << armor->getPrice() << " coins\n";
             std::cout << " Adds " << armor->getArmor() << " defense points against enemy attacks\n";
+            sceneShopOwnedArmor(player, armor);
             break;
         case Role::archer:
             std::cout << "  Cloak of Whispering Wind\n";
@@ -520,6 +556,7 @@ void Scenes::sceneShopArmorSelectedArmor3(Player *player, Armor *armor) const {
             GlobalSettings::setColor(COLOR_DEFAULT);
             std::cout << "\n PRICE: " << armor->getPrice() << " coins\n";
             std::cout << " Adds " << armor->getArmor() << " defense points against enemy attacks\n";
+            sceneShopOwnedArmor(player, armor);
             break;
         case Role::mage:
             std::cout << "  Robe of Fiery Circle\n";
@@ -529,6 +566,7 @@ void Scenes::sceneShopArmorSelectedArmor3(Player *player, Armor *armor) const {
             GlobalSettings::setColor(COLOR_DEFAULT);
             std::cout << "\n PRICE: " << armor->getPrice() << " coins\n";
             std::cout << " Adds " << armor->getArmor() << " defense points against enemy attacks\n";
+            sceneShopOwnedArmor(player, armor);
             break;
     }
 }
@@ -538,7 +576,7 @@ void Scenes::sceneShopPotionsSelectedPotion1(Potion *potion) const {
     std::cout << "- Elixir of Vitality \n";
     GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "\n PRICE: " << potion->getPrice() << " coins\n";
-    std::cout << "On use, adds " << potion->getHpGain() << " (Player's health is limited on 100)\n";
+    std::cout << " On use, adds " << potion->getHpGain() << " (Player's health is limited on 100)\n";
 }
 
 //

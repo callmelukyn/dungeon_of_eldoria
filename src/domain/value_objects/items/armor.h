@@ -9,6 +9,8 @@
 class Armor {
     int m_armor;
     int m_price;
+    int m_id;
+    static int s_counter;
 
 public:
     Armor(int armor, int price);
@@ -16,6 +18,8 @@ public:
     int getArmor();
 
     int getPrice();
+
+    int getId();
 };
 
 

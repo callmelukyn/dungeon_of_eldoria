@@ -47,6 +47,10 @@ public:
 
     int getDamage() const;
 
+    bool weaponOwned(Weapon *weapon);
+
+    bool armorOwned(Armor *armor);
+
     int getTotalDefense(); //Methods for fighting
 
     int getTotalDamage(); //Methods for fighting

@@ -44,20 +44,20 @@ void Shop::changeScreen(const Screen newScreen, const char keyboardKey) {
 }
 
 void Shop::buyWeapon(Player *player, Weapon *weapon) {
-    if (player->getCoins() - weapon->getPrice() >= 0) {
-        player->removeCoins(weapon->getPrice());
-        player->addWeapon(weapon);
-    } else {
-        std::cout << "NOT ENOUGH COINS\n";
+    if (!player->weaponOwned(weapon)) {
+        if (player->getCoins() - weapon->getPrice() >= 0) {
+            player->removeCoins(weapon->getPrice());
+            player->addWeapon(weapon);
+        }
     }
 }
 
 void Shop::buyArmor(Player *player, Armor *armor) {
-    if (player->getCoins() - armor->getPrice() >= 0) {
-        player->removeCoins(armor->getPrice());
-        player->addArmor(armor);
-    } else {
-        std::cout << "NOT ENOUGH COINS\n";
+    if (!player->armorOwned(armor)) {
+        if (player->getCoins() - armor->getPrice() >= 0) {
+            player->removeCoins(armor->getPrice());
+            player->addArmor(armor);
+        }
     }
 }
 
@@ -220,10 +220,12 @@ void Shop::displayShopHeader() const {
 }
 
 void Shop::displayShopWeaponHeader(Player *player) const {
+    GlobalSettings::clearConsoleOnNewScreen();
     m_scene->sceneShopWeaponHeader(player);
 }
 
 void Shop::displayShopArmorHeader(Player *player) const {
+    GlobalSettings::clearConsoleOnNewScreen();
     m_scene->sceneShopArmorHeader(player);
 }
 

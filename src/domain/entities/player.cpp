@@ -92,6 +92,24 @@ int Player::getTotalDamage() {
     return damage;
 }
 
+bool Player::weaponOwned(Weapon *weapon) {
+    for (auto search: m_weapons) {
+        if (search->getId() == weapon->getId()) {
+            return 1; //Owned
+        }
+    }
+    return 0; //Not owned
+}
+
+bool Player::armorOwned(Armor *armor) {
+    for (auto search: m_armors) {
+        if (search->getId() == armor->getId()) {
+            return 1; //Owned
+        }
+    }
+    return 0; //Not owned
+}
+
 int Player::getTotalDefense() {
     int defense = m_armor;
     for (auto armor: m_armors) {
