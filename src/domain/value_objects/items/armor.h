@@ -15,11 +15,11 @@ class Armor {
 public:
     Armor(int armor, int price);
 
-    int getArmor();
+    int getArmor() const;
 
-    int getPrice();
+    int getPrice() const;
 
-    int getId();
+    int getId() const;
 };
 
 

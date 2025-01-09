@@ -3,7 +3,6 @@
 
 #include <vector>
 #include "map.h"
-#include "../domain/entities/player.h"
 #include "../commands/add_enemy.h"
 #include "../commands/add_merchant.h"
 #include "../commands/add_prisoner.h"

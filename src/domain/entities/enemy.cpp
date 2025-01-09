@@ -5,11 +5,11 @@
 #include "enemy.h"
 
 #include "player.h"
-#include "../../tools/globalSettings.h"
+#include "../../tools/global_settings.h"
 
-Enemy::Enemy(EnemyType enemyType, int hp, int damage, int coinReward, int xpReward,
-             int potionDropChance, int range, bool alive,
-             Position enemyPosition): Entity(hp, damage, alive, enemyPosition) {
+Enemy::Enemy(const EnemyType enemyType, const int hp, const int damage, const int coinReward, const int xpReward,
+             const int potionDropChance, const int range, const Position enemyPosition)
+    : Entity(hp, damage, true, enemyPosition) {
     m_enemyType = enemyType;
     m_coinReward = coinReward;
     m_xpReward = xpReward;
@@ -18,23 +18,23 @@ Enemy::Enemy(EnemyType enemyType, int hp, int damage, int coinReward, int xpRewa
     m_aggroed = false;
 }
 
-int Enemy::getDamage() {
+int Enemy::getDamage() const {
     return m_damage;
 }
 
-int Enemy::getHp() {
+int Enemy::getHp() const {
     return m_hp;
 }
 
-int Enemy::getCoinReward() {
+int Enemy::getCoinReward() const {
     return m_coinReward;
 }
 
-int Enemy::getXpReward() {
+int Enemy::getXpReward() const {
     return m_xpReward;
 }
 
-int Enemy::getPotionDropChance() {
+int Enemy::getPotionDropChance() const {
     return m_potionDropChance;
 }
 
@@ -89,7 +89,7 @@ void Enemy::moveEnemy(const Screen currentScreen, const std::vector<Map *> &maps
     }
 }
 
-Position Enemy::getEnemyPosition() {
+Position Enemy::getEnemyPosition() const {
     return m_position;
 }
 

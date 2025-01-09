@@ -7,7 +7,7 @@
 #include <vector>
 
 #include "position.h"
-#include "../domain/value_objects/doorPosition.h"
+#include "../domain/value_objects/door_position.h"
 
 class Map {
     unsigned int m_mapHeight;

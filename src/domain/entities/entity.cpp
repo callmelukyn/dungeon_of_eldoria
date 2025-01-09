@@ -4,7 +4,7 @@
 
 #include "entity.h"
 
-Entity::Entity(int hp, int damage, bool alive, Position position): m_position(position) {
+Entity::Entity(const int hp, const int damage, const bool alive, const Position position): m_position(position) {
     m_hp = hp;
     m_damage = damage;
     m_alive = alive;

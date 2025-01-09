@@ -15,11 +15,11 @@ class Weapon {
 public:
     Weapon(int damage, int price);
 
-    int getDamage();
+    int getDamage() const;
 
-    int getPrice();
+    int getPrice() const;
 
-    int getId();
+    int getId() const;
 };
 
 

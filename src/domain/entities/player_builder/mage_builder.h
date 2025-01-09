@@ -1,6 +1,6 @@
-#ifndef MAGEBUILDER_H
-#define MAGEBUILDER_H
-#include "playerBuilder.h"
+#ifndef MAGE_BUILDER_H
+#define MAGE_BUILDER_H
+#include "player_builder.h"
 
 
 class MageBuilder final : public PlayerBuilder {
@@ -13,4 +13,4 @@ public:
 };
 
 
-#endif //MAGEBUILDER_H
+#endif //MAGE_BUILDER_H

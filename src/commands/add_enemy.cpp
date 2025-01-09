@@ -2,7 +2,7 @@
 
 #include "../domain/entities/mummy.h"
 #include "../domain/entities/ghoul.h"
-#include "../domain/entities/gargoil.h"
+#include "../domain/entities/gargoyle.h"
 #include "../domain/entities/basilisk.h"
 #include "../domain/entities/necromancer.h"
 
@@ -33,9 +33,9 @@ void AddEnemy::addGhoul(const int currentLevel, const Position position) {
     m_maps[currentLevel]->putCharacterInPosition(position, '!');
 }
 
-void AddEnemy::addGargoil(const int currentLevel, const Position position) {
-    Enemy *gargoil = new Gargoil(position);
-    m_enemies.push_back(gargoil);
+void AddEnemy::addGargoyle(const int currentLevel, const Position position) {
+    Enemy *gargoyle = new Gargoyle(position);
+    m_enemies.push_back(gargoyle);
     m_maps[currentLevel]->putCharacterInPosition(position, '!');
 }
 

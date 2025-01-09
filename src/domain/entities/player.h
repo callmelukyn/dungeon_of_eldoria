@@ -29,7 +29,7 @@ class Player : public Entity {
     int m_range;
 
 public:
-    Player(Role role, int hp, int damage, int armor, int range, bool alive);
+    Player(Role role, int hp, int damage, int armor, int range);
 
     void checkLevelStatus();
 

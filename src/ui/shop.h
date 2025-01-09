@@ -7,7 +7,7 @@
 #include <functional>
 #include <iostream>
 #include "scenes.h"
-#include "../tools/globalSettings.h"
+#include "../tools/global_settings.h"
 #include "../domain/entities/player.h"
 #include "../domain/value_objects/screen.h"
 #include "../domain/value_objects/items/weapon.h"

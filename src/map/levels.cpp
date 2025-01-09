@@ -3,9 +3,7 @@
 #include <iostream>
 #include <map>
 
-
-#include "../domain/entities/mummy.h"
-#include "../tools/globalSettings.h"
+#include "../tools/global_settings.h"
 
 Levels::Levels() {
     m_currentLevel = 0;
@@ -89,7 +87,7 @@ AddMerchant *Levels::getMerchant() const {
 }
 
 void Levels::clearCharactersFromPreviousLevel() const {
-    for (Enemy *enemy: m_addEnemy->getEnemies()) {
+    for (const Enemy *enemy: m_addEnemy->getEnemies()) {
         m_maps[m_currentLevel]->clearCharacterFromPosition(enemy->getEnemyPosition());
     }
     m_addEnemy->clearEnemies();

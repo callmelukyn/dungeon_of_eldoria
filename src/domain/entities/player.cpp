@@ -4,11 +4,11 @@
 
 #include "player.h"
 
-#include "../../tools/globalSettings.h"
+#include "../../tools/global_settings.h"
 #include "../value_objects/screen.h"
 
-Player::Player(const Role role, const int hp, const int damage, const int armor, const int range,
-               bool alive): Entity(hp, damage, alive, Position{5, 1}) {
+Player::Player(const Role role, const int hp, const int damage, const int armor, const int range)
+    : Entity(hp, damage, true, Position{5, 1}) {
     m_armors = {};
     m_weapons = {};
     m_role = role;
@@ -59,15 +59,15 @@ void Player::addPotion() {
     m_numberOfPotions += 1;
 }
 
-void Player::addDamage(int damage) {
+void Player::addDamage(const int damage) {
     m_damage += damage;
 }
 
-void Player::addHp(int hp) {
+void Player::addHp(const int hp) {
     m_hp += hp;
 }
 
-void Player::addMaxHp(int maxHp) {
+void Player::addMaxHp(const int maxHp) {
     m_maxHp += maxHp;
 }
 
@@ -86,28 +86,28 @@ void Player::usePotion(Potion *potion) {
 
 int Player::getTotalDamage() {
     int damage = m_damage;
-    for (auto weapon: m_weapons) {
+    for (Weapon *weapon: m_weapons) {
         damage += weapon->getDamage();
     }
     return damage;
 }
 
 bool Player::weaponOwned(Weapon *weapon) {
-    for (auto search: m_weapons) {
+    for (Weapon *search: m_weapons) {
         if (search->getId() == weapon->getId()) {
-            return 1; //Owned
+            return true; //Owned
         }
     }
-    return 0; //Not owned
+    return false; //Not owned
 }
 
 bool Player::armorOwned(Armor *armor) {
-    for (auto search: m_armors) {
+    for (Armor *search: m_armors) {
         if (search->getId() == armor->getId()) {
-            return 1; //Owned
+            return true; //Owned
         }
     }
-    return 0; //Not owned
+    return false; //Not owned
 }
 
 int Player::getTotalDefense() {
@@ -138,15 +138,15 @@ Role Player::getRole() const {
     return m_role;
 }
 
-void Player::addXp(int xp) {
+void Player::addXp(const int xp) {
     m_xp += xp;
 }
 
-void Player::addCoins(int coins) {
+void Player::addCoins(const int coins) {
     m_coins += coins;
 }
 
-void Player::removeCoins(int coins) {
+void Player::removeCoins(const int coins) {
     m_coins -= coins;
 }
 

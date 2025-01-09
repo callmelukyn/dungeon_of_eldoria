@@ -6,7 +6,7 @@
 #define ENEMY_H
 #include "entity.h"
 #include "../../map/map.h"
-#include "../value_objects/enemyType.h"
+#include "../value_objects/enemy_type.h"
 #include "../value_objects/screen.h"
 
 class Player;
@@ -22,22 +22,22 @@ protected:
 
 public:
     Enemy(EnemyType enemyType, int hp, int damage, int coinReward, int xpReward, int potionDropChance,
-          int range, bool alive, Position enemyPosition);
+          int range, Position enemyPosition);
 
-    int getHp();
+    int getHp() const;
 
-    int getDamage();
+    int getDamage() const;
 
-    int getXpReward();
+    int getXpReward() const;
 
-    int getCoinReward();
+    int getCoinReward() const;
 
-    int getPotionDropChance();
+    int getPotionDropChance() const;
 
     void moveEnemy(Screen currentScreen, const std::vector<Map *> &maps, int currentLevel, const Player *player,
                    char keyboardKey);
 
-    Position getEnemyPosition();
+    Position getEnemyPosition() const;
 
     bool isAggroed() const;
 };

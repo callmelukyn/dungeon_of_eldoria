@@ -7,7 +7,7 @@
 #include "../domain/value_objects/screen.h"
 #include "scenes.h"
 #include "shop.h"
-#include "../domain/entities/playerBuilder/playerDirector.h"
+#include "../domain/entities/player_builder/player_director.h"
 
 
 class Menu {

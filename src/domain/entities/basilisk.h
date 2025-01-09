@@ -9,7 +9,7 @@
 
 class Basilisk : public Enemy {
 public:
-    Basilisk(Position basiliskPosition);
+    explicit Basilisk(Position basiliskPosition);
 };
 
 

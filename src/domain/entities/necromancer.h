@@ -9,7 +9,7 @@
 
 class Necromancer : public Enemy {
 public:
-    Necromancer(Position necromancerPosition);
+    explicit Necromancer(Position necromancerPosition);
 };
 
 

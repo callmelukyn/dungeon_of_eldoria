@@ -2,8 +2,9 @@
 
 #include <iostream>
 
-#include "tools/globalSettings.h"
+#include "tools/global_settings.h"
 #include "domain/entities/player.h"
+#include "interactions/merchant_interaction.h"
 
 Game::Game() {
     m_menu = new Menu();
@@ -67,10 +68,8 @@ void Game::handleInputs(const char keyboardKey) const {
                                  m_player, keyboardKey);
             }
         }
-        m_levels->getMerchant()->getMerchant()->interaction(m_menu->getCurrentScreen(), m_player,
-                                                            keyboardKey, [this] {
-                                                                m_menu->changeScreenNormal(Screen::shopMain);
-                                                            });
+        MerchantInteraction(m_menu->getCurrentScreen(), m_player, m_levels->getMerchant()->getMerchant(), keyboardKey,
+                            [this] { m_menu->changeScreenNormal(Screen::shopMain); }).interaction();
     }
     // Handle movement on menu.
     m_menu->handleMenuInput(keyboardKey, m_player);

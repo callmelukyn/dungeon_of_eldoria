@@ -1,4 +1,4 @@
-#include "warriorBuilder.h"
+#include "warrior_builder.h"
 
 WarriorBuilder::WarriorBuilder() = default;
 
@@ -7,6 +7,6 @@ WarriorBuilder::~WarriorBuilder() {
 }
 
 void WarriorBuilder::createPlayer() {
-    m_player = new Player(Role::warrior, 100, 15, 15, 1, 1);
+    m_player = new Player(Role::warrior, 100, 15, 15, 1);
 }
 

@@ -7,10 +7,10 @@
 #include <iostream>
 
 #include "../application.h"
-#include "../domain/entities/playerBuilder/archerBuilder.h"
-#include "../domain/entities/playerBuilder/mageBuilder.h"
-#include "../domain/entities/playerBuilder/warriorBuilder.h"
-#include "../tools/globalSettings.h"
+#include "../domain/entities/player_builder/archer_builder.h"
+#include "../domain/entities/player_builder/mage_builder.h"
+#include "../domain/entities/player_builder/warrior_builder.h"
+#include "../tools/global_settings.h"
 
 Menu::Menu() {
     m_selected = 0;
@@ -25,7 +25,7 @@ Menu::~Menu() {
     delete m_playerDirector;
 }
 
-void Menu::changeScreenNormal(Screen newScreen) {
+void Menu::changeScreenNormal(const Screen newScreen) {
     m_selected = 0;
     GlobalSettings::clearConsoleOnNewScreen();
     m_currentScreen = newScreen;

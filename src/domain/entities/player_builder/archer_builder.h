@@ -1,6 +1,6 @@
-#ifndef ARCHERBUILDER_H
-#define ARCHERBUILDER_H
-#include "playerBuilder.h"
+#ifndef ARCHER_BUILDER_H
+#define ARCHER_BUILDER_H
+#include "player_builder.h"
 
 
 class ArcherBuilder final : public PlayerBuilder {
@@ -13,4 +13,4 @@ public:
 };
 
 
-#endif //ARCHERBUILDER_H
+#endif //ARCHER_BUILDER_H

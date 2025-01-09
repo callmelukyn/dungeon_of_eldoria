@@ -19,26 +19,26 @@ add_executable(zoo_project src/main.cpp
         src/game.cpp
         src/game.h
         src/domain/value_objects/Screen.h
-        src/domain/value_objects/doorPosition.h
+        src/domain/value_objects/door_position.h
         src/ui/scenes.cpp
         src/ui/scenes.h
-        src/tools/globalSettings.cpp
-        src/tools/globalSettings.h
-        src/domain/entities/playerBuilder/playerBuilder.cpp
-        src/domain/entities/playerBuilder/playerBuilder.h
-        src/domain/entities/playerBuilder/warriorBuilder.cpp
-        src/domain/entities/playerBuilder/warriorBuilder.h
-        src/domain/entities/playerBuilder/playerDirector.cpp
-        src/domain/entities/playerBuilder/playerDirector.h
-        src/domain/entities/playerBuilder/archerBuilder.cpp
-        src/domain/entities/playerBuilder/archerBuilder.h
-        src/domain/entities/playerBuilder/mageBuilder.cpp
-        src/domain/entities/playerBuilder/mageBuilder.h
+        src/tools/global_settings.cpp
+        src/tools/global_settings.h
+        src/domain/entities/player_builder/player_builder.cpp
+        src/domain/entities/player_builder/player_builder.h
+        src/domain/entities/player_builder/warrior_builder.cpp
+        src/domain/entities/player_builder/warrior_builder.h
+        src/domain/entities/player_builder/player_director.cpp
+        src/domain/entities/player_builder/player_director.h
+        src/domain/entities/player_builder/archer_builder.cpp
+        src/domain/entities/player_builder/archer_builder.h
+        src/domain/entities/player_builder/mage_builder.cpp
+        src/domain/entities/player_builder/mage_builder.h
         src/domain/entities/enemy.cpp
         src/domain/entities/enemy.h
-        src/domain/value_objects/enemyType.h
-        src/domain/entities/merchant.cpp
-        src/domain/entities/merchant.h
+        src/domain/value_objects/enemy_type.h
+        src/domain/value_objects/merchant.cpp
+        src/domain/value_objects/merchant.h
         src/domain/entities/prisoner.cpp
         src/domain/entities/prisoner.h
         src/ui/shop.cpp
@@ -63,8 +63,10 @@ add_executable(zoo_project src/main.cpp
         src/domain/value_objects/items/potion.h
         src/domain/entities/ghoul.cpp
         src/domain/entities/ghoul.h
-        src/domain/entities/gargoil.cpp
-        src/domain/entities/gargoil.h
+        src/domain/entities/gargoyle.cpp
+        src/domain/entities/gargoyle.h
         src/domain/entities/necromancer.cpp
         src/domain/entities/necromancer.h
+        src/interactions/merchant_interaction.cpp
+        src/interactions/merchant_interaction.h
 )

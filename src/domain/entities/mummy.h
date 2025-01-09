@@ -5,7 +5,7 @@
 
 class Mummy : public Enemy {
 public:
-    Mummy(Position mummyPosition);
+    explicit Mummy(Position mummyPosition);
 };
 
 

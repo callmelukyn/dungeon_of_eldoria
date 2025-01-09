@@ -5,11 +5,10 @@
 #include "prisoner.h"
 
 
-Prisoner::Prisoner(Position position) {
-    m_position = position;
+Prisoner::Prisoner(const Position position) : m_position(position) {
 }
 
-Position Prisoner::getPosition() {
+Position Prisoner::getPosition() const {
     return m_position;
 }
 

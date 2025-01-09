@@ -13,9 +13,9 @@ class Potion {
 public:
     Potion();
 
-    int getHpGain();
+    int getHpGain() const;
 
-    int getPrice();
+    int getPrice() const;
 };
 
 

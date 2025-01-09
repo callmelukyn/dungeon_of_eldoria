@@ -7,9 +7,9 @@
 #include "enemy.h"
 
 
-class Gargoil : public Enemy {
+class Gargoyle : public Enemy {
 public:
-    Gargoil(Position gargoilPosition);
+    explicit Gargoyle(Position gargoylePosition);
 };
 
 

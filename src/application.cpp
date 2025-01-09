@@ -2,7 +2,7 @@
 
 #include <conio.h>
 
-#include "tools/globalSettings.h"
+#include "tools/global_settings.h"
 
 bool Application::m_running = true;
 

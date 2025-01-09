@@ -1,6 +1,6 @@
-#ifndef PLAYERDIRECTOR_H
-#define PLAYERDIRECTOR_H
-#include "playerBuilder.h"
+#ifndef PLAYER_DIRECTOR_H
+#define PLAYER_DIRECTOR_H
+#include "player_builder.h"
 
 
 class PlayerDirector {

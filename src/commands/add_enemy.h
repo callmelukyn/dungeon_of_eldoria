@@ -1,5 +1,5 @@
-#ifndef ADDMUMMY_H
-#define ADDMUMMY_H
+#ifndef ADD_ENEMY_H
+#define ADD_ENEMY_H
 #include "../domain/entities/enemy.h"
 
 
@@ -16,7 +16,7 @@ public:
 
     void addGhoul(int currentLevel, Position position);
 
-    void addGargoil(int currentLevel, Position position);
+    void addGargoyle(int currentLevel, Position position);
 
     void addBasilisk(int currentLevel, Position position);
 
@@ -28,4 +28,4 @@ public:
 };
 
 
-#endif //ADDMUMMY_H
+#endif //ADD_ENEMY_H

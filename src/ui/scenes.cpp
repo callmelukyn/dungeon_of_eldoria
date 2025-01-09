@@ -4,7 +4,7 @@
 
 #include "scenes.h"
 #include <iostream>
-#include "../tools/globalSettings.h"
+#include "../tools/global_settings.h"
 
 Scenes::Scenes() {
     m_currentScene = 0;

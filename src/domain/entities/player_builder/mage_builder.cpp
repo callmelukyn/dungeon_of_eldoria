@@ -1,4 +1,4 @@
-#include "mageBuilder.h"
+#include "mage_builder.h"
 
 MageBuilder::MageBuilder() = default;
 
@@ -7,5 +7,5 @@ MageBuilder::~MageBuilder() {
 }
 
 void MageBuilder::createPlayer() {
-    m_player = new Player(Role::mage, 20, 10, 5, 5, 1);
+    m_player = new Player(Role::mage, 20, 10, 5, 5);
 }

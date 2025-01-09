@@ -9,10 +9,10 @@ Potion::Potion() {
     m_hpGain = 50;
 }
 
-int Potion::getPrice() {
+int Potion::getPrice() const {
     return m_price;
 }
 
-int Potion::getHpGain() {
+int Potion::getHpGain() const {
     return m_hpGain;
 }

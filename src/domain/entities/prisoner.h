@@ -4,16 +4,15 @@
 
 #ifndef PRISONER_H
 #define PRISONER_H
-#include "../../map/map.h"
 #include "player.h"
 
 class Prisoner {
     Position m_position;
 
 public:
-    Prisoner(Position position);
+    explicit Prisoner(Position position);
 
-    Position getPosition();
+    Position getPosition() const;
 
     void rescuePrisoner(Player *player);
 };

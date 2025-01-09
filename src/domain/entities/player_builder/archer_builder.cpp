@@ -1,4 +1,4 @@
-#include "archerBuilder.h"
+#include "archer_builder.h"
 
 ArcherBuilder::ArcherBuilder() = default;
 
@@ -7,5 +7,5 @@ ArcherBuilder::~ArcherBuilder() {
 }
 
 void ArcherBuilder::createPlayer() {
-    m_player = new Player(Role::archer, 50, 12, 8, 3, 1);
+    m_player = new Player(Role::archer, 50, 12, 8, 3);
 }

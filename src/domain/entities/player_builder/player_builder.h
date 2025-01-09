@@ -1,5 +1,5 @@
-#ifndef PLAYERBUILDER_H
-#define PLAYERBUILDER_H
+#ifndef PLAYER_BUILDER_H
+#define PLAYER_BUILDER_H
 
 #include "../player.h"
 
@@ -19,4 +19,4 @@ public:
 };
 
 
-#endif //PLAYERBUILDER_H
+#endif //PLAYER_BUILDER_H

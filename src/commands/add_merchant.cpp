@@ -9,7 +9,7 @@ AddMerchant::~AddMerchant() {
     delete m_merchant;
 }
 
-void AddMerchant::addMerchant(int currentLevel, Position position) {
+void AddMerchant::addMerchant(const int currentLevel, const Position position) {
     m_merchant = new Merchant(position);
     m_maps[currentLevel]->putCharacterInPosition(position, '$');
 }

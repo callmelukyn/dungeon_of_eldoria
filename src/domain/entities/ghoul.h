@@ -9,7 +9,7 @@
 
 class Ghoul : public Enemy {
 public:
-    Ghoul(Position ghoulPosition);
+    explicit Ghoul(Position ghoulPosition);
 };
 
 

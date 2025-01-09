@@ -2,8 +2,8 @@
 // Created by vitab on 10.12.2024.
 //
 
-#ifndef GLOBALSETTINGS_H
-#define GLOBALSETTINGS_H
+#ifndef GLOBAL_SETTINGS_H
+#define GLOBAL_SETTINGS_H
 #include <windows.h>
 
 #define COLOR_RED 04
@@ -43,4 +43,4 @@ public:
 };
 
 
-#endif //GLOBALSETTINGS_H
+#endif //GLOBAL_SETTINGS_H

@@ -2,7 +2,7 @@
 // Created by vitab on 10.12.2024.
 //
 
-#include "globalSettings.h"
+#include "global_settings.h"
 
 #include <iostream>
 

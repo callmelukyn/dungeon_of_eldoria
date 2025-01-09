@@ -2,7 +2,7 @@
 #define ADD_MERCHANT_H
 #include <vector>
 
-#include "../domain/entities/merchant.h"
+#include "../domain/value_objects/merchant.h"
 #include "../map/map.h"
 
 
