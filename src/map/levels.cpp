@@ -88,7 +88,7 @@ AddMerchant *Levels::getMerchant() const {
 
 void Levels::clearCharactersFromPreviousLevel() const {
     for (const Enemy *enemy: m_addEnemy->getEnemies()) {
-        m_maps[m_currentLevel]->clearCharacterFromPosition(enemy->getEnemyPosition());
+        m_maps[m_currentLevel]->clearCharacterFromPosition(enemy->getPosition());
     }
     m_addEnemy->clearEnemies();
     m_maps[m_currentLevel]->clearCharacterFromPosition(m_addMerchant->getMerchant()->getPosition());

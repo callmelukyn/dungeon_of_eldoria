@@ -7,13 +7,14 @@
 #include <vector>
 
 #include "position.h"
+#include "tile.h"
 #include "../domain/value_objects/door_position.h"
 
 class Map {
     unsigned int m_mapHeight;
     unsigned int m_mapWidth;
     // Vector that holds all the characters for the map
-    std::vector<char> m_fullMap;
+    std::vector<Tile *> m_fullMap;
     DoorPosition m_doorPosition;
 
     void putDoor(unsigned int x, unsigned int y);
@@ -27,7 +28,7 @@ public:
 
     void printMap();
 
-    std::vector<char> getFullMap();
+    std::vector<Tile *> getFullMap();
 
     void clearCharacterFromPosition(Position position);
 

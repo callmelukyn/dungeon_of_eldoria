@@ -8,7 +8,7 @@
 #include "../value_objects/screen.h"
 
 Player::Player(const Role role, const int hp, const int damage, const int armor, const int range)
-    : Entity(hp, damage, true, Position{5, 1}) {
+    : Entity(hp, damage, range, true, Position{5, 1}) {
     m_armors = {};
     m_weapons = {};
     m_role = role;
@@ -71,7 +71,7 @@ void Player::addMaxHp(const int maxHp) {
     m_maxHp += maxHp;
 }
 
-void Player::usePotion(Potion *potion) {
+void Player::usePotion(const Potion *potion) {
     if (m_hp != m_maxHp) {
         if (m_numberOfPotions > 0) {
             if (m_hp + potion->getHpGain() >= m_maxHp) {
@@ -84,16 +84,16 @@ void Player::usePotion(Potion *potion) {
     }
 }
 
-int Player::getTotalDamage() {
+int Player::getTotalDamage() const {
     int damage = m_damage;
-    for (Weapon *weapon: m_weapons) {
+    for (const Weapon *weapon: m_weapons) {
         damage += weapon->getDamage();
     }
     return damage;
 }
 
-bool Player::weaponOwned(Weapon *weapon) {
-    for (Weapon *search: m_weapons) {
+bool Player::weaponOwned(const Weapon *weapon) const {
+    for (const Weapon *search: m_weapons) {
         if (search->getId() == weapon->getId()) {
             return true; //Owned
         }
@@ -101,8 +101,8 @@ bool Player::weaponOwned(Weapon *weapon) {
     return false; //Not owned
 }
 
-bool Player::armorOwned(Armor *armor) {
-    for (Armor *search: m_armors) {
+bool Player::armorOwned(const Armor *armor) const {
+    for (const Armor *search: m_armors) {
         if (search->getId() == armor->getId()) {
             return true; //Owned
         }
@@ -110,16 +110,12 @@ bool Player::armorOwned(Armor *armor) {
     return false; //Not owned
 }
 
-int Player::getTotalDefense() {
+int Player::getTotalDefense() const {
     int defense = m_armor;
-    for (auto armor: m_armors) {
+    for (const Armor *armor: m_armors) {
         defense += armor->getArmor();
     }
     return defense;
-}
-
-int Player::getHp() const {
-    return m_hp;
 }
 
 int Player::getXp() const {
@@ -162,53 +158,49 @@ int Player::getNumberOfPotions() const {
     return m_numberOfPotions;
 }
 
-void Player::movePlayer(const char keyboardKey, const Screen currentScreen, const std::vector<Map *> &maps,
+void Player::movePlayer(const char keyboardKey, const std::vector<Map *> &maps,
                         const int currentLevel, const std::function<void()> &nextLevel,
                         const std::vector<Enemy *> &enemies) {
-    if (Screen::game == currentScreen) {
-        Map *map = maps[currentLevel];
-        Position nextPosition = m_position;
+    Map *map = maps[currentLevel];
+    Position nextPosition = m_position;
 
-        // If enemy is in range 1 of player then player cannot move.
-        for (Enemy *enemy: enemies) {
-            const unsigned int distanceX = abs(static_cast<int>(m_position.x - enemy->getEnemyPosition().x));
-            const unsigned int distanceY = abs(static_cast<int>(m_position.y - enemy->getEnemyPosition().y));
-            if (enemy->isAggroed() && m_range >= distanceX && m_range >= distanceY) {
-                return;
-            }
+    // If enemy is in range 1 of player then player cannot move.
+    for (const Enemy *enemy: enemies) {
+        if (enemy->isAggroed() && isInRange(m_position, enemy->getPosition())) {
+            return;
         }
-        // Calculate the next position based on the input key
-        switch (keyboardKey) {
-            case KEYBOARD_SMALL_W:
-            case KEYBOARD_CAPITAL_W:
-                nextPosition.y -= 1;
-                break;
-            case KEYBOARD_SMALL_S:
-            case KEYBOARD_CAPITAL_S:
-                nextPosition.y += 1;
-                break;
-            case KEYBOARD_SMALL_A:
-            case KEYBOARD_CAPITAL_A:
-                nextPosition.x -= 1;
-                break;
-            case KEYBOARD_SMALL_D:
-            case KEYBOARD_CAPITAL_D:
-                nextPosition.x += 1;
-                break;
-            default:
-                break;
-        }
+    }
+    // Calculate the next position based on the input key
+    switch (keyboardKey) {
+        case KEYBOARD_SMALL_W:
+        case KEYBOARD_CAPITAL_W:
+            nextPosition.y -= 1;
+            break;
+        case KEYBOARD_SMALL_S:
+        case KEYBOARD_CAPITAL_S:
+            nextPosition.y += 1;
+            break;
+        case KEYBOARD_SMALL_A:
+        case KEYBOARD_CAPITAL_A:
+            nextPosition.x -= 1;
+            break;
+        case KEYBOARD_SMALL_D:
+        case KEYBOARD_CAPITAL_D:
+            nextPosition.x += 1;
+            break;
+        default:
+            break;
+    }
 
-        const char nextTile = map->assignTilePosition(nextPosition); // Access the tile at the next position
-        // Movement only through '.' or doors
-        if (nextTile == '.') {
-            map->clearCharacterFromPosition(m_position);
-            m_position = nextPosition;
-            map->putCharacterInPosition(m_position, '@');
-        } else if (nextTile == '|') {
-            nextLevel();
-            map->clearCharacterFromPosition(m_position);
-        }
+    const char nextTile = map->assignTilePosition(nextPosition); // Access the tile at the next position
+    // Movement only through '.' or doors
+    if (nextTile == '.') {
+        map->clearCharacterFromPosition(m_position);
+        m_position = nextPosition;
+        map->putCharacterInPosition(m_position, '@');
+    } else if (nextTile == '|') {
+        nextLevel();
+        map->clearCharacterFromPosition(m_position);
     }
 }
 
@@ -216,8 +208,5 @@ void Player::setPlayerPosition(const Position playerPosition) {
     m_position = playerPosition;
 }
 
-Position Player::getPlayerPosition() const {
-    return m_position;
-}
 
 

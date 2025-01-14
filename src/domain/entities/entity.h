@@ -11,11 +11,24 @@ class Entity {
 protected:
     int m_hp;
     int m_damage;
+    int m_range;
     bool m_alive;
     Position m_position;
 
 public:
-    Entity(int hp, int damage, bool alive, Position position);
+    Entity(int hp, int damage, int range, bool alive, Position position);
+
+    int getHp() const;
+
+    bool isAlive() const;
+
+    void setAlive(bool alive);
+
+    Position getPosition() const;
+
+    void setPosition(Position position);
+
+    bool isInRange(Position playerPosition, Position otherPosition) const;
 };
 
 

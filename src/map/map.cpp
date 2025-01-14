@@ -7,7 +7,7 @@
 #include <iostream>
 
 Map::Map(const unsigned int mapHeight, const unsigned int mapWidth, const DoorPosition doorPosition)
-    : m_fullMap(mapHeight * mapWidth, '.') {
+    : m_fullMap(mapHeight * mapWidth, Tile::createTile('.')) {
     m_mapHeight = mapHeight;
     m_mapWidth = mapWidth;
     m_doorPosition = doorPosition;
@@ -17,19 +17,19 @@ void Map::putCharacterInPosition(const Position position, const char character) 
     // Ensure the position is within the bounds of the map
     assert(("Character is not within the bounds of the map",
         position.y > 0 && position.y < m_mapHeight && position.x > 0 && position.x < m_mapWidth));
-    m_fullMap[position.y * m_mapWidth + position.x] = character;
+    m_fullMap[position.y * m_mapWidth + position.x] = Tile::createTile(character);
 }
 
 // Get position of a single tile
 char Map::assignTilePosition(const Position position) const {
-    return m_fullMap[position.y * m_mapWidth + position.x];
+    return m_fullMap[position.y * m_mapWidth + position.x]->getTile();
 }
 
 void Map::printMap() {
     for (unsigned int y = 0; y < m_mapHeight; y++) {
         for (unsigned int x = 0; x < m_mapWidth; x++) {
             if (y == 0 || y == m_mapHeight - 1 || x == 0 || x == m_mapWidth - 1) {
-                m_fullMap[y * m_mapWidth + x] = '#'; // Border character
+                m_fullMap[y * m_mapWidth + x] = Tile::createTile('#'); // Border character
                 putDoor(x, y);
             }
             std::cout << assignTilePosition(Position(x, y));
@@ -38,7 +38,7 @@ void Map::printMap() {
     }
 }
 
-std::vector<char> Map::getFullMap() {
+std::vector<Tile *> Map::getFullMap() {
     return m_fullMap;
 }
 
@@ -51,22 +51,22 @@ void Map::putDoor(const unsigned int x, const unsigned int y) {
     switch (m_doorPosition) {
         case DoorPosition::leftDoor:
             if (y == middleRow) {
-                m_fullMap[y * m_mapWidth] = '|';
+                m_fullMap[y * m_mapWidth] = Tile::createTile('|');
             }
             break;
         case DoorPosition::rightDoor:
             if (y == middleRow) {
-                m_fullMap[y * m_mapWidth + (m_mapWidth - 1)] = '|';
+                m_fullMap[y * m_mapWidth + (m_mapWidth - 1)] = Tile::createTile('|');
             }
             break;
         case DoorPosition::topDoor:
             if (x == middleCol) {
-                m_fullMap[x] = '|';
+                m_fullMap[x] = Tile::createTile('|');
             }
             break;
         case DoorPosition::bottomDoor:
             if (x == middleCol) {
-                m_fullMap[(m_mapHeight - 1) * m_mapWidth + x] = '|';
+                m_fullMap[(m_mapHeight - 1) * m_mapWidth + x] = Tile::createTile('|');
             }
             break;
     }
@@ -108,6 +108,6 @@ void Map::clearCharacterFromPosition(const Position position) {
     if (position.y > 0 && position.y < m_mapHeight &&
         position.x > 0 && position.x < m_mapWidth) {
         // Replace with empty character
-        m_fullMap[position.y * m_mapWidth + position.x] = '.';
+        m_fullMap[position.y * m_mapWidth + position.x] = Tile::createTile('.');
     }
 }

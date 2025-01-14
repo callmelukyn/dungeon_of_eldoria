@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "combat_system/combat.h"
+#include "commands/kill_enemy.h"
 #include "tools/global_settings.h"
 #include "domain/entities/player.h"
 #include "interactions/merchant_interaction.h"
@@ -56,23 +58,25 @@ void Game::render() {
 }
 
 void Game::handleInputs(const char keyboardKey) const {
-    if (m_player) {
-        // Handle player movement on the map.
-        m_player->movePlayer(keyboardKey, m_menu->getCurrentScreen(), m_levels->getMaps(),
-                             m_levels->getCurrentLevel(), [this] { m_levels->nextLevel(m_player); },
-                             m_levels->getEnemy()->getEnemies());
-        // Handle movement for enemies.
-        for (Enemy *enemy: m_levels->getEnemy()->getEnemies()) {
-            if (!m_levels->getEnemy()->getEnemies().empty()) {
-                enemy->moveEnemy(m_menu->getCurrentScreen(), m_levels->getMaps(), m_levels->getCurrentLevel(),
-                                 m_player, keyboardKey);
-            }
-        }
-        MerchantInteraction(m_menu->getCurrentScreen(), m_player, m_levels->getMerchant()->getMerchant(), keyboardKey,
-                            [this] { m_menu->changeScreenNormal(Screen::shopMain); }).interaction();
-    }
     // Handle movement on menu.
     m_menu->handleMenuInput(keyboardKey, m_player);
+    if (!(m_player && m_menu->getCurrentScreen() == Screen::game)) {
+        return;
+    }
+    // Handle player movement on the map.
+    m_player->movePlayer(keyboardKey, m_levels->getMaps(),
+                         m_levels->getCurrentLevel(), [this] { m_levels->nextLevel(m_player); },
+                         m_levels->getEnemy()->getEnemies());
+    // Handle movement for enemies.
+    for (Enemy *enemy: m_levels->getEnemy()->getEnemies()) {
+        if (!m_levels->getEnemy()->getEnemies().empty()) {
+            enemy->moveEnemy(m_levels->getMaps(), m_levels->getCurrentLevel(),
+                             m_player, keyboardKey);
+            enemy->checkEnemyHp(m_levels->getMaps(), m_levels->getCurrentLevel());
+        }
+    }
+    MerchantInteraction(m_player, m_levels->getMerchant()->getMerchant(), keyboardKey,
+                        [this] { m_menu->changeScreenNormal(Screen::shopMain); }).interaction();
 }
 
 void Game::displayGUI() const {
