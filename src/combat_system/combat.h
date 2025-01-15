@@ -10,15 +10,24 @@ class Combat {
     Enemy *m_enemy;
     Player *m_player;
 
+    void setState(CombatState *newState);
+
+    void update();
+
 public:
-    Combat(bool isAggroed, Enemy *enemy, Player *player);
+    Combat(Enemy *enemy, Player *player);
 
     void startCombat();
 
     void endCombat();
 
-    bool isAggroed() const;
-};
+    void damageEnemy() const;
 
+    void damagePlayer() const;
+
+    void handleCombat(char keyboardKey);
+
+    bool isPlayerInRange() const;
+};
 
 #endif //COMBAT_H

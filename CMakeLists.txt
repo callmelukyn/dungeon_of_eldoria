@@ -71,7 +71,6 @@ add_executable(zoo_project src/main.cpp
         src/interactions/merchant_interaction.h
         src/combat_system/combat.cpp
         src/combat_system/combat.h
-        src/combat_system/combat_state.cpp
         src/combat_system/combat_state.h
         src/combat_system/fight_state.cpp
         src/combat_system/fight_state.h

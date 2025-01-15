@@ -16,6 +16,10 @@ int Entity::getHp() const {
     return m_hp;
 }
 
+void Entity::takeDamage(const int damage) {
+    m_hp -= damage;
+}
+
 bool Entity::isAlive() const {
     return m_alive;
 }

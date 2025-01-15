@@ -42,23 +42,23 @@ void Enemy::moveEnemy(const std::vector<Map *> &maps, const int currentLevel,
     Map *map = maps[currentLevel];
     Position nextPosition = m_position;
 
-    if (!m_aggroed && isInRange(player->getPosition(), m_position)) {
-        m_aggroed = true;
-    } else if (!m_aggroed && (player->isInRange(player->getPosition(), m_position)
-                              && keyboardKey == 'f')) {
-        m_hp -= player->getDamage();
-        m_aggroed = true;
-    }
-    if (!player->isInRange(player->getPosition(), m_position) && keyboardKey == 'f') {
-        std::cout << "no range\r";
-    } else {
-        std::cout << "\b           \r";
-    }
+    // if (!m_aggroed && isInRange(player->getPosition(), m_position)) {
+    //     m_aggroed = true;
+    // } else if (!m_aggroed && (player->isInRange(player->getPosition(), m_position)
+    //                           && keyboardKey == 'f')) {
+    //     m_hp -= player->getDamage();
+    //     m_aggroed = true;
+    // }
+    // if (!player->isInRange(player->getPosition(), m_position) && keyboardKey == 'f') {
+    //     std::cout << "no range\r";
+    // } else {
+    //     std::cout << "\b           \r";
+    // }
 
     if (m_aggroed && m_alive) {
-        if (player->isInRange(player->getPosition(), m_position) && keyboardKey == 'f') {
-            m_hp -= player->getDamage();
-        }
+        // if (player->isInRange(player->getPosition(), m_position) && keyboardKey == 'f') {
+        //     m_hp -= player->getDamage();
+        // }
         if (keyboardKey == 'f' || GlobalSettings::movementKeys(keyboardKey)) {
             if (Position::getDistanceX(player->getPosition().x, nextPosition.x) >
                 Position::getDistanceX(player->getPosition().y, nextPosition.y)) {

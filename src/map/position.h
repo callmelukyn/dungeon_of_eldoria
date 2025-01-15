@@ -2,7 +2,6 @@
 // Created by Lukyn on 27.11.2024.
 //
 
-
 #ifndef POSITION_H
 #define POSITION_H
 #include <iostream>
@@ -17,6 +16,12 @@ struct Position {
 
     static unsigned int getDistanceY(const unsigned int playerPositionY, const unsigned int otherPositionY) {
         return abs(static_cast<int>(playerPositionY - otherPositionY));
+    }
+
+    // Check if player is in range 1 of another object.
+    static bool isInRangeOfOne(const unsigned int playerPositionX, const unsigned int playerPositionY,
+                               const unsigned int otherPositionX, const unsigned int otherPositionY) {
+        return getDistanceX(playerPositionX, otherPositionX) <= 1 && getDistanceY(playerPositionY, otherPositionY) <= 1;
     }
 };
 

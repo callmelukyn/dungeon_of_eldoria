@@ -3,10 +3,9 @@
 #include <iostream>
 
 #include "combat_system/combat.h"
-#include "commands/kill_enemy.h"
-#include "tools/global_settings.h"
 #include "domain/entities/player.h"
 #include "interactions/merchant_interaction.h"
+#include "tools/global_settings.h"
 
 Game::Game() {
     m_menu = new Menu();
@@ -70,9 +69,12 @@ void Game::handleInputs(const char keyboardKey) const {
     // Handle movement for enemies.
     for (Enemy *enemy: m_levels->getEnemy()->getEnemies()) {
         if (!m_levels->getEnemy()->getEnemies().empty()) {
+            Combat *combat = new Combat(enemy, m_player);
+            combat->handleCombat(keyboardKey);
             enemy->moveEnemy(m_levels->getMaps(), m_levels->getCurrentLevel(),
                              m_player, keyboardKey);
             enemy->checkEnemyHp(m_levels->getMaps(), m_levels->getCurrentLevel());
+            delete combat;
         }
     }
     MerchantInteraction(m_player, m_levels->getMerchant()->getMerchant(), keyboardKey,
