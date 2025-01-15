@@ -4,8 +4,6 @@
 
 #include "enemy.h"
 
-#include <iostream>
-
 #include "player.h"
 #include "../../commands/kill_enemy.h"
 #include "../../tools/global_settings.h"
@@ -74,10 +72,29 @@ void Enemy::setAggro(const bool aggroed) {
     m_aggroed = aggroed;
 }
 
-void Enemy::checkEnemyHp(const std::vector<Map *> &maps, const int currentLevel) {
+void Enemy::checkEnemyHp(const std::vector<Map *> &maps, Player *player, const int currentLevel) {
+    if (!m_alive) {
+        return;
+    }
     if (m_hp <= 0) {
         const KillEnemy *killEnemy = new KillEnemy(this, maps, currentLevel);
         delete killEnemy;
+        player->addXp(m_xpReward);
+
+        // Cool system kterej jsem nakonec nepotreboval
+        // protoze mi stacila jedna funkce ale je mi lito ho mazat uz
+
+        // std::unordered_map<EnemyType, int> xpBasedOnEnemyKilled = {
+        //     {EnemyType::basilisk, m_xpReward},
+        //     {EnemyType::gargoyle, 10},
+        //     {EnemyType::ghoul, 10},
+        //     {EnemyType::mummy, 10},
+        //     {EnemyType::necromancer, 10},
+        // };
+        // auto it = xpBasedOnEnemyKilled.find(m_enemyType);
+        // if (it != xpBasedOnEnemyKilled.end()) {
+        //     player->addXp(it->second); // Add the XP to the player
+        // }
     }
 }
 

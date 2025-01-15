@@ -37,7 +37,7 @@ public:
 
     void setAggro(bool aggroed);
 
-    void checkEnemyHp(const std::vector<Map *> &maps, int currentLevel);
+    void checkEnemyHp(const std::vector<Map *> &maps, Player *player, int currentLevel);
 };
 
 #endif //ENEMY_H

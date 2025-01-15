@@ -68,14 +68,14 @@ void Game::handleInputs(const char keyboardKey) const {
                          m_levels->getEnemy()->getEnemies());
     // Handle movement for enemies.
     for (Enemy *enemy: m_levels->getEnemy()->getEnemies()) {
+        Combat *combat = new Combat(enemy, m_player);
         if (!m_levels->getEnemy()->getEnemies().empty()) {
-            Combat *combat = new Combat(enemy, m_player);
             combat->handleCombat(keyboardKey);
             enemy->moveEnemy(m_levels->getMaps(), m_levels->getCurrentLevel(),
                              m_player, keyboardKey);
-            enemy->checkEnemyHp(m_levels->getMaps(), m_levels->getCurrentLevel());
-            delete combat;
+            enemy->checkEnemyHp(m_levels->getMaps(), m_player, m_levels->getCurrentLevel());
         }
+        delete combat;
     }
     MerchantInteraction(m_player, m_levels->getMerchant()->getMerchant(), keyboardKey,
                         [this] { m_menu->changeScreenNormal(Screen::shopMain); }).interaction();

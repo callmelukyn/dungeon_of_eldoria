@@ -29,7 +29,7 @@ Levels::~Levels() {
 
 void Levels::loadAllLevels() const {
     static std::vector levelsLoaded(m_maps.size(), false);
-    std::map<int, std::function<void()> > levels = {
+    std::unordered_map<int, std::function<void()> > levels = {
         {0, [this] { level0(); }},
         {1, [this] { level1(); }},
         {2, [this] { level2(); }},

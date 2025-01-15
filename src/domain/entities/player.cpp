@@ -5,7 +5,6 @@
 #include "player.h"
 
 #include "../../tools/global_settings.h"
-#include "../value_objects/screen.h"
 
 Player::Player(const Role role, const int hp, const int damage, const int armor, const int range)
     : Entity(hp, damage, range, true, Position{5, 1}) {
@@ -166,7 +165,8 @@ void Player::movePlayer(const char keyboardKey, const std::vector<Map *> &maps,
 
     // If enemy is in range 1 of player then player cannot move.
     for (const Enemy *enemy: enemies) {
-        if (enemy->isAggroed() && isInRange(m_position, enemy->getPosition())) {
+        if (enemy->isAggroed() && Position::isInRangeOfOne(m_position.x, m_position.y,
+                                                           enemy->getPosition().x, enemy->getPosition().y)) {
             return;
         }
     }

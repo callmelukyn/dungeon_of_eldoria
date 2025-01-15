@@ -9,11 +9,11 @@
 
 #include "enemy.h"
 #include "entity.h"
+#include "../../map/map.h"
+#include "../value_objects/role.h"
+#include "../value_objects/items/armor.h"
 #include "../value_objects/items/potion.h"
 #include "../value_objects/items/weapon.h"
-#include "../value_objects/items/armor.h"
-#include "../value_objects/role.h"
-#include "../../map/map.h"
 
 class Player : public Entity {
     std::vector<Weapon *> m_weapons;
@@ -80,6 +80,5 @@ public:
 
     void setPlayerPosition(Position playerPosition);
 };
-
 
 #endif //PLAYER_H
