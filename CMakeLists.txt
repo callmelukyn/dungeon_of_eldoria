@@ -80,4 +80,6 @@ add_executable(zoo_project src/main.cpp
         src/commands/kill_enemy.h
         src/map/tile.cpp
         src/map/tile.h
+        src/interactions/prisoner_interaction.cpp
+        src/interactions/prisoner_interaction.h
 )

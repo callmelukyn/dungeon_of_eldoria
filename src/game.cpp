@@ -5,6 +5,7 @@
 #include "combat_system/combat.h"
 #include "domain/entities/player.h"
 #include "interactions/merchant_interaction.h"
+#include "interactions/prisoner_interaction.h"
 #include "tools/global_settings.h"
 
 Game::Game() {
@@ -79,6 +80,8 @@ void Game::handleInputs(const char keyboardKey) const {
     }
     MerchantInteraction(m_player, m_levels->getMerchant()->getMerchant(), keyboardKey,
                         [this] { m_menu->changeScreenNormal(Screen::shopMain); }).interaction();
+    PrisonerInteraction(m_player, m_levels->getPrisoner()->getPrisoner(), keyboardKey).interaction(
+        m_levels->getMaps(), m_levels->getCurrentLevel());
 }
 
 void Game::displayGUI() const {
@@ -94,6 +97,9 @@ void Game::displayHelp() const {
     std::cout << "[F] Fight" << "\n";
     std::cout << "[E] Interact" << "\n";
     std::cout << "[H] Use Heal Potion" << "\n";
+    GlobalSettings::setColor(COLOR_YELLOW);
+    std::cout << "? = Prisoner, ! = Enemy, $ = Merchant" << "\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
 }
 
 void Game::displayPlayerProperties() const {
@@ -108,7 +114,7 @@ void Game::displayPlayerProperties() const {
     std::cout << "LVL: " << m_player->getLevel() << "      -     " << m_player->getXp() << "/100 XP\n";
     std::cout << "HEAL POTIONS: ";
     std::cout << m_player->getNumberOfPotions() << "\n";
-    std::cout << "CAVE: " << m_levels->getCurrentLevel() + 1 << "\n\n";
+    std::cout << "CAVE: " << m_levels->getCurrentLevel() + 1 << " / " << m_levels->getMaps().size() << "\n\n";
 }
 
 Player *Game::initializePlayer() {

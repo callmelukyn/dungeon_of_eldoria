@@ -15,7 +15,7 @@ void MerchantInteraction::interaction() const {
                                  m_player->getPosition().y,
                                  m_merchant->getPosition().x,
                                  m_merchant->getPosition().y) &&
-        m_keyboardKey == 'e') {
+        m_keyboardKey == 'e' || m_keyboardKey == 'E') {
         m_changeScreen();
     }
 }

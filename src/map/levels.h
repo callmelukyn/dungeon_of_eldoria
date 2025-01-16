@@ -46,6 +46,8 @@ public:
     AddEnemy *getEnemy() const;
 
     AddMerchant *getMerchant() const;
+
+    AddPrisoner *getPrisoner() const;
 };
 
 

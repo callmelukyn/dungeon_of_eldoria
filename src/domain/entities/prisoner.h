@@ -14,7 +14,9 @@ public:
 
     Position getPosition() const;
 
-    void rescuePrisoner(Player *player);
+    void setPosition(const Position position);
+
+    void rescuePrisoner(Player *player, const std::vector<Map *> &maps, const int currentLevel);
 };
 
 

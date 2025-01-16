@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "combat.h"
+#include "../tools/global_settings.h"
 
 bool PassiveState::isAggroed() {
     std::cout << "\b                       \r";
@@ -10,7 +11,7 @@ bool PassiveState::isAggroed() {
 }
 
 void PassiveState::handleCombat(Combat *combat, const char keyboardKey) {
-    if (keyboardKey == 'f') {
+    if (keyboardKey == 'f' || keyboardKey == 'F') {
         if (combat->isPlayerInRange()) {
             // If in range and player attacks, start combat and deal damage
             combat->startCombat();
