@@ -10,6 +10,7 @@ Player::Player(const Role role, const int hp, const int damage, const int armor,
     : Entity(hp, damage, range, true, Position{5, 1}) {
     m_armors = {};
     m_weapons = {};
+    m_potions = {};
     m_role = role;
     m_armor = armor;
     m_range = range;
@@ -17,7 +18,6 @@ Player::Player(const Role role, const int hp, const int damage, const int armor,
     m_xp = 0;
     m_level = 1;
     m_coins = 10000; //TODO Jen na test, pak zmenit na 0
-    m_numberOfPotions = 0;
 }
 
 void Player::levelUp() {
@@ -54,8 +54,8 @@ void Player::addArmor(Armor *armor) {
     m_armors.push_back(armor);
 }
 
-void Player::addPotion() {
-    m_numberOfPotions += 1;
+void Player::addPotion(Potion *potion) {
+    m_potions.push_back(potion);
 }
 
 void Player::addDamage(const int damage) {
@@ -70,15 +70,15 @@ void Player::addMaxHp(const int maxHp) {
     m_maxHp += maxHp;
 }
 
-void Player::usePotion(const Potion *potion) {
+void Player::usePotion() {
     if (m_hp != m_maxHp) {
-        if (m_numberOfPotions > 0) {
-            if (m_hp + potion->getHpGain() >= m_maxHp) {
+        if (m_potions.size() > 0) {
+            if (m_hp + m_potions.at(0)->getHpGain() >= m_maxHp) {
                 m_hp = m_maxHp;
             } else {
-                m_hp += potion->getHpGain();
+                m_hp += m_potions.at(0)->getHpGain();
             }
-            m_numberOfPotions -= 1;
+            m_potions.erase(m_potions.begin() + m_potions.size() - 1);
         }
     }
 }
@@ -154,7 +154,7 @@ int Player::getRange() const {
 }
 
 int Player::getNumberOfPotions() const {
-    return m_numberOfPotions;
+    return m_potions.size();
 }
 
 void Player::movePlayer(const char keyboardKey, const std::vector<Map *> &maps,

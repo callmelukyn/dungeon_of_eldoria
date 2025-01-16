@@ -6,6 +6,7 @@
 #include "domain/entities/player.h"
 #include "interactions/merchant_interaction.h"
 #include "interactions/prisoner_interaction.h"
+#include "interactions/healing_interaction.h"
 #include "tools/global_settings.h"
 
 Game::Game() {
@@ -82,6 +83,7 @@ void Game::handleInputs(const char keyboardKey) const {
                         [this] { m_menu->changeScreenNormal(Screen::shopMain); }).interaction();
     PrisonerInteraction(m_player, m_levels->getPrisoner()->getPrisoner(), keyboardKey).interaction(
         m_levels->getMaps(), m_levels->getCurrentLevel());
+    HealingInteraction(m_player, keyboardKey).interaction();
 }
 
 void Game::displayGUI() const {

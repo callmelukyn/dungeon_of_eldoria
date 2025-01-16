@@ -64,9 +64,7 @@ void Shop::buyArmor(Player *player, Armor *armor) {
 void Shop::buyPotion(Player *player, Potion *potion) {
     if (player->getCoins() - potion->getPrice() >= 0) {
         player->removeCoins(potion->getPrice());
-        player->addPotion();
-    } else {
-        std::cout << "NOT ENOUGH COINS\n";
+        player->addPotion(potion);
     }
 }
 

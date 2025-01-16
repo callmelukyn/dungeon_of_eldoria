@@ -18,12 +18,12 @@
 class Player : public Entity {
     std::vector<Weapon *> m_weapons;
     std::vector<Armor *> m_armors;
+    std::vector<Potion *> m_potions;
     int m_xp;
     int m_maxHp; //MAX HP you can achieve by healing. It increases with LVL Ups - but not your current HP.
     int m_level; //XP Level
     int m_coins;
     Role m_role;
-    int m_numberOfPotions;
     int m_armor;
 
 public:
@@ -33,9 +33,7 @@ public:
 
     void levelUp();
 
-    void addPotion();
-
-    void usePotion(const Potion *potion);
+    void usePotion();
 
     int getXp() const;
 
@@ -52,6 +50,8 @@ public:
     int getTotalDamage() const; //Methods for fighting
 
     Role getRole() const;
+
+    void addPotion(Potion *potion);
 
     void addWeapon(Weapon *weapon);
 
