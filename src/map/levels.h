@@ -28,6 +28,14 @@ class Levels {
 
     void level5() const;
 
+    void level6() const;
+
+    void level7() const;
+
+    void level8() const;
+
+    void level9() const;
+
 public:
     Levels();
 
