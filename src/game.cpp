@@ -79,10 +79,15 @@ void Game::handleInputs(const char keyboardKey) const {
         }
         delete combat;
     }
+    // Handle interaction with merchant
     MerchantInteraction(m_player, m_levels->getMerchant()->getMerchant(), keyboardKey,
                         [this] { m_menu->changeScreenNormal(Screen::shopMain); }).interaction();
+
+    // Handle interaction with prisoner
     PrisonerInteraction(m_player, m_levels->getPrisoner()->getPrisoner(), keyboardKey).interaction(
         m_levels->getMaps(), m_levels->getCurrentLevel());
+
+    // Handle interaction with player's mechanic to heal himself
     HealingInteraction(m_player, keyboardKey).interaction();
 }
 
@@ -109,14 +114,15 @@ void Game::displayPlayerProperties() const {
     GlobalSettings::setColor(COLOR_RED);
     std::cout << m_player->getHp();
     GlobalSettings::setColor(COLOR_DEFAULT);
-    std::cout << "        COINS: ";
+    std::cout << " / " << m_player->getMaxHp() << "    \n";
+    std::cout << "COINS: ";
     GlobalSettings::setColor(COLOR_YELLOW);
-    std::cout << m_player->getCoins() << "\n";
+    std::cout << m_player->getCoins() << "      \n";
     GlobalSettings::setColor(COLOR_DEFAULT);
-    std::cout << "LVL: " << m_player->getLevel() << "      -     " << m_player->getXp() << "/100 XP\n";
+    std::cout << "LVL: " << m_player->getLevel() << "      -     " << m_player->getXp() << "/100 XP   \n";
     std::cout << "HEAL POTIONS: ";
-    std::cout << m_player->getNumberOfPotions() << "\n";
-    std::cout << "CAVE: " << m_levels->getCurrentLevel() + 1 << " / " << m_levels->getMaps().size() << "\n\n";
+    std::cout << m_player->getNumberOfPotions() << "  \n";
+    std::cout << "CAVE: " << m_levels->getCurrentLevel() + 1 << " / " << m_levels->getMaps().size() << "   \n\n";
 }
 
 Player *Game::initializePlayer() {

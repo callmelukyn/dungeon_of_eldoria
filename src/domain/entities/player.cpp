@@ -121,6 +121,10 @@ int Player::getXp() const {
     return m_xp;
 }
 
+int Player::getMaxHp() const {
+    return m_maxHp;
+}
+
 int Player::getLevel() const {
     return m_level;
 }

@@ -5,6 +5,8 @@
 #ifndef GLOBAL_SETTINGS_H
 #define GLOBAL_SETTINGS_H
 #include <windows.h>
+#include <cstdlib>
+#include <ctime>
 
 #define COLOR_RED 04
 #define COLOR_DEFAULT 07
@@ -26,6 +28,8 @@ class GlobalSettings {
 
 public:
     GlobalSettings();
+
+    static int getRandomNumber(int maxNumber);
 
     static void setColor(int color);
 

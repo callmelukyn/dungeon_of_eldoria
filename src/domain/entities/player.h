@@ -41,6 +41,8 @@ public:
 
     int getDamage() const;
 
+    int getMaxHp() const;
+
     bool weaponOwned(const Weapon *weapon) const;
 
     bool armorOwned(const Armor *armor) const;

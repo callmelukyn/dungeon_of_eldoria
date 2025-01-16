@@ -28,7 +28,7 @@ public:
 
     int getCoinReward() const;
 
-    int getPotionDropChance() const;
+    void dropPotion(Player *player) const;
 
     void moveEnemy(const std::vector<Map *> &maps, int currentLevel, const Player *player,
                    char keyboardKey);

@@ -13,6 +13,13 @@ void GlobalSettings::setColor(int color) {
     SetConsoleTextAttribute(hConsole, color);
 }
 
+int GlobalSettings::getRandomNumber(int maxNumber) {
+    int seed = time(0);
+    srand(seed);
+    int generatedNumber = 1 + rand() % maxNumber;
+    return generatedNumber;
+}
+
 BOOL GlobalSettings::setFontSize() {
     COORD fontSize = {25, 25};
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);

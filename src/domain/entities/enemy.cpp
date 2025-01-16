@@ -31,8 +31,10 @@ int Enemy::getXpReward() const {
     return m_xpReward;
 }
 
-int Enemy::getPotionDropChance() const {
-    return m_potionDropChance;
+void Enemy::dropPotion(Player *player) const {
+    if (GlobalSettings::getRandomNumber(100) <= m_potionDropChance) {
+        player->addPotion(new Potion());
+    }
 }
 
 void Enemy::moveEnemy(const std::vector<Map *> &maps, const int currentLevel,
@@ -80,6 +82,7 @@ void Enemy::checkEnemyHp(const std::vector<Map *> &maps, Player *player, const i
         const KillEnemy *killEnemy = new KillEnemy(this, maps, currentLevel);
         delete killEnemy;
         player->addXp(m_xpReward);
+        dropPotion(player);
 
         // Cool system kterej jsem nakonec nepotreboval
         // protoze mi stacila jedna funkce ale je mi lito ho mazat uz

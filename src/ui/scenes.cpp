@@ -576,7 +576,7 @@ void Scenes::sceneShopPotionsSelectedPotion1(Potion *potion) const {
     std::cout << "- Elixir of Vitality \n";
     GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "\n PRICE: " << potion->getPrice() << " coins\n";
-    std::cout << " On use, adds " << potion->getHpGain() << " (Player's health is limited on 100)\n";
+    std::cout << " On use, adds " << potion->getHpGain() << " health points\n";
 }
 
 //
