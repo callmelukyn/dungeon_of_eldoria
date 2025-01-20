@@ -6,7 +6,7 @@
 #define PRISONER_INTERACTION_H
 
 #include "../domain/entities/player.h"
-#include "../domain/entities/prisoner.h"
+#include "../domain/value_objects/prisoner.h"
 
 class PrisonerInteraction {
     Player *m_player;
@@ -16,7 +16,7 @@ class PrisonerInteraction {
 public:
     PrisonerInteraction(Player *player, Prisoner *prisoner, char keyboardKey);
 
-    void interaction(const std::vector<Map *> &maps, const int currentLevel) const;
+    void interaction(const std::vector<Map *> &maps, int currentLevel) const;
 };
 
 #endif //PRISONER_INTERACTION_H

@@ -173,3 +173,26 @@ void Levels::level8() const {
 void Levels::level9() const {
     m_addMerchant->addMerchant(m_currentLevel, Position{6, 3});
 }
+
+bool Levels::isAnyPrisonerInRange(const Player *player) const {
+    bool isPrisonerInRange = false;
+    for (const Prisoner *prisoner: m_addPrisoner->getPrisoners()) {
+        if (Position::isInRangeOfOne(player->getPosition().x, player->getPosition().y,
+                                     prisoner->getPosition().x, prisoner->getPosition().y)) {
+            isPrisonerInRange = true;
+            break;
+        }
+    }
+    return isPrisonerInRange;
+}
+
+bool Levels::isAnyEnemyInRange(const Player *player) const {
+    bool isEnemyInRange = false;
+    for (const Enemy *enemy: m_addEnemy->getEnemies()) {
+        if (player->isInRange(player->getPosition(), enemy->getPosition())) {
+            isEnemyInRange = true;
+            break;
+        }
+    }
+    return isEnemyInRange;
+}

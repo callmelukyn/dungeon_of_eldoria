@@ -7,6 +7,7 @@
 AddPrisoner::AddPrisoner(const std::vector<Map *> &maps) {
     m_prisoners = {};
     m_maps = maps;
+    m_positionOfPrisoners = Position{0, 0};
 }
 
 AddPrisoner::~AddPrisoner() {
@@ -29,5 +30,3 @@ std::vector<Prisoner *> AddPrisoner::getPrisoners() {
 void AddPrisoner::clearPrisoners() {
     m_prisoners.clear();
 }
-
-

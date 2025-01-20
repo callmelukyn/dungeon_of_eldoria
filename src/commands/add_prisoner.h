@@ -5,12 +5,13 @@
 #ifndef ADD_PRISONER_H
 #define ADD_PRISONER_H
 #include <vector>
-#include "../domain/entities/prisoner.h"
+#include "../domain/value_objects/prisoner.h"
 #include "../map/map.h"
 
 class AddPrisoner {
     std::vector<Prisoner *> m_prisoners;
     std::vector<Map *> m_maps;
+    Position m_positionOfPrisoners;
 
 public:
     explicit AddPrisoner(const std::vector<Map *> &maps);

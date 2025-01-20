@@ -103,23 +103,23 @@ void Game::displayGUI() const {
 
 void Game::displayHelp() const {
     std::cout << "\n[WASD] Move around" << "\n";
-    bool anyEnemyInRange = false;
-    // Iterate through all enemies to check if any are in range.
-    for (const Enemy *enemy: m_levels->getEnemy()->getEnemies()) {
-        if (m_player->isInRange(m_player->getPosition(), enemy->getPosition())) {
-            anyEnemyInRange = true;
-            break;
-        }
-    }
     // Set the color based on whether any enemy is in range.
-    if (anyEnemyInRange) {
+    if (m_levels->isAnyEnemyInRange(m_player)) {
         GlobalSettings::setColor(COLOR_YELLOW);
     } else {
         GlobalSettings::setColor(COLOR_DEFAULT);
     }
     std::cout << "[F] Fight" << "\n";
     GlobalSettings::setColor(COLOR_DEFAULT);
+    if (m_levels->isAnyPrisonerInRange(m_player) ||
+        (m_levels->getMerchant()->getMerchant() != nullptr && m_levels->getMerchant()->getMerchant()->
+         isAnyMerchantInRange(m_player->getPosition()))) {
+        GlobalSettings::setColor(COLOR_YELLOW);
+    } else {
+        GlobalSettings::setColor(COLOR_DEFAULT);
+    }
     std::cout << "[E] Interact" << "\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "[H] Use Heal Potion" << "\n";
     GlobalSettings::setColor(COLOR_YELLOW);
     std::cout << "? = Prisoner, ! = Enemy, $ = Merchant" << "\n";

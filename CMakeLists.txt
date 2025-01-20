@@ -39,8 +39,8 @@ add_executable(zoo_project src/main.cpp
         src/domain/value_objects/enemy_type.h
         src/domain/value_objects/merchant.cpp
         src/domain/value_objects/merchant.h
-        src/domain/entities/prisoner.cpp
-        src/domain/entities/prisoner.h
+        src/domain/value_objects/prisoner.cpp
+        src/domain/value_objects/prisoner.h
         src/ui/shop.cpp
         src/ui/shop.h
         src/commands/add_enemy.cpp

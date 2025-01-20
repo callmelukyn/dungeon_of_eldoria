@@ -56,6 +56,10 @@ public:
     AddMerchant *getMerchant() const;
 
     AddPrisoner *getPrisoner() const;
+
+    bool isAnyPrisonerInRange(const Player *player) const;
+
+    bool isAnyEnemyInRange(const Player *player) const;
 };
 
 

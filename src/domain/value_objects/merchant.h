@@ -13,6 +13,8 @@ public:
     explicit Merchant(Position position);
 
     Position getPosition() const;
+
+    bool isAnyMerchantInRange(Position playerPosition) const;
 };
 
 
