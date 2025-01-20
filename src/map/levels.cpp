@@ -106,7 +106,7 @@ void Levels::clearCharactersFromPreviousLevel() const {
     m_addEnemy->clearEnemies();
     if (m_addMerchant->getMerchant() != nullptr) {
         m_maps[m_currentLevel]->clearCharacterFromPosition(m_addMerchant->getMerchant()->getPosition());
-        delete m_addMerchant->getMerchant();
+        m_addMerchant->setMerchantToNull();
     }
     for (const Prisoner *prisoner: m_addPrisoner->getPrisoners()) {
         m_maps[m_currentLevel]->clearCharacterFromPosition(prisoner->getPosition());

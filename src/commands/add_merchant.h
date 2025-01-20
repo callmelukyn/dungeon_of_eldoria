@@ -18,6 +18,8 @@ public:
     void addMerchant(int currentLevel, Position position);
 
     Merchant *getMerchant() const;
+
+    void setMerchantToNull();
 };
 
 

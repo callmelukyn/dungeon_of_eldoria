@@ -17,3 +17,7 @@ void AddMerchant::addMerchant(const int currentLevel, const Position position) {
 Merchant *AddMerchant::getMerchant() const {
     return m_merchant;
 }
+
+void AddMerchant::setMerchantToNull() {
+    m_merchant = nullptr;
+}
