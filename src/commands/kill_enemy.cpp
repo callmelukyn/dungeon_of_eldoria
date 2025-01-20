@@ -4,5 +4,5 @@ KillEnemy::KillEnemy(Enemy *enemy, const std::vector<Map *> &maps, const int cur
     enemy->setAggro(false);
     enemy->setAlive(false);
     maps[currentLevel]->clearCharacterFromPosition(enemy->getPosition());
-    enemy->setPosition(Position{0, 0});
+    enemy->setPosition(Position{9999, 9999});
 }

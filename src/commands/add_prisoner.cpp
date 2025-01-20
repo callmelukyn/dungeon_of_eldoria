@@ -5,19 +5,29 @@
 #include "add_prisoner.h"
 
 AddPrisoner::AddPrisoner(const std::vector<Map *> &maps) {
-    m_prisoner = nullptr;
+    m_prisoners = {};
     m_maps = maps;
 }
 
 AddPrisoner::~AddPrisoner() {
-    delete m_prisoner;
+    for (const Prisoner *prisoner: m_prisoners) {
+        delete prisoner;
+    }
+    m_prisoners.clear();
 }
 
-void AddPrisoner::addPrisoner(int currentLevel, Position position) {
-    m_prisoner = new Prisoner(position);
+void AddPrisoner::addPrisoner(const int currentLevel, const Position position) {
+    Prisoner *prisoner = new Prisoner(position);
+    m_prisoners.push_back(prisoner);
     m_maps[currentLevel]->putCharacterInPosition(position, '?');
 }
 
-Prisoner *AddPrisoner::getPrisoner() const {
-    return m_prisoner;
+std::vector<Prisoner *> AddPrisoner::getPrisoners() {
+    return m_prisoners;
 }
+
+void AddPrisoner::clearPrisoners() {
+    m_prisoners.clear();
+}
+
+

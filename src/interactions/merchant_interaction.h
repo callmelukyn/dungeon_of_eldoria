@@ -1,9 +1,8 @@
 #ifndef MERCHANT_INTERACTION_H
 #define MERCHANT_INTERACTION_H
 
-#include "../domain/value_objects/merchant.h"
 #include "../domain/entities/player.h"
-
+#include "../domain/value_objects/merchant.h"
 
 class MerchantInteraction {
     Player *m_player;
@@ -17,6 +16,5 @@ public:
 
     void interaction() const;
 };
-
 
 #endif //MERCHANT_INTERACTION_H

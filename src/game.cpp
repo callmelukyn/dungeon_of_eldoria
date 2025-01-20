@@ -4,9 +4,9 @@
 
 #include "combat_system/combat.h"
 #include "domain/entities/player.h"
+#include "interactions/healing_interaction.h"
 #include "interactions/merchant_interaction.h"
 #include "interactions/prisoner_interaction.h"
-#include "interactions/healing_interaction.h"
 #include "tools/global_settings.h"
 
 Game::Game() {
@@ -71,8 +71,8 @@ void Game::handleInputs(const char keyboardKey) const {
     // Handle movement for enemies.
     for (Enemy *enemy: m_levels->getEnemy()->getEnemies()) {
         Combat *combat = new Combat(enemy, m_player);
-        if (!m_levels->getEnemy()->getEnemies().empty()) {
-            combat->handleCombat(keyboardKey);
+        combat->handleCombat(keyboardKey);
+        if (!m_levels->getEnemy()->getEnemies().empty() && enemy->isAlive()) {
             enemy->moveEnemy(m_levels->getMaps(), m_levels->getCurrentLevel(),
                              m_player, keyboardKey);
             enemy->checkEnemyHp(m_levels->getMaps(), m_player, m_levels->getCurrentLevel());
@@ -84,8 +84,10 @@ void Game::handleInputs(const char keyboardKey) const {
                         [this] { m_menu->changeScreenNormal(Screen::shopMain); }).interaction();
 
     // Handle interaction with prisoner
-    PrisonerInteraction(m_player, m_levels->getPrisoner()->getPrisoner(), keyboardKey).interaction(
-        m_levels->getMaps(), m_levels->getCurrentLevel());
+    for (Prisoner *prisoner: m_levels->getPrisoner()->getPrisoners()) {
+        PrisonerInteraction(m_player, prisoner, keyboardKey).interaction(
+            m_levels->getMaps(), m_levels->getCurrentLevel());
+    }
 
     // Handle interaction with player's mechanic to heal himself
     HealingInteraction(m_player, keyboardKey).interaction();
@@ -101,7 +103,22 @@ void Game::displayGUI() const {
 
 void Game::displayHelp() const {
     std::cout << "\n[WASD] Move around" << "\n";
+    bool anyEnemyInRange = false;
+    // Iterate through all enemies to check if any are in range.
+    for (const Enemy *enemy: m_levels->getEnemy()->getEnemies()) {
+        if (m_player->isInRange(m_player->getPosition(), enemy->getPosition())) {
+            anyEnemyInRange = true;
+            break;
+        }
+    }
+    // Set the color based on whether any enemy is in range.
+    if (anyEnemyInRange) {
+        GlobalSettings::setColor(COLOR_YELLOW);
+    } else {
+        GlobalSettings::setColor(COLOR_DEFAULT);
+    }
     std::cout << "[F] Fight" << "\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "[E] Interact" << "\n";
     std::cout << "[H] Use Heal Potion" << "\n";
     GlobalSettings::setColor(COLOR_YELLOW);

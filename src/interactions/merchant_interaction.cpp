@@ -11,6 +11,9 @@ MerchantInteraction::MerchantInteraction(Player *player, Merchant *merchant,
 
 void MerchantInteraction::interaction() const {
     // Check if player is in range of 1 of merchant.
+    if (m_merchant == nullptr) {
+        return;
+    }
     if (Position::isInRangeOfOne(m_player->getPosition().x,
                                  m_player->getPosition().y,
                                  m_merchant->getPosition().x,

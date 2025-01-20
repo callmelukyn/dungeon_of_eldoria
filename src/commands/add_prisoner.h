@@ -9,7 +9,7 @@
 #include "../map/map.h"
 
 class AddPrisoner {
-    Prisoner *m_prisoner;
+    std::vector<Prisoner *> m_prisoners;
     std::vector<Map *> m_maps;
 
 public:
@@ -19,8 +19,9 @@ public:
 
     void addPrisoner(int currentLevel, Position position);
 
-    Prisoner *getPrisoner() const;
-};
+    std::vector<Prisoner *> getPrisoners();
 
+    void clearPrisoners();
+};
 
 #endif //ADD_PRISONER_H

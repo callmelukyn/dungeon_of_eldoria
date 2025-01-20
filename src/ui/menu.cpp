@@ -22,6 +22,7 @@ Menu::Menu() {
 
 Menu::~Menu() {
     delete m_scene;
+    delete m_shop;
     delete m_playerDirector;
 }
 
@@ -62,7 +63,6 @@ Shop *Menu::getShop() const {
 int Menu::getSelected() const {
     return m_selected;
 }
-
 
 void Menu::handleMenuInput(const char keyboardKey, Player *player) {
     switch (m_currentScreen) {

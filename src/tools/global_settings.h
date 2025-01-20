@@ -4,9 +4,8 @@
 
 #ifndef GLOBAL_SETTINGS_H
 #define GLOBAL_SETTINGS_H
-#include <windows.h>
-#include <cstdlib>
 #include <ctime>
+#include <windows.h>
 
 #define COLOR_RED 04
 #define COLOR_DEFAULT 07
@@ -45,6 +44,5 @@ public:
 
     static bool movementKeys(char keyboardKey);
 };
-
 
 #endif //GLOBAL_SETTINGS_H

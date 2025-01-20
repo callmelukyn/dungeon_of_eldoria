@@ -3,12 +3,11 @@
 #include "combat_state.h"
 #include "../domain/entities/enemy.h"
 
-class Player;
-
 class Combat {
     CombatState *m_combatState;
     Enemy *m_enemy;
     Player *m_player;
+    static bool s_startedCombat;
 
     void setState(CombatState *newState);
 
@@ -16,6 +15,8 @@ class Combat {
 
 public:
     Combat(Enemy *enemy, Player *player);
+
+    ~Combat();
 
     void startCombat();
 
@@ -28,6 +29,8 @@ public:
     void handleCombat(char keyboardKey);
 
     bool isPlayerInRange() const;
+
+    static bool didStartCombat();
 };
 
 #endif //COMBAT_H

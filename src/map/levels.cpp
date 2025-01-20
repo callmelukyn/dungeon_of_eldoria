@@ -1,7 +1,6 @@
 #include "levels.h"
 
 #include <iostream>
-#include <map>
 
 #include "../tools/global_settings.h"
 
@@ -29,6 +28,7 @@ Levels::~Levels() {
     }
     delete m_addEnemy;
     delete m_addMerchant;
+    delete m_addPrisoner;
 }
 
 void Levels::loadAllLevels() const {
@@ -104,12 +104,18 @@ void Levels::clearCharactersFromPreviousLevel() const {
         m_maps[m_currentLevel]->clearCharacterFromPosition(enemy->getPosition());
     }
     m_addEnemy->clearEnemies();
-    m_maps[m_currentLevel]->clearCharacterFromPosition(m_addMerchant->getMerchant()->getPosition());
+    if (m_addMerchant->getMerchant() != nullptr) {
+        m_maps[m_currentLevel]->clearCharacterFromPosition(m_addMerchant->getMerchant()->getPosition());
+        delete m_addMerchant->getMerchant();
+    }
+    for (const Prisoner *prisoner: m_addPrisoner->getPrisoners()) {
+        m_maps[m_currentLevel]->clearCharacterFromPosition(prisoner->getPosition());
+    }
+    m_addPrisoner->clearPrisoners();
 }
 
 void Levels::level0() const {
     m_addEnemy->addMummy(m_currentLevel, Position{2, 4});
-    m_addMerchant->addMerchant(m_currentLevel, Position{4, 4}); //TODO odstranit
     m_addPrisoner->addPrisoner(m_currentLevel, Position{3, 3});
 }
 

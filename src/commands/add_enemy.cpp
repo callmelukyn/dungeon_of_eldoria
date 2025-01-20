@@ -15,9 +15,6 @@ AddEnemy::~AddEnemy() {
     for (const Enemy *enemy: m_enemies) {
         delete enemy;
     }
-    // for (const Map *map: m_maps) {
-    //     delete map;
-    // }
     m_enemies.clear();
 }
 
