@@ -7,15 +7,19 @@
 #include "interactions/healing_interaction.h"
 #include "interactions/merchant_interaction.h"
 #include "interactions/prisoner_interaction.h"
+#include "movement/enemy_movement.h"
+#include "movement/player_movement.h"
 #include "tools/global_settings.h"
 
 Game::Game() {
-    m_menu = new Menu();
+    m_playerDirector = new PlayerDirector(nullptr);
+    m_menu = new Menu(m_playerDirector);
     m_levels = new Levels();
     m_player = nullptr;
 }
 
 Game::~Game() {
+    delete m_playerDirector;
     delete m_menu;
     delete m_levels;
     delete m_player;
@@ -65,19 +69,24 @@ void Game::handleInputs(const char keyboardKey) const {
         return;
     }
     // Handle player movement on the map.
-    m_player->movePlayer(keyboardKey, m_levels->getMaps(),
-                         m_levels->getCurrentLevel(), [this] { m_levels->nextLevel(m_player); },
-                         m_levels->getEnemy()->getEnemies());
+    const PlayerMovement *playerMovement = new PlayerMovement(m_player);
+    playerMovement->movePlayer(keyboardKey, m_levels->getMaps(),
+                               m_levels->getCurrentLevel(), [this] { m_levels->nextLevel(m_player); },
+                               m_levels->getEnemy()->getEnemies());
     // Handle movement for enemies.
     for (Enemy *enemy: m_levels->getEnemy()->getEnemies()) {
+        EnemyMovement *enemyMovement = new EnemyMovement(enemy);
         Combat *combat = new Combat(enemy, m_player);
         combat->handleCombat(keyboardKey);
         if (!m_levels->getEnemy()->getEnemies().empty() && enemy->isAlive()) {
-            enemy->moveEnemy(m_levels->getMaps(), m_levels->getCurrentLevel(),
-                             m_player, keyboardKey);
+            enemyMovement->moveEnemy(m_levels->getMaps(), m_levels->getCurrentLevel(),
+                                     m_player, keyboardKey);
+            // enemy->moveEnemy(m_levels->getMaps(), m_levels->getCurrentLevel(),
+            //                  m_player, keyboardKey);
             enemy->checkEnemyHp(m_levels->getMaps(), m_player, m_levels->getCurrentLevel());
         }
         delete combat;
+        delete enemyMovement;
     }
     // Handle interaction with merchant
     MerchantInteraction(m_player, m_levels->getMerchant()->getMerchant(), keyboardKey,
@@ -91,6 +100,7 @@ void Game::handleInputs(const char keyboardKey) const {
 
     // Handle interaction with player's mechanic to heal himself
     HealingInteraction(m_player, keyboardKey).interaction();
+    delete playerMovement;
 }
 
 void Game::displayGUI() const {
@@ -140,7 +150,7 @@ void Game::displayPlayerProperties() const {
 
 Player *Game::initializePlayer() {
     if (m_player == nullptr) {
-        m_player = m_menu->getPlayerDirector()->createPlayer();
+        m_player = m_playerDirector->createPlayer();
     }
     return m_player;
 }

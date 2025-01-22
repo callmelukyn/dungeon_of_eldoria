@@ -4,10 +4,8 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
-#include <functional>
 #include <vector>
 
-#include "enemy.h"
 #include "entity.h"
 #include "../../map/map.h"
 #include "../value_objects/role.h"
@@ -76,11 +74,6 @@ public:
     int getCoins() const;
 
     int getRange() const;
-
-    void movePlayer(char keyboardKey, const std::vector<Map *> &maps, int currentLevel,
-                    const std::function<void()> &nextLevel, const std::vector<Enemy *> &enemies);
-
-    void setPlayerPosition(Position playerPosition);
 };
 
 #endif //PLAYER_H

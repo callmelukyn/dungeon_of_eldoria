@@ -1,6 +1,8 @@
 #include "levels.h"
 
+#include <functional>
 #include <iostream>
+#include <unordered_map>
 
 #include "../tools/global_settings.h"
 
@@ -71,7 +73,7 @@ void Levels::nextLevel(Player *player) {
 
         const Position newPlayerPosition = m_maps[m_currentLevel]->getStartingPosition(lastDoorPosition);
         // Put player on the side which he walked from
-        player->setPlayerPosition(newPlayerPosition);
+        player->setPosition(newPlayerPosition);
         m_maps[m_currentLevel]->putCharacterInPosition(newPlayerPosition, '@');
     } else {
         //TODO
@@ -180,7 +182,7 @@ bool Levels::isAnyPrisonerInRange(const Player *player) const {
         if (Position::isInRangeOfOne(player->getPosition().x, player->getPosition().y,
                                      prisoner->getPosition().x, prisoner->getPosition().y)) {
             isPrisonerInRange = true;
-            break;
+            return isPrisonerInRange;
         }
     }
     return isPrisonerInRange;
@@ -191,7 +193,7 @@ bool Levels::isAnyEnemyInRange(const Player *player) const {
     for (const Enemy *enemy: m_addEnemy->getEnemies()) {
         if (player->isInRange(player->getPosition(), enemy->getPosition())) {
             isEnemyInRange = true;
-            break;
+            return isEnemyInRange;
         }
     }
     return isEnemyInRange;

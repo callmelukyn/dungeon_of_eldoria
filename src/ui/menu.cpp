@@ -12,18 +12,17 @@
 #include "../domain/entities/player_builder/warrior_builder.h"
 #include "../tools/global_settings.h"
 
-Menu::Menu() {
+Menu::Menu(PlayerDirector *playerDirector) {
     m_selected = 0;
     m_currentScreen = Screen::mainMenu;
     m_scene = new Scenes();
     m_shop = new Shop([this](const Screen screen, const char keyboardKey) { changeScreen(screen, keyboardKey); });
-    m_playerDirector = new PlayerDirector(nullptr);
+    m_playerDirector = playerDirector;
 }
 
 Menu::~Menu() {
     delete m_scene;
     delete m_shop;
-    delete m_playerDirector;
 }
 
 void Menu::changeScreenNormal(const Screen newScreen) {
@@ -39,6 +38,7 @@ void Menu::changeScreen(const Screen newScreen, const char keyboardKey) {
     if ((m_currentScreen == Screen::shopArmor || m_currentScreen == Screen::shopPotions || m_currentScreen ==
          Screen::shopWeapons) && keyboardKey == KEYBOARD_ESC) {
         GlobalSettings::clearConsoleOnNewScreen();
+        m_selected = 0;
         m_currentScreen = Screen::shopMain;
         return;
     }
@@ -233,12 +233,9 @@ void Menu::confirmCutscene(const char keyboardKey) {
 }
 
 void Menu::navigateMenu(const char keyboardKey, const int selectableItemsOnScreenCount) {
-    moveUpMenu(keyboardKey, selectableItemsOnScreenCount);
-    moveDownMenu(keyboardKey, selectableItemsOnScreenCount);
+    if (selectableItemsOnScreenCount != 1) {
+        moveUpMenu(keyboardKey, selectableItemsOnScreenCount);
+        moveDownMenu(keyboardKey, selectableItemsOnScreenCount);
+    }
     changeScreen(Screen::mainMenu, keyboardKey);
 }
-
-PlayerDirector *Menu::getPlayerDirector() const {
-    return m_playerDirector;
-}
-

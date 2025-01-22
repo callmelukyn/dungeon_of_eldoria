@@ -30,9 +30,6 @@ public:
 
     void dropPotion(Player *player) const;
 
-    void moveEnemy(const std::vector<Map *> &maps, int currentLevel, const Player *player,
-                   char keyboardKey);
-
     bool isAggroed() const;
 
     void setAggro(bool aggroed);

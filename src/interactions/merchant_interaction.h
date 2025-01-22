@@ -1,6 +1,8 @@
 #ifndef MERCHANT_INTERACTION_H
 #define MERCHANT_INTERACTION_H
 
+#include <functional>
+
 #include "../domain/entities/player.h"
 #include "../domain/value_objects/merchant.h"
 

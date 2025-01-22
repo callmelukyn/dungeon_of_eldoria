@@ -84,4 +84,8 @@ add_executable(zoo_project src/main.cpp
         src/interactions/prisoner_interaction.h
         src/interactions/healing_interaction.cpp
         src/interactions/healing_interaction.h
+        src/movement/enemy_movement.cpp
+        src/movement/enemy_movement.h
+        src/movement/player_movement.cpp
+        src/movement/player_movement.h
 )

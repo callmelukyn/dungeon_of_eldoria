@@ -6,9 +6,10 @@
 #include "map/levels.h"
 
 class Game {
-    Player *m_player;
+    PlayerDirector *m_playerDirector;
     Menu *m_menu;
     Levels *m_levels;
+    Player *m_player;
 
     void displayGUI() const;
 
@@ -27,6 +28,5 @@ public:
 
     void handleInputs(char keyboardKey) const;
 };
-
 
 #endif //GAME_H

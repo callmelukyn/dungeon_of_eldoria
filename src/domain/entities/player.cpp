@@ -4,8 +4,6 @@
 
 #include "player.h"
 
-#include "../../tools/global_settings.h"
-
 Player::Player(const Role role, const int hp, const int damage, const int armor, const int range)
     : Entity(hp, damage, range, true, Position{5, 1}) {
     m_armors = {};
@@ -160,57 +158,3 @@ int Player::getRange() const {
 int Player::getNumberOfPotions() const {
     return m_potions.size();
 }
-
-void Player::movePlayer(const char keyboardKey, const std::vector<Map *> &maps,
-                        const int currentLevel, const std::function<void()> &nextLevel,
-                        const std::vector<Enemy *> &enemies) {
-    Map *map = maps[currentLevel];
-    Position nextPosition = m_position;
-
-    // If enemy is in range 1 of player then player cannot move.
-    for (const Enemy *enemy: enemies) {
-        if (enemy->isAggroed() && Position::isInRangeOfOne(m_position.x, m_position.y,
-                                                           enemy->getPosition().x, enemy->getPosition().y)) {
-            return;
-        }
-    }
-    // Calculate the next position based on the input key
-    switch (keyboardKey) {
-        case KEYBOARD_SMALL_W:
-        case KEYBOARD_CAPITAL_W:
-            nextPosition.y -= 1;
-            break;
-        case KEYBOARD_SMALL_S:
-        case KEYBOARD_CAPITAL_S:
-            nextPosition.y += 1;
-            break;
-        case KEYBOARD_SMALL_A:
-        case KEYBOARD_CAPITAL_A:
-            nextPosition.x -= 1;
-            break;
-        case KEYBOARD_SMALL_D:
-        case KEYBOARD_CAPITAL_D:
-            nextPosition.x += 1;
-            break;
-        default:
-            break;
-    }
-
-    const char nextTile = map->assignTilePosition(nextPosition); // Access the tile at the next position
-    // Movement only through '.' or doors
-    if (nextTile == '.') {
-        map->clearCharacterFromPosition(m_position);
-        m_position = nextPosition;
-        map->putCharacterInPosition(m_position, '@');
-    } else if (nextTile == '|') {
-        nextLevel();
-        map->clearCharacterFromPosition(m_position);
-    }
-}
-
-void Player::setPlayerPosition(const Position playerPosition) {
-    m_position = playerPosition;
-}
-
-
-

@@ -37,35 +37,6 @@ void Enemy::dropPotion(Player *player) const {
     }
 }
 
-void Enemy::moveEnemy(const std::vector<Map *> &maps, const int currentLevel,
-                      const Player *player, const char keyboardKey) {
-    Map *map = maps[currentLevel];
-    Position nextPosition = m_position;
-
-    if (m_aggroed && m_alive) {
-        if (keyboardKey == 'f' || GlobalSettings::movementKeys(keyboardKey)) {
-            if (Position::getDistanceX(player->getPosition().x, nextPosition.x) >
-                Position::getDistanceX(player->getPosition().y, nextPosition.y)) {
-                player->getPosition().x > nextPosition.x
-                    ? nextPosition.x += 1
-                    : nextPosition.x -= 1;
-            } else {
-                player->getPosition().y > nextPosition.y
-                    ? nextPosition.y += 1
-                    : nextPosition.y -= 1;
-            }
-        }
-    }
-
-    const char nextTile = map->assignTilePosition(nextPosition); // Access the tile at the next position
-    // Movement only through '.'
-    if (nextTile == '.' && m_alive) {
-        map->clearCharacterFromPosition(m_position);
-        m_position = nextPosition;
-        map->putCharacterInPosition(m_position, '!');
-    }
-}
-
 bool Enemy::isAggroed() const {
     return m_aggroed;
 }
