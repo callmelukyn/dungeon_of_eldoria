@@ -89,4 +89,6 @@ add_executable(zoo_project src/main.cpp
         src/movement/player_movement.cpp
         src/movement/player_movement.h
         src/interactions/interaction.h
+        src/commands/rescue_prisoner.cpp
+        src/commands/rescue_prisoner.h
 )

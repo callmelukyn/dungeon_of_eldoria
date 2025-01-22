@@ -13,10 +13,7 @@ void MerchantInteraction::interaction(Player *player) {
         return;
     }
     // Check if player is in range of 1 of merchant.
-    if (Position::isInRangeOfOne(player->getPosition().x,
-                                 player->getPosition().y,
-                                 m_merchant->getPosition().x,
-                                 m_merchant->getPosition().y) &&
+    if (m_merchant->isAnyMerchantInRange(player->getPosition()) &&
         m_keyboardKey == 'e' || m_keyboardKey == 'E') {
         m_changeScreen();
     }

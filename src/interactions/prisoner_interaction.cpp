@@ -4,6 +4,8 @@
 
 #include "prisoner_interaction.h"
 
+#include "../commands/rescue_prisoner.h"
+
 PrisonerInteraction::PrisonerInteraction(Prisoner *prisoner, const char keyboardKey,
                                          const std::vector<Map *> &maps, const int currentLevel) {
     m_prisoner = prisoner;
@@ -19,6 +21,7 @@ void PrisonerInteraction::interaction(Player *player) {
                                  m_prisoner->getPosition().x,
                                  m_prisoner->getPosition().y) &&
         m_keyboardKey == 'e' || m_keyboardKey == 'E') {
-        m_prisoner->rescuePrisoner(player, m_maps, m_currentLevel);
+        const RescuePrisoner *rescuePrisoner = new RescuePrisoner(m_prisoner, player, m_maps, m_currentLevel);
+        delete rescuePrisoner;
     }
 }
