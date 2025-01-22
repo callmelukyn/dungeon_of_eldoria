@@ -4,13 +4,12 @@
 
 #include "healing_interaction.h"
 
-HealingInteraction::HealingInteraction(Player *player, char keyboardKey) {
-    m_player = player;
+HealingInteraction::HealingInteraction(const char keyboardKey) {
     m_keyboardKey = keyboardKey;
 }
 
-void HealingInteraction::interaction() const {
+void HealingInteraction::interaction(Player *player) {
     if (m_keyboardKey == 'h' || m_keyboardKey == 'H') {
-        m_player->usePotion();
+        player->usePotion();
     }
 }

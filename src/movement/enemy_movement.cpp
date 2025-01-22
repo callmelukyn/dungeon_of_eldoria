@@ -29,9 +29,9 @@ Position EnemyMovement::calculateNextPosition(const Player *player) const {
 
     if (Position::getDistanceX(player->getPosition().x, nextPosition.x) >
         Position::getDistanceX(player->getPosition().y, nextPosition.y)) {
-        nextPosition.x += (player->getPosition().x > nextPosition.x) ? 1 : -1;
+        nextPosition.x += player->getPosition().x > nextPosition.x ? 1 : -1;
     } else {
-        nextPosition.y += (player->getPosition().y > nextPosition.y) ? 1 : -1;
+        nextPosition.y += player->getPosition().y > nextPosition.y ? 1 : -1;
     }
 
     return nextPosition;

@@ -5,18 +5,21 @@
 #ifndef PRISONER_INTERACTION_H
 #define PRISONER_INTERACTION_H
 
+#include "interaction.h"
 #include "../domain/entities/player.h"
 #include "../domain/value_objects/prisoner.h"
 
-class PrisonerInteraction {
-    Player *m_player;
+class PrisonerInteraction final : public Interaction {
     Prisoner *m_prisoner;
     char m_keyboardKey;
+    std::vector<Map *> m_maps;
+    int m_currentLevel;
 
 public:
-    PrisonerInteraction(Player *player, Prisoner *prisoner, char keyboardKey);
+    PrisonerInteraction(Prisoner *prisoner, char keyboardKey, const std::vector<Map *> &maps,
+                        int currentLevel);
 
-    void interaction(const std::vector<Map *> &maps, int currentLevel) const;
+    void interaction(Player *player) override;
 };
 
 #endif //PRISONER_INTERACTION_H

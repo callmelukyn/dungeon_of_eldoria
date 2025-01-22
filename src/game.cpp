@@ -89,17 +89,17 @@ void Game::handleInputs(const char keyboardKey) const {
         delete enemyMovement;
     }
     // Handle interaction with merchant
-    MerchantInteraction(m_player, m_levels->getMerchant()->getMerchant(), keyboardKey,
-                        [this] { m_menu->changeScreenNormal(Screen::shopMain); }).interaction();
+    MerchantInteraction(m_levels->getMerchant()->getMerchant(), keyboardKey,
+                        [this] { m_menu->changeScreenNormal(Screen::shopMain); }).interaction(m_player);
 
     // Handle interaction with prisoner
     for (Prisoner *prisoner: m_levels->getPrisoner()->getPrisoners()) {
-        PrisonerInteraction(m_player, prisoner, keyboardKey).interaction(
-            m_levels->getMaps(), m_levels->getCurrentLevel());
+        PrisonerInteraction(prisoner, keyboardKey, m_levels->getMaps(), m_levels->getCurrentLevel()).
+                interaction(m_player);
     }
 
     // Handle interaction with player's mechanic to heal himself
-    HealingInteraction(m_player, keyboardKey).interaction();
+    HealingInteraction(keyboardKey).interaction(m_player);
     delete playerMovement;
 }
 

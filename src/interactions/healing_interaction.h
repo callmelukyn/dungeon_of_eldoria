@@ -5,17 +5,16 @@
 #ifndef HEALING_INTERACTION_H
 #define HEALING_INTERACTION_H
 
+#include "interaction.h"
 #include "../domain/entities/player.h"
 
-class HealingInteraction {
-    Player *m_player;
+class HealingInteraction final : public Interaction {
     char m_keyboardKey;
 
 public:
-    HealingInteraction(Player *player, char keyboardKey);
+    explicit HealingInteraction(char keyboardKey);
 
-    void interaction() const;
+    void interaction(Player *player) override;
 };
-
 
 #endif //HEALING_INTERACTION_H

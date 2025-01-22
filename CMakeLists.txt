@@ -88,4 +88,5 @@ add_executable(zoo_project src/main.cpp
         src/movement/enemy_movement.h
         src/movement/player_movement.cpp
         src/movement/player_movement.h
+        src/interactions/interaction.h
 )
