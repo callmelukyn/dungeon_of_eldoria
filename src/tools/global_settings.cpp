@@ -96,14 +96,10 @@ void GlobalSettings::turnOnSupportForANSI() {
 }
 
 bool GlobalSettings::movementKeys(const char keyboardKey) {
-    return keyboardKey == KEYBOARD_CAPITAL_W ||
-           keyboardKey == KEYBOARD_SMALL_W ||
-           keyboardKey == KEYBOARD_CAPITAL_S ||
-           keyboardKey == KEYBOARD_SMALL_S ||
-           keyboardKey == KEYBOARD_CAPITAL_A ||
-           keyboardKey == KEYBOARD_SMALL_A ||
-           keyboardKey == KEYBOARD_CAPITAL_D ||
-           keyboardKey == KEYBOARD_SMALL_D;
+    return keyboardKey == KEY_W ||
+           keyboardKey == KEY_S ||
+           keyboardKey == KEY_A ||
+           keyboardKey == KEY_D;
 }
 
 bool GlobalSettings::supportsANSI() {

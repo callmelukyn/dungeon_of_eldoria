@@ -35,6 +35,10 @@ public:
     void setAggro(bool aggroed);
 
     void checkEnemyHp(const std::vector<Map *> &maps, Player *player, int currentLevel);
+
+    int randomDamage() const;
+
+    EnemyType getEnemyType() const;
 };
 
 #endif //ENEMY_H

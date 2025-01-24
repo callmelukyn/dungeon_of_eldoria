@@ -33,7 +33,7 @@ void Scenes::setCurrentScene(const int currentScene) {
 }
 
 void Scenes::incrementCurrentScene(const char keyboardKey) {
-    if (keyboardKey == KEYBOARD_ENTER) {
+    if (keyboardKey == ENTER) {
         m_currentScene++;
     }
 }

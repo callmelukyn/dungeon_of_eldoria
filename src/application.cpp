@@ -21,7 +21,7 @@ void Application::run() const {
         GlobalSettings::setFontSize();
         GlobalSettings::hideCursor();
         m_game->render();
-        const char keyboardKey = static_cast<char>(_getch()); // Get user input
+        const char keyboardKey = static_cast<char>(tolower(_getch())); // Get user input
         m_game->handleInputs(keyboardKey);
     }
 }

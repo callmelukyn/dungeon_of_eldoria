@@ -37,20 +37,16 @@ Position PlayerMovement::calculateNextPosition(const char keyboardKey) const {
     Position nextPosition = m_player->getPosition();
 
     switch (keyboardKey) {
-        case KEYBOARD_SMALL_W:
-        case KEYBOARD_CAPITAL_W:
+        case KEY_W:
             nextPosition.y -= 1;
             break;
-        case KEYBOARD_SMALL_S:
-        case KEYBOARD_CAPITAL_S:
+        case KEY_S:
             nextPosition.y += 1;
             break;
-        case KEYBOARD_SMALL_A:
-        case KEYBOARD_CAPITAL_A:
+        case KEY_A:
             nextPosition.x -= 1;
             break;
-        case KEYBOARD_SMALL_D:
-        case KEYBOARD_CAPITAL_D:
+        case KEY_D:
             nextPosition.x += 1;
             break;
         default:

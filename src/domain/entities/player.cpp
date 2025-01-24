@@ -25,15 +25,19 @@ void Player::levelUp() {
     switch (m_role) {
         case Role::warrior:
             m_maxHp += 10;
-            m_damage += 7;
+            m_damage += 5;
             break;
         case Role::archer:
             m_maxHp += 8;
-            m_damage += 7;
+            if (m_level % 2 == 0) {
+                m_damage += 3;
+                m_range += 1;
+            }
             break;
         case Role::mage:
             m_maxHp += 5;
-            m_damage += 15;
+            m_damage += 1;
+            m_range += 1;
             break;
     }
 }

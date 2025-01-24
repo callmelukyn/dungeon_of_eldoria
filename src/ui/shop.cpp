@@ -80,7 +80,7 @@ void Shop::confirmSelectionShopMain(const char keyboardKey, int selected) {
             changeScreen(Screen::shopPotions, keyboardKey);
             break;
         case 3:
-            if (keyboardKey == KEYBOARD_ENTER) {
+            if (keyboardKey == ENTER) {
                 changeScreen(Screen::game, keyboardKey);
             }
             break;
@@ -89,7 +89,7 @@ void Shop::confirmSelectionShopMain(const char keyboardKey, int selected) {
 }
 
 void Shop::confirmSelectionShopWeapons(char keyboardKey, int selected, Player *player) {
-    if (keyboardKey == KEYBOARD_ENTER) {
+    if (keyboardKey == ENTER) {
         switch (selected) {
             case 0:
                 switch (player->getRole()) {
@@ -145,7 +145,7 @@ void Shop::confirmSelectionShopWeapons(char keyboardKey, int selected, Player *p
 }
 
 void Shop::confirmSelectionShopArmor(char keyboardKey, int selected, Player *player) {
-    if (keyboardKey == KEYBOARD_ENTER) {
+    if (keyboardKey == ENTER) {
         switch (selected) {
             case 0:
                 switch (player->getRole()) {
@@ -201,7 +201,7 @@ void Shop::confirmSelectionShopArmor(char keyboardKey, int selected, Player *pla
 }
 
 void Shop::confirmSelectionShopPotions(char keyboardKey, int selected, Player *player) {
-    if (keyboardKey == KEYBOARD_ENTER) {
+    if (keyboardKey == ENTER) {
         switch (selected) {
             case 2:
                 buyPotion(player, m_potion);

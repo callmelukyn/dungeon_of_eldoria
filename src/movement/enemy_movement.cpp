@@ -12,7 +12,7 @@ void EnemyMovement::moveEnemy(const std::vector<Map *> &maps, const int currentL
         return;
     }
 
-    if (!m_enemy->isAggroed() || (!GlobalSettings::movementKeys(keyboardKey) && keyboardKey != 'f')) {
+    if (!m_enemy->isAggroed() || (!GlobalSettings::movementKeys(keyboardKey) && keyboardKey != KEY_F)) {
         return;
     }
 

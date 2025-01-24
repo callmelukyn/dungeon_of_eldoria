@@ -32,21 +32,21 @@ void Menu::changeScreenNormal(const Screen newScreen) {
 }
 
 void Menu::changeScreen(const Screen newScreen, const char keyboardKey) {
-    if (m_currentScreen == Screen::shopMain && keyboardKey == KEYBOARD_ESC) {
+    if (m_currentScreen == Screen::shopMain && keyboardKey == ESCAPE) {
         return;
     }
     if ((m_currentScreen == Screen::shopArmor || m_currentScreen == Screen::shopPotions || m_currentScreen ==
-         Screen::shopWeapons) && keyboardKey == KEYBOARD_ESC) {
+         Screen::shopWeapons) && keyboardKey == ESCAPE) {
         GlobalSettings::clearConsoleOnNewScreen();
         m_selected = 0;
         m_currentScreen = Screen::shopMain;
         return;
     }
-    if (m_currentScreen != Screen::mainMenu && keyboardKey == KEYBOARD_ESC) {
+    if (m_currentScreen != Screen::mainMenu && keyboardKey == ESCAPE) {
         GlobalSettings::clearConsoleOnNewScreen();
         m_selected = 0;
         m_currentScreen = Screen::mainMenu;
-    } else if (keyboardKey == KEYBOARD_ENTER && m_currentScreen != Screen::game) {
+    } else if (keyboardKey == ENTER && m_currentScreen != Screen::game) {
         GlobalSettings::clearConsoleOnNewScreen();
         m_currentScreen = newScreen;
     }
@@ -67,7 +67,7 @@ int Menu::getSelected() const {
 void Menu::handleMenuInput(const char keyboardKey, Player *player) {
     switch (m_currentScreen) {
         case Screen::mainMenu:
-            if (keyboardKey == KEYBOARD_ESC) {
+            if (keyboardKey == ESCAPE) {
                 Application::shutdown();
                 break;
             }
@@ -166,7 +166,7 @@ void Menu::displayCutscenes() const {
 }
 
 void Menu::moveUpMenu(const char keyboardKey, const int selectableItemsOnScreenCount) {
-    if (keyboardKey == KEYBOARD_SMALL_W || keyboardKey == KEYBOARD_CAPITAL_W) {
+    if (keyboardKey == KEY_W) {
         m_selected--;
         if (m_selected < 0) {
             m_selected = selectableItemsOnScreenCount - 1;
@@ -175,7 +175,7 @@ void Menu::moveUpMenu(const char keyboardKey, const int selectableItemsOnScreenC
 }
 
 void Menu::moveDownMenu(const char keyboardKey, const int selectableItemsOnScreenCount) {
-    if (keyboardKey == KEYBOARD_SMALL_S || keyboardKey == KEYBOARD_CAPITAL_S) {
+    if (keyboardKey == KEY_S) {
         m_selected++;
         if (m_selected >= selectableItemsOnScreenCount) {
             m_selected = 0;
@@ -195,7 +195,7 @@ void Menu::confirmSelectionMainMenu(const char keyboardKey) {
             changeScreen(Screen::howToPlayMenu, keyboardKey);
             break;
         case 3:
-            if (keyboardKey == KEYBOARD_ENTER) {
+            if (keyboardKey == ENTER) {
                 Application::shutdown();
             }
             break;
@@ -220,7 +220,7 @@ void Menu::confirmSelectionRoleMenu(const char keyboardKey) {
 }
 
 void Menu::confirmCutscene(const char keyboardKey) {
-    if (keyboardKey != KEYBOARD_ENTER) {
+    if (keyboardKey != ENTER) {
         GlobalSettings::clearConsoleOnNewScreen();
     } else {
         GlobalSettings::clearConsoleOnNewScreen();

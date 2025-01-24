@@ -8,10 +8,10 @@ bool FightState::isAggroed() {
 }
 
 void FightState::handleCombat(Combat *combat, const char keyboardKey) {
-    if (keyboardKey == 'f' || keyboardKey == 'F') {
+    if (keyboardKey == KEY_F) {
         combat->damageEnemy();
     }
-    if (keyboardKey == 'f' || keyboardKey == 'F' || keyboardKey == GlobalSettings::movementKeys(keyboardKey)) {
+    if (keyboardKey == KEY_F || keyboardKey == GlobalSettings::movementKeys(keyboardKey)) {
         combat->damagePlayer();
     }
 }

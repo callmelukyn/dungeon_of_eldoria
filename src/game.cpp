@@ -81,8 +81,6 @@ void Game::handleInputs(const char keyboardKey) const {
         if (!m_levels->getEnemy()->getEnemies().empty() && enemy->isAlive()) {
             enemyMovement->moveEnemy(m_levels->getMaps(), m_levels->getCurrentLevel(),
                                      m_player, keyboardKey);
-            // enemy->moveEnemy(m_levels->getMaps(), m_levels->getCurrentLevel(),
-            //                  m_player, keyboardKey);
             enemy->checkEnemyHp(m_levels->getMaps(), m_player, m_levels->getCurrentLevel());
         }
         delete combat;

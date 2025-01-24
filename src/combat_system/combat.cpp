@@ -11,6 +11,7 @@ Combat::Combat(Enemy *enemy, Player *player) {
     m_enemy = enemy;
     m_player = player;
     m_combatState = new PassiveState();
+    m_randomDamage = m_enemy->randomDamage();
 }
 
 Combat::~Combat() {
@@ -22,15 +23,14 @@ void Combat::setState(CombatState *newState) {
     m_combatState = newState;
 }
 
-void Combat::startCombat() {
+void Combat::startCombat(const char keyboardKey) {
     setState(new FightState());
     if (!s_startedCombat) {
         s_startedCombat = true;
-        GlobalSettings::setColor(COLOR_RED);
-        std::cout << "\r---------------\n";
-        std::cout << "\r  IN COMBAT\n";
-        std::cout << "\r---------------\n";
-        GlobalSettings::setColor(COLOR_DEFAULT);
+        displayCombatHeader();
+    }
+    if (keyboardKey == KEY_F) {
+        handleCombatAttack();
     }
     m_enemy->setAggro(m_combatState->isAggroed());
 }
@@ -38,15 +38,14 @@ void Combat::startCombat() {
 void Combat::endCombat() {
     setState(new PassiveState());
     s_startedCombat = false;
-    std::cout << "\r                           \n";
-    std::cout << "\r                           \n";
-    std::cout << "\r                           \r";
+    std::cout << "\r                                              \r";
     m_enemy->setAggro(m_combatState->isAggroed());
 }
 
-void Combat::update() {
-    if (!m_combatState->isAggroed() && m_enemy->isInRange(m_player->getPosition(), m_enemy->getPosition())) {
-        startCombat();
+void Combat::update(const char keyboardKey) {
+    if ((isPlayerInRange() && keyboardKey == KEY_F) || m_enemy->isInRange(
+            m_player->getPosition(), m_enemy->getPosition())) {
+        startCombat(keyboardKey);
     }
 
     if (!m_enemy->isAggroed() && !m_enemy->isAlive()) {
@@ -63,12 +62,12 @@ void Combat::damageEnemy() const {
 void Combat::damagePlayer() const {
     if (Position::isInRangeOfOne(m_player->getPosition().x, m_player->getPosition().y,
                                  m_enemy->getPosition().x, m_enemy->getPosition().y)) {
-        m_player->takeDamage(m_enemy->getDamage());
+        m_player->takeDamage(m_randomDamage);
     }
 }
 
 void Combat::handleCombat(const char keyboardKey) {
-    update();
+    update(keyboardKey);
     m_combatState->handleCombat(this, keyboardKey);
 }
 
@@ -76,6 +75,26 @@ bool Combat::isPlayerInRange() const {
     return m_player->isInRange(m_player->getPosition(), m_enemy->getPosition());
 }
 
-bool Combat::didStartCombat() {
-    return s_startedCombat;
+void Combat::displayCombatHeader() {
+    GlobalSettings::setColor(COLOR_RED);
+    std::cout << "\r------- IN Combat -------\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::flush(std::cout);
+}
+
+void Combat::handleCombatAttack() const {
+    if (Position::isInRangeOfOne(m_player->getPosition().x, m_player->getPosition().y,
+                                 m_enemy->getPosition().x, m_enemy->getPosition().y)) {
+        // Both sides deal damage
+        std::cout << "\n\rYou hit " << enemyTypeToString(m_enemy->getEnemyType()) << ". " <<
+                enemyTypeToString(m_enemy->getEnemyType()) << " hits you for ";
+        GlobalSettings::setColor(COLOR_RED);
+        std::cout << m_randomDamage;
+        GlobalSettings::setColor(COLOR_DEFAULT);
+        std::cout << " damage.    \n";
+    } else if (isPlayerInRange()) {
+        // Player attacks but is not counterattacked
+        std::cout << "\n\rYou hit " << enemyTypeToString(m_enemy->getEnemyType()) << ".\n";
+    }
+    std::flush(std::cout);
 }

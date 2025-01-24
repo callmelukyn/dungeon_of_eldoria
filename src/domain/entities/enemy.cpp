@@ -72,3 +72,14 @@ void Enemy::checkEnemyHp(const std::vector<Map *> &maps, Player *player, const i
     }
 }
 
+int Enemy::randomDamage() const {
+    const int max = getDamage() + 2;
+    const int min = getDamage() - 2;
+    const int range = max - min + 1;
+    return rand() % range + min;
+}
+
+EnemyType Enemy::getEnemyType() const {
+    return m_enemyType;
+}
+

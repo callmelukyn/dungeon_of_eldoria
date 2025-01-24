@@ -7,5 +7,5 @@ MageBuilder::~MageBuilder() {
 }
 
 void MageBuilder::createPlayer() {
-    m_player = new Player(Role::mage, 20, 10, 5, 5);
+    m_player = new Player(Role::mage, 100, 2, 8, 3);
 }

@@ -8,19 +8,24 @@ class Combat {
     Enemy *m_enemy;
     Player *m_player;
     static bool s_startedCombat;
+    int m_randomDamage;
 
     void setState(CombatState *newState);
 
-    void update();
+    void update(char keyboardKey);
+
+    void startCombat(char keyboardKey);
+
+    void endCombat();
+
+    void displayCombatHeader();
+
+    void handleCombatAttack() const;
 
 public:
     Combat(Enemy *enemy, Player *player);
 
     ~Combat();
-
-    void startCombat();
-
-    void endCombat();
 
     void damageEnemy() const;
 
@@ -29,8 +34,6 @@ public:
     void handleCombat(char keyboardKey);
 
     bool isPlayerInRange() const;
-
-    static bool didStartCombat();
 };
 
 #endif //COMBAT_H
