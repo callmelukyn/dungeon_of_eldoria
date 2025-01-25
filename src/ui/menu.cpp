@@ -184,9 +184,15 @@ void Menu::moveDownMenu(const char keyboardKey, const int selectableItemsOnScree
 }
 
 void Menu::confirmSelectionMainMenu(const char keyboardKey) {
+    static bool startedGameForTheFirstTime = false;
     switch (m_selected) {
         case 0:
-            changeScreen(Screen::roleMenu, keyboardKey);
+            if (!startedGameForTheFirstTime) {
+                startedGameForTheFirstTime = true;
+                changeScreen(Screen::roleMenu, keyboardKey);
+            } else {
+                changeScreen(Screen::game, keyboardKey);
+            }
             break;
         case 1:
             changeScreen(Screen::creditsMenu, keyboardKey);

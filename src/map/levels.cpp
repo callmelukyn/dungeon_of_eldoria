@@ -8,6 +8,7 @@
 
 Levels::Levels() {
     m_currentLevel = 0;
+    m_maps.reserve(10); // Reserve memory for the number of caves.
     m_maps.push_back(new Map(8, 10, DoorPosition::bottomDoor)); //level 0
     m_maps.push_back(new Map(10, 15, DoorPosition::leftDoor)); //level 1
     m_maps.push_back(new Map(10, 15, DoorPosition::bottomDoor)); //level 2
