@@ -134,10 +134,12 @@ void Game::displayHelp() const {
         : GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "[E] Interact" << "\n";
     GlobalSettings::setColor(COLOR_DEFAULT);
-    std::cout << "[H] Use Heal Potion" << "\n";
+    std::cout << "[H] Use Heath Potion" << "\n";
     GlobalSettings::setColor(COLOR_YELLOW);
     std::cout << "? = Prisoner, ! = Enemy, $ = Merchant" << "\n\n";
     GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "Muj damage: " << m_player->getTotalDamage() <<
+            "\n";
     std::cout << "_______________EVENT LOG_______________\n\n";
 }
 
@@ -152,7 +154,7 @@ void Game::displayPlayerProperties() const {
     std::cout << m_player->getCoins() << "      \n";
     GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "LVL: " << m_player->getLevel() << "      -     " << m_player->getXp() << "/100 XP   \n";
-    std::cout << "HEAL POTIONS: ";
+    std::cout << "HEALTH POTIONS: ";
     std::cout << m_player->getNumberOfPotions() << "  \n";
     std::cout << "CAVE: " << m_levels->getCurrentLevel() + 1 << " / " << m_levels->getMaps().size() << "   \n\n";
 }

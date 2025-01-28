@@ -15,7 +15,7 @@ Player::Player(const Role role, const int hp, const int damage, const int armor,
     m_maxHp = hp;
     m_xp = 0;
     m_level = 1;
-    m_coins = 0; //TODO Jen na test, pak zmenit na 0
+    m_coins = 0;
 }
 
 void Player::levelUp() {
@@ -29,14 +29,17 @@ void Player::levelUp() {
             break;
         case Role::archer:
             m_maxHp += 10;
-            if (m_level % 2 == 0) {
+            if (m_level % 3 == 0) {
                 m_damage += 3;
+            }
+            if (m_level % 4 == 0) {
+                m_range += 1;
             }
             break;
         case Role::mage:
-            m_maxHp += 3;
-            m_damage += 2;
-            if (m_level % 2 == 0) {
+            m_maxHp += 5;
+            m_damage += 3;
+            if (m_level % 4 == 0) {
                 m_range += 1;
             }
             break;

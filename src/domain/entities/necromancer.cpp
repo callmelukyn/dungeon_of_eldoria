@@ -4,6 +4,6 @@
 
 #include "necromancer.h"
 
-Necromancer::Necromancer(const Position necromancerPosition): Enemy(EnemyType::necromancer, 100, 40, 0, 0, 0, 5,
+Necromancer::Necromancer(const Position necromancerPosition): Enemy(EnemyType::necromancer, 1000, 200, 0, 0, 0, 7,
                                                                     necromancerPosition) {
 }

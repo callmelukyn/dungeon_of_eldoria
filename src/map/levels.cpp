@@ -28,7 +28,7 @@ Levels::Levels() {
     m_maps.push_back(new Map(12, 33, DoorPosition::rightDoor)); //level 16
     m_maps.push_back(new Map(11, 30, DoorPosition::rightDoor)); //level 17
     m_maps.push_back(new Map(8, 10, DoorPosition::bottomDoor)); //level 18
-    m_maps.push_back(new Map(30, 30, DoorPosition::leftDoor)); //level 19
+    m_maps.push_back(new Map(15, 30, DoorPosition::leftDoor)); //level 19
     m_maps[0]->putCharacterInPosition(Position{5, 1}, '@');
     m_addEnemy = new AddEnemy(m_maps);
     m_addMerchant = new AddMerchant(m_maps);

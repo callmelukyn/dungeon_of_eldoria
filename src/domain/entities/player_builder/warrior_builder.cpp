@@ -7,6 +7,6 @@ WarriorBuilder::~WarriorBuilder() {
 }
 
 void WarriorBuilder::createPlayer() {
-    m_player = new Player(Role::warrior, 100, 10, 15, 1);
+    m_player = new Player(Role::warrior, 100, 10, 3, 1);
 }
 

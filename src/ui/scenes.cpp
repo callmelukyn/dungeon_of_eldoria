@@ -800,12 +800,12 @@ void Scenes::sceneProlog4() const {
 
 void Scenes::sceneDeathScreen() const {
     GlobalSettings::setColor(COLOR_RED);
-    std::cout << "             __     ______  _    _              _____ _____ ______ _____  \n";
-    std::cout << "             \\ \\   / / __ \\| |  | |            |  __ \\_   _|  ____|  __ \\ \n";
-    std::cout << "              \\ \\_/ / |  | | |  | |            | |  | || | | |__  | |  | |\n";
-    std::cout << "               \\   /| |  | | |  | |            | |  | || | |  __| | |  | |\n";
-    std::cout << "                | | | |__| | |__| |            | |__| || |_| |____| |__| |\n";
-    std::cout << "                |_|  \\____/ \\____/             |_____/_____|______|_____/ \n\n\n";
+    std::cout << "\n\n\n\n                          __     ______  _    _           _____ _____ ______ _____  \n";
+    std::cout << "                          \\ \\   / / __ \\| |  | |         |  __ \\_   _|  ____|  __ \\ \n";
+    std::cout << "                           \\ \\_/ / |  | | |  | |         | |  | || | | |__  | |  | |\n";
+    std::cout << "                            \\   /| |  | | |  | |         | |  | || | |  __| | |  | |\n";
+    std::cout << "                             | | | |__| | |__| |         | |__| || |_| |____| |__| |\n";
+    std::cout << "                             |_|  \\____/ \\____/          |_____/_____|______|_____/ \n\n\n\n";
     GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "        You failed saving princess, including yourself. Your legacy and courage will be remembered\n";
     std::cout << "                                  among the Kingdom of ";
@@ -816,18 +816,18 @@ void Scenes::sceneDeathScreen() const {
 
 void Scenes::sceneTheEnd() const {
     GlobalSettings::setColor(COLOR_GREEN);
-    std::cout << " _______ _    _ ______         ______ _   _ _____  \n";
-    std::cout << "|__   __| |  | |  ____|       |  ____| \\ | |  __ \\ \n";
-    std::cout << "  | |  | |__| | |__          | |__  |  \\| | |  | |\n";
-    std::cout << "  | |  |  __  |  __|         |  __| | . ` | |  | |\n";
-    std::cout << "  | |  | |  | | |____        | |____| |\\  | |__| |\n";
-    std::cout << "  |_|  |_|  |_|______|       |______|_| \\_|_____/ \n\n\n";
+    std::cout << "\n\n\n\n                           _______ _    _ ______         ______ _   _ _____  \n";
+    std::cout << "                          |__   __| |  | |  ____|       |  ____| \\ | |  __ \\ \n";
+    std::cout << "                             | |  | |__| | |__          | |__  |  \\| | |  | |\n";
+    std::cout << "                             | |  |  __  |  __|         |  __| | . ` | |  | |\n";
+    std::cout << "                             | |  | |  | | |____        | |____| |\\  | |__| |\n";
+    std::cout << "                             |_|  |_|  |_|______|       |______|_| \\_|_____/ \n\n\n";
     GlobalSettings::setColor(COLOR_DEFAULT);
-    std::cout << "        Thank you for playing.\n\n\n";
+    std::cout << "                                          Thank you for playing.\n\n\n";
 }
 
 void Scenes::sceneBossDefeat() const {
-    std::cout << "                          (,);    /\\                        \n";
+    std::cout << "\n\n\n\n                          (,);    /\\                        \n";
     std::cout << "                         (( ^_    ||            ...         \n";
     std::cout << "                          ' /  \\  ||           (()))        \n";
     std::cout << "                            L {=) ||           {' ())       \n";
