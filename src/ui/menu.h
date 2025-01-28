@@ -29,6 +29,8 @@ class Menu {
 
     void confirmCutscene(char keyboardKey);
 
+    void confirmEndScenes(char keyboardKey) const;
+
     void changeScreen(Screen newScreen, char keyboardKey);
 
 public:
@@ -55,6 +57,8 @@ public:
     void displayCutscenes() const;
 
     void displayDeathScreen() const;
+
+    void displayEndScenes() const;
 
     Screen getCurrentScreen() const;
 

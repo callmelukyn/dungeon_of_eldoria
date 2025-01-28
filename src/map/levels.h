@@ -65,7 +65,7 @@ public:
 
     void renderCurrentLevel() const;
 
-    void nextLevel(Player *player);
+    void nextLevel(Player *player, const std::function<void()> &changeScreen);
 
     std::vector<Map *> getMaps();
 
@@ -81,6 +81,5 @@ public:
 
     bool isAnyEnemyInRange(const Player *player) const;
 };
-
 
 #endif //LEVELS_H

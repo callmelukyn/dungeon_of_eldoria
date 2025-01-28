@@ -5,9 +5,9 @@
 #ifndef SCENES_H
 #define SCENES_H
 #include "../domain/entities/player.h"
-#include "../domain/value_objects/items/weapon.h"
 #include "../domain/value_objects/items/armor.h"
 #include "../domain/value_objects/items/potion.h"
+#include "../domain/value_objects/items/weapon.h"
 
 class Scenes {
     int m_currentScene;
@@ -121,6 +121,5 @@ public:
 
     void sceneShopPotionsSelectedPotion1(Potion *potion) const;
 };
-
 
 #endif //SCENES_H

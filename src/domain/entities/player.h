@@ -28,7 +28,7 @@ class Player : public Entity {
 public:
     Player(Role role, int hp, int damage, int armor, int range);
 
-    void checkLevelStatus(const std::function<void()> &changeScreen);
+    void checkStatus(const std::function<void()> &changeScreen);
 
     void levelUp();
 

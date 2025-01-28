@@ -103,6 +103,9 @@ void Menu::handleMenuInput(const char keyboardKey, Player *player) {
         case Screen::cutscenes:
             confirmCutscene(keyboardKey);
             break;
+        case Screen::endScenes:
+            confirmEndScenes(keyboardKey);
+            break;
         default: navigateMenu(keyboardKey, 4);
     }
 }
@@ -166,7 +169,12 @@ void Menu::displayCutscenes() const {
 }
 
 void Menu::displayDeathScreen() const {
+    GlobalSettings::clearConsoleOnNewScreen();
     m_scene->sceneDeathScreen();
+}
+
+void Menu::displayEndScenes() const {
+    m_scene->printEndGame();
 }
 
 void Menu::moveUpMenu(const char keyboardKey, const int selectableItemsOnScreenCount) {
@@ -237,6 +245,19 @@ void Menu::confirmCutscene(const char keyboardKey) {
         m_scene->incrementCurrentScene(keyboardKey);
         if (m_scene->getCurrentScene() > 3) {
             changeScreen(Screen::game, keyboardKey);
+            m_scene->setCurrentScene(0);
+        }
+    }
+}
+
+void Menu::confirmEndScenes(const char keyboardKey) const {
+    if (keyboardKey != ENTER) {
+        GlobalSettings::clearConsoleOnNewScreen();
+    } else {
+        GlobalSettings::clearConsoleOnNewScreen();
+        m_scene->incrementCurrentScene(keyboardKey);
+        if (m_scene->getCurrentScene() > 1) {
+            Application::shutdown();
             m_scene->setCurrentScene(0);
         }
     }

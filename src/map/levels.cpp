@@ -83,7 +83,7 @@ void Levels::renderCurrentLevel() const {
     }
 }
 
-void Levels::nextLevel(Player *player) {
+void Levels::nextLevel(Player *player, const std::function<void()> &changeScreen) {
     if (m_currentLevel + 1 < m_maps.size()) {
         clearCharactersFromPreviousLevel();
         GlobalSettings::clearConsoleOnNewScreen();
@@ -97,8 +97,7 @@ void Levels::nextLevel(Player *player) {
         player->setPosition(newPlayerPosition);
         m_maps[m_currentLevel]->putCharacterInPosition(newPlayerPosition, '@');
     } else {
-        //TODO
-        std::cout << "You have completed the game!" << std::endl;
+        changeScreen();
     }
 }
 

@@ -56,11 +56,14 @@ void Game::render() {
             break;
         case Screen::game:
             initializePlayer();
-            m_player->checkLevelStatus([this] { m_menu->changeScreenNormal(Screen::theEnd); });
+            m_player->checkStatus([this] { m_menu->changeScreenNormal(Screen::death); });
             displayGUI();
             break;
-        case Screen::theEnd:
+        case Screen::death:
             m_menu->displayDeathScreen();
+            break;
+        case Screen::endScenes:
+            m_menu->displayEndScenes();
             break;
     }
 }
@@ -74,7 +77,11 @@ void Game::handleInputs(const char keyboardKey) const {
     // Handle player movement on the map.
     const PlayerMovement *playerMovement = new PlayerMovement(m_player);
     playerMovement->movePlayer(keyboardKey, m_levels->getMaps(),
-                               m_levels->getCurrentLevel(), [this] { m_levels->nextLevel(m_player); },
+                               m_levels->getCurrentLevel(), [this] {
+                                   m_levels->nextLevel(m_player, [this] {
+                                       m_menu->changeScreenNormal(Screen::endScenes);
+                                   });
+                               },
                                m_levels->getEnemy()->getEnemies());
     // Handle movement for enemies.
     for (Enemy *enemy: m_levels->getEnemy()->getEnemies()) {

@@ -3,7 +3,7 @@
 
 enum class Screen {
     mainMenu, roleMenu, creditsMenu, howToPlayMenu, cutscenes, game, shopMain, shopWeapons, shopArmor, shopPotions,
-    theEnd
+    death, endScenes
 };
 
 #endif //SCREEN_H
