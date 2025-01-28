@@ -19,7 +19,7 @@ Shop::Shop(const std::function<void(Screen screen, char keyboardKey)> &changeScr
     m_archerWeapon3 = new Weapon(15, 2100);
     m_mageWeapon1 = new Weapon(2, 1200);
     m_mageWeapon2 = new Weapon(3, 1800);
-    m_mageWeapon3 = new Weapon(5, 2600);
+    m_mageWeapon3 = new Weapon(15, 4000);
     //Armors:
     m_warriorArmor1 = new Armor(5, 1000);
     m_warriorArmor2 = new Armor(7, 2400);

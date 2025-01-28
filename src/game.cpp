@@ -138,8 +138,6 @@ void Game::displayHelp() const {
     GlobalSettings::setColor(COLOR_YELLOW);
     std::cout << "? = Prisoner, ! = Enemy, $ = Merchant" << "\n\n";
     GlobalSettings::setColor(COLOR_DEFAULT);
-    std::cout << "Muj damage: " << m_player->getTotalDamage() <<
-            "\n";
     std::cout << "_______________EVENT LOG_______________\n\n";
 }
 
