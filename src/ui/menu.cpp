@@ -18,6 +18,7 @@ Menu::Menu(PlayerDirector *playerDirector) {
     m_scene = new Scenes();
     m_shop = new Shop([this](const Screen screen, const char keyboardKey) { changeScreen(screen, keyboardKey); });
     m_playerDirector = playerDirector;
+    m_startedGameForTheFirstTime = false;
 }
 
 Menu::~Menu() {
@@ -105,6 +106,12 @@ void Menu::handleMenuInput(const char keyboardKey, Player *player) {
             break;
         case Screen::endScenes:
             confirmEndScenes(keyboardKey);
+            break;
+        case Screen::death:
+            if (keyboardKey == '\0' || keyboardKey == ENTER || keyboardKey == ESCAPE) {
+                Application::shutdown();
+                break;
+            }
             break;
         default: navigateMenu(keyboardKey, 4);
     }
@@ -196,11 +203,9 @@ void Menu::moveDownMenu(const char keyboardKey, const int selectableItemsOnScree
 }
 
 void Menu::confirmSelectionMainMenu(const char keyboardKey) {
-    static bool startedGameForTheFirstTime = false;
     switch (m_selected) {
         case 0:
-            if (!startedGameForTheFirstTime) {
-                startedGameForTheFirstTime = true;
+            if (!m_startedGameForTheFirstTime) {
                 changeScreen(Screen::roleMenu, keyboardKey);
             } else {
                 changeScreen(Screen::game, keyboardKey);
@@ -232,7 +237,11 @@ void Menu::confirmSelectionRoleMenu(const char keyboardKey) {
         case 2:
             m_playerDirector->setBuilder(new MageBuilder());
             break;
-        default: break;
+        default:
+            break;
+    }
+    if (keyboardKey == ENTER) {
+        m_startedGameForTheFirstTime = true;
     }
     changeScreen(Screen::cutscenes, keyboardKey);
 }
