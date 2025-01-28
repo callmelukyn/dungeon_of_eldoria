@@ -28,7 +28,7 @@ Levels::Levels() {
     m_maps.push_back(new Map(12, 33, DoorPosition::rightDoor)); //level 16
     m_maps.push_back(new Map(11, 30, DoorPosition::rightDoor)); //level 17
     m_maps.push_back(new Map(8, 10, DoorPosition::bottomDoor)); //level 18
-    m_maps.push_back(new Map(10, 10, DoorPosition::leftDoor)); //level 19
+    m_maps.push_back(new Map(30, 30, DoorPosition::leftDoor)); //level 19
     m_maps[0]->putCharacterInPosition(Position{5, 1}, '@');
     m_addEnemy = new AddEnemy(m_maps);
     m_addMerchant = new AddMerchant(m_maps);
@@ -256,7 +256,7 @@ void Levels::level18() const {
 }
 
 void Levels::level19() const {
-    m_addEnemy->addNecromancer(m_currentLevel, Position{5, 5});
+    m_addEnemy->addNecromancer(m_currentLevel, Position{4, 5});
 }
 
 bool Levels::isAnyPrisonerInRange(const Player *player) const {

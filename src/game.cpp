@@ -129,8 +129,9 @@ void Game::displayHelp() const {
     GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "[H] Use Heal Potion" << "\n";
     GlobalSettings::setColor(COLOR_YELLOW);
-    std::cout << "? = Prisoner, ! = Enemy, $ = Merchant" << "\n";
+    std::cout << "? = Prisoner, ! = Enemy, $ = Merchant" << "\n\n";
     GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "_______________EVENT LOG_______________\n\n";
 }
 
 void Game::displayPlayerProperties() const {

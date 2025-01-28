@@ -55,14 +55,16 @@ void Combat::update(const char keyboardKey) {
 
 void Combat::damageEnemy() const {
     if (m_player->isInRange(m_player->getPosition(), m_enemy->getPosition())) {
-        m_enemy->takeDamage(m_player->getDamage());
+        m_enemy->takeDamage(m_player->getTotalDamage());
     }
 }
 
 void Combat::damagePlayer() const {
     if (Position::isInRangeOfOne(m_player->getPosition().x, m_player->getPosition().y,
                                  m_enemy->getPosition().x, m_enemy->getPosition().y)) {
-        m_player->takeDamage(m_randomDamage);
+        if (m_player->getTotalDefense() - m_enemy->getDamage() < 0) {
+            m_player->takeDamage(m_randomDamage - m_player->getTotalDefense());
+        }
     }
 }
 
@@ -86,12 +88,16 @@ void Combat::handleCombatAttack() const {
     if (Position::isInRangeOfOne(m_player->getPosition().x, m_player->getPosition().y,
                                  m_enemy->getPosition().x, m_enemy->getPosition().y)) {
         // Both sides deal damage
-        std::cout << "\n\rYou hit " << enemyTypeToString(m_enemy->getEnemyType()) << ". " <<
-                enemyTypeToString(m_enemy->getEnemyType()) << " hits you for ";
-        GlobalSettings::setColor(COLOR_RED);
-        std::cout << m_randomDamage;
-        GlobalSettings::setColor(COLOR_DEFAULT);
-        std::cout << " damage.    \n";
+        std::cout << "\n\rYou hit " << enemyTypeToString(m_enemy->getEnemyType()) << ". ";
+        if (m_player->getTotalDefense() - m_randomDamage < 0) {
+            std::cout << enemyTypeToString(m_enemy->getEnemyType()) << " hits you for ";
+            GlobalSettings::setColor(COLOR_RED);
+            std::cout << abs(m_player->getTotalDefense() - m_randomDamage);
+            GlobalSettings::setColor(COLOR_DEFAULT);
+            std::cout << " damage.    \n";
+        } else {
+            std::cout << "You defended yourself         \n";
+        }
     } else if (isPlayerInRange()) {
         // Player attacks but is not counterattacked
         std::cout << "\n\rYou hit " << enemyTypeToString(m_enemy->getEnemyType()) << ".\n";

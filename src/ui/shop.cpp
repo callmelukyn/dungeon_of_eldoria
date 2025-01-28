@@ -11,25 +11,25 @@ Shop::Shop(const std::function<void(Screen screen, char keyboardKey)> &changeScr
     m_changeScreenCallback = changeScreenCallback;
     //Items to buy-creation
     //Weapons:
-    m_warriorWeapon1 = new Weapon(10, 300);
-    m_warriorWeapon2 = new Weapon(15, 400);
-    m_warriorWeapon3 = new Weapon(25, 800);
-    m_archerWeapon1 = new Weapon(10, 300);
-    m_archerWeapon2 = new Weapon(13, 400);
-    m_archerWeapon3 = new Weapon(15, 500);
-    m_mageWeapon1 = new Weapon(10, 350);
-    m_mageWeapon2 = new Weapon(15, 400);
-    m_mageWeapon3 = new Weapon(18, 600);
+    m_warriorWeapon1 = new Weapon(10, 1200);
+    m_warriorWeapon2 = new Weapon(15, 1800);
+    m_warriorWeapon3 = new Weapon(25, 3000);
+    m_archerWeapon1 = new Weapon(10, 1200);
+    m_archerWeapon2 = new Weapon(13, 1700);
+    m_archerWeapon3 = new Weapon(15, 2100);
+    m_mageWeapon1 = new Weapon(2, 1200);
+    m_mageWeapon2 = new Weapon(3, 1800);
+    m_mageWeapon3 = new Weapon(5, 2600);
     //Armors:
-    m_warriorArmor1 = new Armor(10, 500);
-    m_warriorArmor2 = new Armor(15, 700);
-    m_warriorArmor3 = new Armor(20, 1000);
-    m_archerArmor1 = new Armor(8, 400);
-    m_archerArmor2 = new Armor(12, 600);
-    m_archerArmor3 = new Armor(15, 800);
-    m_mageArmor1 = new Armor(7, 400);
-    m_mageArmor2 = new Armor(10, 700);
-    m_mageArmor3 = new Armor(15, 1300);
+    m_warriorArmor1 = new Armor(5, 1000);
+    m_warriorArmor2 = new Armor(7, 2400);
+    m_warriorArmor3 = new Armor(10, 5000);
+    m_archerArmor1 = new Armor(4, 1000);
+    m_archerArmor2 = new Armor(6, 1800);
+    m_archerArmor3 = new Armor(9, 3500);
+    m_mageArmor1 = new Armor(2, 1200);
+    m_mageArmor2 = new Armor(4, 2000);
+    m_mageArmor3 = new Armor(8, 3500);
     //Potions:
     m_potion = new Potion();
 }

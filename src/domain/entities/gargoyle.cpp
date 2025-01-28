@@ -4,6 +4,6 @@
 
 #include "gargoyle.h"
 
-Gargoyle::Gargoyle(const Position gargoylePosition): Enemy(EnemyType::gargoyle, 50, 35, 700, 75,
+Gargoyle::Gargoyle(const Position gargoylePosition): Enemy(EnemyType::gargoyle, 50, 35, 300, 75,
                                                            40, 4, gargoylePosition) {
 }
