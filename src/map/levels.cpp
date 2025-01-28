@@ -23,6 +23,7 @@ Levels::Levels() {
     m_addEnemy = new AddEnemy(m_maps);
     m_addMerchant = new AddMerchant(m_maps);
     m_addPrisoner = new AddPrisoner(m_maps);
+    m_sceneManip = new Scenes();
 }
 
 Levels::~Levels() {
@@ -78,6 +79,7 @@ void Levels::nextLevel(Player *player) {
         m_maps[m_currentLevel]->putCharacterInPosition(newPlayerPosition, '@');
     } else {
         //TODO
+        //m_sceneManip->printEndGame();
         std::cout << "You have completed the game!" << std::endl;
     }
 }

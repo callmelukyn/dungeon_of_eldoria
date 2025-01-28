@@ -6,6 +6,7 @@
 #include "../commands/add_enemy.h"
 #include "../commands/add_merchant.h"
 #include "../commands/add_prisoner.h"
+#include "../ui/scenes.h"
 
 class Levels {
     int m_currentLevel;
@@ -13,6 +14,7 @@ class Levels {
     AddEnemy *m_addEnemy;
     AddMerchant *m_addMerchant;
     AddPrisoner *m_addPrisoner;
+    Scenes *m_sceneManip;
 
     void clearCharactersFromPreviousLevel() const;
 
