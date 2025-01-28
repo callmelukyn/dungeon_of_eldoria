@@ -38,8 +38,8 @@ void Player::levelUp() {
             break;
         case Role::mage:
             m_maxHp += 5;
-            m_damage += 3;
-            if (m_level % 4 == 0) {
+            m_damage += 2;
+            if (m_level % 3 == 0) {
                 m_range += 1;
             }
             break;

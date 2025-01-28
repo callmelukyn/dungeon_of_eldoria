@@ -265,7 +265,7 @@ void Menu::confirmEndScenes(const char keyboardKey) const {
     } else {
         GlobalSettings::clearConsoleOnNewScreen();
         m_scene->incrementCurrentScene(keyboardKey);
-        if (m_scene->getCurrentScene() > 1) {
+        if (m_scene->getCurrentScene() > 2) {
             Application::shutdown();
             m_scene->setCurrentScene(0);
         }

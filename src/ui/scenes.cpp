@@ -18,6 +18,9 @@ void Scenes::printEndGame() const {
         case 1:
             sceneTheEnd();
             break;
+        case 2:
+            sceneCredits();
+            break;
         default: break;
     }
 }
@@ -811,8 +814,8 @@ void Scenes::sceneDeathScreen() const {
             "                                         |_|  \\____/ \\____/          |_____/_____|______|_____/ \n\n\n\n";
     GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout <<
-            "                    You failed saving princess, including yourself. Your legacy and courage will be remembered\n";
-    std::cout << "                                              among the Kingdom of ";
+            "                       You failed saving princess, including yourself. Your legacy and courage will be remembered\n";
+    std::cout << "                                                    among the Kingdom of ";
     GlobalSettings::setColor(COLOR_RED);
     std::cout << "ELDORIA.\n";
     GlobalSettings::setColor(COLOR_DEFAULT);
@@ -831,7 +834,7 @@ void Scenes::sceneTheEnd() const {
     std::cout <<
             "                                                       | |  | |  | | |____        | |____| |\\  | |__| |\n";
     std::cout <<
-            "                                                      |_|  |_|  |_|______|       |______|_| \\_|_____/ \n\n\n";
+            "                                                       |_|  |_|  |_|______|       |______|_| \\_|_____/ \n\n\n";
     GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << "                                                                    Thank you for playing.\n\n\n";
 }
@@ -857,6 +860,34 @@ void Scenes::sceneBossDefeat() const {
             "          You managed to save princess and defeated the king of EVIL, The Necromancer, for eternity.\n\n";
     GlobalSettings::setColor(COLOR_RED);
     std::cout << "   oR DiD YoU?\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+}
+
+void Scenes::sceneCredits() const {
+    std::cout << "                                                     _   _                    \n";
+    std::cout << "                                          /\\        | | | |                   \n";
+    std::cout << "                                         /  \\  _   _| |_| |__   ___  _ __ ___ \n";
+    std::cout << "                                        / /\\ \\| | | | __| '_ \\ / _ \\| '__/ __|\n";
+    std::cout << "                                       / ____ \\ |_| | |_| | | | (_) | |  \\__ \\\n";
+    std::cout << "                                      /_/    \\_\\__,_|\\__|_| |_|\\___/|_|  |___/\n\n\n";
+    std::cout << "                                                Lukas ";
+    GlobalSettings::setColor(COLOR_RED);
+    std::cout << " \"Lukyn\" ";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "Kulhanek\n";
+    std::cout << "                                                Ivo ";
+    GlobalSettings::setColor(COLOR_RED);
+    std::cout << " \"Gonres\" ";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "Dubsik\n";
+    std::cout << "                                                Vit ";
+    GlobalSettings::setColor(COLOR_RED);
+    std::cout << " \"SquEEzy\" ";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "Benda\n";
+    std::cout << "                                      \n\n";
+    GlobalSettings::setColor(COLOR_SELECTED);
+    std::cout << "[ENTER] Return to the kingdom as a HERO\n";
     GlobalSettings::setColor(COLOR_DEFAULT);
 }
 

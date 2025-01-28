@@ -61,6 +61,8 @@ public:
 
     void sceneTheEnd() const;
 
+    void sceneCredits() const;
+
     //Menu scenes
     void sceneHeaderMenu() const;
 
