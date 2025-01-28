@@ -94,13 +94,15 @@ void Combat::handleCombatAttack() const {
             GlobalSettings::setColor(COLOR_RED);
             std::cout << abs(m_player->getTotalDefense() - m_randomDamage);
             GlobalSettings::setColor(COLOR_DEFAULT);
-            std::cout << " damage.                        \n";
+            std::cout <<
+                    " damage.                                                                                     \n";
         } else {
-            std::cout << "You defended yourself                    \n";
+            std::cout << "You defended yourself                                                                     \n";
         }
     } else if (isPlayerInRange()) {
         // Player attacks but is not counterattacked
-        std::cout << "\n\rYou hit " << enemyTypeToString(m_enemy->getEnemyType()) << ".                    \n";
+        std::cout << "\n\rYou hit " << enemyTypeToString(m_enemy->getEnemyType()) <<
+                ".                                                                                          \n";
     }
     std::flush(std::cout);
 }
