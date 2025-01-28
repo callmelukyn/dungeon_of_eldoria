@@ -53,6 +53,7 @@ void Enemy::checkEnemyHp(const std::vector<Map *> &maps, Player *player, const i
         const KillEnemy *killEnemy = new KillEnemy(this, maps, currentLevel);
         delete killEnemy;
         player->addXp(m_xpReward);
+        player->addCoins(m_coinReward);
         dropPotion(player);
 
         // Cool system kterej jsem nakonec nepotreboval

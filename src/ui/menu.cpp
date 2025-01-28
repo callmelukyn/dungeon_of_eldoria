@@ -165,6 +165,10 @@ void Menu::displayCutscenes() const {
     m_scene->printScenes();
 }
 
+void Menu::displayDeathScreen() const {
+    m_scene->sceneDeathScreen();
+}
+
 void Menu::moveUpMenu(const char keyboardKey, const int selectableItemsOnScreenCount) {
     if (keyboardKey == KEY_W) {
         m_selected--;

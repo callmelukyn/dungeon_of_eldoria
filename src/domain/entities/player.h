@@ -4,6 +4,7 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
+#include <functional>
 #include <vector>
 
 #include "entity.h"
@@ -27,7 +28,7 @@ class Player : public Entity {
 public:
     Player(Role role, int hp, int damage, int armor, int range);
 
-    void checkLevelStatus();
+    void checkLevelStatus(const std::function<void()> &changeScreen);
 
     void levelUp();
 

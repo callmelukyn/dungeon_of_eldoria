@@ -56,8 +56,11 @@ void Game::render() {
             break;
         case Screen::game:
             initializePlayer();
-            m_player->checkLevelStatus();
+            m_player->checkLevelStatus([this] { m_menu->changeScreenNormal(Screen::theEnd); });
             displayGUI();
+            break;
+        case Screen::theEnd:
+            m_menu->displayDeathScreen();
             break;
     }
 }

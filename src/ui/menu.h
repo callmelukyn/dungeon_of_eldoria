@@ -54,6 +54,8 @@ public:
 
     void displayCutscenes() const;
 
+    void displayDeathScreen() const;
+
     Screen getCurrentScreen() const;
 
     //Functionality

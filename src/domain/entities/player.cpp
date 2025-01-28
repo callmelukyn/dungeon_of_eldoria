@@ -43,9 +43,12 @@ void Player::levelUp() {
     }
 }
 
-void Player::checkLevelStatus() {
+void Player::checkLevelStatus(const std::function<void()> &changeScreen) {
     if (m_xp >= 100) {
         levelUp();
+    }
+    if (!isAlive()) {
+        changeScreen();
     }
 }
 

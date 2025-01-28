@@ -11,7 +11,6 @@
 class Player;
 
 class Enemy : public Entity {
-protected:
     EnemyType m_enemyType;
     int m_coinReward;
     int m_xpReward;
