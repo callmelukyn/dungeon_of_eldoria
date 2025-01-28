@@ -10,6 +10,18 @@ Scenes::Scenes() {
     m_currentScene = 0;
 }
 
+void Scenes::printEndGame() const {
+    switch (m_currentScene) {
+        case 0:
+            sceneBossDefeat();
+            break;
+        case 1:
+            sceneTheEnd();
+            break;
+        default: break;
+    }
+}
+
 void Scenes::printScenes() const {
     switch (m_currentScene) {
         case 0:
@@ -671,7 +683,7 @@ void Scenes::sceneProlog2() const {
 void Scenes::prologText3() const {
     std::cout << "\n   One night, ";
     GlobalSettings::setColor(COLOR_RED);
-    std::cout << "THE EVIL";
+    std::cout << "EVIL";
     GlobalSettings::setColor(COLOR_DEFAULT);
     std::cout << " had come for the princess herself.\n";
     std::cout <<
@@ -785,3 +797,56 @@ void Scenes::sceneProlog4() const {
     prologArt4();
     continueHint();
 }
+
+void Scenes::sceneDeathScreen() const {
+    GlobalSettings::setColor(COLOR_RED);
+    std::cout << "             __     ______  _    _              _____ _____ ______ _____  \n";
+    std::cout << "             \\ \\   / / __ \\| |  | |            |  __ \\_   _|  ____|  __ \\ \n";
+    std::cout << "              \\ \\_/ / |  | | |  | |            | |  | || | | |__  | |  | |\n";
+    std::cout << "               \\   /| |  | | |  | |            | |  | || | |  __| | |  | |\n";
+    std::cout << "                | | | |__| | |__| |            | |__| || |_| |____| |__| |\n";
+    std::cout << "                |_|  \\____/ \\____/             |_____/_____|______|_____/ \n\n\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "        You failed saving princess, including yourself. Your legacy and courage will be remembered\n";
+    std::cout << "                                  among the Kingdom of ";
+    GlobalSettings::setColor(COLOR_RED);
+    std::cout << "ELDORIA.\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+}
+
+void Scenes::sceneTheEnd() const {
+    GlobalSettings::setColor(COLOR_GREEN);
+    std::cout << " _______ _    _ ______         ______ _   _ _____  \n";
+    std::cout << "|__   __| |  | |  ____|       |  ____| \\ | |  __ \\ \n";
+    std::cout << "  | |  | |__| | |__          | |__  |  \\| | |  | |\n";
+    std::cout << "  | |  |  __  |  __|         |  __| | . ` | |  | |\n";
+    std::cout << "  | |  | |  | | |____        | |____| |\\  | |__| |\n";
+    std::cout << "  |_|  |_|  |_|______|       |______|_| \\_|_____/ \n\n\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout << "        Thank you for playing.\n\n\n";
+}
+
+void Scenes::sceneBossDefeat() const {
+    std::cout << "                          (,);    /\\                        \n";
+    std::cout << "                         (( ^_    ||            ...         \n";
+    std::cout << "                          ' /  \\  ||           (()))        \n";
+    std::cout << "                            L {=) ||           {' ())       \n";
+    std::cout << "                             ) -  ||            )_ (()      \n";
+    std::cout << "                           (_   \\====       @  (   (_)      \n";
+    std::cout << "                           | (___/{ }        \\7 \\ _) |      \n";
+    std::cout << "                            \\____\\/)          {)=== /\\      \n";
+    std::cout << "                            |    |             \\ |    |     \n";
+    std::cout << "                            |_/\\_|               |    |     \n";
+    std::cout << "                             |  |                |    |     \n";
+    std::cout << "                              ) )\\               |    |     \n";
+    std::cout << "                            _/| |/               |    |     \n";
+    std::cout << "                           ( ,\\ |_               '~~~~'     \n";
+    std::cout << "                            \\_(___)               _/Y \n\n\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+    std::cout <<
+            "          You managed to save princess and defeated the king of EVIL, The Necromancer, for eternity.\n\n";
+    GlobalSettings::setColor(COLOR_RED);
+    std::cout << "   oR DiD YoU?\n";
+    GlobalSettings::setColor(COLOR_DEFAULT);
+}
+

@@ -17,6 +17,8 @@ public:
 
     void printScenes() const;
 
+    void printEndGame() const;
+
     void setCurrentScene(int currentScene);
 
     void incrementCurrentScene(char keyboardKey);
@@ -51,6 +53,13 @@ public:
     void sceneProlog3() const;
 
     void sceneProlog4() const;
+
+    //END of GAME scenes
+    void sceneDeathScreen() const;
+
+    void sceneBossDefeat() const;
+
+    void sceneTheEnd() const;
 
     //Menu scenes
     void sceneHeaderMenu() const;
