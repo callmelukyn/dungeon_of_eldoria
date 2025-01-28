@@ -8,7 +8,7 @@
 
 Levels::Levels() {
     m_currentLevel = 0;
-    m_maps.reserve(10); // Reserve memory for the number of caves.
+    m_maps.reserve(20); // Reserve memory for the number of caves.
     m_maps.push_back(new Map(8, 10, DoorPosition::bottomDoor)); //level 0
     m_maps.push_back(new Map(10, 15, DoorPosition::leftDoor)); //level 1
     m_maps.push_back(new Map(10, 15, DoorPosition::bottomDoor)); //level 2
@@ -19,11 +19,20 @@ Levels::Levels() {
     m_maps.push_back(new Map(12, 33, DoorPosition::bottomDoor)); //level 7
     m_maps.push_back(new Map(14, 28, DoorPosition::rightDoor)); //level 8
     m_maps.push_back(new Map(8, 10, DoorPosition::bottomDoor)); //level 9
+    m_maps.push_back(new Map(11, 30, DoorPosition::leftDoor)); //level 10
+    m_maps.push_back(new Map(14, 28, DoorPosition::bottomDoor)); //level 11
+    m_maps.push_back(new Map(12, 33, DoorPosition::rightDoor)); //level 12
+    m_maps.push_back(new Map(11, 30, DoorPosition::rightDoor)); //level 13
+    m_maps.push_back(new Map(8, 10, DoorPosition::bottomDoor)); //level 14
+    m_maps.push_back(new Map(14, 28, DoorPosition::bottomDoor)); //level 15
+    m_maps.push_back(new Map(12, 33, DoorPosition::rightDoor)); //level 16
+    m_maps.push_back(new Map(11, 30, DoorPosition::rightDoor)); //level 17
+    m_maps.push_back(new Map(8, 10, DoorPosition::bottomDoor)); //level 18
+    m_maps.push_back(new Map(10, 10, DoorPosition::leftDoor)); //level 19
     m_maps[0]->putCharacterInPosition(Position{5, 1}, '@');
     m_addEnemy = new AddEnemy(m_maps);
     m_addMerchant = new AddMerchant(m_maps);
     m_addPrisoner = new AddPrisoner(m_maps);
-    m_sceneManip = new Scenes();
 }
 
 Levels::~Levels() {
@@ -47,7 +56,17 @@ void Levels::loadAllLevels() const {
         {6, [this] { level6(); }},
         {7, [this] { level7(); }},
         {8, [this] { level8(); }},
-        {9, [this] { level9(); }}
+        {9, [this] { level9(); }},
+        {10, [this] { level10(); }},
+        {11, [this] { level11(); }},
+        {12, [this] { level12(); }},
+        {13, [this] { level13(); }},
+        {14, [this] { level14(); }},
+        {15, [this] { level15(); }},
+        {16, [this] { level16(); }},
+        {17, [this] { level17(); }},
+        {18, [this] { level18(); }},
+        {19, [this] { level19(); }}
     };
     if (!levelsLoaded[m_currentLevel]) {
         auto it = levels.find(m_currentLevel);
@@ -79,7 +98,6 @@ void Levels::nextLevel(Player *player) {
         m_maps[m_currentLevel]->putCharacterInPosition(newPlayerPosition, '@');
     } else {
         //TODO
-        //m_sceneManip->printEndGame();
         std::cout << "You have completed the game!" << std::endl;
     }
 }
@@ -177,6 +195,68 @@ void Levels::level8() const {
 
 void Levels::level9() const {
     m_addMerchant->addMerchant(m_currentLevel, Position{6, 3});
+}
+
+void Levels::level10() const {
+    m_addEnemy->addGargoyle(m_currentLevel, Position{15, 8});
+    m_addEnemy->addGargoyle(m_currentLevel, Position{10, 6});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{12, 9});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{14, 10});
+}
+
+void Levels::level11() const {
+    m_addEnemy->addGargoyle(m_currentLevel, Position{8, 4});
+    m_addEnemy->addGhoul(m_currentLevel, Position{4, 11});
+    m_addEnemy->addMummy(m_currentLevel, Position{17, 2});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{19, 6});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{25, 3});
+}
+
+void Levels::level12() const {
+    m_addEnemy->addGargoyle(m_currentLevel, Position{15, 8});
+    m_addEnemy->addGargoyle(m_currentLevel, Position{10, 3});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{25, 2});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{21, 4});
+}
+
+void Levels::level13() const {
+    m_addEnemy->addBasilisk(m_currentLevel, Position{15, 8});
+    m_addEnemy->addGhoul(m_currentLevel, Position{10, 6});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{12, 9});
+}
+
+void Levels::level14() const {
+    m_addMerchant->addMerchant(m_currentLevel, Position{6, 3});
+}
+
+void Levels::level15() const {
+    m_addEnemy->addGargoyle(m_currentLevel, Position{8, 4});
+    m_addEnemy->addGhoul(m_currentLevel, Position{4, 11});
+    m_addEnemy->addBasilisk(m_currentLevel, Position{17, 2});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{19, 6});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{25, 3});
+}
+
+void Levels::level16() const {
+    m_addEnemy->addGargoyle(m_currentLevel, Position{15, 8});
+    m_addEnemy->addBasilisk(m_currentLevel, Position{10, 3});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{25, 2});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{18, 5});
+}
+
+void Levels::level17() const {
+    m_addEnemy->addBasilisk(m_currentLevel, Position{15, 8});
+    m_addEnemy->addGhoul(m_currentLevel, Position{10, 6});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{12, 9});
+    m_addPrisoner->addPrisoner(m_currentLevel, Position{9, 5});
+}
+
+void Levels::level18() const {
+    m_addMerchant->addMerchant(m_currentLevel, Position{6, 3});
+}
+
+void Levels::level19() const {
+    m_addEnemy->addNecromancer(m_currentLevel, Position{5, 5});
 }
 
 bool Levels::isAnyPrisonerInRange(const Player *player) const {
