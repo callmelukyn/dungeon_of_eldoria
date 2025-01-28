@@ -4,5 +4,5 @@
 
 #include "ghoul.h"
 
-Ghoul::Ghoul(const Position ghoulPosition): Enemy(EnemyType::ghoul, 35, 30, 300, 55, 25, 3, ghoulPosition) {
+Ghoul::Ghoul(const Position ghoulPosition): Enemy(EnemyType::ghoul, 35, 30, 500, 55, 25, 3, ghoulPosition) {
 }

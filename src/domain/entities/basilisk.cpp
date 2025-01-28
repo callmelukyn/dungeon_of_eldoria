@@ -5,5 +5,5 @@
 #include "basilisk.h"
 
 Basilisk::Basilisk(const Position basiliskPosition)
-    : Enemy(EnemyType::basilisk, 50, 45, 500, 80, 40, 5, basiliskPosition) {
+    : Enemy(EnemyType::basilisk, 50, 45, 900, 90, 50, 5, basiliskPosition) {
 }
