@@ -15,6 +15,7 @@ class Menu {
     Scenes *m_scene;
     Shop *m_shop;
     PlayerDirector *m_playerDirector;
+    bool m_startedGameForTheFirstTime;
 
     //Movement
     void navigateMenu(char keyboardKey, int selectableItemsOnScreenCount);
